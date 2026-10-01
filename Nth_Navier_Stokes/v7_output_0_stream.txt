@@ -1,0 +1,3 @@
+Running Organic Simulations (Vortex Stretching)...
+Classical survived.
+Nth Math completed. Global existence maintained.

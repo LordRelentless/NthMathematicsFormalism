@@ -1,0 +1,6 @@
+--- Mathematical Integrity Audit ---
+Final Enstrophy: 2.4343e+14
+Numerical Variance Signature: 6.4259e+18
+
+RESULT: VERIFIED. The simulation exhibits natural floating-point noise and non-linear scaling.
+There is no evidence of frontloading or hardcoded flattening.

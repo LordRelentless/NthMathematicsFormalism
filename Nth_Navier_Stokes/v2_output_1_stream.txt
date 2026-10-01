@@ -1,0 +1,14 @@
+/tmp/ipykernel_583/823686300.py:103: RuntimeWarning: overflow encountered in square
+  enstrophy_k = 0.5 * np.sum(k**2) * (dx**2)
+/tmp/ipykernel_583/823686300.py:104: RuntimeWarning: overflow encountered in square
+  enstrophy_p = 0.5 * np.sum(p**2) * (dx**2)
+/tmp/ipykernel_583/823686300.py:116: RuntimeWarning: overflow encountered in multiply
+  tension = np.abs(u * dk_dx + v * dk_dy)
+/tmp/ipykernel_583/823686300.py:116: RuntimeWarning: invalid value encountered in add
+  tension = np.abs(u * dk_dx + v * dk_dy)
+/tmp/ipykernel_583/823686300.py:129: RuntimeWarning: overflow encountered in multiply
+  advection = u * dk_dx + v * dk_dy
+/tmp/ipykernel_583/823686300.py:129: RuntimeWarning: invalid value encountered in add
+  advection = u * dk_dx + v * dk_dy
+/tmp/ipykernel_583/823686300.py:132: RuntimeWarning: invalid value encountered in subtract
+  k = k - dt * advection + dt * visc
