@@ -1,0 +1,6 @@
+dim=3 step=   0 t=  0.0000 phase_points= 13792 div_max=2.107e-01 Omega_invariant_error=1.110e-16
+dim=3 step=  40 t=  0.0600 phase_points= 13789 div_max=1.533e-02 Omega_invariant_error=1.110e-16
+dim=3 step=  80 t=  0.1200 phase_points= 13787 div_max=5.750e-03 Omega_invariant_error=1.326e-16
+dim=3 step= 120 t=  0.1800 phase_points= 13781 div_max=2.955e-03 Omega_invariant_error=1.331e-16
+3D maximum Omega invariant error: 3.9831815431808385e-16
+3D final max phase points: 13774

@@ -1,0 +1,6 @@
+/tmp/ipykernel_4439/1021496003.py:493: RuntimeWarning: overflow encountered in multiply
+  rn = np.sqrt(np.sum(r*r, axis=(1, 2, 3)))
+/tmp/ipykernel_4439/1021496003.py:443: RuntimeWarning: overflow encountered in multiply
+  s = -6.0 * F
+/tmp/ipykernel_4439/1021496003.py:432: RuntimeWarning: invalid value encountered in add
+  G[tuple(so)] = 0.5 * (F + np.roll(F, -1, axis=axis))

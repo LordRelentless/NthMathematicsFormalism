@@ -1,0 +1,73 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g)
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection of fields,
+             Real-channel tracers, gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+v15.3 FRAME EXPERIMENT — Real-channel tracers, m-invariance, core cohort
+###############################################################################
+
+--- tracking runs (3D, nu=0, CH, helical tube IC) ---
+    seed: 400 uniform + 150 core   uniform within 1.5 of core: 0   core-cohort r0: min 0.065  median 1.384  max 1.997
+    routes total = 0   (Omega INACTIVE)
+  classical: 155s
+    seed: 400 uniform + 150 core   uniform within 1.5 of core: 0   core-cohort r0: min 0.065  median 1.384  max 1.997
+    routes total = 987036   (Omega ACTIVE)
+  omega:     258s
+
+  IDEAL HELIX reference (r=sigma): |dr/ds| = 0.1581   pitch = 9.5 deg
+
+===============================================================================
+v15.3 AUDIT — Real-channel frame, with inline nulls
+===============================================================================
+
+[B0] m-INVARIANCE THEOREM (field level):
+  max|m_classical - m_omega| = 5.622e-11   relative = 1.551e-11
+  -> THEOREM CONFIRMED: the bundle momentum m = u+p evolves
+     identically in both runs (to solver tolerance). The
+     transfer repartitions selector energy between channels
+     without touching the transport field — the discrete
+     recovery theorem in its strongest form.
+
+[B1] EPSILON_n — signed sagitta rate, per cohort:
+  [C-uniform] mean |eps_n| = 0.09791   mean signed = +0.07827   sign coherence = 0.548
+  [C-core   ] mean |eps_n| = 0.11134   mean signed = +0.09119   sign coherence = 0.588
+  [O-uniform] mean |eps_n| = 0.07633   mean signed = +0.03108   sign coherence = 0.161
+  [O-core   ] mean |eps_n| = 0.08463   mean signed = +0.03714   sign coherence = 0.194
+  REGRESSION ANCHOR: classical-uniform must reproduce v15.1 exactly
+  (v15.1: mean |eps| 0.09791, signed +0.07827, coherence 0.548).
+  KS(Omega, classical) uniform: 0.116   DISTINCT — first sensitive particle-frame measurement
+  KS(Omega, classical) core: 0.139   DISTINCT — first sensitive particle-frame measurement
+
+[B2] LITERAL COLLAPSE (x+z, y), core-centered disc:
+  [C-uniform] |dr/ds| = 0.6461 (random null 0.6366)   dtheta/ds = +0.0401   pitch med 44.0 deg (uniform null 45)
+  [C-core   ] |dr/ds| = 0.6387 (random null 0.6366)   dtheta/ds = +0.0431   pitch med 43.6 deg (uniform null 45)
+  [O-uniform] |dr/ds| = 0.6701 (random null 0.6366)   dtheta/ds = +0.0400   pitch med 49.3 deg (uniform null 45)
+  [O-core   ] |dr/ds| = 0.6637 (random null 0.6366)   dtheta/ds = +0.0387   pitch med 48.2 deg (uniform null 45)
+
+[B3] COMPACTIFIED SPIRAL RENDER, per cohort:
+  [C-uniform] mean |dr/ds| = 0.0805 (ideal 0.1581)   pitch med  10.5 deg (ideal 9.5, uniform 45)
+  [C-core   ] mean |dr/ds| = 0.0846 (ideal 0.1581)   pitch med  10.7 deg (ideal 9.5, uniform 45)
+  [O-uniform] mean |dr/ds| = 0.0853 (ideal 0.1581)   pitch med   9.7 deg (ideal 9.5, uniform 45)
+  [O-core   ] mean |dr/ds| = 0.0919 (ideal 0.1581)   pitch med  10.0 deg (ideal 9.5, uniform 45)
+  KS(|dr/ds| core, O vs C) = 0.161
+
+[B5] GOLDEN CONCENTRATION (compactified render):
+  [C-uniform] near golden = 0.129   (uniform null 0.222)   consistent with null
+  [C-core   ] near golden = 0.126   (uniform null 0.222)   consistent with null
+  [O-uniform] near golden = 0.124   (uniform null 0.222)   consistent with null
+  [O-core   ] near golden = 0.131   (uniform null 0.222)   consistent with null

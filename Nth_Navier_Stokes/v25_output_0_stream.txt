@@ -1,0 +1,102 @@
+NumPy version: 2.1.3
+
+-------------------------------------------------------------------------------
+RUN A - baseline 3D selector evolution (Omega active)
+grid = 32^3   steps = 200   dt = 0.004   nu = 0.002   Omega = ON   threshold = 0.6   gain = 8
+-------------------------------------------------------------------------------
+  step    1  t =   0.004   E = 27.48828   Zu = 129.8801   Zp = 36.8375   routes =  32220   max|div| = 1.86e+00
+  step   51  t =   0.204   E = 19.37250   Zu = 46.0168   Zp = 45.9751   routes =  29647   max|div| = 1.41e-01
+  step  101  t =   0.404   E = 19.26991   Zu = 45.4348   Zp = 45.4086   routes =  29238   max|div| = 6.29e-02
+  step  151  t =   0.604   E = 19.18936   Zu = 45.3621   Zp = 45.3306   routes =  29040   max|div| = 6.20e-02
+  step  200  t =   0.800   E = 19.11279   Zu = 45.4482   Zp = 45.4335   routes =  28795   max|div| = 6.40e-02
+  finished: finite = True, worst Omega invariant error = 3.60e-16, resolution solves = 401 (converged 401, max iters 106), wall time = 102.4 s
+
+-------------------------------------------------------------------------------
+RUN B - high-tension 3D, Omega active
+grid = 32^3   steps = 300   dt = 0.003   nu = 0.0002   Omega = ON   threshold = 0.6   gain = 8
+-------------------------------------------------------------------------------
+  step    1  t =   0.003   E = 100.92339   Zu = 460.9910   Zp = 226.0374   routes =  32620   max|div| = 4.43e+00
+  step   51  t =   0.153   E = 77.57305   Zu = 181.6372   Zp = 181.5550   routes =  32316   max|div| = 1.50e-01
+  step  101  t =   0.303   E = 77.52478   Zu = 182.9676   Zp = 182.9370   routes =  32371   max|div| = 3.99e-02
+  step  151  t =   0.453   E = 77.50362   Zu = 186.0078   Zp = 185.9882   routes =  32363   max|div| = 3.33e-02
+  step  201  t =   0.603   E = 77.48386   Zu = 190.3868   Zp = 190.3751   routes =  32381   max|div| = 2.12e-02
+  step  251  t =   0.753   E = 77.46393   Zu = 196.0994   Zp = 196.0957   routes =  32412   max|div| = 1.63e-02
+  step  300  t =   0.900   E = 77.44367   Zu = 202.9711   Zp = 202.9716   routes =  32397   max|div| = 5.03e-02
+  finished: finite = True, worst Omega invariant error = 4.44e-16, resolution solves = 601 (converged 601, max iters 106), wall time = 110.9 s
+
+-------------------------------------------------------------------------------
+RUN C - high-tension 3D, classical Real-channel-only reference (Omega disabled, identical discretization)
+grid = 32^3   steps = 300   dt = 0.003   nu = 0.0002   Omega = OFF   threshold = 0.6   gain = 8
+-------------------------------------------------------------------------------
+  step    1  t =   0.003   E = 155.03156   Zu = 720.6639   Zp = 0.0000   routes =      0   max|div| = 7.10e-03
+  step   51  t =   0.153   E = 155.02478   Zu = 730.8890   Zp = 0.0000   routes =      0   max|div| = 1.12e-02
+  step  101  t =   0.303   E = 155.01802   Zu = 761.4693   Zp = 0.0000   routes =      0   max|div| = 1.99e-02
+  step  151  t =   0.453   E = 155.01000   Zu = 813.3531   Zp = 0.0000   routes =      0   max|div| = 2.94e-02
+  step  201  t =   0.603   E = 154.99826   Zu = 885.6433   Zp = 0.0000   routes =      0   max|div| = 3.47e-02
+  step  251  t =   0.753   E = 154.97910   Zu = 976.0015   Zp = 0.0000   routes =      0   max|div| = 5.71e-02
+  step  300  t =   0.900   E = 154.94671   Zu = 1079.7714   Zp = 0.0000   routes =      0   max|div| = 7.42e-02
+  finished: finite = True, worst Omega invariant error = 0.00e+00, resolution solves = 301 (converged 301, max iters 103), wall time = 66.5 s
+
+Fused structural product zero-leakage residual (relative): 4.523e-18
+
+===============================================================================
+MILLENNIUM CLAIM AUDIT
+finite-grid verification of the Nth selector construction
+(this implementation, these grids, these horizons)
+===============================================================================
+[C1] Omega pointwise invariants - selector momentum u+p and
+     combined energy |u|^2+|p|^2, evaluated exactly on every raw
+     transfer (before the projection bridge):
+     worst error over all transfers = 4.441e-16  ->  PASS (machine precision)
+[C2] Zero structural leakage of the fused structural product,
+     sum(u . adv) = 0 exactly on this stencil (Proposition 7):
+     relative residual = 4.523e-18  ->  PASS
+[C3] Resolution-solve delta-Cauchy termination (Axiom 5.2,
+     Theorem 4.1 analogue): every channel projection terminated
+     below tolerance within the finite iteration budget:
+     1303/1303 solves converged; worst relative residual = 1.00e-10; max iterations = 106  ->  PASS
+[C4] Selector boundedness on the tested horizons, with no
+     clipping, no NaN replacement, and no artificial viscosity
+     anywhere in the evolution:
+     [A baseline        ] max|u| growth =   1.02x   max|vorticity| growth =   1.00x   -> finite
+     [B stress+Omega    ] max|u| growth =   1.02x   max|vorticity| growth =   1.00x   -> finite
+     [C stress classical] max|u| growth =   1.07x   max|vorticity| growth =   1.29x   -> finite
+     ->  PASS on tested horizons
+[C5] Real-to-phase tension routing (high-tension A/B test,
+     identical discretization and parameters):
+     peak Real enstrophy:  Omega run 720.6563  vs  classical Real-only 1079.7714
+     final phase share of total enstrophy (Omega run) = 50.0%
+     ->  ROUTING CONFIRMED: excess structural tension is carried by the phase channel
+[C6] Selector-momentum bridge drift (relative, diagnostic as in
+     the previous notebook): worst = 8.040e-04
+-------------------------------------------------------------------------------
+FINAL PHASE-LABEL DISTRIBUTION (Omega runs)
+     [A baseline]  C1: 19863,  C2: 780,  Real: 3973,  Unreal: 8152
+     [B stress+Omega]  C1: 8454,  C2: 23248,  Real: 371,  Unreal: 695
+-------------------------------------------------------------------------------
+SCOPE OF THESE RESULTS (the honest boundary of this experiment)
+ * Every item above is a statement about FINITE periodic grids and
+   THIS discrete implementation of the Nth construction.
+ * The Clay Millennium statement concerns smooth solutions of the
+   CLASSICAL 3D Navier-Stokes equations for ALL time. No finite
+   simulation can settle it, and the selector reframing interprets
+   that problem rather than restating it.
+ * To convert this programme into an actual proof one would still
+   need, at minimum:
+   1. a continuum definition of the selector space and of the
+      Omega transfer as a well-defined operator on it;
+   2. a discrete-to-continuum theorem: the invariants audited here
+      (u+p, |u|^2+|p|^2, zero leakage, Cauchy termination) must
+      be shown to converge to continuum objects as dx, dt -> 0;
+   3. a recovery theorem: the classical equations must be derived
+      as the Real-channel projection of the selector evolution
+      with rigorous error bounds (otherwise the classical problem
+      is untouched by the construction);
+   4. an a priori continuum bound on selector gradients - the
+      enstrophy-type bound - which is the actual obstruction the
+      Millennium problem is about;
+   5. a phase-closure lemma: Omega RELOCATES tension into the
+      phase channel, it does not destroy it, so boundedness of p
+      must be proven in its own right. This is why the run
+      monitors max|p| and phase enstrophy explicitly.
+===============================================================================

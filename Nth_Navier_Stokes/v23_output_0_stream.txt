@@ -1,0 +1,71 @@
+══════════════════════════════════════════════════════════════════════════════
+ NTH MATHEMATICS NAVIER-STOKES · 3D TORNADO GENESIS · Omega-Selector (App. J)
+ grid 48x48x40 · dx=dz=20 m · t_end=700 s · V_CRIT=10 m/s · hotspot ΔT=20 C · shear U=7 m/s
+══════════════════════════════════════════════════════════════════════════════
+ [t=   0.7s] dt=0.743 |v|max=   1.0  w+=  0.6  vθ=  0.9  vθ_core=  0.2 | Ω ev=        0  abs=          0 | Φ-Unreal=18.4%  Zp=3.521e+04 | core=  233 m | div=6.7e-03
+ [t=  15.4s] dt=0.657 |v|max=   3.3  w+=  3.7  vθ=  1.1  vθ_core=  0.1 | Ω ev=        0  abs=          0 | Φ-Unreal= 3.7%  Zp=8.031e+03 | core=   70 m | div=1.8e-03
+ >>> OMEGA-SELECTOR ENGAGED at t =    16.1 s (1 cells transmuted) — phase channel ACTIVE
+ [t=  30.0s] dt=0.455 |v|max=   6.2  w+=  6.7  vθ=  2.9  vθ_core=  0.4 | Ω ev=     4103  abs=        621 | Φ-Unreal= 4.5%  Zp=1.670e+04 | core=  108 m | div=1.0e-03
+ [t=  45.2s] dt=0.460 |v|max=  14.7  w+=  8.8  vθ= 14.6  vθ_core=  0.7 | Ω ev=    27968  abs=      37930 | Φ-Unreal= 7.6%  Zp=1.709e+05 | core=  172 m | div=2.3e-03
+ [t=  60.3s] dt=0.444 |v|max=  10.0  w+=  9.1  vθ=  6.8  vθ_core=  1.2 | Ω ev=    35246  abs=      40262 | Φ-Unreal=10.0%  Zp=1.179e+05 | core=  201 m | div=1.5e-03
+ [t=  75.5s] dt=0.481 |v|max=   9.1  w+=  9.7  vθ=  6.6  vθ_core=  1.4 | Ω ev=    41039  abs=      42400 | Φ-Unreal=10.7%  Zp=1.502e+05 | core=  202 m | div=1.6e-03
+ [t=  90.3s] dt=0.470 |v|max=  10.4  w+= 10.6  vθ=  7.7  vθ_core=  1.6 | Ω ev=    48259  abs=      44116 | Φ-Unreal=11.0%  Zp=1.866e+05 | core=  215 m | div=1.6e-03
+ [t= 105.1s] dt=0.440 |v|max=  14.1  w+= 10.2  vθ= 13.0  vθ_core=  1.7 | Ω ev=    54921  abs=      48581 | Φ-Unreal=10.9%  Zp=2.309e+05 | core=  225 m | div=1.9e-03
+ [t= 120.1s] dt=0.460 |v|max=  12.4  w+= 10.0  vθ= 11.3  vθ_core=  1.7 | Ω ev=    64324  abs=      57035 | Φ-Unreal=12.5%  Zp=2.691e+05 | core=  237 m | div=2.0e-03
+ [t= 135.3s] dt=0.389 |v|max=  12.6  w+= 11.1  vθ=  8.8  vθ_core=  1.7 | Ω ev=    67831  abs=      58373 | Φ-Unreal=14.4%  Zp=2.661e+05 | core=  244 m | div=1.9e-03
+ [t= 150.2s] dt=0.438 |v|max=  11.7  w+= 10.8  vθ=  9.9  vθ_core=  1.8 | Ω ev=    73967  abs=      64196 | Φ-Unreal=16.2%  Zp=2.822e+05 | core=  255 m | div=1.9e-03
+ [t= 165.2s] dt=0.436 |v|max=  15.6  w+= 10.4  vθ= 14.6  vθ_core=  1.8 | Ω ev=    80287  abs=      71539 | Φ-Unreal=16.2%  Zp=3.164e+05 | core=  261 m | div=2.0e-03
+ [t= 180.1s] dt=0.382 |v|max=  16.4  w+= 10.5  vθ= 15.6  vθ_core=  1.8 | Ω ev=    88274  abs=      78241 | Φ-Unreal=15.9%  Zp=3.255e+05 | core=  264 m | div=2.2e-03
+ [t= 195.2s] dt=0.454 |v|max=  12.0  w+= 10.5  vθ=  9.8  vθ_core=  1.8 | Ω ev=    92255  abs=      80762 | Φ-Unreal=15.7%  Zp=2.880e+05 | core=  262 m | div=1.9e-03
+ [t= 210.2s] dt=0.469 |v|max=  12.8  w+= 10.5  vθ= 11.8  vθ_core=  1.8 | Ω ev=   102972  abs=      91562 | Φ-Unreal=15.3%  Zp=2.980e+05 | core=  258 m | div=2.0e-03
+ [t= 225.1s] dt=0.362 |v|max=  13.1  w+= 10.8  vθ= 10.3  vθ_core=  1.8 | Ω ev=   106878  abs=      92658 | Φ-Unreal=14.7%  Zp=2.823e+05 | core=  255 m | div=2.0e-03
+ [t= 240.3s] dt=0.481 |v|max=  12.5  w+= 10.3  vθ= 11.7  vθ_core=  1.9 | Ω ev=   116762  abs=     105353 | Φ-Unreal=14.1%  Zp=2.876e+05 | core=  257 m | div=2.0e-03
+ [t= 255.3s] dt=0.358 |v|max=  16.2  w+= 11.1  vθ= 15.3  vθ_core=  1.9 | Ω ev=   122234  abs=     108753 | Φ-Unreal=13.8%  Zp=3.059e+05 | core=  259 m | div=2.3e-03
+ [t= 270.4s] dt=0.485 |v|max=  12.1  w+= 10.3  vθ= 11.5  vθ_core=  1.9 | Ω ev=   130386  abs=     122332 | Φ-Unreal=13.7%  Zp=2.867e+05 | core=  267 m | div=2.0e-03
+ [t= 285.2s] dt=0.362 |v|max=  16.7  w+= 10.6  vθ= 14.6  vθ_core=  1.9 | Ω ev=   136012  abs=     129069 | Φ-Unreal=13.7%  Zp=3.389e+05 | core=  272 m | div=2.4e-03
+ [t= 300.1s] dt=0.485 |v|max=  11.4  w+= 10.7  vθ= 10.6  vθ_core=  1.9 | Ω ev=   140109  abs=     135202 | Φ-Unreal=13.9%  Zp=2.804e+05 | core=  278 m | div=2.0e-03
+ [t= 315.3s] dt=0.409 |v|max=  15.8  w+= 10.4  vθ= 13.0  vθ_core=  1.9 | Ω ev=   148003  abs=     148522 | Φ-Unreal=14.1%  Zp=3.334e+05 | core=  281 m | div=2.4e-03
+ [t= 330.0s] dt=0.386 |v|max=  14.7  w+= 11.0  vθ= 13.3  vθ_core=  1.9 | Ω ev=   151054  abs=     151036 | Φ-Unreal=13.3%  Zp=2.885e+05 | core=  271 m | div=2.1e-03
+ [t= 345.1s] dt=0.447 |v|max=  15.9  w+= 10.7  vθ= 15.2  vθ_core=  1.9 | Ω ev=   157864  abs=     164120 | Φ-Unreal=13.3%  Zp=3.031e+05 | core=  267 m | div=2.2e-03
+ [t= 360.3s] dt=0.362 |v|max=  16.8  w+= 10.8  vθ= 16.4  vθ_core=  1.9 | Ω ev=   164768  abs=     172603 | Φ-Unreal=12.4%  Zp=3.336e+05 | core=  248 m | div=2.5e-03
+ [t= 375.5s] dt=0.475 |v|max=  12.5  w+= 10.4  vθ= 11.8  vθ_core=  1.9 | Ω ev=   167998  abs=     178363 | Φ-Unreal=11.3%  Zp=2.725e+05 | core=  221 m | div=2.0e-03
+ [t= 390.4s] dt=0.373 |v|max=  15.6  w+= 10.4  vθ= 12.8  vθ_core=  1.8 | Ω ev=   176659  abs=     190404 | Φ-Unreal=10.1%  Zp=3.110e+05 | core=  198 m | div=2.4e-03
+ [t= 405.3s] dt=0.472 |v|max=  11.0  w+= 10.4  vθ= 10.4  vθ_core=  1.8 | Ω ev=   177797  abs=     191409 | Φ-Unreal= 9.1%  Zp=2.528e+05 | core=  181 m | div=2.0e-03
+ [t= 420.2s] dt=0.433 |v|max=  12.7  w+= 10.4  vθ= 12.2  vθ_core=  1.6 | Ω ev=   186304  abs=     203420 | Φ-Unreal= 8.7%  Zp=2.733e+05 | core=  171 m | div=2.2e-03
+ [t= 435.2s] dt=0.383 |v|max=  13.6  w+= 10.9  vθ= 12.1  vθ_core=  1.6 | Ω ev=   188200  abs=     204483 | Φ-Unreal= 8.4%  Zp=2.563e+05 | core=  167 m | div=2.1e-03
+ [t= 450.3s] dt=0.458 |v|max=  11.5  w+= 10.3  vθ= 11.2  vθ_core=  1.5 | Ω ev=   195398  abs=     214676 | Φ-Unreal= 8.3%  Zp=2.555e+05 | core=  165 m | div=2.0e-03
+ [t= 465.3s] dt=0.391 |v|max=  15.1  w+= 10.3  vθ= 13.4  vθ_core=  1.5 | Ω ev=   202361  abs=     223902 | Φ-Unreal= 8.3%  Zp=3.148e+05 | core=  165 m | div=2.5e-03
+ [t= 480.1s] dt=0.384 |v|max=  14.1  w+= 11.0  vθ= 12.7  vθ_core=  1.3 | Ω ev=   206310  abs=     227945 | Φ-Unreal= 8.0%  Zp=2.751e+05 | core=  158 m | div=2.2e-03
+ [t= 495.0s] dt=0.415 |v|max=  13.1  w+= 10.5  vθ= 11.9  vθ_core=  1.3 | Ω ev=   212441  abs=     237974 | Φ-Unreal= 8.1%  Zp=2.839e+05 | core=  160 m | div=2.1e-03
+ [t= 510.2s] dt=0.416 |v|max=  13.5  w+= 10.3  vθ= 12.7  vθ_core=  1.2 | Ω ev=   219540  abs=     244679 | Φ-Unreal= 7.9%  Zp=2.835e+05 | core=  158 m | div=2.2e-03
+ [t= 525.3s] dt=0.380 |v|max=  12.6  w+= 10.9  vθ= 10.7  vθ_core=  1.2 | Ω ev=   224117  abs=     247360 | Φ-Unreal= 7.9%  Zp=2.638e+05 | core=  157 m | div=2.1e-03
+ [t= 540.2s] dt=0.423 |v|max=  12.1  w+= 10.4  vθ= 10.5  vθ_core=  1.1 | Ω ev=   231889  abs=     256843 | Φ-Unreal= 8.3%  Zp=2.543e+05 | core=  161 m | div=1.9e-03
+ [t= 555.2s] dt=0.419 |v|max=  13.6  w+= 10.4  vθ= 12.7  vθ_core=  1.2 | Ω ev=   238698  abs=     264108 | Φ-Unreal= 8.5%  Zp=2.869e+05 | core=  164 m | div=2.2e-03
+ [t= 570.0s] dt=0.382 |v|max=  14.0  w+= 10.8  vθ= 13.5  vθ_core=  1.1 | Ω ev=   244612  abs=     269158 | Φ-Unreal= 8.4%  Zp=2.731e+05 | core=  151 m | div=2.1e-03
+ [t= 585.3s] dt=0.474 |v|max=  12.0  w+= 10.5  vθ= 11.4  vθ_core=  1.0 | Ω ev=   249735  abs=     277808 | Φ-Unreal= 8.8%  Zp=2.517e+05 | core=  153 m | div=2.0e-03
+ [t= 600.1s] dt=0.372 |v|max=  13.2  w+= 10.4  vθ= 12.6  vθ_core=  1.0 | Ω ev=   257007  abs=     286053 | Φ-Unreal= 8.6%  Zp=2.773e+05 | core=  147 m | div=2.2e-03
+ [t= 615.0s] dt=0.419 |v|max=  10.4  w+= 10.5  vθ=  8.8  vθ_core=  0.9 | Ω ev=   258455  abs=     287123 | Φ-Unreal= 8.1%  Zp=2.208e+05 | core=  139 m | div=1.8e-03
+ [t= 630.2s] dt=0.447 |v|max=  11.4  w+= 10.4  vθ= 10.7  vθ_core=  0.9 | Ω ev=   266154  abs=     298517 | Φ-Unreal= 8.0%  Zp=2.337e+05 | core=  140 m | div=2.0e-03
+ [t= 645.3s] dt=0.389 |v|max=  12.7  w+= 10.8  vθ= 10.5  vθ_core=  0.9 | Ω ev=   268834  abs=     299799 | Φ-Unreal= 7.7%  Zp=2.175e+05 | core=  135 m | div=1.9e-03
+ [t= 660.0s] dt=0.471 |v|max=  10.3  w+= 10.2  vθ=  8.9  vθ_core=  0.9 | Ω ev=   275215  abs=     309344 | Φ-Unreal= 7.7%  Zp=2.087e+05 | core=  136 m | div=1.8e-03
+ [t= 675.4s] dt=0.390 |v|max=  14.0  w+= 10.8  vθ= 13.0  vθ_core=  1.0 | Ω ev=   280360  abs=     316217 | Φ-Unreal= 7.6%  Zp=2.563e+05 | core=  134 m | div=2.2e-03
+ [t= 690.2s] dt=0.501 |v|max=  10.6  w+= 10.6  vθ=  8.4  vθ_core=  0.8 | Ω ev=   284008  abs=     321333 | Φ-Unreal= 7.8%  Zp=1.966e+05 | core=  134 m | div=1.7e-03
+
+══════════════════════════════════════════════════════════════════════════════
+ NTH MATHEMATICS · OMEGA-SELECTOR · VALIDATION AUDIT
+══════════════════════════════════════════════════════════════════════════════
+ NaN / Inf check .................. PASS  (all fields finite through t = 700.0 s, 1655 steps)
+ Omega-Selector first engagement .. t =    16.1 s
+ Omega firings (cumulative) ....... 290,573 selector cell-events across 1633 steps
+ Linear tension absorbed .......... 332,198 m/s·cells routed into the phase channel
+ Momentum conservation ............ max |ΔKE|/KE = 3.00e-09   (|v_new|² = V_CRIT² + V_perp² exactly)
+ Peak total wind speed ............ 24.2 m/s  (V_CRIT = 10; excess lives in orbital channel)
+ Peak orbital swirl speed ......... 21.9 m/s   [EF-scale rotational wind]
+ Peak updraft ..................... 11.1 m/s    /  max downdraft -9.9 m/s
+ Tornado core radius (Unreal ch) .. 140 m at t = 700.0 s
+ Phase Enstrophy Zp ............... 8.26e+04 -> 2.69e+05  (nonzero => Omega ACTIVE: YES)
+ Magnitude Enstrophy Zk ........... 1.76e+05 -> 8.06e+05  (bounded: no blow-up)
+ Channel census @ end ............. Real 61.5% | C1 19.3% | C2 11.1% | Unreal 8.1%
+ Sustained tornado (mean vθ, last third)  11.5 m/s  SUSTAINED
+ Wall clock ....................... 303 s physics · animation saved: NthTornado3D.mp4
+══════════════════════════════════════════════════════════════════════════════

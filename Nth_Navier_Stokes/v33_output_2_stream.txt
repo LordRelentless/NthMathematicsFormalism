@@ -1,0 +1,2 @@
+
+v13.2 complete: construction confound measured and (if the verdict says so) removed; identity control verified; ledger closed.

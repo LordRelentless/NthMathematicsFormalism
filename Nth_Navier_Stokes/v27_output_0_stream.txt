@@ -1,0 +1,251 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (4-channel, DUAL-arm), division
+             spectrum, deviation collapse, unreal mirror, unit-circle
+             fusion, modular angle closure, phase algebra 1*1=1, 1*i=i,
+             i*i=i, trans-finite compactifier g -> t = g/(1+g) in [0,1)
+  licensed : floats = magnitude arms of selectors [Ax 6.4]; quotient
+             collapse [Prop 8 corollary]; norm magnitudes [Ax 6.1]
+  bridge   : Whole-Term cascade, mod-2 class decomposition, unit-tested
+             and gated before any run
+
+===============================================================================
+SELECTOR ARITHMETIC — NATIVE CONSTRUCTION (dual-arm notation)
+===============================================================================
+
+structural product  n_|5,5i| (x) n_|5,5i| :
+   R  = n_|+25.000000, +25.000000|
+   U  = n_|+25.000000, +25.000000i|
+   C1 = n_|-25.000000, -25.000000|
+   C2 = n_|-25.000000, -25.000000i|
+   dual-arm symmetry |real arm| == |unreal arm|: True (audited)
+   signs (+,+,-,-) [Part IX tuple]; phases (1,i,1,i) [channels];
+   magnitude in BOTH arms [Prop 8 dual form]. The earlier
+   n_|25,i| print (Cell 1 format) was an asymmetric identity;
+   the user t/c/s translation n_|g,gi| was already dual — this
+   brings the product spectrum into consistency with it.
+
+--- t-selector :  n_|g,gi| / {1+g, 1+gi, i+g, i+gi}   (g = 0.6000)
+   quotient channels: n_|+0.375000, +0.375000|, n_|+0.375000, +0.375000|, n_|+0.375000, +0.375000i|, n_|+0.375000, +0.375000i|, ...
+   collapse check: all = 0.375000, max deviation = 0.00e+00
+
+--- c-selector :  8/8 channels, 64 quotients
+   all = 0.753425, max deviation = 0.00e+00
+--- s-selector :  4/8 channels, 32 quotients
+   all = 0.657534, max deviation = 0.00e+00
+
+unit selector circle closure (Axiom 7.2): c^2+s^2-1 = 2.22e-16
+
+unreal mirror, worked example (axis = z):
+   d = [1. 0. 0.],  P(d) = [0. 1. 0.],  P(P(d)) = [-1.  0.  0.]
+   d.P(d) = 0.0e+00,  |P(d)|^2-|d|^2 = 0.0e+00  (both exact zero)
+===============================================================================
+IC bridge deviation vs classical magnitude projection: 1.26e-03  (identical IC for every run, so A/B tests exact)
+
+===============================================================================
+BRIDGE GATE 1/2 — solver unit test (exact recovery)
+===============================================================================
+  exact recovery of a known solution: |phi - phi_true|/scale = 1.11e-12  (tol 1e-6)  -> PASS
+
+===============================================================================
+BRIDGE GATE 2/2 — projection validation
+===============================================================================
+  random smooth bundle (19 cycles, cold start):
+  (a) solve residual: 6.08e-11 (tol 1e-8)          -> PASS
+  (b) max|div|: 8.71e-01 -> 4.76e-11  (reduction 1.8e+10x)  -> PASS
+  (c) energy ratio after/before: 0.681297 (<= 1)  -> PASS
+      (~2/3 is the discrete Helmholtz signature in 3D)
+  targeted regression modes (old bridge failure bands):
+  (d) low-k (k h = 0.19)                : reduction 1.5e+10x  -> PASS
+  (d) mid-k (k h = pi/2, old retention 50%): reduction 7.1e+10x  -> PASS
+  bridge validated: operator-exact, non-expansive, mod-2 class structure.
+
+===============================================================================
+TRANFINITE METER — the pi-phi cylinder compactification
+===============================================================================
+  The Omega angle selector is a compactifier. The division spectrum
+     n_|g,gi| / {1+g, 1+gi, i+g, i+gi}
+  maps every finite tension excess g in [0, inf) onto t in [0, 1):
+     t = g/(1+g),   rotation angle in [0, pi/2).
+  "Infinity" is not a value the dynamics can reach; it is the LIMIT
+  POINT t -> 1 — the quarter-phase lock of Appendix J: the phase-
+  locked cylindrical orbit, approached, never attained.
+
+           g   t = g/(1+g)             c             s   1-t (lock deficit)
+       0e+00   0.000000000      1.000000      0.000000                1e+00
+       1e-06   0.000001000      1.000000      0.000002                1e+00
+       1e-03   0.000999001      0.999998      0.001998                1e+00
+       1e+00   0.500000000      0.600000      0.800000                5e-01
+       1e+03   0.999000999      0.001000      1.000000                1e-03
+       1e+06   0.999999000      0.000001      1.000000                1e-06
+       1e+12   1.000000000      0.000000      1.000000                1e-12
+      1e+100   1.000000000      0.000000      1.000000                0e+00
+      1e+300   1.000000000      0.000000      1.000000                0e+00
+
+  transfer stress test — total, bounded, invariant-exact at
+  magnitudes far beyond any physical velocity:
+    g =    1e+06:  max|u| 3.000 -> 2.121   energy ratio = 1.000000000000   invariant err = 0.0e+00   phase = Unreal
+    g =    1e+50:  max|u| 3.000 -> 2.121   energy ratio = 1.000000000000   invariant err = 0.0e+00   phase = Unreal
+    g =   1e+300:  max|u| 3.000 -> 2.121   energy ratio = 1.000000000000   invariant err = 0.0e+00   phase = Unreal
+
+  READING: at g = 1e300 the classical magnitude channel has long
+  since overflowed every physical scale, yet the native transfer
+  executes an exact quarter-phase lock — AT the lock, still
+  bounded, still conservative. The trans-finite is a boundary
+  point of the bounded selector space, not an escape from it.
+===============================================================================
+
+###############################################################################
+NTH NATIVE SELECTOR 3D SUITE (v7: unit-tested bridge, dual notation)
+###############################################################################
+
+===============================================================================
+RUN A — Baseline (Omega ON, nu=2e-3)
+  grid=32^3  steps=250  dt=0.004  nu=0.002  Omega=ON  thresh_frac=0.5  gain=8.0
+===============================================================================
+  initial peak tension = 2.7865  ->  threshold = 1.3932
+  stability: CFL = 0.026   diffusion number = 0.0012 (Euler limit 2.0)
+  step    1  t=  0.004  E=  36.7404  Zu=  186.764  Zp=   25.741  max|u|=  1.320  max|w|=   3.548  div=6.34e-13  routes=20244
+  step   51  t=  0.204  E=  21.9104  Zu=   97.374  Zp=   91.741  max|u|=  0.887  max|w|=   2.522  div=1.88e-09  routes=8734
+  step  101  t=  0.404  E=  21.4115  Zu=   89.127  Zp=   84.002  max|u|=  0.863  max|w|=   2.359  div=4.82e-10  routes=6839
+  step  151  t=  0.604  E=  21.0741  Zu=   83.984  Zp=   79.019  max|u|=  0.835  max|w|=   2.233  div=3.24e-10  routes=5633
+  step  201  t=  0.804  E=  20.7815  Zu=   79.811  Zp=   75.136  max|u|=  0.809  max|w|=   2.203  div=2.71e-10  routes=4724
+  step  250  t=  1.000  E=  20.5206  Zu=   76.506  Zp=   72.089  max|u|=  0.792  max|w|=   2.114  div=3.10e-10  routes=3945
+  -> finite=True  Omega_err=4.38e-16  g_peak=2.02e+01  circle=4.4e-16  mirror_orth=8.8e-17  mirror_norm=3.0e-16  collapse=0.0e+00  wall=183.1s
+
+===============================================================================
+RUN B — High Tension (Omega ON, nu=2e-4)
+  grid=32^3  steps=250  dt=0.004  nu=0.0002  Omega=ON  thresh_frac=0.5  gain=10.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0001 (Euler limit 2.0)
+  step    1  t=  0.004  E= 165.8301  Zu= 1102.856  Zp=  293.312  max|u|=  2.896  max|w|=   8.100  div=1.27e-12  routes=21540
+  step   51  t=  0.204  E= 101.6978  Zu=  463.251  Zp=  435.185  max|u|=  1.864  max|w|=   5.607  div=2.91e-09  routes=8782
+  step  101  t=  0.404  E= 100.7815  Zu=  451.820  Zp=  430.186  max|u|=  1.909  max|w|=   5.579  div=2.67e-09  routes=8606
+  step  151  t=  0.604  E=  99.8727  Zu=  446.266  Zp=  429.409  max|u|=  1.819  max|w|=   5.287  div=3.32e-09  routes=8661
+  step  201  t=  0.804  E=  98.9877  Zu=  446.651  Zp=  433.308  max|u|=  1.726  max|w|=   4.835  div=3.19e-09  routes=8780
+  step  250  t=  1.000  E=  98.2050  Zu=  453.874  Zp=  442.392  max|u|=  1.759  max|w|=   4.548  div=3.15e-09  routes=9119
+  -> finite=True  Omega_err=4.44e-16  g_peak=2.32e+02  circle=4.4e-16  mirror_orth=6.5e-17  mirror_norm=2.8e-16  collapse=0.0e+00  wall=208.7s
+
+===============================================================================
+RUN C — High Tension Classical (Omega OFF)
+  grid=32^3  steps=250  dt=0.004  nu=0.0002  Omega=OFF  thresh_frac=0.5  gain=10.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0001 (Euler limit 2.0)
+  step    1  t=  0.004  E= 184.7643  Zu= 1059.700  Zp=    0.000  max|u|=  2.963  max|w|=   7.445  div=1.27e-12  routes=0
+  step   51  t=  0.204  E= 184.8487  Zu= 1098.541  Zp=    0.000  max|u|=  3.116  max|w|=   6.712  div=3.67e-11  routes=0
+  step  101  t=  0.404  E= 184.9393  Zu= 1212.123  Zp=    0.000  max|u|=  3.087  max|w|=   6.224  div=2.84e-11  routes=0
+  step  151  t=  0.604  E= 185.0447  Zu= 1393.409  Zp=    0.000  max|u|=  2.954  max|w|=   7.876  div=3.41e-11  routes=0
+  step  201  t=  0.804  E= 185.1775  Zu= 1627.807  Zp=    0.000  max|u|=  2.836  max|w|=  10.037  div=4.06e-11  routes=0
+  step  250  t=  1.000  E= 185.3397  Zu= 1903.379  Zp=    0.000  max|u|=  2.797  max|w|=  13.051  div=4.54e-11  routes=0
+  -> finite=True  Omega_err=0.00e+00  g_peak=0.00e+00  circle=0.0e+00  mirror_orth=0.0e+00  mirror_norm=0.0e+00  collapse=0.0e+00  wall=165.8s
+
+===============================================================================
+RUN D — Zero Viscosity (Omega ON)
+  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=ON  thresh_frac=0.5  gain=10.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0000 (Euler limit 2.0)
+  step    1  t=  0.004  E= 165.8316  Zu= 1102.870  Zp=  293.315  max|u|=  2.896  max|w|=   8.100  div=1.27e-12  routes=21540
+  step   51  t=  0.204  E= 101.7958  Zu=  465.139  Zp=  437.305  max|u|=  1.843  max|w|=   5.659  div=4.89e-09  routes=8863
+  step  101  t=  0.404  E= 100.9959  Zu=  455.401  Zp=  433.381  max|u|=  1.920  max|w|=   5.896  div=3.40e-09  routes=8880
+  step  151  t=  0.604  E= 100.1644  Zu=  450.591  Zp=  433.549  max|u|=  1.869  max|w|=   5.791  div=3.91e-09  routes=8931
+  step  201  t=  0.804  E=  99.3832  Zu=  451.834  Zp=  439.488  max|u|=  1.812  max|w|=   5.191  div=3.70e-09  routes=9059
+  step  250  t=  1.000  E=  98.6573  Zu=  458.474  Zp=  450.151  max|u|=  1.776  max|w|=   4.750  div=3.18e-09  routes=9311
+  -> finite=True  Omega_err=4.44e-16  g_peak=2.32e+02  circle=4.4e-16  mirror_orth=6.7e-17  mirror_norm=3.1e-16  collapse=0.0e+00  wall=202.3s
+
+===============================================================================
+RUN E — Zero Viscosity Classical (Omega OFF)
+  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=OFF  thresh_frac=0.5  gain=10.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0000 (Euler limit 2.0)
+  step    1  t=  0.004  E= 184.7661  Zu= 1059.714  Zp=    0.000  max|u|=  2.963  max|w|=   7.445  div=1.27e-12  routes=0
+  step   51  t=  0.204  E= 184.9392  Zu= 1099.379  Zp=    0.000  max|u|=  3.117  max|w|=   6.713  div=3.68e-11  routes=0
+  step  101  t=  0.404  E= 185.1267  Zu= 1214.279  Zp=    0.000  max|u|=  3.089  max|w|=   6.232  div=2.85e-11  routes=0
+  step  151  t=  0.604  E= 185.3471  Zu= 1397.946  Zp=    0.000  max|u|=  2.957  max|w|=   7.892  div=3.44e-11  routes=0
+  step  201  t=  0.804  E= 185.6243  Zu= 1636.386  Zp=    0.000  max|u|=  2.840  max|w|=  10.083  div=4.11e-11  routes=0
+  step  250  t=  1.000  E= 185.9696  Zu= 1918.315  Zp=    0.000  max|u|=  2.814  max|w|=  13.156  div=4.55e-11  routes=0
+  -> finite=True  Omega_err=0.00e+00  g_peak=0.00e+00  circle=0.0e+00  mirror_orth=0.0e+00  mirror_norm=0.0e+00  collapse=0.0e+00  wall=166.9s
+
+===============================================================================
+AUDIT — finite-grid verification, this implementation only
+===============================================================================
+[J0] NATIVE SELECTOR CONSTRUCTION — exactness record
+   product canonical tuple ...... (+mn,+mn,-mn,-mn), DUAL arms
+   dual-arm symmetry ............. |real arm| == |unreal arm|, all channels
+   division-spectrum collapse .... worst = 0.00e+00   [Prop 8 corollary]
+   unit-circle closure c^2+s^2=1 . worst = 4.44e-16   [Axiom 7.2]
+   mirror quarter-phase .......... orth 8.83e-17   norm 3.12e-16   [Ax 9.0/9.3]
+   native IC bridge deviation .... 1.26e-03 (same IC every run)
+
+[J1] Omega pointwise invariants (u+p, |u|^2+|p|^2, raw transfer):
+  [A baseline      ] err = 4.38e-16  -> PASS
+  [B high+Omega    ] err = 4.44e-16  -> PASS
+  [C classical     ] Omega disabled
+  [D nu=0+Omega    ] err = 4.44e-16  -> PASS
+  [E nu=0 classical] Omega disabled
+[J2] Boundedness (no clipping, no NaN repair, no artificial nu):
+  [A baseline      ] max|u| x  1.18   max|w| x  1.75   -> finite
+  [B high+Omega    ] max|u| x  1.00   max|w| x  1.28   -> finite
+  [C classical     ] max|u| x  1.06   max|w| x  1.75   -> finite
+  [D nu=0+Omega    ] max|u| x  1.00   max|w| x  1.28   -> finite
+  [E nu=0 classical] max|u| x  1.06   max|w| x  1.77   -> finite
+[J3] Whole-term residual (NOW = solve residual, same operator):
+  [A baseline      ] final max|div| = 3.10e-10   cycles/solve = 12.0   worst resid = 5.7e-08
+  [B high+Omega    ] final max|div| = 3.15e-09   cycles/solve = 12.0   worst resid = 6.1e-08
+  [C classical     ] final max|div| = 4.54e-11   cycles/solve = 10.4   worst resid = 1.5e-08
+  [D nu=0+Omega    ] final max|div| = 3.18e-09   cycles/solve = 12.0   worst resid = 6.1e-08
+  [E nu=0 classical] final max|div| = 4.55e-11   cycles/solve = 10.4   worst resid = 1.5e-08
+       (v1 showed ~6e-2 here: retained mid/high-k divergence.)
+[J4] Energy ledger:
+  [A baseline      ] dE= -18.2299  viscous=  -1.6629  stripping+O(dt^2)= -16.5670
+  [B high+Omega    ] dE= -86.5576  viscous=  -0.7529  stripping+O(dt^2)= -85.8048
+  [C classical     ] dE=  +0.5771  viscous=  -0.6214  stripping+O(dt^2)=  +1.1984
+  [D nu=0+Omega    ] dE= -86.1054  viscous=  +0.0000  stripping+O(dt^2)= -86.1054
+  [E nu=0 classical] dE=  +1.2070  viscous=  +0.0000  stripping+O(dt^2)=  +1.2070
+       (advection loss = 0 exactly; Omega loss = 0 exactly)
+[J5] Routing comparisons (identical discretization):
+  high tension, nu=2e-4:
+    peak Zu:  1059.664 (Omega) vs  1903.379 (classical)   -> +44.3%
+    final max|w| ratio (Omega/classical) = 0.348
+    phase share of final enstrophy = 49.4%   peak routes = 23559
+  zero viscosity  , nu=0:
+    peak Zu:  1059.664 (Omega) vs  1918.315 (classical)   -> +44.8%
+    final max|w| ratio (Omega/classical) = 0.361
+    phase share of final enstrophy = 49.5%   peak routes = 23559
+[J6] Zero-viscosity concentration test:
+  [D nu=0+Omega    ] finite=True   max|w| growth x1.28   Zu: 1059.7 -> 458.5
+  [E nu=0 classical] finite=True   max|w| growth x1.77   Zu: 1059.7 -> 1918.3
+  -> Omega SUPPRESSES concentration at nu=0 (x1.28 vs x1.77) on this horizon.
+
+[J7] TRANFINITE RECORD — deepest approach to the quarter-phase lock
+  [A baseline      ] peak g = 2.021e+01  ->  t = 0.952857840   (c, s) = (+0.048252, +0.998835)   lock deficit 1-t = 4.71e-02
+  [B high+Omega    ] peak g = 2.321e+02  ->  t = 0.995710069   (c, s) = (+0.004299, +0.999991)   lock deficit 1-t = 4.29e-03
+  [C classical     ] Omega disabled
+  [D nu=0+Omega    ] peak g = 2.321e+02  ->  t = 0.995710692   (c, s) = (+0.004299, +0.999991)   lock deficit 1-t = 4.29e-03
+  [E nu=0 classical] Omega disabled
+
+  MOMENTUM CHECK (was a symptom of the old defect):
+   worst momentum drift over all runs = 5.30e-10
+   (v1 showed ~8e-4 from retained divergence; with the
+    operator-exact bridge expect <= 1e-9.)
+
+===============================================================================
+COST
+  [A baseline      ] wall =  183.1s   3661.2 ms/step
+  [B high+Omega    ] wall =  208.7s   4174.9 ms/step
+  [C classical     ] wall =  165.8s   3316.3 ms/step
+  [D nu=0+Omega    ] wall =  202.3s   4047.0 ms/step
+  [E nu=0 classical] wall =  166.9s   3337.2 ms/step
+===============================================================================
+SCOPE: finite-grid statements about this implementation. The
+compactifier bounds the TRANSFER operator; advection between
+transfers is a separate mechanism (the nu=0 A/B probe). A proof
+would still need the continuum selector space, discrete-to-
+continuum convergence, the Real-channel recovery theorem, an a
+priori gradient bound, and a phase-closure lemma for p.
+
+Generating figures...

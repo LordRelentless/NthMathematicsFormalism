@@ -1,0 +1,3 @@
+
+v13.1 complete: coarse Xi, clean pump verdict, sub-manifold gate,
+scale-structured transfer audit. Every finite run attributed.

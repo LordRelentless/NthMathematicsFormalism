@@ -1,0 +1,9 @@
+  initial peak tension = nan  ->  threshold = nan
+  stability: CFL = nan   diffusion number = 0.0012 (Euler limit 2.0)
+  step 1: NON-FINITE selector value -> HALTED, nothing repaired or replaced.
+  -> finite=False  Omega_err=0.00e+00  circle=0.0e+00  mirror_orth=0.0e+00  mirror_norm=0.0e+00  collapse=0.0e+00  wall=1.2s
+
+===============================================================================
+RUN B — High Tension (Omega ON, nu=2e-4)
+  grid=32^3  steps=250  dt=0.004  nu=0.0002  Omega=ON  thresh_frac=0.5  gain=10.0
+===============================================================================

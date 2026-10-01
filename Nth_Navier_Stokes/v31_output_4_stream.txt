@@ -1,0 +1,4 @@
+
+v12 complete. Axiom R active and audited; stability scan and
+renormalization recorded; every energy unit attributed in every
+finite run; R_dis provably never returns (asserted).

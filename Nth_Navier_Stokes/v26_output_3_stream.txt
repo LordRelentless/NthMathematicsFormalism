@@ -1,0 +1,2 @@
+/tmp/ipykernel_4439/1021496003.py:445: RuntimeWarning: overflow encountered in add
+  s = s + np.roll(F, -1, axis=a) + np.roll(F, 1, axis=a)

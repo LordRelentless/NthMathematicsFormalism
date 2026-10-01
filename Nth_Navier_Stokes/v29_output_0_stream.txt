@@ -1,0 +1,181 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (4-channel, DUAL-arm), division
+             spectrum, deviation collapse, unreal mirror, unit-circle
+             fusion, modular angle closure, phase algebra, trans-finite
+             compactifier g -> t = g/(1+g)
+  licensed : floats = magnitude arms of selectors [Ax 6.4]; quotient
+             collapse [Prop 8 corollary]; norm magnitudes [Ax 6.1]
+  bridge   : Whole-Term cascade (explicit enforcement target), material
+             advection, unit-tested + gated before any run
+
+===============================================================================
+SELECTOR ARITHMETIC — NATIVE CONSTRUCTION (dual-arm notation)
+===============================================================================
+
+structural product  n_|5,5i| (x) n_|5,5i| :
+   R  = n_|+25.000000, +25.000000|
+   U  = n_|+25.000000, +25.000000i|
+   C1 = n_|-25.000000, -25.000000|
+   C2 = n_|-25.000000, -25.000000i|
+   dual-arm symmetry: True (audited)
+
+--- t-selector (g = 0.6000): collapse = 0.375000, deviation = 0.00e+00
+--- c-selector: 64 quotients all = 0.753425, dev = 0.00e+00
+--- s-selector: 32 quotients all = 0.657534, dev = 0.00e+00
+unit selector circle closure: c^2+s^2-1 = 2.22e-16
+===============================================================================
+
+===============================================================================
+BRIDGE GATES — solver unit test + both projection modes
+===============================================================================
+  exact recovery: |phi-phi_true|/scale = 1.11e-12 (tol 1e-6)  -> PASS
+  channels mode (19 cycles):
+  (a) residual 6.08e-11 -> PASS   (b) div -> 4.76e-11 PASS   (c) energy 0.681297 <= 1 PASS
+  (e) fused mode (19 cycles): div(u+p) 1.13e+00 -> 4.85e-11   |d'-d| = 2.78e-17   energy 0.856052 <= 1  -> PASS
+  bridge validated: solver exact, both enforcement targets valid.
+
+###############################################################################
+v10 SETTLING SUITE — dispersal meter + release protocol
+###############################################################################
+
+===============================================================================
+RUN C0 — Classical reference (p==0; dynamics identical to the v9 reference: material advection with p=0 IS the classical skew form)
+  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=OFF  mode=channels  thresh_frac=0.5  gain=10.0  advection=material  release_at=never
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0000
+  step    1  t=  0.004  E= 184.7661  R=   0.0065  E+R= 184.7725  Zu= 1059.714  max|w|=  7.445  fine u/p=0.061/0.000  routes=0
+  step   51  t=  0.204  E= 184.9392  R=   0.3227  E+R= 185.2619  Zu= 1099.379  max|w|=  6.713  fine u/p=0.064/0.000  routes=0
+  step  101  t=  0.404  E= 185.1267  R=   0.6053  E+R= 185.7320  Zu= 1214.279  max|w|=  6.232  fine u/p=0.074/0.000  routes=0
+  step  151  t=  0.604  E= 185.3471  R=   0.8686  E+R= 186.2157  Zu= 1397.946  max|w|=  7.892  fine u/p=0.090/0.000  routes=0
+  step  201  t=  0.804  E= 185.6243  R=   1.1483  E+R= 186.7726  Zu= 1636.386  max|w|= 10.083  fine u/p=0.114/0.000  routes=0
+  step  250  t=  1.000  E= 185.9696  R=   1.4684  E+R= 187.4380  Zu= 1918.315  max|w|= 13.156  fine u/p=0.144/0.000  routes=0
+  -> finite=True  Omega_err=0.00e+00  R_final=1.4684 (0.8% of E0)  R_trans=0.0649  cons_err=1.33e-15  closure=9.28e-14  fine u/p final=0.144/0.000  wall=112.2s
+
+===============================================================================
+RUN CH — Omega ON, Whole-Term per channel, material advection (the big-reservoir configuration)
+  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  thresh_frac=0.5  gain=10.0  advection=material  release_at=never
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0000
+  step    1  t=  0.004  E= 165.8316  R=  18.9409  E+R= 184.7725  Zu= 1102.870  max|w|=  8.100  fine u/p=0.061/0.000  routes=21540
+  step   51  t=  0.204  E= 101.4635  R=  83.7932  E+R= 185.2567  Zu=  464.921  max|w|=  5.890  fine u/p=0.136/0.143  routes=9194
+  step  101  t=  0.404  E= 100.0358  R=  85.5864  E+R= 185.6222  Zu=  458.880  max|w|=  5.427  fine u/p=0.134/0.140  routes=9364
+  step  151  t=  0.604  E=  98.6949  R=  87.2681  E+R= 185.9630  Zu=  474.024  max|w|=  5.216  fine u/p=0.139/0.143  routes=9928
+  step  201  t=  0.804  E=  97.7062  R=  88.6120  E+R= 186.3182  Zu=  510.181  max|w|=  5.422  fine u/p=0.153/0.157  routes=10523
+  step  250  t=  1.000  E=  96.9075  R=  89.8037  E+R= 186.7113  Zu=  562.963  max|w|=  6.931  fine u/p=0.174/0.176  routes=11201
+  -> finite=True  Omega_err=4.44e-16  R_final=89.8037 (48.6% of E0)  R_trans=77.4153  cons_err=7.51e-14  closure=4.08e-14  fine u/p final=0.174/0.176  wall=150.0s
+
+===============================================================================
+RUN FU — Omega ON, Whole-Term fused on the bundle m = u+p, material advection (the clean conservative run)
+  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  thresh_frac=0.5  gain=10.0  advection=material  release_at=never
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0000
+  step    1  t=  0.004  E= 184.7693  R=   0.0032  E+R= 184.7725  Zu= 1102.870  max|w|=  8.100  fine u/p=0.061/0.000  routes=21540
+  step   51  t=  0.204  E= 187.4509  R=   0.1614  E+R= 187.6123  Zu= 1514.530  max|w|= 14.972  fine u/p=0.511/0.512  routes=28158
+  step  101  t=  0.404  E= 190.1328  R=   0.3026  E+R= 190.4355  Zu= 1564.317  max|w|= 15.574  fine u/p=0.524/0.520  routes=28734
+  step  151  t=  0.604  E= 192.6105  R=   0.4343  E+R= 193.0448  Zu= 1652.064  max|w|= 15.325  fine u/p=0.537/0.535  routes=29442
+  step  201  t=  0.804  E= 194.8325  R=   0.5742  E+R= 195.4066  Zu= 1748.215  max|w|= 15.854  fine u/p=0.549/0.552  routes=30038
+  step  250  t=  1.000  E= 196.7942  R=   0.7342  E+R= 197.5284  Zu= 1820.045  max|w|= 17.882  fine u/p=0.568/0.568  routes=30610
+  -> finite=True  Omega_err=4.44e-16  R_final=0.7342 (0.4% of E0)  R_trans=0.0325  cons_err=1.24e-14  closure=8.30e-14  fine u/p final=0.568/0.568  wall=84.0s
+
+===============================================================================
+RUN REL — CH configuration with Omega RELEASED at step 125 (the return-path protocol)
+  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  thresh_frac=0.5  gain=10.0  advection=material  release_at=125
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465
+  stability: CFL = 0.060   diffusion number = 0.0000
+  step    1  t=  0.004  E= 165.8316  R=  18.9409  E+R= 184.7725  Zu= 1102.870  max|w|=  8.100  fine u/p=0.061/0.000  routes=21540
+  step   51  t=  0.204  E= 101.4635  R=  83.7932  E+R= 185.2567  Zu=  464.921  max|w|=  5.890  fine u/p=0.136/0.143  routes=9194
+  step  101  t=  0.404  E= 100.0358  R=  85.5864  E+R= 185.6222  Zu=  458.880  max|w|=  5.427  fine u/p=0.134/0.140  routes=9364
+  --- RELEASE at step 125: Omega transfer OFF ---
+  step  151  t=  0.604  E=  99.4756  R=  86.4912  E+R= 185.9668  Zu=  492.168  max|w|=  5.101  fine u/p=0.144/0.149  routes=0
+  step  201  t=  0.804  E=  99.7125  R=  86.6344  E+R= 186.3469  Zu=  557.715  max|w|=  5.721  fine u/p=0.168/0.172  routes=0
+  step  250  t=  1.000  E=  99.9837  R=  86.7987  E+R= 186.7825  Zu=  635.044  max|w|=  6.994  fine u/p=0.196/0.200  routes=0
+  -> finite=True  Omega_err=4.44e-16  R_final=86.7987 (47.0% of E0)  R_trans=77.4153  cons_err=8.70e-14  closure=4.57e-14  fine u/p final=0.196/0.200  wall=128.6s
+
+===============================================================================
+AUDIT — finite-grid verification, this implementation only
+===============================================================================
+[K1] Omega pointwise invariants (raw transfer):
+  [CH per-channel] err = 4.44e-16  -> PASS
+  [FU fused      ] err = 4.44e-16  -> PASS
+  [REL release   ] err = 4.44e-16  -> PASS
+
+[K2] Boundedness and routing activity (first -> last):
+  [C0 classical  ] max|w| x1.77   routes 0 -> 0   -> finite
+  [CH per-channel] max|w| x1.25   routes 20853 -> 11201   -> finite
+  [FU fused      ] max|w| x2.44   routes 26742 -> 30610   -> finite
+  [REL release   ] max|w| x1.25   routes 20853 -> 0   -> finite
+
+[K3] MOMENTUM — the v10 gate (material advection prediction):
+      v9 fused leaked 1.05e-01 (each channel self-advected by
+      its own compressible carrier, leak 0.5*<div f, f>). The
+      particle-consistent carrier m makes it exact. Expect ~1e-9:
+  [C0 classical  ] worst momentum drift = 2.32e-10
+  [CH per-channel] worst momentum drift = 9.99e-13
+  [FU fused      ] worst momentum drift = 2.32e-10
+  [REL release   ] worst momentum drift = 1.35e-10
+  -> PASS (threshold 1e-6)
+
+[K4] EXACT LEDGER, CLOSED-SYSTEM (kinetic + reservoir):
+  run                 dE_kin  euler dt2   proj->R   R trans    R fin   E+R fin  cons err
+  [C0 classical  ]    +1.207     +2.675    -1.468     0.065    1.468   187.438  1.33e-15
+  [CH per-channel]   -87.855     +1.949   -89.804    77.415   89.804   186.711  7.51e-14
+  [FU fused      ]   +12.032    +12.766    -0.734     0.032    0.734   197.528  1.24e-14
+  [REL release   ]   -84.779     +2.020   -86.799    77.415   86.799   186.782  8.70e-14
+  (euler dt2 is the forward-Euler injection — scheme artifact,
+   attributed exactly; a Cayley-exact update would remove it.)
+
+[K11] SCALE DISPERSAL — the particle-dispersion meter
+      (fine = sub-filter kinetic fraction, scale < 2dx: velocity
+      variance at particle scale — the bumping/deflection
+      signature; pre = post-transfer, before the projection)
+  run                fine u   fine p    pre u    pre p
+  [C0 classical  ]    0.144    0.000    0.144    0.000
+  [CH per-channel]    0.174    0.176    0.174    0.176
+  [FU fused      ]    0.568    0.568    0.568    0.568
+  [REL release   ]    0.196    0.200    0.196    0.200
+  reading:
+   * fine_p HIGH in Omega runs -> phase channel carries DISPERSED
+     particle-scale velocity variance: the bumping/deflection
+     picture — dissipation-CHARACTER storage (dispersed).
+   * fine_p LOW (organized)    -> phase energy sits in coherent
+     structures: storage without dispersal.
+   * pre >> post               -> the projection toll eats
+     fine-scale energy preferentially: the toll IS the
+     deflection event, paid at enforcement time.
+
+[K12] RELEASE PROTOCOL — the return-path question:
+  Omega released at step 125 (t = 1.000):
+    E at release   99.9837 -> final   99.9837   (change  +0.0000)
+    R at release   86.7987 -> final   86.7987   (change  +0.0000)
+    fine p at release 0.200 -> final 0.200
+  INTERPRETATION: R is inert bookkeeping — with no return
+  mechanism declared, stored tension cannot flow back, and the
+  run demonstrates exactly that. Storage-vs-dissipation is
+  therefore SETTLED ONLY AFTER the formalism declares (or
+  rejects) a return path. A minimal axiom-consistent proposal:
+  re-inject stored tension into the deviation d along the
+  locally dominant Jacobian axis whenever local tension falls
+  below threshold — then re-run this protocol. With a return
+  path, recovery appears and the storage reading is proven;
+  without one, the honest claim is thresholded dispersal (a
+  Kolmogorov-type anomaly with a tension threshold).
+
+COST:
+  [C0 classical  ] wall =  112.2s   cycles/solve = 10.4
+  [CH per-channel] wall =  150.0s   cycles/solve = 15.1
+  [FU fused      ] wall =   84.0s   cycles/solve = 10.4
+  [REL release   ] wall =  128.6s   cycles/solve = 13.2
+
+SCOPE: finite-grid statements about this implementation. The
+closed ledger conserves exactly; the dispersal meter locates
+the energy by scale; the release protocol isolates the one
+decision — the return path — that is an axiom of the
+formalism, not a property of the numerics.
+
+Generating figures...

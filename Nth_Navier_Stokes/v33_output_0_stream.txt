@@ -1,0 +1,60 @@
+
+###############################################################################
+v13.2 — corrected 3D return direction (factor-wise coarse partner)
+###############################################################################
+
+===============================================================================
+RETURN 3D NEW — factor-wise coarse Xi at step 125
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0  xi_coarse=True (v13.2 factor-wise 3D)
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=  13.166  Rd=   5.775  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.059  routes=21540
+  step   51  t=  0.204  E=   101.492  Rc=  29.708  Rd=  54.085  E+R=   185.249  Zu=    465.26  max|w|=    5.153  CFL= 0.041  routes=9194
+  step  101  t=  0.404  E=   100.064  Rc=  30.036  Rd=  55.550  E+R=   185.615  Zu=    458.83  max|w|=    4.824  CFL= 0.036  routes=9364
+  --- XI ACTIVATION at step 125 (R_coh=30.187, R_dis=56.234) ---
+  step  151  t=  0.604  E=    96.290  Rc=  27.211  Rd=  62.456  E+R=   185.939  Zu=    413.15  max|w|=    4.394  CFL= 0.033  routes=7062
+  step  201  t=  0.804  E=    95.774  Rc=  21.300  Rd=  69.199  E+R=   186.258  Zu=    458.83  max|w|=    5.280  CFL= 0.031  routes=8314
+  step  250  t=  1.000  E=    95.271  Rc=  16.768  Rd=  74.591  E+R=   186.630  Zu=    519.81  max|w|=    6.873  CFL= 0.030  routes=9509
+  -> finite=True  Omega_err=4.44e-16  Rc=16.768  Rd=74.591  xi_cum=23.143  xi_match=5.6e-17  cons_err=3.77e-14  closure=4.08e-14  wall=155.9s
+
+===============================================================================
+RETURN 2D NEW — identity control (construction provably unchanged in 2D)
+  dim=2  grid=128  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0  xi_coarse=True (v13.2 factor-wise 3D)
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   1.162  Rd=   0.074  E+R=    58.823  Zu=    233.15  max|w|=    7.767  CFL= 0.239  routes=2050
+  step   51  t=  0.204  E=    31.374  Rc=  17.053  Rd=  11.428  E+R=    59.825  Zu=    331.84  max|w|=   41.279  CFL= 0.230  routes=2210
+  step  101  t=  0.404  E=    31.056  Rc=  17.436  Rd=  12.194  E+R=    60.667  Zu=    315.20  max|w|=   40.570  CFL= 0.213  routes=2200
+  --- XI ACTIVATION at step 125 (R_coh=17.596, R_dis=12.515) ---
+  step  151  t=  0.604  E=    30.859  Rc=  16.716  Rd=  13.543  E+R=    61.230  Zu=     78.85  max|w|=   19.048  CFL= 0.157  routes=26
+  step  201  t=  0.804  E=    36.323  Rc=  11.383  Rd=  13.588  E+R=    61.382  Zu=     64.00  max|w|=    4.685  CFL= 0.177  routes=0
+  step  250  t=  1.000  E=    40.140  Rc=   7.784  Rd=  13.600  E+R=    61.524  Zu=     62.10  max|w|=    4.066  CFL= 0.181  routes=0
+  -> finite=True  Omega_err=4.44e-16  Rc=7.784  Rd=13.600  xi_cum=12.968  xi_match=2.8e-17  cons_err=1.29e-14  closure=1.07e-14  wall=92.0s
+
+===============================================================================
+v13.2 AUDIT — direction quality and the return-persistence verdict
+===============================================================================
+
+[X1] DIRECTION-QUALITY INSTRUMENT (per Xi step, 3D):
+  kappa_partner (v13.1 fine partner, what the old construction averaged): 0.671
+  kappa_axis    (weighted axis vectors, what the new construction averages): 0.691
+  mean |div(e_hat)|:  old 2.6875   new 2.6471   (the toll eats divergence)
+  old/new direction alignment |cos|: 0.892
+  reading: kappa_partner << 1 means the v13.1 3D direction was substantially block-cancellation noise; kappa_partner >~ 0.8 means directions were coherent and the artifact was minor.
+
+[X2] IDENTITY CONTROL (2D):
+  2D rerun vs v13.1 RET2 (in session): max |dE|/E0 = 0.00e+00   (expect ~0: constant mirror commutes with block averaging)
+  2D persistence (new): +0.752   (v13.1 recorded: +0.752)
+
+[X3] 3D RETURN, CORRECTED CONSTRUCTION:
+  xi_cum =  23.143   Rc 30.187 -> 16.768   Rd 56.234 -> 74.591
+  control drain   -3.609   actual   -4.094   PERSISTENCE -0.021
+  routes after activation: 9663 -> 9509   (v13.1 coarse: 6875 -> 9466; pointwise: 11382 -> 13504)
+  v13.1 coarse persistence (in session): -0.032
+
+[X4] VERDICT on the return-persistence row of the wedge table:
+  kappa_partner = 0.671 (high), persistence -0.021 (low): WEDGE-CONFIRMED. The old directions were coherent; the corrected construction still cannot persist returned energy in 3D. The coupling-channel attribution stands with the construction confound removed — the strongest form of the claim.
+
+[X5] LEDGER (new runs):
+  [RET3 NEW-dir  ] dE=  -89.491  euler2=  +1.867  proj= -114.502  xi= +23.143  closure=4.1e-14  cons=3.8e-14  mom=9.9e-13
+  [RET2 NEW-dir  ] dE=  -18.682  euler2=  +2.702  proj=  -34.352  xi= +12.968  closure=1.1e-14  cons=1.3e-14  mom=5.3e-12

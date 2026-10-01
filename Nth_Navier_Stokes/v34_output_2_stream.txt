@@ -1,0 +1,2 @@
+
+v15.3 complete: m-invariance measured, Real-channel tracers, guaranteed core cohort, all statistics guarded. Predictions were stated in advance; report what lands.

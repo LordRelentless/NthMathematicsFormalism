@@ -1,0 +1,259 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (constant 2D / lifted 3D),
+             unit-circle fusion, trans-finite compactifier g/(1+g),
+             AXIOM R: split reservoir + Xi return into d (energy-matched)
+  licensed : floats = magnitude arms of selectors [Ax 6.4]; quotient
+             collapse [Prop 8 corollary]; norm magnitudes [Ax 6.1]
+  bridge   : Whole-Term cascade per dimension, material advection,
+             unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES — 3D and 2D stacks
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+  3D fused   (19 cy): div(m) 4.8e-11  |d'-d| 2.8e-17  -> PASS
+  2D exact recovery: 1.32e-12  -> PASS
+  2D channels (12 cy): resid 8.4e-11 PASS  div 1.2e-10 PASS  energy 0.516035 PASS
+  2D fused   (12 cy): div(m) 1.0e-10  |d'-d| 5.6e-17  -> PASS
+
+###############################################################################
+v12 SETTLING SUITE — Axiom R, stability scan, corrected renorm
+###############################################################################
+
+--- [S] 3D-FU stability scan (falsifies/confirms the pump) ---
+
+===============================================================================
+SCAN S32 — 3D-FU long horizon (pump e-folding test)
+  dim=3  grid=32  steps=400  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=   0.003  Rd=   0.000  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.060  routes=21540
+  step   51  t=  0.204  E=   187.396  Rc=   0.143  Rd=   0.018  E+R=   187.554  Zu=   1509.18  max|w|=   14.641  CFL= 0.066  routes=28158
+  step  101  t=  0.404  E=   190.081  Rc=   0.268  Rd=   0.035  E+R=   190.381  Zu=   1575.69  max|w|=   13.536  CFL= 0.065  routes=28734
+  step  151  t=  0.604  E=   192.563  Rc=   0.381  Rd=   0.053  E+R=   192.994  Zu=   1658.50  max|w|=   13.817  CFL= 0.070  routes=29442
+  step  201  t=  0.804  E=   194.790  Rc=   0.495  Rd=   0.079  E+R=   195.361  Zu=   1732.59  max|w|=   13.054  CFL= 0.062  routes=30038
+  step  251  t=  1.004  E=   196.794  Rc=   0.618  Rd=   0.119  E+R=   197.528  Zu=   1820.04  max|w|=   13.859  CFL= 0.060  routes=30582
+  step  301  t=  1.204  E=   198.635  Rc=   0.755  Rd=   0.179  E+R=   199.564  Zu=   1918.55  max|w|=   14.097  CFL= 0.067  routes=30900
+  step  351  t=  1.404  E=   200.415  Rc=   0.901  Rd=   0.268  E+R=   201.579  Zu=   2048.44  max|w|=   15.045  CFL= 0.064  routes=31125
+  step  400  t=  1.600  E=   202.242  Rc=   1.043  Rd=   0.404  E+R=   203.689  Zu=   2185.68  max|w|=   13.545  CFL= 0.064  routes=31113
+  -> finite=True  Omega_err=4.44e-16  Rc=1.043  Rd=0.404  xi_cum=0.000  xi_match=0.0e+00  cons_err=3.20e-14  closure=8.32e-14  wall=128.9s
+
+===============================================================================
+SCAN S64 — 3D-FU at n=64 (pump ~ 1/dx resolution test)
+  dim=3  grid=64  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 6.7874  ->  threshold = 3.3937   E0 = 184.7619
+  step    1  t=  0.004  E=   184.762  Rc=   0.003  Rd=   0.000  E+R=   184.762  Zu=   1090.62  max|w|=    7.738  CFL= 0.121  routes=170984
+  step   51  t=  0.204  E=   195.824  Rc=   0.167  Rd=   0.005  E+R=   195.993  Zu=   5697.74  max|w|=   31.272  CFL= 0.165  routes=246117
+  step  101  t=  0.404  E=   208.658  Rc=   0.314  Rd=   0.010  E+R=   208.980  Zu=   6412.28  max|w|=   45.211  CFL= 0.201  routes=248026
+  step  151  t=  0.604  E=   221.758  Rc=   0.455  Rd=   0.017  E+R=   222.227  Zu=   7167.19  max|w|=   48.877  CFL= 0.243  routes=251581
+  step  201  t=  0.804  E=   234.432  Rc=   0.613  Rd=   0.030  E+R=   235.071  Zu=   7890.35  max|w|=   55.442  CFL= 0.225  routes=254639
+  step  250  t=  1.000  E=   246.329  Rc=   0.806  Rd=   0.054  E+R=   247.189  Zu=   8731.10  max|w|=   56.156  CFL= 0.276  routes=256792
+  -> finite=True  Omega_err=1.16e-15  Rc=0.806  Rd=0.054  xi_cum=0.000  xi_match=0.0e+00  cons_err=7.82e-14  closure=2.41e-13  wall=817.2s
+
+--- [N] Renormalization, corrected (2D-CH, weak transfer) ---
+
+===============================================================================
+RENORM n=32: fixed gain 0.35
+  dim=2  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=0.35  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 28.9519  ->  threshold = 21.7139   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   0.009  Rd=   0.008  E+R=    58.823  Zu=    224.91  max|w|=    7.445  CFL= 0.060  routes=18
+  step   51  t=  0.204  E=    53.635  Rc=   1.779  Rd=   3.914  E+R=    59.214  Zu=    233.90  max|w|=   11.288  CFL= 0.065  routes=32
+  step  101  t=  0.404  E=    50.192  Rc=   2.813  Rd=   6.744  E+R=    59.721  Zu=    231.69  max|w|=   11.420  CFL= 0.060  routes=22
+  step  151  t=  0.604  E=    48.774  Rc=   3.413  Rd=   8.154  E+R=    60.295  Zu=    229.20  max|w|=   13.953  CFL= 0.072  routes=31
+  step  201  t=  0.804  E=    47.960  Rc=   3.830  Rd=   9.110  E+R=    60.887  Zu=    227.27  max|w|=   14.005  CFL= 0.067  routes=25
+  step  250  t=  1.000  E=    47.455  Rc=   4.192  Rd=   9.836  E+R=    61.482  Zu=    232.00  max|w|=   18.382  CFL= 0.072  routes=26
+  -> finite=True  Omega_err=4.44e-16  Rc=4.192  Rd=9.836  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.73e-14  closure=1.62e-14  wall=27.2s
+
+===============================================================================
+RENORM n=32: gain = G0*dx_ref/dx = 0.350
+  dim=2  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=0.35  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 28.9519  ->  threshold = 21.7139   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   0.009  Rd=   0.008  E+R=    58.823  Zu=    224.91  max|w|=    7.445  CFL= 0.060  routes=18
+  step   51  t=  0.204  E=    53.635  Rc=   1.779  Rd=   3.914  E+R=    59.214  Zu=    233.90  max|w|=   11.288  CFL= 0.065  routes=32
+  step  101  t=  0.404  E=    50.192  Rc=   2.813  Rd=   6.744  E+R=    59.721  Zu=    231.69  max|w|=   11.420  CFL= 0.060  routes=22
+  step  151  t=  0.604  E=    48.774  Rc=   3.413  Rd=   8.154  E+R=    60.295  Zu=    229.20  max|w|=   13.953  CFL= 0.072  routes=31
+  step  201  t=  0.804  E=    47.960  Rc=   3.830  Rd=   9.110  E+R=    60.887  Zu=    227.27  max|w|=   14.005  CFL= 0.067  routes=25
+  step  250  t=  1.000  E=    47.455  Rc=   4.192  Rd=   9.836  E+R=    61.482  Zu=    232.00  max|w|=   18.382  CFL= 0.072  routes=26
+  -> finite=True  Omega_err=4.44e-16  Rc=4.192  Rd=9.836  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.73e-14  closure=1.62e-14  wall=27.3s
+
+===============================================================================
+RENORM n=64: fixed gain 0.35
+  dim=2  grid=64  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=0.35  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 29.6454  ->  threshold = 22.2340   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   0.007  Rd=   0.001  E+R=    58.823  Zu=    231.48  max|w|=    7.738  CFL= 0.121  routes=90
+  step   51  t=  0.204  E=    40.043  Rc=   7.627  Rd=  12.100  E+R=    59.591  Zu=    379.62  max|w|=   31.423  CFL= 0.152  routes=376
+  step  101  t=  0.404  E=    36.941  Rc=   8.725  Rd=  14.831  E+R=    60.453  Zu=    333.82  max|w|=   29.497  CFL= 0.145  routes=331
+  step  151  t=  0.604  E=    36.502  Rc=   9.099  Rd=  15.592  E+R=    61.180  Zu=    326.90  max|w|=   25.663  CFL= 0.135  routes=264
+  step  201  t=  0.804  E=    36.396  Rc=   9.390  Rd=  16.146  E+R=    61.916  Zu=    331.23  max|w|=   25.003  CFL= 0.118  routes=279
+  step  250  t=  1.000  E=    36.401  Rc=   9.658  Rd=  16.643  E+R=    62.702  Zu=    345.42  max|w|=   24.033  CFL= 0.104  routes=283
+  -> finite=True  Omega_err=4.44e-16  Rc=9.658  Rd=16.643  xi_cum=0.000  xi_match=0.0e+00  cons_err=7.11e-15  closure=1.82e-14  wall=41.2s
+
+===============================================================================
+RENORM n=64: gain = G0*dx_ref/dx = 0.700
+  dim=2  grid=64  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=0.7  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 29.6454  ->  threshold = 22.2340   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   0.014  Rd=   0.003  E+R=    58.823  Zu=    231.48  max|w|=    7.738  CFL= 0.121  routes=90
+  step   51  t=  0.204  E=    37.349  Rc=   7.989  Rd=  14.331  E+R=    59.575  Zu=    311.40  max|w|=   20.476  CFL= 0.122  routes=322
+  step  101  t=  0.404  E=    35.987  Rc=   8.592  Rd=  15.742  E+R=    60.298  Zu=    296.33  max|w|=   25.406  CFL= 0.127  routes=256
+  step  151  t=  0.604  E=    35.597  Rc=   8.940  Rd=  16.459  E+R=    60.980  Zu=    288.77  max|w|=   19.170  CFL= 0.104  routes=206
+  step  201  t=  0.804  E=    35.460  Rc=   9.231  Rd=  17.024  E+R=    61.701  Zu=    298.70  max|w|=   20.561  CFL= 0.099  routes=230
+  step  250  t=  1.000  E=    35.426  Rc=   9.495  Rd=  17.521  E+R=    62.441  Zu=    315.10  max|w|=   21.273  CFL= 0.093  routes=245
+  -> finite=True  Omega_err=4.44e-16  Rc=9.495  Rd=17.521  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.11e-14  closure=1.74e-14  wall=43.0s
+
+===============================================================================
+RENORM n=128: fixed gain 0.35
+  dim=2  grid=128  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=0.35  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 22.3660   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   0.005  Rd=   0.000  E+R=    58.823  Zu=    233.15  max|w|=    7.767  CFL= 0.242  routes=312
+  step   51  t=  0.204  E=    36.782  Rc=  11.237  Rd=  12.513  E+R=    60.288  Zu=    705.66  max|w|=   54.500  CFL= 0.286  routes=2757
+  step  101  t=  0.404  E=    33.400  Rc=  12.662  Rd=  15.943  E+R=    61.956  Zu=    557.05  max|w|=   37.293  CFL= 0.233  routes=2742
+  step  151  t=  0.604  E=    32.882  Rc=  13.259  Rd=  17.401  E+R=    63.501  Zu=    551.00  max|w|=   37.259  CFL= 0.195  routes=2842
+  step  201  t=  0.804  E=    32.525  Rc=  13.872  Rd=  18.871  E+R=    65.227  Zu=    591.90  max|w|=   27.695  CFL= 0.202  routes=3231
+  step  250  t=  1.000  E=    32.263  Rc=  14.445  Rd=  20.295  E+R=    67.003  Zu=    602.94  max|w|=   30.502  CFL= 0.185  routes=3378
+  -> finite=True  Omega_err=4.44e-16  Rc=14.445  Rd=20.295  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.95e-14  closure=2.16e-14  wall=79.8s
+
+===============================================================================
+RENORM n=128: gain = G0*dx_ref/dx = 1.400
+  dim=2  grid=128  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=1.4  xi_at=None  kappa=2.0
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 22.3660   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   0.015  Rd=   0.001  E+R=    58.823  Zu=    233.15  max|w|=    7.767  CFL= 0.242  routes=312
+  step   51  t=  0.204  E=    33.831  Rc=  11.383  Rd=  15.129  E+R=    60.263  Zu=    505.40  max|w|=   37.528  CFL= 0.232  routes=2204
+  step  101  t=  0.404  E=    32.760  Rc=  12.049  Rd=  16.706  E+R=    61.479  Zu=    446.91  max|w|=   35.615  CFL= 0.200  routes=2086
+  step  151  t=  0.604  E=    32.277  Rc=  12.546  Rd=  17.838  E+R=    62.633  Zu=    452.01  max|w|=   35.643  CFL= 0.181  routes=2062
+  step  201  t=  0.804  E=    32.028  Rc=  13.000  Rd=  18.860  E+R=    63.859  Zu=    476.62  max|w|=   35.420  CFL= 0.186  routes=2231
+  step  250  t=  1.000  E=    31.782  Rc=  13.435  Rd=  19.857  E+R=    65.074  Zu=    474.78  max|w|=   34.693  CFL= 0.176  routes=2254
+  -> finite=True  Omega_err=4.44e-16  Rc=13.435  Rd=19.857  xi_cum=0.000  xi_match=0.0e+00  cons_err=2.66e-14  closure=1.32e-14  wall=82.7s
+
+--- [R] Axiom R: return protocol + equilibrium (CH architecture) ---
+
+===============================================================================
+RETURN 2D — CH, Xi activated at step 125 (first 125 steps = CH control)
+  dim=2  grid=128  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   1.162  Rd=   0.074  E+R=    58.823  Zu=    233.15  max|w|=    7.767  CFL= 0.239  routes=2050
+  step   51  t=  0.204  E=    31.374  Rc=  17.053  Rd=  11.428  E+R=    59.825  Zu=    331.84  max|w|=   41.279  CFL= 0.230  routes=2210
+  step  101  t=  0.404  E=    31.056  Rc=  17.436  Rd=  12.194  E+R=    60.667  Zu=    315.20  max|w|=   40.570  CFL= 0.213  routes=2200
+  --- XI ACTIVATION at step 125: return operator ON (R_coh = 17.596, R_dis = 12.515) ---
+  step  151  t=  0.604  E=    30.898  Rc=  15.553  Rd=  15.039  E+R=    61.469  Zu=    340.68  max|w|=   46.086  CFL= 0.185  routes=2630
+  step  201  t=  0.804  E=    30.744  Rc=  11.823  Rd=  19.705  E+R=    62.255  Zu=    318.00  max|w|=   42.922  CFL= 0.171  routes=2489
+  step  250  t=  1.000  E=    30.680  Rc=   9.038  Rd=  23.231  E+R=    62.949  Zu=    295.78  max|w|=   38.614  CFL= 0.162  routes=2261
+  -> finite=True  Omega_err=4.44e-16  Rc=9.038  Rd=23.231  xi_cum=12.991  xi_match=2.8e-17  cons_err=1.95e-14  closure=1.14e-14  wall=89.9s
+
+===============================================================================
+RETURN 3D — CH, Xi activated at step 125 (first 125 steps = CH control)
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=  13.166  Rd=   5.775  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.059  routes=21540
+  step   51  t=  0.204  E=   101.492  Rc=  29.708  Rd=  54.085  E+R=   185.249  Zu=    465.26  max|w|=    5.153  CFL= 0.041  routes=9194
+  step  101  t=  0.404  E=   100.064  Rc=  30.036  Rd=  55.550  E+R=   185.615  Zu=    458.83  max|w|=    4.824  CFL= 0.036  routes=9364
+  --- XI ACTIVATION at step 125: return operator ON (R_coh = 30.187, R_dis = 56.234) ---
+  step  151  t=  0.604  E=   100.191  Rc=  25.128  Rd=  60.657  E+R=   185.963  Zu=    502.43  max|w|=    5.153  CFL= 0.035  routes=11382
+  step  201  t=  0.804  E=    99.735  Rc=  17.849  Rd=  68.782  E+R=   186.344  Zu=    547.71  max|w|=    5.443  CFL= 0.032  routes=12544
+  step  250  t=  1.000  E=    99.239  Rc=  12.826  Rd=  74.709  E+R=   186.774  Zu=    607.15  max|w|=    6.799  CFL= 0.031  routes=13504
+  -> finite=True  Omega_err=4.44e-16  Rc=12.826  Rd=74.709  xi_cum=20.265  xi_match=8.3e-17  cons_err=1.02e-14  closure=5.60e-14  wall=149.8s
+
+===============================================================================
+EQUILIBRIUM 3D — CH, Xi ON from start (charge/discharge balance test)
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=0  kappa=2.0
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=  13.166  Rd=   5.775  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.059  routes=21540
+  step   51  t=  0.204  E=   102.624  Rc=  21.245  Rd=  61.411  E+R=   185.254  Zu=    482.06  max|w|=    5.286  CFL= 0.038  routes=10151
+  step  101  t=  0.404  E=   101.900  Rc=  15.144  Rd=  68.609  E+R=   185.634  Zu=    490.43  max|w|=    5.577  CFL= 0.037  routes=10952
+  step  151  t=  0.604  E=   101.517  Rc=  10.818  Rd=  73.682  E+R=   186.004  Zu=    523.60  max|w|=    5.393  CFL= 0.038  routes=12170
+  step  201  t=  0.804  E=   101.033  Rc=   7.784  Rd=  77.598  E+R=   186.395  Zu=    572.58  max|w|=    5.743  CFL= 0.032  routes=13306
+  step  250  t=  1.000  E=   100.268  Rc=   5.724  Rd=  80.844  E+R=   186.836  Zu=    625.67  max|w|=    6.808  CFL= 0.031  routes=14038
+  -> finite=True  Omega_err=4.44e-16  Rc=5.724  Rd=80.844  xi_cum=28.535  xi_match=5.6e-17  cons_err=1.21e-13  closure=6.08e-14  wall=158.4s
+
+===============================================================================
+AUDIT [V1-V5] — finite-grid verification, this implementation
+===============================================================================
+[V1] Gates: asserted green above (3D + 2D stacks).
+     Omega invariants (non-scan runs):
+  [RET2 return ] err = 4.44e-16  -> PASS
+  [RET3 return ] err = 4.44e-16  -> PASS
+  [EQ3 equilibrium] err = 4.44e-16  -> PASS
+     (scan runs report only — invariants hold to ~1e-13 relative even at blowup magnitudes, per v11)
+
+[V2] STABILITY SCAN — the 1/dx pump prediction:
+  [S32 FU long ] finite   E x     1.095   max|w| x    2.30   euler2 share 108.28%
+  [S64 FU      ] finite   E x     1.333   max|w| x    7.58   euler2 share 101.40%
+  -> PUMP CONFIRMED: growth accelerates with resolution — the fused transfer has no continuum limit
+     without a second renormalization axiom (spatial variation of the rotation angle). The CH toll is
+     load-bearing: it is the framework's regularizer.
+
+[V3] RENORMALIZATION (corrected: CH mode, weak transfer, discriminating regime):
+  G0 = 0.35, reference n=32. Prediction: fixed-gain transfer angle falls ~ dx; renormalized (gain = G0*dx_ref/dx) flat.
+      n  fix t_act  ren t_act  fix Ep/E0  ren Ep/E0
+     32     0.3301     0.3301     0.2468     0.2468
+     64     0.2712     0.3688     0.2744     0.2708
+    128     0.1759     0.4058     0.2756     0.2719
+  -> mixed: fixed falls 0.330->0.176, renorm 0.330->0.406. Report as found.
+
+[V4] AXIOM R — the return protocol (first xi_at steps are the CH control):
+  [RET2 return ] at activation: R_coh =   17.596  R_dis =   12.515  (coh share  58.4%)
+                 returned (xi_cum) =   12.991   R_coh end =    9.038   R_dis end =   23.231
+                 E_kin recovery after activation =   -0.272   max|w| 40.07 -> 46.09 (x1.15)
+                 momentum worst = 9.95e-12   xi energy-match err = 2.78e-17
+  [RET3 return ] at activation: R_coh =   30.187  R_dis =   56.234  (coh share  34.9%)
+                 returned (xi_cum) =   20.265   R_coh end =   12.826   R_dis end =   74.709
+                 E_kin recovery after activation =   -0.127   max|w| 4.88 -> 6.80 (x1.39)
+                 momentum worst = 9.98e-13   xi energy-match err = 8.33e-17
+  coh share of stored tension at activation: 2D 58.4%  vs  3D 34.9%
+  (prediction: 2D stores more coherently — coupling channel closed — so 2D returns more. The wedge, read through Axiom R.)
+  -> RETURN CONFIRMED WITHOUT PUMP RE-TRIGGER: Xi drains R_coh, E_kin recovers, concentration stays bounded. The
+     tension-deficit gate holds. Storage is now an operator, not a label.
+
+  EQUILIBRIUM (EQ3, Xi on from start):
+    R_coh peak 27.462  final 5.724  last-quarter spread 2.369   xi_cum 28.535  proj_cum -115.103
+    -> R_coh EQUILIBRATES: charge (toll) balances discharge (Xi). The closed system self-regulates: Axiom R gives a
+       quasi-steady selector economy at nu=0.
+
+[V5] LEDGER (all runs; scan runs excluded from closure asserts):
+  run                dE_kin  euler dt2   proj->R       xi   closure  cons err       mom      leak
+  [S32 FU long ]    +17.479    +18.926    -1.447   +0.000   8.3e-14   3.2e-14   2.5e-10   4.6e-18
+  [S64 FU      ]    +61.567    +62.427    -0.860   +0.000   2.4e-13   7.8e-14   4.8e-10   1.5e-18
+  [RET2 return ]    -28.142     +4.126   -45.260  +12.991   1.1e-14   2.0e-14   9.9e-12   1.1e-17
+  [RET3 return ]    -85.524     +2.012  -107.801  +20.265   5.6e-14   1.0e-14   1.0e-12   4.6e-18
+  [EQ3 equilibrium]    -84.495     +2.074  -115.103  +28.535   6.1e-14   1.2e-13   1.0e-12   4.6e-18
+  [N32 fixed   ]    -11.368     +2.659   -14.027   +0.000   1.6e-14   1.7e-14   2.2e-13   2.1e-17
+  [N32 renorm  ]    -11.368     +2.659   -14.027   +0.000   1.6e-14   1.7e-14   2.2e-13   2.1e-17
+  [N64 fixed   ]    -22.422     +3.879   -26.301   +0.000   1.8e-14   7.1e-15   6.2e-12   8.5e-18
+  [N64 renorm  ]    -23.397     +3.618   -27.015   +0.000   1.7e-14   1.1e-14   5.0e-12   7.6e-18
+  [N128 fixed  ]    -26.560     +8.181   -34.740   +0.000   2.2e-14   2.0e-14   4.5e-12   1.1e-17
+  [N128 renorm ]    -27.041     +6.251   -33.293   +0.000   1.3e-14   2.7e-14   7.1e-12   1.1e-17
+
+COST:
+  [S32 FU long ] wall =  128.9s
+  [S64 FU      ] wall =  817.2s
+  [RET2 return ] wall =   89.9s
+  [RET3 return ] wall =  149.8s
+  [EQ3 equilibrium] wall =  158.4s
+  [N32 fixed   ] wall =   27.2s
+  [N32 renorm  ] wall =   27.3s
+  [N64 fixed   ] wall =   41.2s
+  [N64 renorm  ] wall =   43.0s
+  [N128 fixed  ] wall =   79.8s
+  [N128 renorm ] wall =   82.7s
+
+SCOPE: finite grids, one IC family. Axiom R is a declared modeling axiom of the discrete selector system; its continuum
+status is part of requirement 1/2, not a consequence of these runs. The five continuum requirements stand as previously
+mapped, with (2) now carrying the measured renormalization condition and R the measured return signature.
+===============================================================================
+
+Generating figures...

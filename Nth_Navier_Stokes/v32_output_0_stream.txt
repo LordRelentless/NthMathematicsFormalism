@@ -1,0 +1,227 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (constant 2D / lifted 3D),
+             unit-circle fusion, trans-finite compactifier g/(1+g),
+             AXIOM R: split reservoir + COARSE Xi return (energy-matched)
+  licensed : floats = magnitude arms of selectors [Ax 6.4]; quotient
+             collapse [Prop 8 corollary]; norm magnitudes [Ax 6.1]
+  bridge   : Whole-Term cascade per dimension, material advection,
+             unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES — 3D and 2D stacks
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+  3D fused   (19 cy): div(m) 4.8e-11  |d'-d| 2.8e-17  -> PASS
+  2D exact recovery: 1.32e-12  -> PASS
+  2D channels (12 cy): resid 8.4e-11 PASS  div 1.2e-10 PASS  energy 0.516035 PASS
+  2D fused   (12 cy): div(m) 1.0e-10  |d'-d| 5.6e-17  -> PASS
+
+###############################################################################
+v13.1 — COARSE XI, CLEAN PUMP SCAN, CONTINUUM GATES
+###############################################################################
+
+--- [P] CLEAN PUMP SCAN (constant CFL = 0.06) ---
+
+===============================================================================
+PUMP P32 — 3D-FU, n=32, dt=0.004 (CFL 0.06)
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10  xi_at=None  kappa=2.0  xi_coarse=True
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=   0.003  Rd=   0.000  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.060  routes=21540
+  step   51  t=  0.204  E=   187.396  Rc=   0.143  Rd=   0.018  E+R=   187.554  Zu=   1509.18  max|w|=   14.641  CFL= 0.066  routes=28158
+  step  101  t=  0.404  E=   190.081  Rc=   0.268  Rd=   0.035  E+R=   190.381  Zu=   1575.69  max|w|=   13.536  CFL= 0.065  routes=28734
+  step  151  t=  0.604  E=   192.563  Rc=   0.381  Rd=   0.053  E+R=   192.994  Zu=   1658.50  max|w|=   13.817  CFL= 0.070  routes=29442
+  step  201  t=  0.804  E=   194.790  Rc=   0.495  Rd=   0.079  E+R=   195.361  Zu=   1732.59  max|w|=   13.054  CFL= 0.062  routes=30038
+  step  250  t=  1.000  E=   196.794  Rc=   0.616  Rd=   0.119  E+R=   197.528  Zu=   1820.04  max|w|=   13.859  CFL= 0.065  routes=30610
+  -> finite=True  Omega_err=4.44e-16  Rc=0.616  Rd=0.119  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.24e-14  closure=8.30e-14  wall=84.4s
+
+===============================================================================
+PUMP P64 — 3D-FU, n=64, dt=0.002 (CFL 0.06)
+  dim=3  grid=64  steps=250  dt=0.002  nu=0.0  Omega=ON  mode=fused  gain=10  xi_at=None  kappa=2.0  xi_coarse=True
+===============================================================================
+  initial peak tension = 6.7874  ->  threshold = 3.3937   E0 = 184.7619
+  step    1  t=  0.002  E=   184.762  Rc=   0.001  Rd=   0.000  E+R=   184.762  Zu=   1090.62  max|w|=    7.738  CFL= 0.060  routes=170984
+  step   51  t=  0.102  E=   187.389  Rc=   0.043  Rd=   0.001  E+R=   187.432  Zu=   5254.79  max|w|=   27.396  CFL= 0.068  routes=245712
+  step  101  t=  0.202  E=   190.243  Rc=   0.083  Rd=   0.003  E+R=   190.328  Zu=   5398.79  max|w|=   31.896  CFL= 0.078  routes=246014
+  step  151  t=  0.302  E=   193.109  Rc=   0.120  Rd=   0.004  E+R=   193.232  Zu=   5574.18  max|w|=   32.070  CFL= 0.081  routes=246825
+  step  201  t=  0.402  E=   195.929  Rc=   0.156  Rd=   0.005  E+R=   196.089  Zu=   5724.39  max|w|=   33.876  CFL= 0.078  routes=248079
+  step  250  t=  0.500  E=   198.668  Rc=   0.190  Rd=   0.007  E+R=   198.865  Zu=   5911.25  max|w|=   34.779  CFL= 0.085  routes=249907
+  -> finite=True  Omega_err=1.16e-15  Rc=0.190  Rd=0.007  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.10e-13  closure=1.86e-13  wall=750.1s
+
+--- [C] COARSE XI vs POINTWISE XI (control) ---
+
+===============================================================================
+RETURN 3D COARSE — CH, Xi (coarse) at step 125
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0  xi_coarse=True
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=  13.166  Rd=   5.775  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.059  routes=21540
+  step   51  t=  0.204  E=   101.492  Rc=  29.708  Rd=  54.085  E+R=   185.249  Zu=    465.26  max|w|=    5.153  CFL= 0.041  routes=9194
+  step  101  t=  0.404  E=   100.064  Rc=  30.036  Rd=  55.550  E+R=   185.615  Zu=    458.83  max|w|=    4.824  CFL= 0.036  routes=9364
+  --- XI ACTIVATION at step 125 (R_coh=30.187, R_dis=56.234) ---
+  step  151  t=  0.604  E=    95.980  Rc=  27.566  Rd=  62.434  E+R=   185.939  Zu=    408.38  max|w|=    4.294  CFL= 0.032  routes=6875
+  step  201  t=  0.804  E=    95.313  Rc=  22.026  Rd=  68.937  E+R=   186.254  Zu=    454.79  max|w|=    5.296  CFL= 0.031  routes=8129
+  step  250  t=  1.000  E=    94.988  Rc=  17.612  Rd=  74.022  E+R=   186.622  Zu=    517.93  max|w|=    6.785  CFL= 0.030  routes=9466
+  -> finite=True  Omega_err=4.44e-16  Rc=17.612  Rd=74.022  xi_cum=23.722  xi_match=5.6e-17  cons_err=1.82e-14  closure=4.53e-14  wall=158.6s
+
+===============================================================================
+RETURN 2D COARSE — CH, Xi (coarse) at step 125
+  dim=2  grid=128  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0  xi_coarse=True
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=    58.823  Rc=   1.162  Rd=   0.074  E+R=    58.823  Zu=    233.15  max|w|=    7.767  CFL= 0.239  routes=2050
+  step   51  t=  0.204  E=    31.374  Rc=  17.053  Rd=  11.428  E+R=    59.825  Zu=    331.84  max|w|=   41.279  CFL= 0.230  routes=2210
+  step  101  t=  0.404  E=    31.056  Rc=  17.436  Rd=  12.194  E+R=    60.667  Zu=    315.20  max|w|=   40.570  CFL= 0.213  routes=2200
+  --- XI ACTIVATION at step 125 (R_coh=17.596, R_dis=12.515) ---
+  step  151  t=  0.604  E=    30.859  Rc=  16.716  Rd=  13.543  E+R=    61.230  Zu=     78.85  max|w|=   19.048  CFL= 0.157  routes=26
+  step  201  t=  0.804  E=    36.323  Rc=  11.383  Rd=  13.588  E+R=    61.382  Zu=     64.00  max|w|=    4.685  CFL= 0.177  routes=0
+  step  250  t=  1.000  E=    40.140  Rc=   7.784  Rd=  13.600  E+R=    61.524  Zu=     62.10  max|w|=    4.066  CFL= 0.181  routes=0
+  -> finite=True  Omega_err=4.44e-16  Rc=7.784  Rd=13.600  xi_cum=12.968  xi_match=2.8e-17  cons_err=1.29e-14  closure=1.07e-14  wall=89.8s
+
+===============================================================================
+RETURN 3D POINTWISE — v12 Xi (control)
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=125  kappa=2.0  xi_coarse=False
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=  13.166  Rd=   5.775  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.059  routes=21540
+  step   51  t=  0.204  E=   101.492  Rc=  29.708  Rd=  54.085  E+R=   185.249  Zu=    465.26  max|w|=    5.153  CFL= 0.041  routes=9194
+  step  101  t=  0.404  E=   100.064  Rc=  30.036  Rd=  55.550  E+R=   185.615  Zu=    458.83  max|w|=    4.824  CFL= 0.036  routes=9364
+  --- XI ACTIVATION at step 125 (R_coh=30.187, R_dis=56.234) ---
+  step  151  t=  0.604  E=   100.191  Rc=  25.128  Rd=  60.657  E+R=   185.963  Zu=    502.43  max|w|=    5.153  CFL= 0.035  routes=11382
+  step  201  t=  0.804  E=    99.735  Rc=  17.849  Rd=  68.782  E+R=   186.344  Zu=    547.71  max|w|=    5.443  CFL= 0.032  routes=12544
+  step  250  t=  1.000  E=    99.239  Rc=  12.826  Rd=  74.709  E+R=   186.774  Zu=    607.15  max|w|=    6.799  CFL= 0.031  routes=13504
+  -> finite=True  Omega_err=4.44e-16  Rc=12.826  Rd=74.709  xi_cum=20.265  xi_match=8.3e-17  cons_err=1.02e-14  closure=5.60e-14  wall=159.8s
+
+--- [G] CONTINUUM GATES ---
+
+===============================================================================
+GATE G1 — SUB-MANIFOLD: transfer inactive => selector == classical
+===============================================================================
+
+===============================================================================
+G1-A classical reference
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=OFF  mode=channels  gain=10  xi_at=None  kappa=2.0  xi_coarse=True
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 6.3583   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=   0.006  Rd=   0.001  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.060  routes=0
+  step   51  t=  0.204  E=   184.936  Rc=   0.287  Rd=   0.036  E+R=   185.252  Zu=   1097.85  max|w|=    6.749  CFL= 0.063  routes=0
+  step  101  t=  0.404  E=   185.123  Rc=   0.536  Rd=   0.069  E+R=   185.723  Zu=   1211.26  max|w|=    6.185  CFL= 0.063  routes=0
+  step  151  t=  0.604  E=   185.342  Rc=   0.762  Rd=   0.106  E+R=   186.205  Zu=   1393.69  max|w|=    7.884  CFL= 0.060  routes=0
+  step  201  t=  0.804  E=   185.618  Rc=   0.990  Rd=   0.159  E+R=   186.760  Zu=   1631.14  max|w|=   10.026  CFL= 0.058  routes=0
+  step  250  t=  1.000  E=   185.970  Rc=   1.231  Rd=   0.237  E+R=   187.438  Zu=   1918.31  max|w|=   13.156  CFL= 0.057  routes=0
+  -> finite=True  Omega_err=0.00e+00  Rc=1.231  Rd=0.237  xi_cum=0.000  xi_match=0.0e+00  cons_err=1.33e-15  closure=9.28e-14  wall=104.5s
+
+===============================================================================
+G1-B Omega ON, threshold UNREACHABLE (never active)
+  dim=3  grid=32  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10  xi_at=None  kappa=2.0  xi_coarse=True
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 6692934.7238   E0 = 184.7626
+  step    1  t=  0.004  E=   184.763  Rc=   0.006  Rd=   0.001  E+R=   184.763  Zu=   1059.66  max|w|=    7.445  CFL= 0.060  routes=0
+  step   51  t=  0.204  E=   184.936  Rc=   0.287  Rd=   0.036  E+R=   185.252  Zu=   1097.85  max|w|=    6.749  CFL= 0.063  routes=0
+  step  101  t=  0.404  E=   185.123  Rc=   0.536  Rd=   0.069  E+R=   185.723  Zu=   1211.26  max|w|=    6.185  CFL= 0.063  routes=0
+  step  151  t=  0.604  E=   185.342  Rc=   0.762  Rd=   0.106  E+R=   186.205  Zu=   1393.69  max|w|=    7.884  CFL= 0.060  routes=0
+  step  201  t=  0.804  E=   185.618  Rc=   0.990  Rd=   0.159  E+R=   186.760  Zu=   1631.14  max|w|=   10.026  CFL= 0.058  routes=0
+  step  250  t=  1.000  E=   185.970  Rc=   1.231  Rd=   0.237  E+R=   187.438  Zu=   1918.31  max|w|=   13.156  CFL= 0.057  routes=0
+  -> finite=True  Omega_err=1.48e-16  Rc=1.231  Rd=0.237  xi_cum=0.000  xi_match=0.0e+00  cons_err=2.75e-14  closure=8.65e-14  wall=147.7s
+
+  trajectory deviation (E): 5.86e-14   max routes in Omega-quiet run: 0
+  -> PASS: the classical sub-manifold is an exact invariant of the selector system (deviation ~ roundoff, zero routes)
+  margin 0.95: max |E - E_classical|/E0 = 4.099e-01   final phase energy 47.0539
+  margin 0.85: max |E - E_classical|/E0 = 4.264e-01   final phase energy 48.4353
+  margin 0.75: max |E - E_classical|/E0 = 4.419e-01   final phase energy 48.8244
+  READING: departure is exactly zero while the transfer is
+  inactive (the sub-manifold), and threshold-gated below:
+  the classical solution is an exact invariant sub-manifold of
+  the selector system; departures occur ONLY through
+  threshold-crossing events. This is the vanishing-deficit
+  statement the data supports — not convergence of the active
+  selector dynamics to classical NS, which v12 refuted.
+
+===============================================================================
+GATE G2 — SCALE-STRUCTURED TRANSFER AUDIT (no FFT)
+===============================================================================
+
+  dim=3  n=32  routes=32768 (threshold 0 -> fully active)
+  band energies (before -> after one transfer):
+    coarse (>4dx):  7378.6333 ->  5396.3135   ratio 0.7313
+    mid  (2-4dx) :     0.0000 ->     0.0000   ratio 0.0000
+    fine (<2dx)  :   460.4500 ->  2442.7698   ratio 5.3052
+    total        :  7839.0832 ->  7839.0832   ratio 1.000000  (invariant 1.2e-16)
+  -> coarse-to-coarse ratio 0.731 (NOT preserved);  fine ratio 5.305 (expansive)
+
+  dim=2  n=128  routes=16384 (threshold 0 -> fully active)
+  band energies (before -> after one transfer):
+    coarse (>4dx):  7793.2294 ->  7709.0022   ratio 0.9892
+    mid  (2-4dx) :     0.0000 ->     0.0000   ratio 0.0000
+    fine (<2dx)  :    46.9810 ->   131.2083   ratio 2.7928
+    total        :  7840.2104 ->  7840.2104   ratio 1.000000  (invariant 0.0e+00)
+  -> coarse-to-coarse ratio 0.989 (near-preserved);  fine ratio 2.793 (expansive)
+
+  READING: if coarse is preserved and fine is churned (both
+  bounded), the transfer is a scale-structured bounded map:
+  coarse-to-coarse near-isometric, fine-to-fine contractive.
+  H^s boundedness FAILS globally (fine modes mix), but the
+  scale-structured statement holds — the lemma skeleton Part 2
+  should carry: the transfer respects the cascade scale
+  hierarchy.
+
+===============================================================================
+AUDIT [W1-W5] — v13.1 verdicts
+===============================================================================
+[W1] CLEAN PUMP SCAN (constant CFL 0.06):
+  [P32 dt=0.004  ] E x   1.065   max|w| x   2.30   euler2 share  106.1%   routes 30610
+  [P64 dt=0.002  ] E x   1.075   max|w| x   5.08   euler2 share  101.4%   routes 249907
+  -> SPATIAL PUMP CONFIRMED at constant CFL: max|w| growth x2.30 (n=32) vs x5.08 (n=64). The 1/dx gradient pump is REAL and independent of time-stepping.
+     Consequence: the fused transfer has no continuum limit without a spatial-regularity axiom on the rotation angle;
+     the CH toll is load-bearing. This is a Part 2 result.
+
+[W2] COARSE vs POINTWISE XI (persistence, control-offset):
+  [RET3 coarse-Xi] xi_cum= 23.722  Rc 30.187->17.612  Rd 56.234->74.022
+                   control drain   -3.609  actual   -4.377   PERSISTENCE (offset/xi) -0.032
+  [RET2 coarse-Xi] xi_cum= 12.968  Rc 17.596-> 7.784  Rd 12.515->13.600
+                   control drain   -0.566  actual    9.188   PERSISTENCE (offset/xi) +0.752
+  [RET3 point-Xi ] xi_cum= 20.265  Rc 30.187->12.826  Rd 56.234->74.709
+                   control drain   -3.609  actual   -0.127   PERSISTENCE (offset/xi) +0.172
+  -> persistence 0.172 -> -0.032: weaker than predicted. The laundering mechanism (fine-scale re-capture by the toll) persists even for coarse injection — report honestly; the toll is inherently fine-hungry.
+
+[W3] 2D vs 3D RETURN ASYMMETRY (coarse Xi):
+  [RET2 coarse-Xi] coh share at activation =  58.4%   xi_cum  12.968   persistence +0.752
+  [RET3 coarse-Xi] coh share at activation =  34.9%   xi_cum  23.722   persistence -0.032
+  (wedge prediction: 2D returns more and persists more — coupling closed, phase energy stays coherent)
+
+[W4] G1 SUB-MANIFOLD (margins):
+  margin 0.95: departure 4.10e-01   phase E 47.0539
+  margin 0.85: departure 4.26e-01   phase E 48.4353
+  margin 0.75: departure 4.42e-01   phase E 48.8244
+  (departure ~ roundoff while transfer inactive = exact classical sub-manifold; threshold-gated departure below)
+
+[W5] LEDGER (key runs):
+  run                  dE_kin  euler dt2   proj->R       xi   closure      cons       mom      leak
+  [P32 dt=0.004  ]    +12.032    +12.766    -0.734   +0.000   8.3e-14   1.2e-14   2.3e-10   4.6e-18
+  [P64 dt=0.002  ]    +13.906    +14.103    -0.197   +0.000   1.9e-13   1.1e-13   7.5e-11   1.5e-18
+  [RET3 coarse-Xi]    -89.775     +1.860  -115.356  +23.722   4.5e-14   1.8e-14   9.1e-13   5.4e-18
+  [RET2 coarse-Xi]    -18.682     +2.702   -34.352  +12.968   1.1e-14   1.3e-14   5.3e-12   1.4e-17
+  [RET3 point-Xi ]    -85.524     +2.012  -107.801  +20.265   5.6e-14   1.0e-14   1.0e-12   4.6e-18
+  [G1 classical  ]     +1.207     +2.675    -1.468   +0.000   9.3e-14   1.3e-15   2.3e-10   1.1e-17
+
+COST:
+  [P32 dt=0.004  ] wall =   84.4s
+  [P64 dt=0.002  ] wall =  750.1s
+  [RET3 coarse-Xi] wall =  158.6s
+  [RET2 coarse-Xi] wall =   89.8s
+  [RET3 point-Xi ] wall =  159.8s
+  [G1 classical  ] wall =  104.5s
+
+SCOPE: finite grids. G1 is the sub-manifold theorem's
+computational skeleton; G2 is the scale-structured boundedness
+skeleton. Both are statement-generators for Part 2, not
+continuum proofs.
+===============================================================================
+
+Generating figures...

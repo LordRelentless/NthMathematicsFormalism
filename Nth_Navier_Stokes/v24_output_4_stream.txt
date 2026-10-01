@@ -1,0 +1,14 @@
+2D: finite fields = True
+2D: Omega transfer invariant error = 3.324e-16
+2D: final real enstrophy = 4.30178747e+00
+2D: final phase enstrophy = 4.30027121e+00
+2D: final total enstrophy = 8.60205869e+00
+2D: final linear momentum relative error = 1.002e-15
+2D: final angular momentum relative error = 5.059e-03
+3D: finite fields = True
+3D: Omega transfer invariant error = 3.983e-16
+3D: final real enstrophy = 2.24385111e+01
+3D: final phase enstrophy = 2.24273089e+01
+3D: final total enstrophy = 4.48658200e+01
+3D: final linear momentum relative error = 1.837e-04
+3D: final angular momentum relative error = 1.098e-02

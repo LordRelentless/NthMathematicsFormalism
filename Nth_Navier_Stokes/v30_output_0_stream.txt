@@ -1,0 +1,274 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (constant in 2D, lifted to
+             the vorticity-aligned field in 3D), unit-circle fusion,
+             modular angle closure, trans-finite compactifier g/(1+g)
+  licensed : floats = magnitude arms of selectors [Ax 6.4]; quotient
+             collapse [Prop 8 corollary]; norm magnitudes [Ax 6.1]
+  bridge   : Whole-Term cascade per dimension (explicit enforcement
+             target), material advection, gated before any run
+
+===============================================================================
+SELECTOR SPECTRA — collapse audit (Prop 8 corollary)
+  t: 0.00e+00   c (64 quotients): 0.00e+00   s (32 quotients): 0.00e+00   circle c^2+s^2-1 = 2.22e-16
+===============================================================================
+
+===============================================================================
+BRIDGE GATES — 3D (validated stack) and 2D (new stack)
+===============================================================================
+  3D exact recovery: 1.11e-12 (tol 1e-6)  -> PASS
+  3D channels (19 cy): resid 6.08e-11 PASS   div 4.76e-11 PASS   energy 0.681297 PASS
+  3D fused   (19 cy): div(m) 4.85e-11   |d'-d| 2.78e-17   -> PASS
+  3D bridge validated.
+  2D exact recovery: 1.32e-12 (tol 1e-6)  -> PASS
+  2D channels (12 cy): resid 8.35e-11 PASS   div 1.18e-10 PASS   energy 0.516035 PASS
+  2D fused   (12 cy): div(m) 1.01e-10   |d'-d| 5.55e-17   -> PASS
+  2D bridge validated.
+
+###############################################################################
+v11 DIMENSIONAL SUITE — the 2D/3D wedge, renormalization, regimes
+###############################################################################
+
+--- 3D suite (reference + regimes) ---
+
+===============================================================================
+RUN 3D-C0 — classical reference
+  dim=3  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=OFF  mode=channels  gain=10
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E= 184.7626  R=   0.0065  E+R= 184.7626  Zu=  1059.66  Zp=     0.00  max|w|=  7.445  routes=0
+  step   51  t=  0.204  E= 184.9356  R=   0.3227  E+R= 185.2523  Zu=  1097.85  Zp=     0.00  max|w|=  6.749  routes=0
+  step  101  t=  0.404  E= 185.1227  R=   0.6053  E+R= 185.7226  Zu=  1211.26  Zp=     0.00  max|w|=  6.185  routes=0
+  step  151  t=  0.604  E= 185.3422  R=   0.8686  E+R= 186.2055  Zu=  1393.69  Zp=     0.00  max|w|=  7.884  routes=0
+  step  201  t=  0.804  E= 185.6181  R=   1.1483  E+R= 186.7604  Zu=  1631.14  Zp=     0.00  max|w|= 10.026  routes=0
+  step  250  t=  1.000  E= 185.9696  R=   1.4684  E+R= 187.4380  Zu=  1918.31  Zp=     0.00  max|w|= 13.156  routes=0
+  -> finite=True  Omega_err=0.00e+00  R=1.468 (0.8% of E0)  cons_err=1.33e-15  wall=97.7s
+
+===============================================================================
+RUN 3D-CH — Omega, per-channel Whole-Term
+  dim=3  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E= 184.7626  R=  18.9409  E+R= 184.7626  Zu=  1059.66  Zp=     0.00  max|w|=  7.445  routes=21540
+  step   51  t=  0.204  E= 101.4924  R=  83.7932  E+R= 185.2489  Zu=   465.26  Zp=   435.03  max|w|=  5.153  routes=9194
+  step  101  t=  0.404  E= 100.0642  R=  85.5864  E+R= 185.6153  Zu=   458.83  Zp=   438.50  max|w|=  4.824  routes=9364
+  step  151  t=  0.604  E=  98.7169  R=  87.2681  E+R= 185.9562  Zu=   473.56  Zp=   458.20  max|w|=  4.490  routes=9928
+  step  201  t=  0.804  E=  97.7245  R=  88.6120  E+R= 186.3107  Zu=   509.31  Zp=   497.65  max|w|=  5.179  routes=10523
+  step  250  t=  1.000  E=  96.9075  R=  89.8037  E+R= 186.7113  Zu=   562.96  Zp=   549.88  max|w|=  6.931  routes=11201
+  -> finite=True  Omega_err=4.44e-16  R=89.804 (48.6% of E0)  cons_err=7.51e-14  wall=136.4s
+
+===============================================================================
+RUN 3D-FU — Omega, fused Whole-Term on m
+  dim=3  grid=32^3  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10
+===============================================================================
+  initial peak tension = 6.6929  ->  threshold = 3.3465   E0 = 184.7626
+  step    1  t=  0.004  E= 184.7626  R=   0.0032  E+R= 184.7626  Zu=  1059.66  Zp=     0.00  max|w|=  7.445  routes=21540
+  step   51  t=  0.204  E= 187.3956  R=   0.1614  E+R= 187.5540  Zu=  1509.18  Zp=  1510.68  max|w|= 14.641  routes=28158
+  step  101  t=  0.404  E= 190.0809  R=   0.3026  E+R= 190.3809  Zu=  1575.69  Zp=  1580.67  max|w|= 13.536  routes=28734
+  step  151  t=  0.604  E= 192.5626  R=   0.4343  E+R= 192.9943  Zu=  1658.50  Zp=  1666.05  max|w|= 13.817  routes=29442
+  step  201  t=  0.804  E= 194.7901  R=   0.5742  E+R= 195.3613  Zu=  1732.59  Zp=  1722.57  max|w|= 13.054  routes=30038
+  step  250  t=  1.000  E= 196.7942  R=   0.7342  E+R= 197.5284  Zu=  1820.04  Zp=  1819.40  max|w|= 13.859  routes=30610
+  -> finite=True  Omega_err=4.44e-16  R=0.734 (0.4% of E0)  cons_err=1.24e-14  wall=69.2s
+
+--- 2D suite (the wedge + regimes) ---
+
+===============================================================================
+RUN 2D-C — classical reference
+  dim=2  grid=128^2  steps=250  dt=0.004  nu=0.0  Omega=OFF  mode=channels  gain=10
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0044  E+R=  58.8228  Zu=   233.15  Zp=     0.00  max|w|=  7.767  routes=0
+  step   51  t=  0.204  E=  58.8798  R=   0.2242  E+R=  59.0996  Zu=   233.65  Zp=     0.00  max|w|=  7.768  routes=0
+  step  101  t=  0.404  E=  58.9433  R=   0.4356  E+R=  59.3748  Zu=   234.05  Zp=     0.00  max|w|=  7.786  routes=0
+  step  151  t=  0.604  E=  59.0156  R=   0.6420  E+R=  59.6535  Zu=   234.45  Zp=     0.00  max|w|=  7.800  routes=0
+  step  201  t=  0.804  E=  59.0922  R=   0.8500  E+R=  59.9380  Zu=   234.89  Zp=     0.00  max|w|=  7.824  routes=0
+  step  250  t=  1.000  E=  59.1643  R=   1.0516  E+R=  60.2160  Zu=   235.36  Zp=     0.00  max|w|=  7.841  routes=0
+  -> finite=True  Omega_err=0.00e+00  R=1.052 (1.8% of E0)  cons_err=2.66e-15  wall=80.7s
+
+===============================================================================
+RUN 2D-CH — Omega, per-channel Whole-Term
+  dim=2  grid=128^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=channels  gain=10
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   1.2360  E+R=  58.8228  Zu=   233.15  Zp=     0.00  max|w|=  7.767  routes=2050
+  step   51  t=  0.204  E=  31.3740  R=  28.4808  E+R=  59.8248  Zu=   331.84  Zp=   308.33  max|w|= 41.279  routes=2210
+  step  101  t=  0.404  E=  31.0561  R=  29.6301  E+R=  60.6670  Zu=   315.20  Zp=   300.73  max|w|= 40.570  routes=2200
+  step  151  t=  0.604  E=  30.8707  R=  30.5927  E+R=  61.4457  Zu=   304.77  Zp=   294.67  max|w|= 39.441  routes=2223
+  step  201  t=  0.804  E=  30.7203  R=  31.4481  E+R=  62.1534  Zu=   287.69  Zp=   281.41  max|w|= 38.111  routes=2052
+  step  250  t=  1.000  E=  30.6538  R=  32.1455  E+R=  62.7993  Zu=   274.21  Zp=   270.33  max|w|= 36.946  routes=1942
+  -> finite=True  Omega_err=4.44e-16  R=32.146 (54.6% of E0)  cons_err=3.42e-14  wall=90.2s
+
+===============================================================================
+RUN 2D-FU — Omega, fused Whole-Term on m
+  dim=2  grid=128^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0022  E+R=  58.8228  Zu=   233.15  Zp=     0.00  max|w|=  7.767  routes=2050
+  step   51  t=  0.204  E= 103.3180  R=   0.1121  E+R= 103.4279  Zu= 10951.05  Zp= 10949.03  max|w|=144.247  routes=13257
+  step  101  t=  0.404  E= 577.2264  R=   0.2178  E+R= 577.4421  Zu= 84800.96  Zp= 84802.74  max|w|=890.630  routes=13473
+  step  151  t=  0.604  E=9416.4210  R=   0.3210  E+R=9416.7399  Zu=1482227.82  Zp=1482225.35  max|w|=3435.034  routes=13931
+  step  201  t=  0.804  E=189812.0222  R=   0.4250  E+R=189812.4451  Zu=26349364.66  Zp=26349368.99  max|w|=14575.856  routes=14488
+  step  250  t=  1.000  E=3500003.5343  R=   0.5258  E+R=3500004.0601  Zu=427876264.02  Zp=427876258.82  max|w|=96755.287  routes=15077
+  -> finite=True  Omega_err=4.55e-13  R=0.526 (0.9% of E0)  cons_err=0.00e+00  wall=53.0s
+
+--- 2D renormalization study (requirement 2) ---
+
+===============================================================================
+RENORM fixed gain (10) at n=32
+  dim=2  grid=32^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10
+===============================================================================
+  initial peak tension = 28.9519  ->  threshold = 14.4760   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0020  E+R=  58.8228  Zu=   224.91  Zp=     0.00  max|w|=  7.445  routes=138
+  step   51  t=  0.204  E=  60.0196  R=   0.1032  E+R=  60.1208  Zu=   251.24  Zp=   216.29  max|w|= 14.203  routes=228
+  step  101  t=  0.404  E=  61.3921  R=   0.2013  E+R=  61.5915  Zu=   248.45  Zp=   238.39  max|w|= 14.331  routes=256
+  step  151  t=  0.604  E=  62.7577  R=   0.2982  E+R=  63.0540  Zu=   280.53  Zp=   289.75  max|w|= 13.526  routes=291
+  step  201  t=  0.804  E=  64.0375  R=   0.3965  E+R=  64.4320  Zu=   276.59  Zp=   273.10  max|w|= 13.937  routes=304
+  step  250  t=  1.000  E=  65.2054  R=   0.4921  E+R=  65.6975  Zu=   279.08  Zp=   280.38  max|w|= 12.983  routes=294
+  -> finite=True  Omega_err=4.44e-16  R=0.492 (0.8% of E0)  cons_err=3.55e-15  wall=17.7s
+
+===============================================================================
+RENORM gain = gamma/dx = 10.000 at n=32
+  dim=2  grid=32^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10
+===============================================================================
+  initial peak tension = 28.9519  ->  threshold = 14.4760   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0020  E+R=  58.8228  Zu=   224.91  Zp=     0.00  max|w|=  7.445  routes=138
+  step   51  t=  0.204  E=  60.0196  R=   0.1032  E+R=  60.1208  Zu=   251.24  Zp=   216.29  max|w|= 14.203  routes=228
+  step  101  t=  0.404  E=  61.3921  R=   0.2013  E+R=  61.5915  Zu=   248.45  Zp=   238.39  max|w|= 14.331  routes=256
+  step  151  t=  0.604  E=  62.7577  R=   0.2982  E+R=  63.0540  Zu=   280.53  Zp=   289.75  max|w|= 13.526  routes=291
+  step  201  t=  0.804  E=  64.0375  R=   0.3965  E+R=  64.4320  Zu=   276.59  Zp=   273.10  max|w|= 13.937  routes=304
+  step  250  t=  1.000  E=  65.2054  R=   0.4921  E+R=  65.6975  Zu=   279.08  Zp=   280.38  max|w|= 12.983  routes=294
+  -> finite=True  Omega_err=4.44e-16  R=0.492 (0.8% of E0)  cons_err=3.55e-15  wall=17.6s
+
+===============================================================================
+RENORM fixed gain (10) at n=64
+  dim=2  grid=64^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10
+===============================================================================
+  initial peak tension = 29.6454  ->  threshold = 14.8227   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0022  E+R=  58.8228  Zu=   231.48  Zp=     0.00  max|w|=  7.738  routes=506
+  step   51  t=  0.204  E=  64.6522  R=   0.1103  E+R=  64.7603  Zu=  1007.13  Zp=  1011.56  max|w|= 35.433  routes=2509
+  step  101  t=  0.404  E=  73.1524  R=   0.2144  E+R=  73.3648  Zu=  1238.74  Zp=  1239.27  max|w|= 45.456  routes=2626
+  step  151  t=  0.604  E=  84.4430  R=   0.3163  E+R=  84.7573  Zu=  1585.67  Zp=  1584.73  max|w|= 70.418  routes=2757
+  step  201  t=  0.804  E=  99.7744  R=   0.4191  E+R= 100.1915  Zu=  1987.14  Zp=  1993.70  max|w|= 67.574  routes=2910
+  step  250  t=  1.000  E= 121.3275  R=   0.5189  E+R= 121.8464  Zu=  2445.96  Zp=  2446.94  max|w|= 94.470  routes=3060
+  -> finite=True  Omega_err=1.78e-15  R=0.519 (0.9% of E0)  cons_err=2.84e-14  wall=30.2s
+
+===============================================================================
+RENORM gain = gamma/dx = 20.000 at n=64
+  dim=2  grid=64^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=20
+===============================================================================
+  initial peak tension = 29.6454  ->  threshold = 14.8227   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0022  E+R=  58.8228  Zu=   231.48  Zp=     0.00  max|w|=  7.738  routes=506
+  step   51  t=  0.204  E=  64.9063  R=   0.1103  E+R=  65.0144  Zu=  1044.45  Zp=  1043.11  max|w|= 38.383  routes=2552
+  step  101  t=  0.404  E=  73.9799  R=   0.2144  E+R=  74.1923  Zu=  1284.29  Zp=  1285.76  max|w|= 38.187  routes=2655
+  step  151  t=  0.604  E=  85.9790  R=   0.3163  E+R=  86.2933  Zu=  1615.61  Zp=  1615.05  max|w|= 56.193  routes=2751
+  step  201  t=  0.804  E= 102.7095  R=   0.4191  E+R= 103.1265  Zu=  2173.10  Zp=  2174.35  max|w|= 80.853  routes=2907
+  step  250  t=  1.000  E= 126.1890  R=   0.5189  E+R= 126.7079  Zu=  2767.42  Zp=  2768.29  max|w|= 94.658  routes=3048
+  -> finite=True  Omega_err=1.78e-15  R=0.519 (0.9% of E0)  cons_err=1.42e-14  wall=30.8s
+
+===============================================================================
+RENORM fixed gain (10) at n=128
+  dim=2  grid=128^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=10
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0022  E+R=  58.8228  Zu=   233.15  Zp=     0.00  max|w|=  7.767  routes=2050
+  step   51  t=  0.204  E= 103.3180  R=   0.1121  E+R= 103.4279  Zu= 10951.05  Zp= 10949.03  max|w|=144.247  routes=13257
+  step  101  t=  0.404  E= 577.2264  R=   0.2178  E+R= 577.4421  Zu= 84800.96  Zp= 84802.74  max|w|=890.630  routes=13473
+  step  151  t=  0.604  E=9416.4210  R=   0.3210  E+R=9416.7399  Zu=1482227.82  Zp=1482225.35  max|w|=3435.034  routes=13931
+  step  201  t=  0.804  E=189812.0222  R=   0.4250  E+R=189812.4451  Zu=26349364.66  Zp=26349368.99  max|w|=14575.856  routes=14488
+  step  250  t=  1.000  E=3500003.5343  R=   0.5258  E+R=3500004.0601  Zu=427876264.02  Zp=427876258.82  max|w|=96755.287  routes=15077
+  -> finite=True  Omega_err=4.55e-13  R=0.526 (0.9% of E0)  cons_err=0.00e+00  wall=54.6s
+
+===============================================================================
+RENORM gain = gamma/dx = 40.000 at n=128
+  dim=2  grid=128^2  steps=250  dt=0.004  nu=0.0  Omega=ON  mode=fused  gain=40
+===============================================================================
+  initial peak tension = 29.8213  ->  threshold = 14.9106   E0 = 58.8228
+  step    1  t=  0.004  E=  58.8228  R=   0.0022  E+R=  58.8228  Zu=   233.15  Zp=     0.00  max|w|=  7.767  routes=2050
+  step   51  t=  0.204  E= 102.7433  R=   0.1121  E+R= 102.8532  Zu= 10726.94  Zp= 10721.28  max|w|=146.378  routes=13186
+  step  101  t=  0.404  E= 581.0677  R=   0.2178  E+R= 581.2834  Zu= 81058.18  Zp= 81061.82  max|w|=820.576  routes=13393
+  step  151  t=  0.604  E=9424.1124  R=   0.3210  E+R=9424.4314  Zu=1414881.33  Zp=1414878.42  max|w|=3320.710  routes=13842
+  step  201  t=  0.804  E=178407.2164  R=   0.4250  E+R=178407.6393  Zu=23216393.96  Zp=23216391.07  max|w|=13213.390  routes=14489
+  step  250  t=  1.000  E=2973376.6190  R=   0.5258  E+R=2973377.1448  Zu=322692852.14  Zp=322692855.51  max|w|=52655.591  routes=15102
+  -> finite=True  Omega_err=4.55e-13  R=0.526 (0.9% of E0)  cons_err=1.40e-09  wall=69.2s
+
+===============================================================================
+AUDIT [D1-D6] — finite-grid verification, this implementation
+===============================================================================
+[D1] Gates: 3D and 2D bridges both validated (asserted above);
+     Omega invariants:
+  [3D CH         ] err = 4.44e-16  -> PASS
+  [3D FU         ] err = 4.44e-16  -> PASS
+  [2D CH         ] err = 4.44e-16  -> PASS
+  [2D FU         ] err = 4.55e-13  -> PASS
+
+[D2] THE DIMENSIONAL WEDGE — enstrophy production channel:
+  run               Z_u(0)  Z_u(end)  growth  stretch(end)   leak max
+  [2D classical  ]    233.15    235.36   1.009        0.0000   9.09e-12
+  [2D CH         ]    233.15    274.21   1.176        0.0000   5.82e-11
+  [2D FU         ]    233.15 427876264.02 1835179.317        0.0000   1.98e-04
+  [3D classical  ]   1059.66   1918.31   1.810     2715.6672   6.37e-12
+  [3D CH         ]   1059.66    562.96   0.531      346.5670   1.82e-12
+  [3D FU         ]   1059.66   1820.04   1.718      399.5906   4.55e-12
+  reading: leakage ~0 in BOTH dims (advection never creates
+  enstrophy — telescoping identity, audited). The stretch
+  production <w,(grad u)w> is IDENTICALLY ABSENT in 2D (the
+  mirror is the constant quarter-turn; no axial arm) and O(1)
+  in 3D. This is the C1/C2 coupling channel: closed in 2D,
+  open in 3D — measured by the same instrument. It is why the
+  2D proof cannot be ported, and it locates Part 2's task.
+
+[D3] REGIMES ARE DIMENSION-INDEPENDENT (the toll):
+  [2D CH         ] R =   32.146 ( 54.6% of E0)   cons_err = 3.42e-14
+  [2D FU         ] R =    0.526 (  0.9% of E0)   cons_err = 0.00e+00
+  [3D CH         ] R =   89.804 ( 48.6% of E0)   cons_err = 7.51e-14
+  [3D FU         ] R =    0.734 (  0.4% of E0)   cons_err = 1.24e-14
+  reading: the per-channel toll and the fused no-toll both
+  exist in 2D — the mechanism never references the third
+  dimension. The enforcement-target axiom is dimensional; the
+  coupling channel is what differs.
+
+[D4] RENORMALIZATION (requirement 2): g = gain*excess*dx, so
+  fixed gain => transfer angle -> 0 as dx -> 0 (grid-scale
+  operator). Nontrivial continuum limit requires gain = g/dx.
+  gamma = 1.9635 (baseline n=32, gain=10)
+      n  fix: Ep/E  ren: Ep/E fix: fine p ren: fine p
+     32     0.4984     0.4984      0.9288      0.9288
+     64     0.5017     0.5044      1.2485      1.2863
+    128     0.5000     0.5000      1.0622      0.9669
+  -> pattern not as predicted — report before claiming.
+
+[D5] PHASE L2 BOUNDEDNESS (requirement 5a, free part):
+  [2D FU         ] sqrt(2 E_p / vol) = 38112.224  (any pointwise |p| is below this; the OPEN part is the
+                     gradient bound — requirement 4 for
+                     the phase channel, i.e. 5b.)
+  [3D FU         ] sqrt(2 E_p / vol) = 161.323  (any pointwise |p| is below this; the OPEN part is the
+                     gradient bound — requirement 4 for
+                     the phase channel, i.e. 5b.)
+
+[D6] LEDGER (all runs):
+  run               dE_kin  euler dt2   proj->R   closure  cons err       mom
+  [2D classical  ]    +0.341     +1.393    -1.052   2.1e-14   2.7e-15   8.1e-11
+  [2D CH         ]   -28.169     +3.976   -32.146   9.0e-15   3.4e-14   6.6e-12
+  [2D FU         ] +3499944.711 +3499945.237    -0.526   7.5e-10   0.0e+00   8.1e-11
+  [3D classical  ]    +1.207     +2.675    -1.468   9.3e-14   1.3e-15   2.3e-10
+  [3D CH         ]   -87.855     +1.949   -89.804   4.1e-14   7.5e-14   1.0e-12
+  [3D FU         ]   +12.032    +12.766    -0.734   8.3e-14   1.2e-14   2.3e-10
+
+COST:
+  [2D classical  ] wall =   80.7s
+  [2D CH         ] wall =   90.2s
+  [2D FU         ] wall =   53.0s
+  [3D classical  ] wall =   97.7s
+  [3D CH         ] wall =  136.4s
+  [3D FU         ] wall =   69.2s
+
+SCOPE: finite grids, one IC family, t <= 1. The wedge and the
+renormalization condition are structural statements about the
+discrete operator family; the continuum claims remain the five
+requirements, now with (2) sharpened to a renormalization
+axiom and (5) split into a free part and the gradient part.
+===============================================================================
+
+Generating figures...

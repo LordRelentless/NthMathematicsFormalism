@@ -1,0 +1,57 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (4-channel), division spectrum,
+             deviation collapse, unreal mirror, unit-circle fusion,
+             modular angle closure, phase algebra 1*1=1, 1*i=i, i*i=i
+  licensed : floats = magnitude arms of selectors [Ax 6.4]; quotient
+             collapse [Prop 8 corollary]; norm magnitudes [Ax 6.1]
+  bridge   : Whole-Term cascade for the global divergence-free balance
+
+===============================================================================
+SELECTOR ARITHMETIC — NATIVE CONSTRUCTION OF THE OMEGA ANGLE
+===============================================================================
+
+structural product  n_|5,5i| (x) n_|5,5i| :
+   R  = n_|+25.000000,1|
+   U  = n_|+25.000000,i|
+   C1 = n_|-25.000000,1|
+   C2 = n_|-25.000000,i|
+   canonical tuple (nAB, nAB, -nAB, -nAB) — matches Cell 1 of the
+   Fourier notebook: [n_|25,1|, n_|25,i|, n_|-25,1|, n_|-25,i|]
+
+--- t-selector :  n_|g,gi| / {1+g, 1+gi, i+g, i+gi}   (g = 0.6000)
+   quotient channels: n_|+0.375000,1|, n_|+0.375000,1|, n_|+0.375000,i|, n_|+0.375000,i|, ...
+   collapse check (Prop 8 corollary): all = 0.375000, max deviation = 0.00e+00
+
+--- c-selector :  {1-t^2, 1-ti^2, 1-t^2i, 1-ti^2i, i-t^2, ...}
+                    over {1+t^2, 1+ti^2, 1+t^2i, 1+ti^2i, i+t^2, ...}
+   8 numerator / 8 denominator channels, all 64 quotients = 0.753425, max deviation = 0.00e+00
+
+--- s-selector :  {2t, 2ti, 2it, 2iti} over the same denominator
+   4 numerator / 8 denominator channels, all 32 quotients = 0.657534, max deviation = 0.00e+00
+
+unit selector circle closure (Axiom 7.2): c^2+s^2-1 = 2.22e-16
+
+READING: every channel of the multi-output spectra resolves to
+the same magnitude (the dual arms carry one magnitude; phase arms
+only select the channel). The classical magnitudes are recovered
+as the formalism's own collapse theorem — the translation is
+consistent, and the field code below uses exactly these collapsed
+arms, now with provenance.
+
+unreal mirror, worked example (axis = z):
+   d = [1. 0. 0.],  P(d) = [0. 1. 0.],  P(P(d)) = [-1.  0.  0.]
+   d + P(P(d)) = [0. 0. 0.]  (axial arm: fully transverse case)
+   d.P(d) = 0.0e+00 (exact zero),  |P(d)|^2 - |d|^2 = 0.0e+00 (exact zero)
+===============================================================================
+IC bridge deviation vs classical magnitude projection: 1.26e-03  (identical IC for every run, so A/B tests exact)
+
+###############################################################################
+NTH NATIVE SELECTOR 3D SUITE
+###############################################################################
+
+===============================================================================
+RUN A — Baseline (Omega ON, nu=2e-3)
+  grid=32^3  steps=250  dt=0.004  nu=0.002  Omega=ON  thresh_frac=0.5  gain=8.0
+===============================================================================

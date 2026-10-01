@@ -1,0 +1,7 @@
+  (skipping plots for A baseline: halted early)
+  (skipping plots for B high+Omega: halted early)
+  (skipping plots for D nu=0+Omega: halted early)
+  (skipping comparison: a run halted early)
+  (skipping comparison: a run halted early)
+
+All runs, native constructions, and audits complete.
