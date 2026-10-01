@@ -1,0 +1,110 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+PART A — EPSILON FAMILY AUDIT (Section 10.4/10.5, corrected)
+===============================================================================
+  taxonomy: eps_unreal = 0.064733 (Euler-triangle density)
+            theta_n    = 11221/8214 = 1.3660822985 (78.271 deg)
+            eps_n      = e*theta_n - pi = 0.5718040346
+  [A3] CANONICAL BUNDLE: 11^4+100^4+111^4 = 2*11221^2 EXACT; A_t = 11221 = 7^2*229; A_r = 8214 = 2*3*37^2
+       theta_n vs (1+sqrt(3))/2     digits 4.38 (post-hoc, quarantined)
+       eps_n vs 1/sqrt(3)           digits 2.02 (post-hoc, quarantined)
+  [A4] Psi_n degeneracy: 1/(6*sqrt(n)) identically (flag for revision).
+
+===============================================================================
+V29.5f GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  [G7] mode-2 Haar shares: 0.050 0.178 0.237 0.535  (derived: [0.050 0.178 0.442 0.330]; residual 0.000)
+  [G7b] white-noise Haar shares: 0.873 0.111 0.014 0.002  (derived: [0.876 0.109 0.014 0.002])
+  [G8] telescoping identity [mode-2]: rel err 0.00e+00
+  [G8] telescoping identity [noise]: rel err 0.00e+00
+  GATES PASS.
+
+0 valid checkpoint(s) — running the PERSIST arm in-cell (32^3, dt=0.004, T=2.0)...
+    checkpoint t=0.50  (    62s)  tubes:Em%=97,Ed%=99  wound:Em%=99,Ed%=99
+    checkpoint t=1.00  (   110s)  tubes:Em%=94,Ed%=98  wound:Em%=99,Ed%=98
+    checkpoint t=2.00  (   205s)  tubes:Em%=89,Ed%=95  wound:Em%=98,Ed%=95
+  run complete: 205s
+
+===============================================================================
+[R0] HAAR EXACTNESS ON THE FLUID FIELDS (telescoping identity per
+     checkpoint, both channels — the instrument gate on real data)
+===============================================================================
+  t=0.5 [m] worst |ident|/||F||^2 = 0.00e+00
+  t=0.5 [d] worst |ident|/||F||^2 = 7.93e-17
+  t=1.0 [m] worst |ident|/||F||^2 = 8.08e-17
+  t=1.0 [d] worst |ident|/||F||^2 = 8.03e-17
+  t=2.0 [m] worst |ident|/||F||^2 = 4.15e-17
+  t=2.0 [d] worst |ident|/||F||^2 = 0.00e+00
+
+===============================================================================
+[R1/R2] OCTAVE-Re LADDERS + RATIO MATCHING (Haar instrument)
+     guards: spread <15%, time-stable <15%, cross-IC <15%,
+     digits >= 2; 24 comparisons -> single 2-digit match is weak
+===============================================================================
+  [m tubes ] chain: 0.7686 0.4783 0.4818 0.7438
+      mean 0.6181  spread 47.0%  t-drift 69%  best: 1/phi (down, 0.61803) at 3.77 digits
+  [m wound ] chain: 0.3800 0.3666 0.3446 0.5106
+      mean 0.4004  spread 41.4%  t-drift 29%  best: eps_unreal^(1/3) (down, 0.40152) at 2.57 digits
+  [d tubes ] chain: 1.3863 1.1120 0.7762 0.6364
+      mean 0.9777  spread 76.7%  t-drift 36%  best: theta_n^(-1/3) (down, 0.90124) at 1.07 digits
+  [d wound ] chain: 1.4042 1.2390 0.9449 0.5384
+      mean 1.0316  spread 83.9%  t-drift 29%  best: theta_n^(-1/3) (up, 1.10958) at 1.15 digits
+
+===============================================================================
+[B1] THETA LADDER (routed) — formalism target 78.27 deg
+===============================================================================
+  t=0.5 [tubes ] n=  3204  mean  88.63 deg  weighted  89.87 deg  misalignment +13.2%
+  t=0.5 [wound ] n=  8890  mean  88.28 deg  weighted  89.88 deg  misalignment +12.8%
+  t=1.0 [tubes ] n=  3485  mean  88.66 deg  weighted  89.85 deg  misalignment +13.3%
+  t=1.0 [wound ] n=  9179  mean  88.18 deg  weighted  89.88 deg  misalignment +12.7%
+  t=2.0 [tubes ] n=  3840  mean  88.49 deg  weighted  89.84 deg  misalignment +13.1%
+  t=2.0 [wound ] n=  9650  mean  88.08 deg  weighted  89.87 deg  misalignment +12.5%
+
+===============================================================================
+[B2] ENTROPY-PHASE OFFSET FIELD eps(x) = e*theta(x) - pi
+     corridor |eps-eps_n|/eps_n < 15% ([0.486, 0.658])
+===============================================================================
+  t=0.5 [tubes ] corridor   0.8%  misaligned  97.5%  over-aligned   1.7%  mean eps 1.063
+  t=0.5 [wound ] corridor   1.0%  misaligned  96.6%  over-aligned   2.4%  mean eps 1.047
+  t=1.0 [tubes ] corridor   0.6%  misaligned  97.8%  over-aligned   1.6%  mean eps 1.065
+  t=1.0 [wound ] corridor   1.2%  misaligned  96.3%  over-aligned   2.6%  mean eps 1.042
+  t=2.0 [tubes ] corridor   0.8%  misaligned  97.5%  over-aligned   1.7%  mean eps 1.057
+  t=2.0 [wound ] corridor   1.2%  misaligned  96.1%  over-aligned   2.8%  mean eps 1.037
+
+===============================================================================
+[B3] RHO_N COHERENCE (routed population)
+     Gaussian baseline 0.7071; the trend is the diagnostic
+===============================================================================
+  t=0.5 [tubes ] n=  3204  rho_bar = 0.8522
+  t=0.5 [wound ] n=  8890  rho_bar = 0.8436
+  t=1.0 [tubes ] n=  3485  rho_bar = 0.8492
+  t=1.0 [wound ] n=  9179  rho_bar = 0.8408
+  t=2.0 [tubes ] n=  3840  rho_bar = 0.8565
+  t=2.0 [wound ] n=  9650  rho_bar = 0.8342
+
+===============================================================================
+[B4] SDP DENSITY + AMPL (routed population)
+     density vs eps_unreal 0.064733; AMPL vs theta_n 1.3661
+===============================================================================
+  t=0.5 [tubes ] n=  3204  density 0.8265 (-1.07 dig)  AMPL 8.1575 (-0.70 dig)
+  t=0.5 [wound ] n=  8890  density 0.8071 (-1.06 dig)  AMPL 3.5782 (-0.21 dig)
+  t=1.0 [tubes ] n=  3485  density 0.8275 (-1.07 dig)  AMPL 7.0172 (-0.62 dig)
+  t=1.0 [wound ] n=  9179  density 0.7986 (-1.05 dig)  AMPL 3.4567 (-0.18 dig)
+  t=2.0 [tubes ] n=  3840  density 0.8260 (-1.07 dig)  AMPL 5.8625 (-0.52 dig)
+  t=2.0 [wound ] n=  9650  density 0.8008 (-1.06 dig)  AMPL 3.2561 (-0.14 dig)
+
+===============================================================================
+[VERDICT]
+===============================================================================
+  NO OCTAVE-STATIONARY RATIO at 32^3: classical vortex band stands; instrument validated ([G7]/[G7b]/[G8]/[R0]); question moves to the GPU ladder.
+  THETA/eps_n: routing operates ABOVE the formalism corridor (saturated); the theta_n-LOCKED V30 variant is the specified correction.
+  density: mean 0.8144 (-1.06 digits vs eps_unreal)
+  AMPL:    mean 5.2214 (-0.45 digits vs theta_n)
+
+  HONESTY: single resolution/run, vortex ICs; d-channel finest rungs carry the debris caveat; post-hoc near-misses quarantined;
+  Haar instrument: exact telescoping gated on every field ([R0]).

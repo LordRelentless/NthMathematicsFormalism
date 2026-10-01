@@ -1,0 +1,156 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend platform: gpu — V36 ACTIVE
+
+===============================================================================
+V36 GATES
+===============================================================================
+  [G20] telescoping kmax=4 at 16^3: 0.00e+00
+  [G20] telescoping kmax=5 at 32^3: 0.00e+00
+  [G25] temporal Haar (hand-computed): PASS
+  [G19] traced path at 16^3 (default W_GOLD): PASS
+  [G19b] traced path (gamma=1): PASS
+  GATES PASS.
+
+###############################################################################
+V36 — W_GOLD PARAMETER STUDY + gamma=1 CONTROL
+###############################################################################
+  [ARMED_w4] mode=transmute W_GOLD=4.000 steps=1500
+    done: 11 ckpts, 64s
+  [ARMED_w6] mode=transmute W_GOLD=6.000 steps=1500
+    done: 11 ckpts, 63s
+  [ARMED_wDEF] mode=transmute W_GOLD=7.416 steps=1500
+    done: 11 ckpts, 57s
+  [ARMED_w10] mode=transmute W_GOLD=10.000 steps=1500
+    done: 11 ckpts, 59s
+  [ARMED_w14] mode=transmute W_GOLD=14.000 steps=1500
+    done: 11 ckpts, 58s
+  [GAMMA1] mode=gamma1 W_GOLD=7.416 steps=1500
+    done: 11 ckpts, 58s
+  [CLASSICAL] mode=classical W_GOLD=7.416 steps=1500
+    done: 11 ckpts, 46s
+
+===============================================================================
+[W1] FINEST-COARSEST COUPLING vs W_GOLD (the key readout)
+     corr(finest, coarsest) for wound, post-transient (t > 0.6)
+===============================================================================
+  [ARMED_w4       tubes ] W_GOLD=4.000         corr(f,c) = -0.941
+  [ARMED_w4       wound ] W_GOLD=4.000         corr(f,c) = -0.934
+  [ARMED_w6       tubes ] W_GOLD=6.000         corr(f,c) = -0.941
+  [ARMED_w6       wound ] W_GOLD=6.000         corr(f,c) = -0.929
+  [ARMED_wDEF     tubes ] W_GOLD=7.416         corr(f,c) = -0.941
+  [ARMED_wDEF     wound ] W_GOLD=7.416         corr(f,c) = -0.878
+  [ARMED_w10      tubes ] W_GOLD=10.000        corr(f,c) = -0.941
+  [ARMED_w10      wound ] W_GOLD=10.000        corr(f,c) = -0.888
+  [ARMED_w14      tubes ] W_GOLD=14.000        corr(f,c) = -0.941
+  [ARMED_w14      wound ] W_GOLD=14.000        corr(f,c) = -0.831
+  [GAMMA1         tubes ] W_GOLD=7.416         corr(f,c) = -0.948
+  [GAMMA1         wound ] W_GOLD=7.416         corr(f,c) = -0.863
+  [CLASSICAL      tubes ] no arm               corr(f,c) = -0.974
+  [CLASSICAL      wound ] no arm               corr(f,c) = -0.737
+
+  W_GOLD DEPENDENCE (wound, armed):
+    W_GOLD values: [4.0, 6.0, np.float64(7.416407864998738), 10.0, 14.0]
+    couplings:     ['-0.934', '-0.929', '-0.878', '-0.888', '-0.831']
+    linear trend: slope = +0.0101, r = +0.934
+    -> SYSTEMATIC: coupling tracks W_GOLD (r = 0.934). The compactification winding
+       parameter controls the spectral coupling.
+
+===============================================================================
+[W2] gamma=1 CONTROL (the mechanism discriminator)
+     Does routing alone (no contraction) produce the coupling?
+===============================================================================
+  [tubes ] armed: -0.941  gamma1: -0.948  classical: -0.974
+  [wound ] armed: -0.878  gamma1: -0.863  classical: -0.737
+
+  Wound coupling: armed -0.878, gamma1 -0.863, classical -0.737
+  -> GAMMA=1 PRODUCES COUPLING: the compactification
+     geometry alone (routing pattern, no energy
+     extraction) activates the spectral wrap. The
+     fractal is primarily GEOMETRIC.
+
+===============================================================================
+[W3] FULL CORRELATION MATRICES (wound, key configurations)
+===============================================================================
+
+  [ARMED_wDEF] wound correlation matrix:
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.937   +0.797   -0.671   -0.974   -0.878
+       k2  +0.937     1.00   +0.952   -0.494   -0.989   -0.979
+       k3  +0.797   +0.952     1.00   -0.333   -0.909   -0.962
+       k4  -0.671   -0.494   -0.333     1.00   +0.561   +0.323
+       k5  -0.974   -0.989   -0.909   +0.561     1.00   +0.953
+    coarse  -0.878   -0.979   -0.962   +0.323   +0.953     1.00
+
+  [GAMMA1] wound correlation matrix:
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.933   +0.782   -0.672   -0.966   -0.863
+       k2  +0.933     1.00   +0.949   -0.468   -0.992   -0.972
+       k3  +0.782   +0.949     1.00   -0.283   -0.913   -0.954
+       k4  -0.672   -0.468   -0.283     1.00   +0.535   +0.273
+       k5  -0.966   -0.992   -0.913   +0.535     1.00   +0.948
+    coarse  -0.863   -0.972   -0.954   +0.273   +0.948     1.00
+
+  [CLASSICAL] wound correlation matrix:
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.940   +0.774   -0.780   -0.967   -0.737
+       k2  +0.940     1.00   +0.938   -0.597   -0.993   -0.894
+       k3  +0.774   +0.938     1.00   -0.375   -0.905   -0.930
+       k4  -0.780   -0.597   -0.375     1.00   +0.653   +0.207
+       k5  -0.967   -0.993   -0.905   +0.653     1.00   +0.853
+    coarse  -0.737   -0.894   -0.930   +0.207   +0.853     1.00
+
+===============================================================================
+[W4] TEMPORAL HAAR (wound, per configuration)
+     Decay slope < -0.5 = smooth orbit; > -0.5 = oscillatory
+===============================================================================
+  [ARMED_w4       tubes ] Haar: 0.843 0.084 0.073  slope = -1.23 (smooth/orbital)
+  [ARMED_w4       wound ] Haar: 0.789 0.168 0.043  slope = -1.45 (smooth/orbital)
+  [ARMED_w6       tubes ] Haar: 0.843 0.084 0.073  slope = -1.23 (smooth/orbital)
+  [ARMED_w6       wound ] Haar: 0.735 0.223 0.042  slope = -1.43 (smooth/orbital)
+  [ARMED_wDEF     tubes ] Haar: 0.843 0.084 0.073  slope = -1.23 (smooth/orbital)
+  [ARMED_wDEF     wound ] Haar: 0.835 0.118 0.046  slope = -1.45 (smooth/orbital)
+  [ARMED_w10      tubes ] Haar: 0.843 0.084 0.073  slope = -1.23 (smooth/orbital)
+  [ARMED_w10      wound ] Haar: 0.879 0.068 0.053  slope = -1.40 (smooth/orbital)
+  [ARMED_w14      tubes ] Haar: 0.843 0.084 0.073  slope = -1.23 (smooth/orbital)
+  [ARMED_w14      wound ] Haar: 0.879 0.074 0.047  slope = -1.46 (smooth/orbital)
+  [GAMMA1         tubes ] Haar: 0.845 0.088 0.067  slope = -1.27 (smooth/orbital)
+  [GAMMA1         wound ] Haar: 0.852 0.102 0.046  slope = -1.46 (smooth/orbital)
+  [CLASSICAL      tubes ] Haar: 0.870 0.080 0.050  slope = -1.43 (smooth/orbital)
+  [CLASSICAL      wound ] Haar: 0.909 0.015 0.076  slope = -1.24 (smooth/orbital)
+
+===============================================================================
+[W5] COARSE SHARE TRAJECTORIES (wound, W_GOLD variants)
+===============================================================================
+  [ARMED_w4      ] wound coarse: 0.361 -> 0.423 -> 0.416 -> 0.409 -> 0.395 -> 0.378 -> 0.357 -> 0.324 -> 0.288 -> 0.256 -> 0.229
+  [ARMED_w6      ] wound coarse: 0.353 -> 0.416 -> 0.409 -> 0.400 -> 0.388 -> 0.381 -> 0.378 -> 0.366 -> 0.354 -> 0.336 -> 0.326
+  [ARMED_wDEF    ] wound coarse: 0.348 -> 0.413 -> 0.405 -> 0.398 -> 0.394 -> 0.396 -> 0.391 -> 0.371 -> 0.350 -> 0.337 -> 0.335
+  [ARMED_w10     ] wound coarse: 0.342 -> 0.408 -> 0.402 -> 0.400 -> 0.397 -> 0.400 -> 0.386 -> 0.368 -> 0.360 -> 0.355 -> 0.345
+  [ARMED_w14     ] wound coarse: 0.337 -> 0.402 -> 0.398 -> 0.394 -> 0.401 -> 0.391 -> 0.386 -> 0.368 -> 0.368 -> 0.374 -> 0.368
+
+===============================================================================
+[V] VERDICT
+===============================================================================
+
+  [W1] If coupling tracks W_GOLD (|r| > 0.7): the compactification's
+       winding parameter controls the spectral coupling. The
+       formalism's constant layer (W_GOLD = 12/phi) is connected to
+       the measured dynamics. The compactification map IS the
+       coupling mechanism.
+
+  [W2] If gamma=1 produces coupling: the fractal is geometric (the
+       compactification structure alone activates it). If not: the
+       fractal is dynamical (the transmutation's energy extraction
+       is required). Either way, the fractal reading survives —
+       this distinguishes MECHANISM, not EXISTENCE.
+
+  [W4] If the temporal Haar decay is smooth (slope < -0.5) for all
+       armed variants and oscillatory for classical: the orbit
+       conversion is robust across compactification parameters.
+
+  HONESTY: 64^3, T=3, single run per configuration, five W_GOLD
+  values. The W_GOLD trend requires at least three points to be
+  meaningful. The gamma=1 result is the mechanism discriminator.
+
+
+persisted in /content/v36_results

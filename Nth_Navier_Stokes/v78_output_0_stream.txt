@@ -1,0 +1,9 @@
+[E1] tubes CLASSICAL  tubeA: orbital  297/1500  median rev 0.56
+[E1] tubes CLASSICAL  tubeB: orbital  178/1500  median rev 0.37
+[E1] tubes TRANSMUTE  tubeA: orbital  185/1500  median rev 0.47
+[E1] tubes TRANSMUTE  tubeB: orbital   44/1500  median rev 0.33
+   tubeA rev/local-time ratio T/C: 0.555  (DECAY branch)
+
+[E2] wound per-tracer rate: median 0.591  IQR 0.510-0.698  tail(10%) 0.446
+   structured rate field (broad IQR, low tail) = differentiation with structure;
+   tight ~0.59 for all = uniform damping.

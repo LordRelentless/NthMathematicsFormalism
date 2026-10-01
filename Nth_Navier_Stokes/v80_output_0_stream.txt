@@ -1,0 +1,12 @@
+===============================================================================
+UNIFIED TEMPORAL AUDIT: CLOCK DIFFERENTIATION VS DECAY
+===============================================================================
+  [wound ] matched orbital tracers: 1422/1500
+         global rev ratio T/C: 0.588
+         local arc ratio T/C:  0.586
+         local orbital rate ratio: 0.954 (expect ~1.0 for pure clock diff)
+  [tubes ] matched orbital tracers: 648/1500
+         global rev ratio T/C: 0.440
+         local arc ratio T/C:  0.670
+         local orbital rate ratio: 0.620 (expect ~1.0 for pure clock diff)
+===============================================================================

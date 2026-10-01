@@ -1,0 +1,76 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V32b GATES
+===============================================================================
+  [G8] Haar telescoping identity (batched): 0.00e+00
+  [G14] mode-2 Haar shares: 0.050 0.178 0.237 0.535
+  [G14b] white-noise Haar shares: 0.874 0.111 0.013 0.002
+  [G15] mask-octave path (broadcast fix): identity 0.00e+00
+  GATES PASS.
+
+###############################################################################
+V32b — THE DECISIVE PAIR (32^3, dt=0.004, T=3.0)
+###############################################################################
+  [CLASSICAL] dense-save classical run: steps=750, save every 15
+    done: 51 snapshots, 336s
+
+===============================================================================
+[A] gamma=1 CONTROL — the routing footprint (where routing WOULD
+    fire on the classical evolution; no arm ever acts)
+===============================================================================
+  t=1.02 [tubes ] footprint fraction:  5.96%
+  t=1.02 [wound ] footprint fraction:  8.34%
+  t=2.04 [tubes ] footprint fraction: 16.03%
+  t=2.04 [wound ] footprint fraction: 18.90%
+  t=3.00 [tubes ] footprint fraction: 24.33%
+  t=3.00 [wound ] footprint fraction: 43.02%
+
+  DENSITY CONTRAST (footprint fraction wound/tubes):
+  t=1.02: wound  8.34% / tubes  5.96%  -> ratio 1.40
+  t=2.04: wound 18.90% / tubes 16.03%  -> ratio 1.18
+  t=3.00: wound 43.02% / tubes 24.33%  -> ratio 1.77
+
+  FOOTPRINT GEOMETRY (wound): centroid winding of the routed set
+  t=1.02: centroid winding rate +0.512 rad/z
+    (compactification helix reference: A_WIND-driven, scale ~0.70 rad/z; W_GOLD 7.4 is the tracer pitch, not the centroid pitch)
+  t=2.04: centroid winding rate +1.065 rad/z
+    (compactification helix reference: A_WIND-driven, scale ~0.70 rad/z; W_GOLD 7.4 is the tracer pitch, not the centroid pitch)
+  t=3.00: centroid winding rate -0.174 rad/z
+    (compactification helix reference: A_WIND-driven, scale ~0.70 rad/z; W_GOLD 7.4 is the tracer pitch, not the centroid pitch)
+
+  [A] VERDICT BRANCHES:
+  final footprint ratio wound/tubes = 1.77
+  -> footprint density ~ uniform across ICs: tension-generic;
+     the chain is arm -> routing -> ticks; mundane throughout.
+
+===============================================================================
+[B] OCTAVE TRIAL — Haar octave shares (u channel; in the
+    classical run p = 0 so m = u)
+    classical vortex null: core-dominated shares. Scale-recurrence:
+    stationary shares + a non-classical pattern.
+===============================================================================
+  t=1.02 [tubes ] u-shares: 0.160 0.170 0.270 0.276  coarse 0.124  identity 0.0e+00
+  t=1.02 [wound ] u-shares: 0.021 0.063 0.173 0.398  coarse 0.345  identity 0.0e+00
+  t=2.04 [tubes ] u-shares: 0.394 0.161 0.175 0.186  coarse 0.084  identity 1.2e-16
+  t=2.04 [wound ] u-shares: 0.054 0.092 0.167 0.349  coarse 0.337  identity 0.0e+00
+  t=3.00 [tubes ] u-shares: 0.610 0.142 0.091 0.116  coarse 0.042  identity 0.0e+00
+  t=3.00 [wound ] u-shares: 0.164 0.124 0.155 0.238  coarse 0.319  identity 0.0e+00
+
+  SHARE STATIONARITY (first checkpoint -> last):
+  [tubes ] max share drift: 0.449 (EVOLVING)
+  [wound ] max share drift: 0.160 (EVOLVING)
+
+  FOOTPRINT-OCTAVE CORRELATION (which scales carry the mask):
+  [tubes ] footprint octave shares: 0.420 0.082 0.070 0.066
+  [wound ] footprint octave shares: 0.217 0.067 0.080 0.203
+
+===============================================================================
+[B] VERDICT
+===============================================================================
+  -> EVOLVING shares: cascade in progress at this horizon;
+     longer T or finer grid before the recurrence question.
+
+persisted in /content/v32_results

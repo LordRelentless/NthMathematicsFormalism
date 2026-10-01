@@ -1,0 +1,112 @@
+===============================================================================
+[C1] CROSS-OCTAVE TEMPORAL CORRELATION
+     If the compactification maps octave k onto octave k,
+     their share trajectories should be correlated.
+     This is PATTERN DUPLICATION, not stationarity.
+===============================================================================
+
+  [R128A tubes] octave-pair correlations (t > 1.0):
+             k1       k2       k3       k4       k5       k6   coarse
+       k1    1.00   +0.989   -0.990   -0.992   -0.993   -0.934   -0.991
+       k2  +0.989     1.00   -0.959   -0.989   -0.978   -0.960   -0.964
+       k3  -0.990   -0.959     1.00   +0.981   +0.992   +0.881   +0.991
+       k4  -0.992   -0.989   +0.981     1.00   +0.993   +0.918   +0.975
+       k5  -0.993   -0.978   +0.992   +0.993     1.00   +0.894   +0.983
+       k6  -0.934   -0.960   +0.881   +0.918   +0.894     1.00   +0.895
+    coarse  -0.991   -0.964   +0.991   +0.975   +0.983   +0.895     1.00
+
+  [R128A wound] octave-pair correlations (t > 1.0):
+             k1       k2       k3       k4       k5       k6   coarse
+       k1    1.00   +0.825   -0.473   -0.739   -0.952   -0.985   +0.400
+       k2  +0.825     1.00   +0.093   -0.246   -0.734   -0.902   -0.118
+       k3  -0.473   +0.093     1.00   +0.937   +0.524   +0.318   -0.874
+       k4  -0.739   -0.246   +0.937     1.00   +0.777   +0.619   -0.847
+       k5  -0.952   -0.734   +0.524   +0.777     1.00   +0.931   -0.575
+       k6  -0.985   -0.902   +0.318   +0.619   +0.931     1.00   -0.283
+    coarse  +0.400   -0.118   -0.874   -0.847   -0.575   -0.283     1.00
+
+  [R64A tubes] octave-pair correlations (t > 1.0):
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.860   -0.999   -0.999   -0.999   -0.994
+       k2  +0.860     1.00   -0.867   -0.855   -0.864   -0.891
+       k3  -0.999   -0.867     1.00   +0.999   +0.997   +0.991
+       k4  -0.999   -0.855   +0.999     1.00   +0.997   +0.990
+       k5  -0.999   -0.864   +0.997   +0.997     1.00   +0.996
+    coarse  -0.994   -0.891   +0.991   +0.990   +0.996     1.00
+
+  [R64A wound] octave-pair correlations (t > 1.0):
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.676   -0.831   -0.990   -0.978   -0.851
+       k2  +0.676     1.00   -0.167   -0.597   -0.810   -0.897
+       k3  -0.831   -0.167     1.00   +0.875   +0.708   +0.438
+       k4  -0.990   -0.597   +0.875     1.00   +0.946   +0.791
+       k5  -0.978   -0.810   +0.708   +0.946     1.00   +0.912
+    coarse  -0.851   -0.897   +0.438   +0.791   +0.912     1.00
+
+  [R64C tubes] octave-pair correlations (t > 1.0):
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.802   -0.999   -0.999   -0.999   -0.991
+       k2  +0.802     1.00   -0.818   -0.799   -0.792   -0.858
+       k3  -0.999   -0.818     1.00   +0.999   +0.996   +0.990
+       k4  -0.999   -0.799   +0.999     1.00   +0.997   +0.987
+       k5  -0.999   -0.792   +0.996   +0.997     1.00   +0.988
+    coarse  -0.991   -0.858   +0.990   +0.987   +0.988     1.00
+
+  [R64C wound] octave-pair correlations (t > 1.0):
+             k1       k2       k3       k4       k5   coarse
+       k1    1.00   +0.652   -0.864   -0.993   -0.974   -0.281
+       k2  +0.652     1.00   -0.198   -0.604   -0.804   -0.506
+       k3  -0.864   -0.198     1.00   +0.888   +0.737   -0.070
+       k4  -0.993   -0.604   +0.888     1.00   +0.952   +0.222
+       k5  -0.974   -0.804   +0.737   +0.952     1.00   +0.345
+    coarse  -0.281   -0.506   -0.070   +0.222   +0.345     1.00
+
+===============================================================================
+[C2] FINEST-COARSEST COUPLING (the bimodal signature test)
+     If the two peaks are the same wrapped pattern, their
+     trajectories should be coupled (correlated or anti-).
+===============================================================================
+  [R128A tubes] corr(finest,coarsest) = -0.991   corr(finest,mid) = -0.992   corr(mid,coarsest) = +0.975
+  [R128A wound] corr(finest,coarsest) = +0.400   corr(finest,mid) = -0.739   corr(mid,coarsest) = -0.847
+  [R64A tubes] corr(finest,coarsest) = -0.994   corr(finest,mid) = -0.999   corr(mid,coarsest) = +0.991
+  [R64A wound] corr(finest,coarsest) = -0.851   corr(finest,mid) = -0.831   corr(mid,coarsest) = +0.438
+  [R64C tubes] corr(finest,coarsest) = -0.991   corr(finest,mid) = -0.999   corr(mid,coarsest) = +0.990
+  [R64C wound] corr(finest,coarsest) = -0.281   corr(finest,mid) = -0.864   corr(mid,coarsest) = -0.070
+
+===============================================================================
+[C3] TEMPORAL HAAR DECAY LAW (smooth orbit test)
+     For a smooth C^1 trajectory, Haar level energies decay
+     approximately as a power law from coarse to fine.
+     The armed system should show this; the classical should
+     NOT (it has a genuine oscillation).
+===============================================================================
+  [R64A tubes] temporal Haar levels: 0.617 0.270 0.093 0.019  -> decay slope = -1.15 (power-law decay (smooth))
+  [R64A wound] temporal Haar levels: 0.495 0.354 0.124 0.027  -> decay slope = -0.98 (power-law decay (smooth))
+  [R64C tubes] temporal Haar levels: 0.551 0.298 0.125 0.027  -> decay slope = -1.00 (power-law decay (smooth))
+  [R64C wound] temporal Haar levels: 0.011 0.176 0.711 0.102  -> decay slope = +0.82 (flat/bumpy (oscillatory))
+
+===============================================================================
+[V] COMPACTIFICATION SIGNATURE VERDICT
+===============================================================================
+
+  [C1] If specific octave pairs show HIGH temporal correlation
+       (> 0.5) while others do NOT, that is PATTERN DUPLICATION —
+       the compactification mapping one spectral position onto
+       another. The correlated pairs identify the compactification
+       map's spectral action.
+
+  [C2] If finest-coarsest correlation is HIGH for wound (the
+       bimodal IC), the two peaks are the same wrapped pattern.
+       If it is LOW, they are independent structures and the
+       bimodal spectrum has a different explanation.
+
+  [C3] If the armed temporal Haar shows a consistent power-law
+       decay (slope < -0.5), the trajectory is smooth (orbital).
+       If the classical does NOT (bump at a level), the classical
+       has a genuine oscillation. Together: arm = orbit,
+       classical = oscillation. Phase-locking confirmed.
+
+  HONESTY: These are POST-HOC tests on persisted data. The
+  compactification hypothesis PREDICTED them; the data either
+  confirms or denies. Neither outcome is pre-committed.
+

@@ -1,0 +1,16 @@
+[C1] SPIKE vs ROUTED VOLUME (step-1 max|w|; classical step-1 ref)
+  [TRANSMUTE   tubes ] step-1 max|w|  30.09 (classical  28.40, +   6%)  routed(step1)  0.0%
+  [TRANSMUTE   wound ] step-1 max|w|  14.54 (classical  12.71, +  14%)  routed(step1)  2.7%
+  [LOCK theta_n tubes ] step-1 max|w|  29.82 (classical  28.40, +   5%)  routed(step1)  0.0%
+  [LOCK theta_n wound ] step-1 max|w|  14.47 (classical  12.71, +  14%)  routed(step1)  2.7%
+  [RHO gate    tubes ] step-1 max|w|  28.40 (classical  28.40, +   0%)  routed(step1)  0.0%
+  [RHO gate    wound ] step-1 max|w|  14.49 (classical  12.71, +  14%)  routed(step1)  2.3%
+  prediction: spike increment tracks routed volume -> RHO (narrower) < TRANSMUTE at step 1 => soft gate will suppress it.
+
+[C2] RESERVOIR RATES (last 20% of the run)
+  [tubes ] late rates: dEp/dt   -0.71  arm-in    8.03  toll-out   -6.76  (net-draining: quasi-equilibrium)
+  [wound ] late rates: dEp/dt  +14.30  arm-in   22.30  toll-out   -7.07  (net-filling)
+
+[C3] WOUND EARLY Eu COLLAPSE (burst characterization)
+  [tubes ] Eu: step1  99.7%  half-loss t=0.932  final  32.3%
+  [wound ] Eu: step1  99.6%  half-loss t=0.06  final  26.7%

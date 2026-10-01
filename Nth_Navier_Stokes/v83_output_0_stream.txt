@@ -1,0 +1,86 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend: CPU
+  [Q3] GPU octave trial DEFERRED (CPU runtime). Q1+Q2 run full.
+
+===============================================================================
+V33b GATES
+===============================================================================
+  [G8] Haar telescoping identity (batched): 0.00e+00
+  [G17] routing gain dimensionless: g = 10.000 at any dx (by construction — the dx-flaw fix)
+  [G18] scaled arm identity at zero excess: 1.36e-16
+  GATES PASS.
+
+###############################################################################
+[Q1] LONG-T CLASSICAL (T=6.0)
+###############################################################################
+  [Q1_LONGT] n=32^3 mode=classical steps=1500 save_every=30
+    done: 51 snapshots, 24s
+  checkpoints: [8, 17, 25, 34, 42, 50] (t = 0.96, 2.04, 3.00, 4.08, 5.04, 6.00)
+
+[Q1a] FOOTPRINT TRAJECTORY (classical, 0.5xM0):
+  t=0.96  tubes   5.4%   wound   8.0%
+  t=2.04  tubes  16.0%   wound  18.9%
+  t=3.00  tubes  24.3%   wound  43.0%
+  t=4.08  tubes  28.2%   wound  67.9%
+  t=5.04  tubes  28.9%   wound  80.1%
+  t=6.00  tubes  27.8%   wound  85.3%
+
+[Q1b] OCTAVE SHARES (coarse-share persistence vs cascade):
+  t=0.96 [tubes ] 0.148 0.169 0.279 0.281  coarse 0.123
+  t=0.96 [wound ] 0.020 0.061 0.172 0.401  coarse 0.345
+  t=2.04 [tubes ] 0.394 0.161 0.175 0.186  coarse 0.084
+  t=2.04 [wound ] 0.054 0.092 0.167 0.349  coarse 0.337
+  t=3.00 [tubes ] 0.610 0.142 0.091 0.116  coarse 0.042
+  t=3.00 [wound ] 0.164 0.124 0.155 0.238  coarse 0.319
+  t=4.08 [tubes ] 0.751 0.122 0.048 0.060  coarse 0.018
+  t=4.08 [wound ] 0.371 0.114 0.094 0.113  coarse 0.308
+  t=5.04 [tubes ] 0.806 0.116 0.032 0.034  coarse 0.011
+  t=5.04 [wound ] 0.500 0.098 0.051 0.060  coarse 0.290
+  t=6.00 [tubes ] 0.837 0.112 0.022 0.021  coarse 0.008
+  t=6.00 [wound ] 0.564 0.088 0.034 0.039  coarse 0.274
+
+[Q1c] PITCH TRAJECTORY (wound, validity-gated < 25%):
+  t=0.96 footprint 8.0% (VALID) winding +0.438 rad/z
+  t=2.04 footprint 18.9% (VALID) winding +1.065 rad/z
+  t=3.00 footprint 43.0% — EXCLUDED
+  t=4.08 footprint 67.9% — EXCLUDED
+  t=5.04 footprint 80.1% — EXCLUDED
+  t=6.00 footprint 85.3% — EXCLUDED
+
+###############################################################################
+[Q2] MATCHED-nu FOOTPRINT — is self-limiting drainage-equivalent?
+###############################################################################
+  [Q2_TRANSMUTE] n=32^3 mode=transmute steps=750 save_every=15
+    done: 51 snapshots, 20s
+  target Eu losses (TR): tubes=353.8 wound=645.5
+  classical loss / toll est: tubes: 86.7/81.9 wound: 36.1/34.0
+  Zu_bar: tubes=64.5 wound=28.8
+  calibrated nu_eff: tubes=0.00567 wound=0.02856
+  [Q2_MATCHED] n=32^3 mode=classical steps=750 save_every=15
+    done: 51 snapshots, 20s
+
+[Q2a] FOOTPRINT + ENERGY COMPARISON (0.5xM0):
+  [tubes ] Eu% at t=3:  CL  83.4  TR  32.3  M  40.8   (energy-match gap TR-M:  8.5 pts)
+  [wound ] Eu% at t=3:  CL  95.9  TR  26.7  M  78.4   (energy-match gap TR-M: 51.7 pts)
+  t=0.48 [tubes ] CL   2.0%  TR   1.0 (r 0.52)  M   1.0 (r 0.50)
+  t=0.48 [wound ] CL   5.2%  TR   2.2 (r 0.43)  M   4.3 (r 0.83)
+  t=1.02 [tubes ] CL   5.4%  TR   1.8 (r 0.33)  M   1.0 (r 0.18)
+  t=1.02 [wound ] CL   8.0%  TR   1.3 (r 0.16)  M   4.3 (r 0.54)
+  t=1.50 [tubes ] CL   9.9%  TR   2.4 (r 0.24)  M   0.9 (r 0.09)
+  t=1.50 [wound ] CL  10.5%  TR   1.4 (r 0.13)  M   3.3 (r 0.32)
+  t=2.04 [tubes ] CL  16.0%  TR   3.0 (r 0.19)  M   0.7 (r 0.04)
+  t=2.04 [wound ] CL  18.9%  TR   2.6 (r 0.14)  M   3.1 (r 0.16)
+  t=2.52 [tubes ] CL  20.4%  TR   3.1 (r 0.15)  M   0.4 (r 0.02)
+  t=2.52 [wound ] CL  29.8%  TR   5.0 (r 0.17)  M   3.9 (r 0.13)
+  t=3.00 [tubes ] CL  24.3%  TR   3.4 (r 0.14)  M   0.1 (r 0.00)
+  t=3.00 [wound ] CL  43.0%  TR  10.2 (r 0.24)  M   4.5 (r 0.10)
+
+  [Q2] READ: r_M ~ r_TR (~0.15-0.25) => self-limiting is
+  drainage-equivalent (matched bulk viscosity does the same).
+  r_M >> r_TR => suppression is structurally distinct —
+  localized action throttles the trigger set in a way uniform
+  damping cannot. Judge against the energy-match gap above (V30.1 lesson).
+
+[Q3] DEFERRED — GPU runtime required. Rerun this cell on a
+  CUDA runtime when available; Q1/Q2 results are persisted.

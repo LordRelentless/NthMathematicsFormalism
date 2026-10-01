@@ -1,0 +1,209 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V32d GATES
+===============================================================================
+  [G8] Haar telescoping identity (batched): 0.00e+00
+  [G14] mode-2 Haar shares: 0.050 0.178 0.237 0.535
+  [G14b] white-noise Haar shares: 0.874 0.111 0.013 0.002
+  [G15] mask-octave path: identity 0.00e+00
+  GATES PASS (instrument set).
+
+###############################################################################
+V32d — THE CORRECTED DECISIVE PAIR (32^3, dt=0.004, T=3.0)
+###############################################################################
+  [CLASSICAL] dense-save run (classical): steps=750, save every 15
+    done: 51 snapshots, 331s
+  [TRANSMUTE] dense-save run (transmute): steps=750, save every 15
+    done: 51 snapshots, 299s
+
+  [G16] M0 consistency classical vs transmuted: 0.00e+00
+  GATES PASS (full set).
+
+===============================================================================
+[A0] THRESHOLD CONSISTENCY: M0 and THR identical across arms
+     (gated at 0.00e+00); any footprint divergence is a
+     field difference — the self-limiting drainage test.
+===============================================================================
+  [tubes ] M0 = 179.03   THR(0.5) = 89.51
+  [wound ] M0 = 44.42   THR(0.5) = 22.21
+
+===============================================================================
+[A1] FOOTPRINT TRAJECTORIES — both arms, multi-threshold
+===============================================================================
+  t=0.24 [tubes ] 0.5xM0: CL   1.2% TR   0.8%  |  0.25xM0: CL   2.8% TR   3.4%  |  1.0xM0: CL   0.3% TR   0.2%
+  t=0.24 [wound ] 0.5xM0: CL   4.4% TR   3.6%  |  0.25xM0: CL  15.3% TR  12.7%  |  1.0xM0: CL   0.3% TR   0.5%
+  t=0.48 [tubes ] 0.5xM0: CL   2.0% TR   1.0%  |  0.25xM0: CL   4.7% TR   4.0%  |  1.0xM0: CL   0.9% TR   0.2%
+  t=0.48 [wound ] 0.5xM0: CL   5.2% TR   2.3%  |  0.25xM0: CL  17.4% TR  11.3%  |  1.0xM0: CL   0.9% TR   0.1%
+  t=0.72 [tubes ] 0.5xM0: CL   3.4% TR   1.3%  |  0.25xM0: CL   6.9% TR   4.7%  |  1.0xM0: CL   1.5% TR   0.3%
+  t=0.72 [wound ] 0.5xM0: CL   6.6% TR   1.6%  |  0.25xM0: CL  19.5% TR  10.4%  |  1.0xM0: CL   1.4% TR   0.1%
+  t=1.02 [tubes ] 0.5xM0: CL   6.0% TR   1.8%  |  0.25xM0: CL  10.9% TR   6.0%  |  1.0xM0: CL   2.9% TR   0.4%
+  t=1.02 [wound ] 0.5xM0: CL   8.3% TR   1.3%  |  0.25xM0: CL  21.4% TR  10.0%  |  1.0xM0: CL   1.7% TR   0.0%
+  t=1.26 [tubes ] 0.5xM0: CL   8.2% TR   2.2%  |  0.25xM0: CL  14.4% TR   6.9%  |  1.0xM0: CL   4.2% TR   0.5%
+  t=1.26 [wound ] 0.5xM0: CL   9.3% TR   1.3%  |  0.25xM0: CL  22.9% TR   9.7%  |  1.0xM0: CL   2.1% TR   0.1%
+  t=1.50 [tubes ] 0.5xM0: CL  10.5% TR   2.3%  |  0.25xM0: CL  17.7% TR   7.7%  |  1.0xM0: CL   5.3% TR   0.5%
+  t=1.50 [wound ] 0.5xM0: CL  11.0% TR   1.5%  |  0.25xM0: CL  25.3% TR  10.3%  |  1.0xM0: CL   3.1% TR   0.1%
+  t=1.80 [tubes ] 0.5xM0: CL  13.7% TR   3.0%  |  0.25xM0: CL  22.6% TR   9.0%  |  1.0xM0: CL   7.0% TR   0.6%
+  t=1.80 [wound ] 0.5xM0: CL  14.6% TR   1.9%  |  0.25xM0: CL  29.5% TR  12.0%  |  1.0xM0: CL   5.2% TR   0.1%
+  t=2.04 [tubes ] 0.5xM0: CL  16.0% TR   3.0%  |  0.25xM0: CL  26.2% TR   9.6%  |  1.0xM0: CL   8.5% TR   0.6%
+  t=2.04 [wound ] 0.5xM0: CL  18.9% TR   2.6%  |  0.25xM0: CL  34.2% TR  13.8%  |  1.0xM0: CL   8.0% TR   0.2%
+  t=2.28 [tubes ] 0.5xM0: CL  18.1% TR   3.2%  |  0.25xM0: CL  29.5% TR  10.2%  |  1.0xM0: CL   9.6% TR   0.6%
+  t=2.28 [wound ] 0.5xM0: CL  23.8% TR   3.5%  |  0.25xM0: CL  39.9% TR  16.4%  |  1.0xM0: CL  11.3% TR   0.4%
+  t=2.52 [tubes ] 0.5xM0: CL  20.4% TR   3.2%  |  0.25xM0: CL  33.1% TR  11.2%  |  1.0xM0: CL  10.7% TR   0.5%
+  t=2.52 [wound ] 0.5xM0: CL  29.8% TR   5.1%  |  0.25xM0: CL  46.3% TR  20.0%  |  1.0xM0: CL  15.7% TR   0.7%
+  t=2.76 [tubes ] 0.5xM0: CL  22.9% TR   3.4%  |  0.25xM0: CL  36.5% TR  11.9%  |  1.0xM0: CL  11.9% TR   0.6%
+  t=2.76 [wound ] 0.5xM0: CL  36.4% TR   7.4%  |  0.25xM0: CL  52.3% TR  24.7%  |  1.0xM0: CL  21.3% TR   1.3%
+  t=3.00 [tubes ] 0.5xM0: CL  24.3% TR   3.4%  |  0.25xM0: CL  39.3% TR  12.4%  |  1.0xM0: CL  12.6% TR   0.5%
+  t=3.00 [wound ] 0.5xM0: CL  43.0% TR  10.3%  |  0.25xM0: CL  58.7% TR  29.8%  |  1.0xM0: CL  27.3% TR   2.2%
+
+===============================================================================
+[A2] SELF-LIMITING DRAINAGE TEST — footprint at 0.5xM0,
+     classical vs transmuted, matched t
+===============================================================================
+  t=0.24 [tubes ] CL   1.2%  TR   0.8%  TR/CL 0.72  SUPPRESSED
+  t=0.24 [wound ] CL   4.4%  TR   3.6%  TR/CL 0.81  COMPARABLE
+  t=0.48 [tubes ] CL   2.0%  TR   1.0%  TR/CL 0.52  SUPPRESSED
+  t=0.48 [wound ] CL   5.2%  TR   2.3%  TR/CL 0.44  SUPPRESSED
+  t=0.72 [tubes ] CL   3.4%  TR   1.3%  TR/CL 0.39  SUPPRESSED
+  t=0.72 [wound ] CL   6.6%  TR   1.6%  TR/CL 0.25  SUPPRESSED
+  t=1.02 [tubes ] CL   6.0%  TR   1.8%  TR/CL 0.30  SUPPRESSED
+  t=1.02 [wound ] CL   8.3%  TR   1.3%  TR/CL 0.16  SUPPRESSED
+  t=1.26 [tubes ] CL   8.2%  TR   2.2%  TR/CL 0.26  SUPPRESSED
+  t=1.26 [wound ] CL   9.3%  TR   1.3%  TR/CL 0.13  SUPPRESSED
+  t=1.50 [tubes ] CL  10.5%  TR   2.3%  TR/CL 0.22  SUPPRESSED
+  t=1.50 [wound ] CL  11.0%  TR   1.5%  TR/CL 0.14  SUPPRESSED
+  t=1.80 [tubes ] CL  13.7%  TR   3.0%  TR/CL 0.22  SUPPRESSED
+  t=1.80 [wound ] CL  14.6%  TR   1.9%  TR/CL 0.13  SUPPRESSED
+  t=2.04 [tubes ] CL  16.0%  TR   3.0%  TR/CL 0.18  SUPPRESSED
+  t=2.04 [wound ] CL  18.9%  TR   2.6%  TR/CL 0.14  SUPPRESSED
+  t=2.28 [tubes ] CL  18.1%  TR   3.2%  TR/CL 0.18  SUPPRESSED
+  t=2.28 [wound ] CL  23.8%  TR   3.5%  TR/CL 0.15  SUPPRESSED
+  t=2.52 [tubes ] CL  20.4%  TR   3.2%  TR/CL 0.16  SUPPRESSED
+  t=2.52 [wound ] CL  29.8%  TR   5.1%  TR/CL 0.17  SUPPRESSED
+  t=2.76 [tubes ] CL  22.9%  TR   3.4%  TR/CL 0.15  SUPPRESSED
+  t=2.76 [wound ] CL  36.4%  TR   7.4%  TR/CL 0.20  SUPPRESSED
+  t=3.00 [tubes ] CL  24.3%  TR   3.4%  TR/CL 0.14  SUPPRESSED
+  t=3.00 [wound ] CL  43.0%  TR  10.3%  TR/CL 0.24  SUPPRESSED
+
+===============================================================================
+[A3] TENSION DISTRIBUTIONS (mean, median — both arms)
+===============================================================================
+  t=0.48 [CL tubes ] tension mean   12.25  median    3.08
+  t=0.48 [CL wound ] tension mean    6.16  median    2.67
+  t=0.48 [TR tubes ] tension mean    8.90  median    2.72
+  t=0.48 [TR wound ] tension mean    4.85  median    2.54
+  t=1.02 [CL tubes ] tension mean   27.31  median    3.65
+  t=1.02 [CL wound ] tension mean    7.42  median    2.91
+  t=1.02 [TR tubes ] tension mean   11.88  median    3.15
+  t=1.02 [TR wound ] tension mean    4.77  median    3.19
+  t=1.50 [CL tubes ] tension mean   44.89  median    5.92
+  t=1.50 [CL wound ] tension mean    9.08  median    3.45
+  t=1.50 [TR tubes ] tension mean   14.82  median    5.19
+  t=1.50 [TR wound ] tension mean    5.03  median    3.64
+  t=2.04 [CL tubes ] tension mean   64.37  median   12.37
+  t=2.04 [CL wound ] tension mean   14.64  median    5.10
+  t=2.04 [TR tubes ] tension mean   18.02  median    8.25
+  t=2.04 [TR wound ] tension mean    5.86  median    4.29
+  t=2.52 [CL tubes ] tension mean   76.38  median   20.50
+  t=2.52 [CL wound ] tension mean   25.36  median    9.28
+  t=2.52 [TR tubes ] tension mean   20.35  median   10.89
+  t=2.52 [TR wound ] tension mean    7.38  median    5.19
+  t=3.00 [CL tubes ] tension mean   85.77  median   28.20
+  t=3.00 [CL wound ] tension mean   44.68  median   16.55
+  t=3.00 [TR tubes ] tension mean   22.30  median   12.99
+  t=3.00 [TR wound ] tension mean   10.11  median    6.71
+
+===============================================================================
+[A4] FOOTPRINT GEOMETRY — centroid winding (VALIDITY-GATED:
+     fitted only where footprint fraction < 25%)
+===============================================================================
+  t=0.24 [wound ] footprint 4.4% (VALID)  centroid winding -0.574 rad/z
+  t=0.48 [wound ] footprint 5.2% (VALID)  centroid winding -1.568 rad/z
+  t=0.72 [wound ] footprint 6.6% (VALID)  centroid winding -2.072 rad/z
+  t=1.02 [wound ] footprint 8.3% (VALID)  centroid winding +0.512 rad/z
+  t=1.26 [wound ] footprint 9.3% (VALID)  centroid winding +0.802 rad/z
+  t=1.50 [wound ] footprint 11.0% (VALID)  centroid winding +0.991 rad/z
+  t=1.80 [wound ] footprint 14.6% (VALID)  centroid winding +1.133 rad/z
+  t=2.04 [wound ] footprint 18.9% (VALID)  centroid winding +1.065 rad/z
+  t=2.28 [wound ] footprint 23.8% (VALID)  centroid winding +0.988 rad/z
+  t=2.52 [wound ] footprint 29.8% > 25% — centroid fit EXCLUDED
+  t=2.76 [wound ] footprint 36.4% > 25% — centroid fit EXCLUDED
+  t=3.00 [wound ] footprint 43.0% > 25% — centroid fit EXCLUDED
+
+===============================================================================
+[A5] VERDICT — read on the EARLY WINDOW (t <= 2.04)
+===============================================================================
+  Early-window footprint density ratio (wound/tubes, CL): 1.40
+  Early-window self-limiting ratio (TR/CL, all ICs): 0.25
+  Valid-window centroid winding (wound, median): +0.802 rad/z
+
+  BRANCHES:
+  -> SELF-LIMITING CONFIRMED (TR/CL = 0.25): the arm
+     suppresses its own routing footprint. The audit anomaly
+     is drainage, not thresholds. The classical late-time
+     footprint is a counterfactual — the armed system never
+     avalanches to 43%.
+  -> Early density contrast 1.40 below 1.8:
+     tension-generic in the valid window.
+
+===============================================================================
+[B1] OCTAVE SHARES — classical (u channel)
+===============================================================================
+  t=0.48 [tubes ] 0.070 0.156 0.335 0.335  coarse 0.104  id 0.0e+00
+  t=0.48 [wound ] 0.016 0.057 0.165 0.412  coarse 0.350  id 0.0e+00
+  t=1.02 [tubes ] 0.160 0.170 0.270 0.276  coarse 0.124  id 0.0e+00
+  t=1.02 [wound ] 0.021 0.063 0.173 0.398  coarse 0.345  id 0.0e+00
+  t=1.50 [tubes ] 0.262 0.165 0.204 0.247  coarse 0.121  id 0.0e+00
+  t=1.50 [wound ] 0.031 0.074 0.163 0.384  coarse 0.347  id 0.0e+00
+  t=2.04 [tubes ] 0.394 0.161 0.175 0.186  coarse 0.084  id 1.2e-16
+  t=2.04 [wound ] 0.054 0.092 0.167 0.349  coarse 0.337  id 0.0e+00
+  t=2.52 [tubes ] 0.509 0.154 0.131 0.145  coarse 0.061  id 0.0e+00
+  t=2.52 [wound ] 0.095 0.113 0.175 0.298  coarse 0.319  id 0.0e+00
+  t=3.00 [tubes ] 0.610 0.142 0.091 0.116  coarse 0.042  id 0.0e+00
+  t=3.00 [wound ] 0.164 0.124 0.155 0.238  coarse 0.319  id 0.0e+00
+
+===============================================================================
+[B4] OCTAVE SHARES — transmuted (u channel)
+===============================================================================
+  t=0.48 [tubes ] 0.097 0.156 0.316 0.325  coarse 0.106  id 0.0e+00
+  t=0.48 [wound ] 0.049 0.056 0.157 0.323  coarse 0.415  id 0.0e+00
+  t=1.02 [tubes ] 0.173 0.168 0.270 0.264  coarse 0.124  id 0.0e+00
+  t=1.02 [wound ] 0.052 0.060 0.160 0.321  coarse 0.407  id 0.0e+00
+  t=1.50 [tubes ] 0.258 0.165 0.209 0.238  coarse 0.130  id 0.0e+00
+  t=1.50 [wound ] 0.058 0.068 0.148 0.322  coarse 0.404  id 0.0e+00
+  t=2.04 [tubes ] 0.368 0.160 0.184 0.188  coarse 0.100  id 0.0e+00
+  t=2.04 [wound ] 0.074 0.081 0.146 0.306  coarse 0.393  id 0.0e+00
+  t=2.52 [tubes ] 0.470 0.155 0.144 0.147  coarse 0.084  id 0.0e+00
+  t=2.52 [wound ] 0.106 0.101 0.159 0.269  coarse 0.366  id 0.0e+00
+  t=3.00 [tubes ] 0.571 0.144 0.101 0.118  coarse 0.066  id 0.0e+00
+  t=3.00 [wound ] 0.169 0.116 0.147 0.217  coarse 0.351  id 0.0e+00
+
+  ARM EFFECT ON SCALE STRUCTURE (TR minus CL shares, final):
+  [tubes ] TR-CL: -0.039 +0.002 +0.011 +0.002
+  [wound ] TR-CL: +0.005 -0.008 -0.008 -0.021
+
+===============================================================================
+[B2] SHARE STATIONARITY (classical, first -> last octave ckpt)
+===============================================================================
+  [tubes ] max drift: 0.539 (EVOLVING)
+  [wound ] max drift: 0.174 (EVOLVING)
+
+===============================================================================
+[B3] FOOTPRINT-OCTAVE (which scales carry the routed mask)
+===============================================================================
+  [tubes ] 0.420 0.082 0.070 0.066
+  [wound ] 0.217 0.067 0.080 0.203
+
+===============================================================================
+[B5] OCTAVE VERDICT
+===============================================================================
+  -> EVOLVING shares: cascade in progress; longer T or finer
+     grid before the recurrence question.
+
+  IC SPECTRAL CONTRAST (re-verified):
+  tubes finest share: 0.610 (cascading)
+  wound octave shares: 0.164 0.124 0.155 0.238
+
+persisted in /content/v32c_results

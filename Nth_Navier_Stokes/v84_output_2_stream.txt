@@ -1,0 +1,3 @@
+saved v33c_queue.png
+
+[Q3] still unavailable: no CUDA device detected AND no persisted Q3 data. If you are on a GPU runtime but this printed CPU devices, do Runtime > Run all from a fresh kernel on the GPU runtime.

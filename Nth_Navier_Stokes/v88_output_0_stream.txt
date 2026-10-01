@@ -1,0 +1,151 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend platform: gpu — V35c ACTIVE
+
+===============================================================================
+V35c GATES
+===============================================================================
+  [G20] telescoping kmax=4 at 16^3: 0.00e+00
+  [G20] telescoping kmax=5 at 32^3: 0.00e+00
+  [G25] hand-computed linear trend (n=8): shares 0.762 0.190 0.048 (expect [0.762 0.190 0.048]) PASS
+  [G25b] linear trend (n=16): coarsest 0.753 (> 0.5) PASS; shares 0.753 0.188 0.047 0.012
+  [G25c] constant -> zero shares PASS
+  [G25d] noise (n=16): identity 0.00e+00 PASS; shares 0.083 0.193 0.482 0.242 (diagnostic — no pattern gate)
+  [G19] traced path at 16^3: PASS
+  [G19] traced path at 32^3: PASS
+  GATES PASS.
+
+###############################################################################
+V35c — LONG-T FRACTAL TEST (T=6.0)
+###############################################################################
+  [R128A] n=128^3 mode=transmute steps=6000 dt=0.001 blocks=20
+    t=1.50  (397s)  coarse: tubes=0.141 wound=0.377
+    t=3.00  (781s)  coarse: tubes=0.088 wound=0.328
+    t=4.50  (1165s)  coarse: tubes=0.050 wound=0.355
+    t=6.00  (1550s)  coarse: tubes=0.043 wound=0.418
+    done: 21 checkpoints, 1550s
+  [R64A] n=64^3 mode=transmute steps=3000 dt=0.002 blocks=20
+    t=1.50  (33s)  coarse: tubes=0.136 wound=0.396
+    t=3.00  (58s)  coarse: tubes=0.081 wound=0.335
+    t=4.50  (83s)  coarse: tubes=0.059 wound=0.325
+    t=6.00  (108s)  coarse: tubes=0.049 wound=0.321
+    done: 21 checkpoints, 108s
+  [R64C] n=64^3 mode=classical steps=3000 dt=0.002 blocks=20
+    t=1.50  (27s)  coarse: tubes=0.119 wound=0.345
+    t=3.00  (46s)  coarse: tubes=0.055 wound=0.316
+    t=4.50  (65s)  coarse: tubes=0.037 wound=0.325
+    t=6.00  (84s)  coarse: tubes=0.028 wound=0.321
+    done: 21 checkpoints, 84s
+  [R32A] n=32^3 mode=transmute steps=1500 dt=0.004 blocks=20
+    t=1.50  (10s)  coarse: tubes=0.132 wound=0.404
+    t=3.00  (12s)  coarse: tubes=0.064 wound=0.352
+    t=4.50  (14s)  coarse: tubes=0.030 wound=0.307
+    t=6.00  (17s)  coarse: tubes=0.022 wound=0.275
+    done: 21 checkpoints, 17s
+  [R32C] n=32^3 mode=classical steps=1500 dt=0.004 blocks=20
+    t=1.50  (8s)  coarse: tubes=0.121 wound=0.347
+    t=3.00  (11s)  coarse: tubes=0.042 wound=0.319
+    t=4.50  (13s)  coarse: tubes=0.014 wound=0.302
+    t=6.00  (14s)  coarse: tubes=0.008 wound=0.274
+    done: 21 checkpoints, 14s
+
+===============================================================================
+[F1] SHARE TRAJECTORIES (coarse share, both ICs, all runs)
+===============================================================================
+  [R128A tubes ] coarse: 0.095 -> 0.105 -> 0.116 -> 0.130 -> 0.142 -> 0.141 -> 0.128 -> 0.114 -> 0.102 -> 0.095 -> 0.088 -> 0.081 -> 0.072 -> 0.064 -> 0.056 -> 0.050 -> 0.046 -> 0.044 -> 0.042 -> 0.042 -> 0.043
+  [R128A wound ] coarse: 0.347 -> 0.388 -> 0.382 -> 0.376 -> 0.373 -> 0.377 -> 0.370 -> 0.349 -> 0.333 -> 0.324 -> 0.328 -> 0.330 -> 0.331 -> 0.336 -> 0.343 -> 0.355 -> 0.369 -> 0.381 -> 0.393 -> 0.404 -> 0.418
+  [R64A  tubes ] coarse: 0.095 -> 0.103 -> 0.114 -> 0.125 -> 0.137 -> 0.136 -> 0.122 -> 0.106 -> 0.095 -> 0.086 -> 0.081 -> 0.076 -> 0.071 -> 0.066 -> 0.062 -> 0.059 -> 0.057 -> 0.054 -> 0.052 -> 0.050 -> 0.049
+  [R64A  wound ] coarse: 0.348 -> 0.413 -> 0.405 -> 0.398 -> 0.394 -> 0.396 -> 0.391 -> 0.371 -> 0.350 -> 0.337 -> 0.335 -> 0.339 -> 0.338 -> 0.335 -> 0.330 -> 0.325 -> 0.322 -> 0.319 -> 0.318 -> 0.318 -> 0.321
+  [R64C  tubes ] coarse: 0.095 -> 0.097 -> 0.109 -> 0.119 -> 0.126 -> 0.119 -> 0.101 -> 0.081 -> 0.068 -> 0.060 -> 0.055 -> 0.051 -> 0.047 -> 0.043 -> 0.040 -> 0.037 -> 0.035 -> 0.033 -> 0.031 -> 0.029 -> 0.028
+  [R64C  wound ] coarse: 0.348 -> 0.348 -> 0.345 -> 0.341 -> 0.340 -> 0.345 -> 0.340 -> 0.322 -> 0.310 -> 0.307 -> 0.316 -> 0.327 -> 0.332 -> 0.332 -> 0.329 -> 0.325 -> 0.322 -> 0.319 -> 0.318 -> 0.318 -> 0.321
+  [R32A  tubes ] coarse: 0.096 -> 0.099 -> 0.111 -> 0.123 -> 0.132 -> 0.132 -> 0.113 -> 0.099 -> 0.087 -> 0.075 -> 0.064 -> 0.054 -> 0.045 -> 0.039 -> 0.034 -> 0.030 -> 0.027 -> 0.026 -> 0.024 -> 0.023 -> 0.022
+  [R32A  wound ] coarse: 0.349 -> 0.414 -> 0.414 -> 0.409 -> 0.405 -> 0.404 -> 0.402 -> 0.392 -> 0.375 -> 0.357 -> 0.352 -> 0.346 -> 0.337 -> 0.325 -> 0.314 -> 0.307 -> 0.300 -> 0.291 -> 0.285 -> 0.279 -> 0.275
+  [R32C  tubes ] coarse: 0.096 -> 0.097 -> 0.110 -> 0.121 -> 0.127 -> 0.121 -> 0.099 -> 0.081 -> 0.067 -> 0.053 -> 0.042 -> 0.032 -> 0.025 -> 0.021 -> 0.017 -> 0.014 -> 0.012 -> 0.011 -> 0.010 -> 0.009 -> 0.008
+  [R32C  wound ] coarse: 0.349 -> 0.351 -> 0.349 -> 0.346 -> 0.345 -> 0.347 -> 0.344 -> 0.335 -> 0.324 -> 0.314 -> 0.319 -> 0.322 -> 0.319 -> 0.313 -> 0.306 -> 0.302 -> 0.297 -> 0.289 -> 0.283 -> 0.279 -> 0.274
+
+===============================================================================
+[F2] STATIONARITY (CV over last 10 checkpoints)
+     CV < 0.05 = quasi-stationary; CV < 0.01 = stationary
+===============================================================================
+  [R128A tubes ] coarse CV = 0.2435 (EVOLVING)   mean = 0.054
+                finest CV = 0.0682 (EVOLVING)   mean = 0.407
+  [R128A wound ] coarse CV = 0.0832 (EVOLVING)   mean = 0.366
+                finest CV = 0.1930 (EVOLVING)   mean = 0.261
+  [R64A  tubes ] coarse CV = 0.1424 (EVOLVING)   mean = 0.060
+                finest CV = 0.0936 (EVOLVING)   mean = 0.653
+  [R64A  wound ] coarse CV = 0.0245 (QUASI-STAT)   mean = 0.327
+                finest CV = 0.2525 (EVOLVING)   mean = 0.373
+  [R64C  tubes ] coarse CV = 0.1967 (EVOLVING)   mean = 0.037
+                finest CV = 0.0777 (EVOLVING)   mean = 0.685
+  [R64C  wound ] coarse CV = 0.0162 (QUASI-STAT)   mean = 0.324
+                finest CV = 0.2519 (EVOLVING)   mean = 0.373
+  [R32A  tubes ] coarse CV = 0.3103 (EVOLVING)   mean = 0.032
+                finest CV = 0.0877 (EVOLVING)   mean = 0.748
+  [R32A  wound ] coarse CV = 0.0758 (EVOLVING)   mean = 0.306
+                finest CV = 0.2633 (EVOLVING)   mean = 0.428
+  [R32C  tubes ] coarse CV = 0.4804 (EVOLVING)   mean = 0.016
+                finest CV = 0.0742 (EVOLVING)   mean = 0.772
+  [R32C  wound ] coarse CV = 0.0535 (EVOLVING)   mean = 0.298
+                finest CV = 0.2635 (EVOLVING)   mean = 0.429
+
+===============================================================================
+[F3] SCALE-INVARIANCE (if quasi-stationary)
+     flat = max/min < 2 across all octaves incl. coarse
+===============================================================================
+  [R128A tubes ] not quasi-stationary (CV=0.244) — skipped
+  [R128A wound ] not quasi-stationary (CV=0.083) — skipped
+  [R64A  tubes ] not quasi-stationary (CV=0.142) — skipped
+  [R64A  wound ] shares: 0.373 0.077 0.047 0.076 0.100 0.327  max/min = 7.9 (POWER-LAW-ish)
+  [R64C  tubes ] not quasi-stationary (CV=0.197) — skipped
+  [R64C  wound ] shares: 0.373 0.077 0.048 0.076 0.102 0.324  max/min = 7.8 (POWER-LAW-ish)
+
+===============================================================================
+[F4] TEMPORAL HAAR (last 16 ckpts, hand-derived formula)
+     level shares COARSEST->FINEST (sum to 1)
+     coarse-dominant = trend; local bump = periodicity;
+     pattern unlike trend = stationary-ish
+===============================================================================
+  [R128A tubes ] coarse  Haar: 0.729 0.189 0.067 0.015  (id 0.0e+00)
+  [R128A tubes ] finest  Haar: 0.644 0.272 0.067 0.017  (id 0.0e+00)
+  [R128A wound ] coarse  Haar: 0.314 0.487 0.164 0.034  (id 0.0e+00)
+  [R128A wound ] finest  Haar: 0.827 0.105 0.055 0.013  (id 0.0e+00)
+  [R64A  tubes ] coarse  Haar: 0.617 0.270 0.093 0.019  (id 0.0e+00)
+  [R64A  tubes ] finest  Haar: 0.688 0.241 0.057 0.014  (id 0.0e+00)
+  [R64A  wound ] coarse  Haar: 0.495 0.354 0.124 0.027  (id 0.0e+00)
+  [R64A  wound ] finest  Haar: 0.842 0.106 0.042 0.010  (id 0.0e+00)
+  [R64C  tubes ] coarse  Haar: 0.551 0.298 0.125 0.027  (id 0.0e+00)
+  [R64C  tubes ] finest  Haar: 0.644 0.270 0.068 0.017  (id 0.0e+00)
+  [R64C  wound ] coarse  Haar: 0.011 0.176 0.711 0.102  (id 0.0e+00)
+  [R64C  wound ] finest  Haar: 0.838 0.110 0.042 0.010  (id 0.0e+00)
+
+===============================================================================
+[F5] ARM COMPARISON (armed vs classical at 64^3, T=6)
+===============================================================================
+  [tubes ] coarse: armed 0.060 (CV 0.1424)  classical 0.037 (CV 0.1967)
+          Haar: armed [0.617 0.270 0.093 0.019]  classical [0.551 0.298 0.125 0.027]
+  [wound ] coarse: armed 0.327 (CV 0.0245)  classical 0.324 (CV 0.0162)
+          Haar: armed [0.495 0.354 0.124 0.027]  classical [0.011 0.176 0.711 0.102]
+
+===============================================================================
+[V] VERDICT — the fractal premise defining test
+===============================================================================
+  Wound (128^3 armed, T=6):
+    coarse CV = 0.0832 (EVOLVING)
+    spectrum max/min = 11.6 (NOT FLAT)
+    shares: 0.261 0.053 0.032 0.060 0.107 0.122 0.366
+  Tubes (128^3 armed, T=6):
+    coarse CV = 0.2435 (EVOLVING)
+  Wound temporal Haar (coarse): 0.314 0.487 0.164 0.034
+  Tubes temporal Haar (coarse): 0.729 0.189 0.067 0.015
+
+  BRANCHES:
+  -> Wound still EVOLVING (CV=0.0832) at T=6.
+
+  DUAL READING: armed and classical show similar
+  stationarity (CV 0.024 vs 0.016).
+  Whatever temporal structure is found is CLASSICAL.
+
+  HONESTY: T=6, single run per config, 32-128^3. A convergent
+  non-flat spectrum is regular but NOT fractal. A flat
+  stationary spectrum IS the defining signature. Neither is a
+  failure — both are registry entries.

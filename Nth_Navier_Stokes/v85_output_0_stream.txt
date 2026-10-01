@@ -1,0 +1,115 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend platform: gpu  ->  CUDA GPU (Q3 ACTIVE)
+
+===============================================================================
+V33e GATES
+===============================================================================
+  [G8] Haar telescoping identity (batched): 0.00e+00
+  [G17] platform detection: gpu (GPU branch active)
+  [G19] arm (dx-scaled) traces + executes: PASS
+  [G19] arm (scaled) traces + executes: PASS
+  GATES PASS.
+
+###############################################################################
+[Q1] LONG-T CLASSICAL (T=3.0)
+###############################################################################
+  [Q1_LONGT] n=32^3 mode=classical steps=750 save_every=30
+    done: 26 snapshots, 19s
+
+[Q1a] FOOTPRINT TRAJECTORY (classical, 0.5xM0):
+  t=0.96  tubes   5.4%   wound   8.0%
+  t=2.04  tubes  16.0%   wound  18.9%
+  t=3.00  tubes  24.3%   wound  43.0%
+
+[Q1b] OCTAVE SHARES (coarse-share persistence vs cascade):
+  t=0.96 [tubes ] 0.148 0.169 0.279 0.281  coarse 0.123
+  t=0.96 [wound ] 0.020 0.061 0.172 0.401  coarse 0.345
+  t=2.04 [tubes ] 0.394 0.161 0.175 0.186  coarse 0.084
+  t=2.04 [wound ] 0.054 0.092 0.167 0.349  coarse 0.337
+  t=3.00 [tubes ] 0.610 0.142 0.091 0.116  coarse 0.042
+  t=3.00 [wound ] 0.164 0.124 0.155 0.238  coarse 0.319
+
+[Q1c] PITCH TRAJECTORY (wound, validity-gated < 25%):
+  t=0.96 footprint 8.0% (VALID) winding +0.438 rad/z
+  t=2.04 footprint 18.9% (VALID) winding +1.065 rad/z
+  t=3.00 footprint 43.0% — EXCLUDED
+
+###############################################################################
+[Q2] MATCHED-nu FOOTPRINT — is self-limiting drainage-equivalent?
+###############################################################################
+  [Q2_TRANSMUTE] n=32^3 mode=transmute steps=750 save_every=15
+    done: 51 snapshots, 18s
+  target Eu losses (TR): tubes=353.8 wound=645.5
+  classical loss / toll est: tubes: 86.7/81.9 wound: 36.1/34.0
+  Zu_bar: tubes=64.5 wound=28.8
+  calibrated nu_eff: tubes=0.00567 wound=0.02856
+  [Q2_MATCHED] n=32^3 mode=classical steps=750 save_every=15
+    done: 51 snapshots, 19s
+
+[Q2a] FOOTPRINT + ENERGY COMPARISON (0.5xM0):
+  [tubes ] Eu% at t=3:  CL  83.4  TR  32.3  M  40.8   (energy-match gap TR-M:  8.5 pts)
+  [wound ] Eu% at t=3:  CL  95.9  TR  26.7  M  78.4   (energy-match gap TR-M: 51.7 pts)
+  t=0.48 [tubes ] CL   2.0%  TR   1.0 (r 0.52)  M   1.0 (r 0.50)
+  t=0.48 [wound ] CL   5.2%  TR   2.2 (r 0.43)  M   4.3 (r 0.83)
+  t=1.02 [tubes ] CL   5.4%  TR   1.8 (r 0.33)  M   1.0 (r 0.18)
+  t=1.02 [wound ] CL   8.0%  TR   1.3 (r 0.16)  M   4.3 (r 0.54)
+  t=1.50 [tubes ] CL   9.9%  TR   2.4 (r 0.24)  M   0.9 (r 0.09)
+  t=1.50 [wound ] CL  10.5%  TR   1.4 (r 0.13)  M   3.3 (r 0.32)
+  t=2.04 [tubes ] CL  16.0%  TR   3.0 (r 0.19)  M   0.7 (r 0.04)
+  t=2.04 [wound ] CL  18.9%  TR   2.6 (r 0.14)  M   3.1 (r 0.16)
+  t=2.52 [tubes ] CL  20.4%  TR   3.1 (r 0.15)  M   0.4 (r 0.02)
+  t=2.52 [wound ] CL  29.8%  TR   5.0 (r 0.17)  M   3.9 (r 0.13)
+  t=3.00 [tubes ] CL  24.3%  TR   3.4 (r 0.14)  M   0.1 (r 0.00)
+  t=3.00 [wound ] CL  43.0%  TR  10.2 (r 0.24)  M   4.5 (r 0.10)
+
+  [Q2] READ: r_M ~ r_TR (~0.15-0.25) => self-limiting is
+  drainage-equivalent (matched bulk viscosity does the same).
+  r_M >> r_TR => suppression is structurally distinct —
+  localized action throttles the trigger set in a way uniform
+  damping cannot. Judge against the energy-match gap above.
+
+###############################################################################
+[Q3] GPU OCTAVE TRIAL — 64^3 with SCALE-CONSISTENT routing
+###############################################################################
+  [Q3_32] n=32^3 mode=transmute steps=750 save_every=15
+    done: 51 snapshots, 18s
+  [Q3_64] n=64^3 mode=transmute steps=750 save_every=15
+    done: 51 snapshots, 40s
+
+[Q3a] OCTAVE SHARES — 32^3 (scaled routing):
+  t=0.48 [tubes ] 0.094 0.154 0.317 0.330  coarse 0.105
+  t=0.48 [wound ] 0.048 0.056 0.158 0.323  coarse 0.415
+  t=1.02 [tubes ] 0.169 0.168 0.268 0.268  coarse 0.126
+  t=1.02 [wound ] 0.052 0.060 0.158 0.323  coarse 0.407
+  t=1.50 [tubes ] 0.252 0.164 0.212 0.241  coarse 0.132
+  t=1.50 [wound ] 0.059 0.068 0.148 0.322  coarse 0.404
+  t=2.04 [tubes ] 0.362 0.158 0.190 0.189  coarse 0.101
+  t=2.04 [wound ] 0.074 0.080 0.146 0.306  coarse 0.394
+  t=2.52 [tubes ] 0.466 0.154 0.148 0.150  coarse 0.082
+  t=2.52 [wound ] 0.106 0.100 0.158 0.269  coarse 0.367
+  t=3.00 [tubes ] 0.568 0.145 0.104 0.120  coarse 0.064
+  t=3.00 [wound ] 0.168 0.117 0.147 0.217  coarse 0.352
+
+[Q3b] OCTAVE SHARES — 64^3 (scaled routing):
+  t=0.48 [tubes ] 0.054 0.065 0.150 0.311  coarse 0.420
+  t=0.48 [wound ] 0.018 0.017 0.052 0.156  coarse 0.757
+  t=1.02 [tubes ] 0.108 0.076 0.145 0.272  coarse 0.400
+  t=1.02 [wound ] 0.018 0.020 0.058 0.159  coarse 0.745
+  t=1.50 [tubes ] 0.179 0.087 0.131 0.219  coarse 0.385
+  t=1.50 [wound ] 0.020 0.026 0.064 0.149  coarse 0.741
+  t=2.04 [tubes ] 0.275 0.096 0.112 0.190  coarse 0.328
+  t=2.04 [wound ] 0.028 0.037 0.080 0.156  coarse 0.699
+  t=2.52 [tubes ] 0.370 0.100 0.101 0.165  coarse 0.264
+  t=2.52 [wound ] 0.051 0.055 0.090 0.163  coarse 0.641
+  t=3.00 [tubes ] 0.453 0.102 0.082 0.136  coarse 0.227
+  t=3.00 [wound ] 0.106 0.074 0.098 0.135  coarse 0.587
+
+[Q3c] CROSS-RESOLUTION CONVERGENCE (final ckpt):
+  [tubes ] 64-32: -0.115 -0.042 -0.022 +0.016   L1 diff 0.194
+  [wound ] 64-32: -0.061 -0.043 -0.049 -0.082   L1 diff 0.235
+
+  [Q3] READ: L1 < 0.15 -> shares converging under
+  refinement (discrete-to-continuum direction, arm active).
+  L1 > 0.3 -> resolution-dependent structure persists;
+  between -> partial convergence; 64->128 ladder next.

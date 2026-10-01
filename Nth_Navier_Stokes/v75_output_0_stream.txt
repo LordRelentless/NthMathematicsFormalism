@@ -1,0 +1,4 @@
+[tubes] temporal-detail shares (finest->coarse): 0.267 0.159 0.027 0.021 0.019 0.006 0.006   coarse residual 0.004
+   telescoping identity: -4.54e+06 (must be ~0)
+[wound] temporal-detail shares (finest->coarse): 0.095 0.158 0.242 0.191 0.107 0.066 0.016   coarse residual 0.001
+   telescoping identity: -2.66e+07 (must be ~0)

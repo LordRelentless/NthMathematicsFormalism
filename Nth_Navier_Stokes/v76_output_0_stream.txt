@@ -1,0 +1,77 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V31-Lc GATES
+===============================================================================
+  [G11] trilinear exactness at nodes (incl. wrap): 0.00e+00
+  [G12] seam-free solid-body: radius err 7.50e-08   angular err 1.00e-05 rad (RK2-only; expect <1e-4)
+  GATES PASS.
+
+###############################################################################
+V31-Lc — THE LAGRANGIAN ARM (32^3, dt=0.004, T=3.0, dense saves every 15 steps)
+###############################################################################
+  [CLASSICAL] dense-save run: steps=750, save every 15 (50 snapshots)
+    t= 3.00  (  233s)
+    done: 51 snapshots, 233s
+  [TRANSMUTE] dense-save run: steps=750, save every 15 (50 snapshots)
+    t= 3.00  (  283s)
+    done: 51 snapshots, 283s
+  tracers [tubes CLASSICAL]: core 1500, far 500, 301 samples
+  tracers [tubes TRANSMUTE]: core 1500, far 500, 301 samples
+  tracers [wound CLASSICAL]: core 1500, far 500, 301 samples
+  tracers [wound TRANSMUTE]: core 1500, far 500, 301 samples
+
+===============================================================================
+[L1] LOCAL RATE: routed vs unrouted speed ratio T/C (the rate
+     layer; dilation reading pending the registry interpretation)
+===============================================================================
+  [tubes  t= 0.3] routed tracers    3%   speed ratio T/C: routed 0.662  unrouted 0.834
+  [tubes  t= 0.6] routed tracers    3%   speed ratio T/C: routed 0.701  unrouted 0.760
+  [tubes  t= 0.9] routed tracers    3%   speed ratio T/C: routed 0.638  unrouted 0.724
+  [tubes  t= 1.2] routed tracers    3%   speed ratio T/C: routed 0.833  unrouted 0.714
+  [tubes  t= 1.5] routed tracers    5%   speed ratio T/C: routed 0.591  unrouted 0.680
+  [tubes  t= 1.8] routed tracers    5%   speed ratio T/C: routed 0.705  unrouted 0.624
+  [tubes  t= 2.1] routed tracers    4%   speed ratio T/C: routed 0.630  unrouted 0.657
+  [tubes  t= 2.4] routed tracers    5%   speed ratio T/C: routed 0.673  unrouted 0.664
+  [tubes  t= 2.7] routed tracers    6%   speed ratio T/C: routed 0.705  unrouted 0.640
+  [tubes  t= 3.0] routed tracers    5%   speed ratio T/C: routed 0.565  unrouted 0.641
+  [wound  t= 0.0] routed tracers   17%   speed ratio T/C: routed 1.000  unrouted 1.000
+  [wound  t= 0.3] routed tracers   14%   speed ratio T/C: routed 0.549  unrouted 0.543
+  [wound  t= 0.6] routed tracers    7%   speed ratio T/C: routed 0.570  unrouted 0.533
+  [wound  t= 0.9] routed tracers    5%   speed ratio T/C: routed 0.616  unrouted 0.551
+  [wound  t= 1.2] routed tracers    4%   speed ratio T/C: routed 0.619  unrouted 0.590
+  [wound  t= 1.5] routed tracers    5%   speed ratio T/C: routed 0.612  unrouted 0.606
+  [wound  t= 1.8] routed tracers    6%   speed ratio T/C: routed 0.638  unrouted 0.592
+  [wound  t= 2.1] routed tracers    8%   speed ratio T/C: routed 0.583  unrouted 0.599
+  [wound  t= 2.4] routed tracers   10%   speed ratio T/C: routed 0.681  unrouted 0.610
+  [wound  t= 2.7] routed tracers   14%   speed ratio T/C: routed 0.599  unrouted 0.609
+  [wound  t= 3.0] routed tracers   19%   speed ratio T/C: routed 0.646  unrouted 0.590
+
+===============================================================================
+[L2] WINDING + AXIAL ADVANCE (reported separately; pitch only
+     where winding is large — [48] fix)
+===============================================================================
+  [tubes  CLASSICAL ] winding  +0.04 rev   axial adv   -0.03
+  [tubes  TRANSMUTE ] winding  -0.01 rev   axial adv   -0.01
+  [wound  CLASSICAL ] winding  +1.02 rev   axial adv   +0.00   pitch   +0.00/rev
+  [wound  TRANSMUTE ] winding  +0.62 rev   axial adv   +0.01   pitch   +0.01/rev
+  (wound compactification pitch scale ~ W_GOLD*tau_orbit ~ 7.8 per full axial period)
+
+===============================================================================
+[L3] LAG EPISODES (angular advance < 0.5x median — apparent-
+     retrograde analog: rate modulation, not reversal)
+===============================================================================
+  [tubes  CLASSICAL ] lag-fraction  49.8%  episodes/tracer  9.34
+  [tubes  TRANSMUTE ] lag-fraction  50.1%  episodes/tracer 11.64
+  [wound  CLASSICAL ] lag-fraction  26.5%  episodes/tracer 14.75
+  [wound  TRANSMUTE ] lag-fraction  36.5%  episodes/tracer 23.60
+
+===============================================================================
+[L4] FAR-FIELD CONTROL (unrouted distant tracers: T/C ~ 1)
+===============================================================================
+  [tubes ] far-field speed ratio T/C = 0.7969 (CHECK)
+  [wound ] far-field speed ratio T/C = 0.7282 (CHECK)
+
+tracer trajectories persisted in /content/v31l_results

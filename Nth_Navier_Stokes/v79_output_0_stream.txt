@@ -1,0 +1,86 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V31-Mc GATES
+===============================================================================
+  [G11] trilinear exactness at nodes (incl. wrap): 0.00e+00
+  [G13] engine at zero routing: tick 0.00e+00, smooth 0.00e+00 (both vs 20), deviations 0 (expect 0)
+  [G13b] full-routing: deviations 40 == routed steps 40; lt in [1.0, 10.0] (0..40 bounds): PASS
+  [G13c] partition at saturation sums to 0.999999 (expect 1)
+  GATES PASS.
+
+###############################################################################
+V31-Mc — theta_n ON (t,ti): THE TIME-AXIS ACTION (32^3, dt=0.004, T=3.0)
+###############################################################################
+  [CLASSICAL] dense-save run: steps=750, save every 15 (50 snapshots)
+    t= 3.00  (  330s)
+    done: 51 snapshots, 330s
+  [SPATIAL] dense-save run: steps=750, save every 15 (50 snapshots)
+    t= 3.00  (  289s)
+    done: 51 snapshots, 289s
+  tracers [tubes CLASSICAL]: core 1500, 301 samples
+  tracers [tubes SPATIAL]: core 1500, 301 samples
+  tracers [wound CLASSICAL]: core 1500, 301 samples
+  tracers [wound SPATIAL]: core 1500, 301 samples
+
+===============================================================================
+[M1] TICK CENSUS — TRANSMUTE-T vs the SPATIAL smooth baseline
+===============================================================================
+
+  [tubes]
+    TRANSMUTE-T local time: median   134.5  IQR  117.1- 156.0
+      stalls/tracer   5.79   retros/tracer   3.00   accels/tracer   3.05
+      TOTAL deviations/tracer  11.85
+    SPATIAL smooth local time: median   138.9
+    CLASSICAL smooth local time: median   207.4
+
+  [wound]
+    TRANSMUTE-T local time: median   128.8  IQR  111.2- 147.0
+      stalls/tracer  12.58   retros/tracer   7.16   accels/tracer   7.12
+      TOTAL deviations/tracer  26.86
+    SPATIAL smooth local time: median   140.0
+    CLASSICAL smooth local time: median   235.7
+
+===============================================================================
+[M2] THE DIFFERENTIAL (T minus SPATIAL = the deviation
+     contribution alone)
+===============================================================================
+  [tubes ] net: median   -1.66  IQR   -5.35-  -0.00  ( -1.2% of smooth)
+  [wound ] net: median   -8.28  IQR  -14.32-  -3.94  ( -5.9% of smooth)
+
+===============================================================================
+[M3] RATE LADDER (T / SPATIAL / CLASSICAL, of 300)
+===============================================================================
+  [tubes ] T 0.448   SPATIAL 0.463   CLASSICAL 0.691   T/SPATIAL 0.968
+  [wound ] T 0.429   SPATIAL 0.467   CLASSICAL 0.786   T/SPATIAL 0.920
+
+===============================================================================
+[M4] TICK vs ROUTING (clustering)
+===============================================================================
+  [tubes ] corr(stalls, exposure) = +0.98   mean exposure 12.2/300 steps
+  [wound ] corr(stalls, exposure) = +0.95   mean exposure 29.6/300 steps
+
+===============================================================================
+[M5] INTENSITY per routed step (the discriminator)
+===============================================================================
+  [tubes ] devs    17768  routed-steps    18312  intensity 0.970
+  [wound ] devs    40295  routed-steps    44372  intensity 0.908
+  intensity ratio wound/tubes = 0.94   raw dev ratio = 2.27
+
+===============================================================================
+[V] VERDICT
+===============================================================================
+  devs/tracer: wound 26.9  tubes 11.8
+  -> TICK FIELD ESTABLISHED, wound >> tubes.
+     Intensity ~ footprint-following: contrast tracks
+     routing geometry. Tick field real; structure is the
+     footprint; dual reading stands.
+
+  HONEST FRAME: implements + characterizes the specified rule;
+  cannot self-validate it. Open validators: gamma=1 control,
+  observational tick anomalies. Positions in TRANSMUTE-T are
+  bit-identical to SPATIAL — V31-L morphology carries.
+
+census persisted in /content/v31m_results

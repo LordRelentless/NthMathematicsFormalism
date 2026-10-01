@@ -1,0 +1,36 @@
+[D1] LOCAL CLOCK RATE d(ti)/dt — per routed point, per checkpoint
+     (rotation angle in deg per global step; THETA_N = 78.27)
+  t=0.6 [tubes ] n=  356  d(ti)/dt: mean  86.6 deg  spread   9.0  (range 6-90)
+  t=0.6 [wound ] n=  570  d(ti)/dt: mean  79.0 deg  spread  14.6  (range 1-90)
+  t=1.2 [tubes ] n=  682  d(ti)/dt: mean  87.2 deg  spread   8.0  (range 10-90)
+  t=1.2 [wound ] n=  425  d(ti)/dt: mean  77.0 deg  spread  15.5  (range 4-89)
+  t=1.8 [tubes ] n=  968  d(ti)/dt: mean  87.5 deg  spread   6.9  (range 7-90)
+  t=1.8 [wound ] n=  638  d(ti)/dt: mean  78.4 deg  spread  14.7  (range 0-89)
+  t=2.4 [tubes ] n= 1025  d(ti)/dt: mean  87.2 deg  spread   7.6  (range 5-90)
+  t=2.4 [wound ] n= 1385  d(ti)/dt: mean  80.5 deg  spread  13.7  (range 2-90)
+  t=3.0 [tubes ] n= 1134  d(ti)/dt: mean  87.2 deg  spread   5.8  (range 14-90)
+  t=3.0 [wound ] n= 3364  d(ti)/dt: mean  82.2 deg  spread  12.4  (range 1-90)
+  two-time: broad per-point spread = per-point clocks;
+  one-clock: narrow spread (single field rate).
+
+[D2] ti-ENTRY TEST — new routed points at BELOW-threshold
+     local tension (consecutive checkpoints)
+  t=0.6->1.2 [tubes ] new routed  621  at below-threshold tension:   0.0%
+  t=0.6->1.2 [wound ] new routed  404  at below-threshold tension:   0.0%
+  t=1.2->1.8 [tubes ] new routed  830  at below-threshold tension:   0.0%
+  t=1.2->1.8 [wound ] new routed  616  at below-threshold tension:   0.0%
+  t=1.8->2.4 [tubes ] new routed  870  at below-threshold tension:   0.0%
+  t=1.8->2.4 [wound ] new routed 1300  at below-threshold tension:   0.0%
+  t=2.4->3.0 [tubes ] new routed 1020  at below-threshold tension:   0.0%
+  t=2.4->3.0 [wound ] new routed 3013  at below-threshold tension:   0.0%
+  ti-entry predicts a substantial below-threshold share;
+  concentration-only entry predicts ~0%.
+
+[D3] RESERVOIR PERIODICITY — Haar time-octaves of arm-in rate
+  [tubes ] arm-in rate levels (coarse->fine):  84.57 100.05 107.58 109.16 109.74 110.49 110.84 111.12
+  [wound ] arm-in rate levels (coarse->fine): 204.65 259.58 333.10 426.82 485.37 514.98 533.27 537.28
+  periodic t-structure => dominant fine levels; monotone decay => coarse-dominated.
+
+[D4] RESIDUAL VARIANCE — frac beyond classical tension
+  [tubes ] corr(frac, Mk_u) = +0.04  unexplained variance 100%
+  [wound ] corr(frac, Mk_u) = +0.63  unexplained variance 61%

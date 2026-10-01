@@ -1,0 +1,192 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V30.1 GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  [G10] contraction identity (rotation-invariant): 2.23e-16
+  [G10b] transmutation ledger identity: 8.86e-17
+  [G10c] m-preservation: 1.18e-16
+  GATES PASS.
+
+###############################################################################
+V30.1 — THE TRANSMUTING TRANSFER (32^3, dt=0.004, T=3.0, gamma=0.5, nu=0.0001)
+###############################################################################
+  [CLASSICAL   ] mode=classical steps=750  T=3.0
+    t= 0.60  (   102s)  tubes:Eu%=96,Ep%=0  wound:Eu%=99,Ep%=0
+    t= 1.20  (   186s)  tubes:Eu%=93,Ep%=0  wound:Eu%=99,Ep%=0
+    t= 1.80  (   240s)  tubes:Eu%=90,Ep%=0  wound:Eu%=98,Ep%=0
+    t= 2.40  (   288s)  tubes:Eu%=87,Ep%=0  wound:Eu%=97,Ep%=0
+    t= 3.00  (   334s)  tubes:Eu%=83,Ep%=0  wound:Eu%=96,Ep%=0
+    ledger [tubes]: u 7.07e-16  p 0.00e+00
+    ledger [wound]: u 4.19e-16  p 0.00e+00
+  [TRANSMUTE   ] mode=gain      steps=750  T=3.0
+    t= 0.60  (    56s)  tubes:Eu%=55,Ep%=6929208553305391757883201265074176  wound:Eu%=37,Ep%=17911803346803014478795568805052416
+    t= 1.20  (   103s)  tubes:Eu%=46,Ep%=8657019262203157865387894838919168  wound:Eu%=34,Ep%=18523355912530586197505084280012800
+    t= 1.80  (   151s)  tubes:Eu%=40,Ep%=9475819800244416473208946975309824  wound:Eu%=32,Ep%=18915712153613357986348002390835200
+    t= 2.40  (   197s)  tubes:Eu%=36,Ep%=9597014076466222125077710573142016  wound:Eu%=30,Ep%=19845434871477275896004807439155200
+    t= 3.00  (   243s)  tubes:Eu%=32,Ep%=9554810120838981376098358014246912  wound:Eu%=27,Ep%=20713905130761792749300471990059008
+    ledger [tubes]: u 3.26e-16  p 9.79e-16
+    ledger [wound]: u 1.16e-15  p 3.23e-17
+  [LOCK theta_n] mode=lock      steps=750  T=3.0
+    t= 0.60  (    56s)  tubes:Eu%=56,Ep%=6919696861815013493259589723881472  wound:Eu%=36,Ep%=18126819870666682337486521480773632
+    t= 1.20  (   102s)  tubes:Eu%=45,Ep%=8770993217552965667946236204810240  wound:Eu%=34,Ep%=18701393974986521520290572657491968
+    t= 1.80  (   148s)  tubes:Eu%=39,Ep%=9458112286578908963415701015494656  wound:Eu%=32,Ep%=19073114256674188767493005112246272
+    t= 2.40  (   195s)  tubes:Eu%=35,Ep%=9622127128048306349223168410910720  wound:Eu%=30,Ep%=19934878822083431447393582819835904
+    t= 3.00  (   242s)  tubes:Eu%=32,Ep%=9575769595193857813540361214099456  wound:Eu%=27,Ep%=20758897858127921685044437589164032
+    ledger [tubes]: u 2.28e-15  p 2.45e-16
+    ledger [wound]: u 7.74e-16  p 7.74e-16
+  [RHO gate    ] mode=rho       steps=750  T=3.0
+    t= 0.60  (    58s)  tubes:Eu%=55,Ep%=6866969754697383815884247897473024  wound:Eu%=37,Ep%=17842861912812483210877425445502976
+    t= 1.20  (   103s)  tubes:Eu%=45,Ep%=8605744014323118671185459938328576  wound:Eu%=34,Ep%=18362154584677303184012521387327488
+    t= 1.80  (   150s)  tubes:Eu%=39,Ep%=9457295756364662333996033881669632  wound:Eu%=33,Ep%=18710784848376150912519951379070976
+    t= 2.40  (   197s)  tubes:Eu%=35,Ep%=9611435985405678067491227910012928  wound:Eu%=30,Ep%=19664436870248811590864959231229952
+    t= 3.00  (   243s)  tubes:Eu%=32,Ep%=9563044523507968476220865386643456  wound:Eu%=27,Ep%=20586546142519963118933444216750080
+    ledger [tubes]: u 2.39e-15  p 4.08e-16
+    ledger [wound]: u 7.74e-16  p 8.07e-16
+
+--- [T4] matched-dissipation calibration ---
+  target Eu losses: tubes=-353.7 wound=-645.5
+  classical heun/toll: tubes:h=-12.1,t=-74.6 wound:h=-3.1,t=-33.0
+  calibrated nu_eff: tubes=0.00232 wound=0.02000
+  [MATCHED-nu  ] mode=classical steps=750  T=3.0
+    t= 0.60  (    55s)  tubes:Eu%=94,Ep%=0  wound:Eu%=96,Ep%=0
+    t= 1.20  (   102s)  tubes:Eu%=88,Ep%=0  wound:Eu%=91,Ep%=0
+    t= 1.80  (   148s)  tubes:Eu%=79,Ep%=0  wound:Eu%=87,Ep%=0
+    t= 2.40  (   195s)  tubes:Eu%=69,Ep%=0  wound:Eu%=82,Ep%=0
+    t= 3.00  (   242s)  tubes:Eu%=58,Ep%=0  wound:Eu%=77,Ep%=0
+    ledger [tubes]: u 2.17e-16  p 0.00e+00
+    ledger [wound]: u 5.49e-16  p 0.00e+00
+
+===============================================================================
+[T0] ATTRIBUTION CHECK: m-identity across arms at T (the theorem:
+     m-preserving arms + per-channel closure (sums to the bundle
+     solve by linearity) => identical classical m-paths)
+===============================================================================
+  [TRANSMUTE  tubes ] max|m-m_classical|/max|m| = 5.70e-12
+  [TRANSMUTE  wound ] max|m-m_classical|/max|m| = 5.70e-12
+  [LOCK       tubes ] max|m-m_classical|/max|m| = 3.56e-12
+  [LOCK       wound ] max|m-m_classical|/max|m| = 3.56e-12
+  [RHO        tubes ] max|m-m_classical|/max|m| = 4.49e-12
+  [RHO        wound ] max|m-m_classical|/max|m| = 4.49e-12
+  [MATCHED    tubes ] max|m-m_classical|/max|m| = 9.73e-01
+  [MATCHED    wound ] max|m-m_classical|/max|m| = 9.73e-01
+
+===============================================================================
+[T1] BOUNDEDNESS AND CONCENTRATION PER ARM
+===============================================================================
+  [CLASSICAL  tubes ] max|u|  0.97x  max|w|  1.67x  Eu%  83.4  Ep%   0.0
+  [CLASSICAL  wound ] max|u|  1.20x  max|w|  2.78x  Eu%  95.9  Ep%   0.0
+  [TRANSMUTE  tubes ] max|u|  0.50x  max|w|  0.80x  Eu%  32.3  Ep% 9554810120838981376098358014246912.0
+  [TRANSMUTE  wound ] max|u|  0.60x  max|w|  1.21x  Eu%  26.7  Ep% 20713905130761790443457462776365056.0
+  [LOCK       tubes ] max|u|  0.48x  max|w|  0.79x  Eu%  32.2  Ep% 9575769595193860119383370427793408.0
+  [LOCK       wound ] max|u|  0.60x  max|w|  1.22x  Eu%  26.7  Ep% 20758897858127921685044437589164032.0
+  [RHO        tubes ] max|u|  0.51x  max|w|  0.85x  Eu%  32.0  Ep% 9563044523507968476220865386643456.0
+  [RHO        wound ] max|u|  0.60x  max|w|  1.23x  Eu%  26.8  Ep% 20586546142519963118933444216750080.0
+  [MATCHED    tubes ] max|u|  0.79x  max|w|  1.19x  Eu%  57.9  Ep%   0.0
+  [MATCHED    wound ] max|u|  0.87x  max|w|  1.26x  Eu%  76.9  Ep%   0.0
+
+===============================================================================
+[T2] SELECTIVITY (deviation of TRANSMUTE from CLASSICAL by region;
+     localized-source metric = high/low rms ratio — the pressure
+     solve propagates changes globally, so pointwise solver-
+     precision is NOT expected even for a perfectly selective
+     mechanism; the RATIO is the readout)
+===============================================================================
+  [tubes ] low-tension rms dev 3.341e-01 (rel)  high-tension 7.571e-01  ratio   2.3x  (low frac 77%, high 14%)
+  [wound ] low-tension rms dev 2.529e-01 (rel)  high-tension 8.331e-01  ratio   3.3x  (low frac 70%, high 15%)
+  ratio > 5: localized-source signature (selective);
+  ratio ~ 1: global modification (regularization).
+
+===============================================================================
+[T3] THE TRANSMUTATION LEDGER (cumulative at T; exact split:
+     heun = visc+residue, arm = the §3 transfer, toll = closure)
+===============================================================================
+  [TRANSMUTE  tubes ] u: heun     -5.3  arm   -282.6  toll    -65.8   |   p: arm    146.6  toll    -47.5
+      u arm-loss    282.6  p arm-gain    146.6  relocated share   52%  (rest contracted away — the §3 magnitude decay)
+  [TRANSMUTE  wound ] u: heun     -1.8  arm   -572.4  toll    -71.3   |   p: arm    279.2  toll    -70.3
+      u arm-loss    572.4  p arm-gain    279.2  relocated share   49%  (rest contracted away — the §3 magnitude decay)
+  [LOCK       tubes ] u: heun     -5.3  arm   -285.2  toll    -64.1   |   p: arm    144.8  toll    -45.5
+      u arm-loss    285.2  p arm-gain    144.8  relocated share   51%  (rest contracted away — the §3 magnitude decay)
+  [LOCK       wound ] u: heun     -1.8  arm   -574.0  toll    -70.2   |   p: arm    278.6  toll    -69.2
+      u arm-loss    574.0  p arm-gain    278.6  relocated share   49%  (rest contracted away — the §3 magnitude decay)
+  [RHO        tubes ] u: heun     -5.2  arm   -284.0  toll    -66.1   |   p: arm    146.6  toll    -47.5
+      u arm-loss    284.0  p arm-gain    146.6  relocated share   52%  (rest contracted away — the §3 magnitude decay)
+  [RHO        wound ] u: heun     -1.8  arm   -570.4  toll    -72.3   |   p: arm    278.7  toll    -71.0
+      u arm-loss    570.4  p arm-gain    278.7  relocated share   49%  (rest contracted away — the §3 magnitude decay)
+
+===============================================================================
+[T4] MATCHED-ENERGY COMPARISON (the decisive control)
+===============================================================================
+  [tubes ] Eu%: T  32.3 vs M  57.9 (match gap 25.6 pts)   max|w|: T    24.1  M    33.9  C    47.3   T/M 0.71
+  [wound ] Eu%: T  26.7 vs M  76.9 (match gap 50.1 pts)   max|w|: T    17.6  M    16.0  C    35.3   T/M 1.10
+  VERDICT RULE: T/M < 0.8 counts as suppression beyond equal-
+  energy drainage ONLY if the energy match gap is < 15 pts
+  (undershoot biases T/M downward — toward the affirmative — so
+  the gate is required). ~1: drainage-equivalent (regularization).
+
+===============================================================================
+[T5] theta_n-LOCK: eps(x) = eps_n identically at routed points by
+     construction (corridor 100%); the readout is the routed
+     fraction trajectory and the arm-effect comparison vs the
+     gain-angle (~85 deg) arm
+===============================================================================
+  [TRANSMUTE  tubes ] routed   0.0% ->   3.5%   cum arm dEu    -282.6
+  [TRANSMUTE  wound ] routed   2.7% ->  10.2%   cum arm dEu    -572.4
+  [LOCK       tubes ] routed   0.0% ->   3.4%   cum arm dEu    -285.2
+  [LOCK       wound ] routed   2.7% ->  10.1%   cum arm dEu    -574.0
+
+===============================================================================
+[T6] RHO GATE (Gaussian resonance routing): routed fraction and
+     phase-channel survival vs the threshold gate
+===============================================================================
+  [TRANSMUTE  tubes ] routed(final)   3.5%   Ep(final) 9554810120838981376098358014246912.0% of Ep(0)
+  [TRANSMUTE  wound ] routed(final)  10.2%   Ep(final) 20713905130761790443457462776365056.0% of Ep(0)
+  [RHO        tubes ] routed(final)   3.0%   Ep(final) 9563044523507968476220865386643456.0% of Ep(0)
+  [RHO        wound ] routed(final)   9.4%   Ep(final) 20586546142519963118933444216750080.0% of Ep(0)
+
+===============================================================================
+[T7] gamma(B) CONTRACTION SCORE (delta-space summary over the
+     routed bundle — magnitudes; phase-homogeneous within the
+     routed set, so delta reduces to |k_i - k_j|). Sorted-pairs
+     identity: sum_{i<j}|k_i-k_j| = sum_m (2m-k-1) s_m.
+===============================================================================
+  [TRANSMUTE  t=0.6 tubes ] gamma(B) =    65.16  (n=356)
+  [TRANSMUTE  t=0.6 wound ] gamma(B) =     7.99  (n=570)
+  [TRANSMUTE  t=1.8 tubes ] gamma(B) =    66.18  (n=968)
+  [TRANSMUTE  t=1.8 wound ] gamma(B) =     8.03  (n=638)
+  [TRANSMUTE  t=3.0 tubes ] gamma(B) =    48.43  (n=1134)
+  [TRANSMUTE  t=3.0 wound ] gamma(B) =    17.84  (n=3364)
+  [TRANSMUTE  t=3.0 tubes ] gamma(B) =    48.43  (n=1134)
+  [TRANSMUTE  t=3.0 wound ] gamma(B) =    17.84  (n=3364)
+  [LOCK       t=0.6 tubes ] gamma(B) =    64.77  (n=368)
+  [LOCK       t=0.6 wound ] gamma(B) =     7.22  (n=598)
+  [LOCK       t=1.8 tubes ] gamma(B) =    64.11  (n=997)
+  [LOCK       t=1.8 wound ] gamma(B) =     8.47  (n=600)
+  [LOCK       t=3.0 tubes ] gamma(B) =    48.52  (n=1114)
+  [LOCK       t=3.0 wound ] gamma(B) =    17.86  (n=3325)
+  [LOCK       t=3.0 tubes ] gamma(B) =    48.52  (n=1114)
+  [LOCK       t=3.0 wound ] gamma(B) =    17.86  (n=3325)
+  [RHO        t=0.6 tubes ] gamma(B) =    66.45  (n=337)
+  [RHO        t=0.6 wound ] gamma(B) =     7.25  (n=586)
+  [RHO        t=1.8 tubes ] gamma(B) =    67.52  (n=942)
+  [RHO        t=1.8 wound ] gamma(B) =     7.69  (n=553)
+  [RHO        t=3.0 tubes ] gamma(B) =    50.24  (n=1070)
+  [RHO        t=3.0 wound ] gamma(B) =    17.60  (n=3397)
+  [RHO        t=3.0 tubes ] gamma(B) =    50.24  (n=1070)
+  [RHO        t=3.0 wound ] gamma(B) =    17.60  (n=3397)
+
+===============================================================================
+[V] VERDICT
+===============================================================================
+  -> DRAINAGE-EQUIVALENT (or energy-match failed): the honest
+     label is relocation-flavored regularization; the ledger
+     ([T3]) prices the mechanism either way.
+
+  HONESTY: 32^3, single run, T=3, gamma=0.5 fixed; MATCHED is a
+  bulk-viscosity null (bounds what equal-energy drainage does);
+  toll_p drains the phase channel (V27.3 mechanism, priced in
+  [T3]); floor concentration is classical and untouched ([T0]).

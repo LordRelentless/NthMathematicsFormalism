@@ -1,0 +1,14 @@
+
+[wound] paired orbital tracers: 1422/1500
+  rev ratio  T/C: median 0.588   arc ratio T/C: median 0.586
+  rev per unit LOCAL time: C 0.0796  T 0.0780   ratio 0.980
+  orbit radius: C 1.371+-0.425  T 1.221+-0.329
+  CLOCK DIFFERENTIATION: rev/arc ratio ~1 AND radii match;
+  ORBITAL DECAY: rev/arc ratio < 1 AND/OR T radii drift.
+
+[tubes] paired orbital tracers: 648/1500
+  rev ratio  T/C: median 0.440   arc ratio T/C: median 0.670
+  rev per unit LOCAL time: C 0.1485  T 0.0894   ratio 0.602
+  orbit radius: C 2.654+-0.644  T 2.341+-0.527
+  CLOCK DIFFERENTIATION: rev/arc ratio ~1 AND radii match;
+  ORBITAL DECAY: rev/arc ratio < 1 AND/OR T radii drift.

@@ -1,0 +1,154 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend platform: gpu — V37 ACTIVE
+
+===============================================================================
+V37 GATES
+===============================================================================
+  [G20] telescoping kmax=4 at 16^3: 0.00e+00
+  [G20] telescoping kmax=5 at 32^3: 0.00e+00
+  [G25] temporal Haar (hand-computed): PASS
+  [G19] traced path (transmute): PASS
+  [G19] traced path (gamma1): PASS
+  GATES PASS.
+
+###############################################################################
+V37 — T=6 W_GOLD RE-RUN (temporal resolution)
+###############################################################################
+  [ARMED_w4] mode=transmute W_GOLD=4.000 steps=3000 blocks=20
+    t=1.50  (34s)
+    t=3.00  (58s)
+    t=4.50  (82s)
+    t=6.00  (107s)
+    done: 21 ckpts, 107s
+  [ARMED_w6] mode=transmute W_GOLD=6.000 steps=3000 blocks=20
+    t=1.50  (33s)
+    t=3.00  (58s)
+    t=4.50  (82s)
+    t=6.00  (107s)
+    done: 21 ckpts, 107s
+  [ARMED_wDEF] mode=transmute W_GOLD=7.416 steps=3000 blocks=20
+    t=1.50  (33s)
+    t=3.00  (58s)
+    t=4.50  (82s)
+    t=6.00  (106s)
+    done: 21 ckpts, 106s
+  [ARMED_w10] mode=transmute W_GOLD=10.000 steps=3000 blocks=20
+    t=1.50  (33s)
+    t=3.00  (58s)
+    t=4.50  (82s)
+    t=6.00  (106s)
+    done: 21 ckpts, 106s
+  [ARMED_w14] mode=transmute W_GOLD=14.000 steps=3000 blocks=20
+    t=1.50  (32s)
+    t=3.00  (57s)
+    t=4.50  (81s)
+    t=6.00  (106s)
+    done: 21 ckpts, 106s
+  [GAMMA1] mode=gamma1 W_GOLD=7.416 steps=3000 blocks=20
+    t=1.50  (32s)
+    t=3.00  (57s)
+    t=4.50  (81s)
+    t=6.00  (106s)
+    done: 21 ckpts, 106s
+  [CLASSICAL] mode=classical W_GOLD=7.416 steps=3000 blocks=20
+    t=1.50  (26s)
+    t=3.00  (45s)
+    t=4.50  (64s)
+    t=6.00  (83s)
+    done: 21 ckpts, 83s
+
+===============================================================================
+[T1] TEMPORAL HAAR (wound, last 16 ckpts, all configurations)
+     slope < -0.5 = smooth/orbital; > -0.5 or bump = oscillatory
+     THE KEY DISCRIMINATOR: classical oscillation vs armed smooth
+===============================================================================
+  [ARMED_w4       tubes ] Haar: 0.617 0.270 0.093 0.019  slope = -1.15  bumps = 0  (smooth/orbital)
+  [ARMED_w4       wound ] Haar: 0.605 0.306 0.072 0.017  slope = -1.22  bumps = 0  (smooth/orbital)
+  [ARMED_w6       tubes ] Haar: 0.617 0.270 0.093 0.019  slope = -1.15  bumps = 0  (smooth/orbital)
+  [ARMED_w6       wound ] Haar: 0.559 0.357 0.070 0.014  slope = -1.27  bumps = 0  (smooth/orbital)
+  [ARMED_wDEF     tubes ] Haar: 0.617 0.270 0.093 0.019  slope = -1.15  bumps = 0  (smooth/orbital)
+  [ARMED_wDEF     wound ] Haar: 0.495 0.354 0.124 0.027  slope = -0.98  bumps = 0  (smooth/orbital)
+  [ARMED_w10      tubes ] Haar: 0.617 0.270 0.093 0.019  slope = -1.15  bumps = 0  (smooth/orbital)
+  [ARMED_w10      wound ] Haar: 0.225 0.479 0.227 0.070  slope = -0.42  bumps = 1  (BUMPY/oscillatory)
+  [ARMED_w14      tubes ] Haar: 0.617 0.270 0.093 0.019  slope = -1.15  bumps = 0  (smooth/orbital)
+  [ARMED_w14      wound ] Haar: 0.625 0.256 0.096 0.023  slope = -1.09  bumps = 0  (smooth/orbital)
+  [GAMMA1         tubes ] Haar: 0.626 0.266 0.089 0.019  slope = -1.16  bumps = 0  (smooth/orbital)
+  [GAMMA1         wound ] Haar: 0.481 0.339 0.151 0.029  slope = -0.92  bumps = 0  (smooth/orbital)
+  [CLASSICAL      tubes ] Haar: 0.551 0.298 0.125 0.027  slope = -1.00  bumps = 0  (smooth/orbital)
+  [CLASSICAL      wound ] Haar: 0.011 0.176 0.711 0.102  slope = +0.82  bumps = 2  (BUMPY/oscillatory)
+
+===============================================================================
+[T2] THE ORBIT CONVERSION TEST (wound, the V35c/V35d finding)
+     classical should show the oscillation; armed should not)
+===============================================================================
+  Classical wound: slope = +0.82, bumps = 2
+  -> Classical OSCILLATION confirmed (bumps present).
+  Armed w=4.0: slope = -1.22, bumps = 0
+  Armed w=6.0: slope = -1.27, bumps = 0
+  Armed w=7.4: slope = -0.98, bumps = 0
+  Armed w=10.0: slope = -0.42, bumps = 1
+  Armed w=14.0: slope = -1.09, bumps = 0
+  Gamma=1:          slope = -0.92, bumps = 0
+  -> gamma=1 is smooth while classical oscillates: the ROUTING alone converts (geometric mechanism).
+
+===============================================================================
+[T3] W_GOLD TEMPORAL HAAR TREND (wound, armed variants)
+===============================================================================
+    W_GOLD: [4.0, 6.0, np.float64(7.416407864998738), 10.0, 14.0]
+    slopes: ['-1.22', '-1.27', '-0.98', '-0.42', '-1.09']
+    trend r = +0.385
+    -> No clear trend.
+
+===============================================================================
+[T4] COUPLING (wound, post-transient t > 1.0)
+===============================================================================
+  [ARMED_w4      ] W=4.00       corr(f,c) = -0.839
+  [ARMED_w6      ] W=6.00       corr(f,c) = -0.877
+  [ARMED_wDEF    ] W=7.42       corr(f,c) = -0.851
+  [ARMED_w10     ] W=10.00      corr(f,c) = +0.041
+  [ARMED_w14     ] W=14.00      corr(f,c) = +0.536
+  [GAMMA1        ] W=7.42       corr(f,c) = -0.840
+  [CLASSICAL     ] no arm       corr(f,c) = -0.281
+
+  W_GOLD coupling trend (T=6, t>1.0): r = +0.940
+  (V36 at T=3, t>0.6: r = +0.934)
+
+===============================================================================
+[T5] COARSE TRAJECTORIES (wound, all configs)
+===============================================================================
+  [ARMED_w4      ] 0.361 -> 0.423 -> 0.416 -> 0.409 -> 0.395 -> 0.378 -> 0.357 -> 0.324 -> 0.288 -> 0.256 -> 0.229 -> 0.201 -> 0.177 -> 0.162 -> 0.154 -> 0.150 -> 0.150 -> 0.152 -> 0.156 -> 0.161 -> 0.165
+  [ARMED_w6      ] 0.353 -> 0.416 -> 0.409 -> 0.400 -> 0.388 -> 0.381 -> 0.378 -> 0.366 -> 0.354 -> 0.336 -> 0.326 -> 0.312 -> 0.302 -> 0.299 -> 0.303 -> 0.307 -> 0.305 -> 0.300 -> 0.295 -> 0.291 -> 0.290
+  [ARMED_wDEF    ] 0.348 -> 0.413 -> 0.405 -> 0.398 -> 0.394 -> 0.396 -> 0.391 -> 0.371 -> 0.350 -> 0.337 -> 0.335 -> 0.339 -> 0.338 -> 0.335 -> 0.330 -> 0.325 -> 0.322 -> 0.319 -> 0.318 -> 0.318 -> 0.321
+  [ARMED_w10     ] 0.342 -> 0.408 -> 0.402 -> 0.400 -> 0.397 -> 0.400 -> 0.386 -> 0.368 -> 0.360 -> 0.355 -> 0.345 -> 0.345 -> 0.358 -> 0.367 -> 0.371 -> 0.373 -> 0.375 -> 0.380 -> 0.386 -> 0.393 -> 0.402
+  [ARMED_w14     ] 0.337 -> 0.402 -> 0.398 -> 0.394 -> 0.401 -> 0.391 -> 0.386 -> 0.368 -> 0.368 -> 0.374 -> 0.368 -> 0.376 -> 0.392 -> 0.397 -> 0.399 -> 0.415 -> 0.433 -> 0.445 -> 0.456 -> 0.473 -> 0.490
+  [GAMMA1        ] 0.348 -> 0.398 -> 0.392 -> 0.386 -> 0.383 -> 0.386 -> 0.381 -> 0.362 -> 0.344 -> 0.333 -> 0.333 -> 0.338 -> 0.338 -> 0.335 -> 0.330 -> 0.325 -> 0.322 -> 0.319 -> 0.318 -> 0.318 -> 0.321
+  [CLASSICAL     ] 0.348 -> 0.348 -> 0.345 -> 0.341 -> 0.340 -> 0.345 -> 0.340 -> 0.322 -> 0.310 -> 0.307 -> 0.316 -> 0.327 -> 0.332 -> 0.332 -> 0.329 -> 0.325 -> 0.322 -> 0.319 -> 0.318 -> 0.318 -> 0.321
+
+===============================================================================
+[V] VERDICT
+===============================================================================
+
+  [T1/T2] THE ORBIT CONVERSION at T=6:
+    If classical wound shows bumps/oscillation and armed does not,
+    the V35c/V35d finding is CONFIRMED at temporal resolution.
+    The gamma=1 result tells whether the conversion is geometric
+    (routing alone suffices) or dynamical (contraction needed).
+
+  [T3] W_GOLD TEMPORAL TREND:
+    If the temporal Haar slope tracks W_GOLD, the formalism's
+    constant layer controls both the SPATIAL coupling (V36) and
+    the TEMPORAL smoothness — the complete constant-dynamics
+    connection.
+
+  [T4] COUPLING AT T=6:
+    If the W_GOLD coupling trend persists (r > 0.7) at the longer
+    horizon, the V36 finding is confirmed and the coupling is a
+    stable property, not a transient.
+
+  [T5] TRAJECTORIES:
+    w4 should decay, w14 should stabilize, default should show
+    the V-shape — if the V36 pattern extends to T=6.
+
+
+persisted in /content/v37_results
