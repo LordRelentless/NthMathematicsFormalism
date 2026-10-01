@@ -1,0 +1,39 @@
+  [wound-long] HALT at step 616: non-finite.
+  [wound-long] steps 1000, routes 2396322, wall 513s
+    E_m 880.87 -> inf   Z 1331.15 -> inf   conc 124.4659 -> inf
+
+===============================================================================
+[M4] ANTICIPATION TEST: does routing precede C1 concentration?
+===============================================================================
+  [tubes omega] best lag 14 (diag steps), corr -0.0854   shuffle-null p = 0.995
+  [tubes classical] degenerate series — no test.
+  [rand,101] best lag 1 (diag steps), corr +0.8057   shuffle-null p = 0.000
+  [rand,202] best lag 0 (diag steps), corr -0.7663   shuffle-null p = 0.000
+  [rand,303] best lag 0 (diag steps), corr +0.8562   shuffle-null p = 0.000
+  [wound-long omega] best lag 0 (diag steps), corr +nan   shuffle-null p = 0.000
+
+===============================================================================
+[M5] VERDICT (pre-registered branches)
+===============================================================================
+  (i) NO ANTICIPATION: routing does not precede C1
+  concentration beyond the shuffle null. The selector
+  observes, contains, decoheres, protects — it does not
+  predict. The characterization closes, and with it the
+  empirical program: the C1 channel's classical growth is
+  the irreducible content the Prize asks about, exactly as
+  the containment theorem demands.
+
+===============================================================================
+SCOPE (printed with the results, not buried):
+  - finite grid (32^3), finite horizons (600/300/1000 steps),
+    single IC per configuration; all results conditional.
+  - finite-grid boundedness is NOT Prize evidence: energy-
+    bounded systems are bounded by construction; the Prize
+    asks about gradient bounds on the continuum, for all data,
+    all time.
+  - what IS measured: the first phase-resolved tracking of the
+    enstrophy-production channel in the classical blow-up
+    candidate, inside an exactly-containing framework.
+===============================================================================
+
+Generating figures...

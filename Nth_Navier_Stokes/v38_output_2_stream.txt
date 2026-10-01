@@ -1,0 +1,8 @@
+
+===============================================================================
+[V] VERDICT
+===============================================================================
+  matched controls: classical 0.774, omega 0.752
+  -> ARTIFACT CONFIRMED: the sparse pipeline manufactures determinism
+     from any source channel. Retract O-R; no channel shows recurrent
+     retreat on this IC. v18 (higher-occupancy R) retests properly.

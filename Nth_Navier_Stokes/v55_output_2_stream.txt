@@ -1,0 +1,3 @@
+
+V25 complete: patterns extracted, Res-projections evaluated,
+verification snapshots checked, results persisted in /content/v25_results

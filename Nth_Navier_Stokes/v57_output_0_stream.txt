@@ -1,0 +1,84 @@
+===============================================================================
+[M1] PROJECTION-STRIP RATE — strip/(T*E0), every run: the price of
+     enforcing the whole-term principle after the phase transfer
+===============================================================================
+  [('16^3', 'tubes', 'classical')    ] strip =     40.46  (  0.4% of E0 per unit time)  visc =     8.55  R =    82.91
+  [('16^3', 'tubes', 'omega')        ] strip =   1212.81  ( 11.7% of E0 per unit time)  visc =     5.26  R =    20.68
+  [('16^3', 'wound', 'classical')    ] strip =    999.58  (  1.4% of E0 per unit time)  visc =    43.05  R =  1712.14
+  [('16^3', 'wound', 'omega')        ] strip =  12060.68  ( 16.4% of E0 per unit time)  visc =    13.72  R =   332.29
+  [('32^3', 'tubes', 'classical')    ] strip =     53.70  (  0.5% of E0 per unit time)  visc =    16.21  R =    92.07
+  [('32^3', 'tubes', 'omega')        ] strip =   1617.08  ( 15.6% of E0 per unit time)  visc =     8.01  R =    11.85
+  [('32^3', 'wound', 'classical')    ] strip =    753.50  (  1.0% of E0 per unit time)  visc =    60.67  R =  1171.04
+  [('32^3', 'wound', 'omega')        ] strip =  12375.89  ( 16.8% of E0 per unit time)  visc =     9.42  R =   163.97
+  [('32^3/nu0', 'wound', 'classical')] strip =    314.53  (  0.9% of E0 per unit time)  visc =     0.00  R =   327.27
+  [('32^3/nu0', 'wound', 'omega')    ] strip =  12325.04  ( 33.4% of E0 per unit time)  visc =     0.00  R =   102.98
+
+===============================================================================
+[M2] MATCHED-DISSIPATION CLASSICAL CONTROL
+===============================================================================
+  omega run: dE = 12291.8 over T = 3.0, mean Zu = 4712.7
+  calibrated matched viscosity nu_eff = 0.4347 (435x the physical nu)
+
+-------------------------------------------------------------------------------
+RUN 32^3 | wound | matched-nu (0.435) classical
+  grid=32^3  dx=0.5  steps=400  dt=0.0075  T=3.0  nu=0.43470515288253425  Omega=OFF  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step   200  t=  1.500  E=10987.4897  Zu= 6623.2940  Zp=   0.0000  max|u|=  3.421  max|w|=   3.114  fs_w=0.042  routes=0
+  step   400  t=  3.000  E= 4790.7533  Zu= 2938.0641  Zp=   0.0000  max|u|=  2.300  max|w|=   2.326  fs_w=0.044  routes=0
+  finished: finite=True  omega_err=0.00e+00  leak=4.55e-18  ledger=3.97e-03  wall=160.9s
+
+===============================================================================
+[M3] MILD-GATE OMEGA VARIANT — gain=2, transition width 0.5*tau0
+===============================================================================
+  rationale: at gain=8 the rotation reaches a near-quarter phase
+  (s ~ 0.99) across a narrow tension band, so grad(c,s) ~ O(1) per
+  cell and the transfer generates O(1) divergence that the closure
+  strips. Halving the angle and widening the band tests whether the
+  strip is parameter-controlled. Invariants exact for every gate value.
+
+-------------------------------------------------------------------------------
+RUN 32^3 | wound | omega-mild (gain=2, gate=0.5*tau0)
+  grid=32^3  dx=0.5  steps=400  dt=0.0075  T=3.0  nu=0.001  Omega=ON  tau0=0.5*peak  gain=2.0
+-------------------------------------------------------------------------------
+  step   200  t=  1.500  E=12553.5013  Zu= 4432.9082  Zp=4696.1963  max|u|=  3.092  max|w|=   3.010  fs_w=0.179  routes=7976
+  step   400  t=  3.000  E=12382.6110  Zu= 6458.4189  Zp=6625.3446  max|u|=  3.585  max|w|=   4.597  fs_w=0.382  routes=18016
+  finished: finite=True  omega_err=5.75e-16  leak=5.13e-18  ledger=5.64e-05  wall=123.6s
+
+===============================================================================
+[M4] CONCENTRATION AT MATCHED REMAINING ENERGY — the decisive table
+===============================================================================
+  run                         E/E0=0.95  E/E0=0.86  E/E0=0.77  E/E0=0.68  E/E0=0.59  E/E0=0.50
+
+  fs_w   (finest-octave enstrophy share):
+    omega g=8 (stored)             0.168     0.220     0.272     0.324     0.376     0.084
+    matched-nu classical           0.038     0.038     0.039     0.039     0.040     0.041
+    omega mild g=2                 0.120     0.249     0.377     0.505     0.507     0.382
+    classical nu=1e-3                —       —       —       —       —       —
+
+  max|w| (peak vorticity):
+    omega g=8 (stored)             4.851     4.761     4.671     4.581     4.491     2.561
+    matched-nu classical           3.727     3.672     3.594     3.488     3.354     3.192
+    omega mild g=2                 4.341     4.899     5.457     6.015     5.362     4.597
+    classical nu=1e-3                —       —       —       —       —       —
+
+  Zu     (real enstrophy):
+    omega g=8 (stored)          15364.695  13260.974  11157.253  9053.532  6949.811  3836.156
+    matched-nu classical        13679.309  12411.215  11158.039  9916.281  8676.728  7427.267
+    omega mild g=2              13969.623  12826.774  11683.925  10541.075  8215.202  6458.419
+    classical nu=1e-3                —       —       —       —       —       —
+
+  DECISION RULE (compare within a column — same remaining energy):
+   * omega (either) < matched-nu          -> routing suppresses
+     concentration BEYOND equal-energy drainage: real structural content.
+   * omega ~ or > matched-nu              -> suppression attributable to
+     drainage-scale dissipation: the construction is currently a
+     dissipative selector regularization (useful; does not address Clay).
+   * variant strip << g=8 strip, suppression retained -> closure cost is
+     parameter-controlled: pursue the divergence-closed (curl-potential)
+     transfer next, where the strip vanishes identically.
+
+  STRIP ACCOUNTING (this session):
+    omega g=8          strip/(T*E0) =  16.8%   omega_err = 7.4e-16
+    matched-nu         strip/(T*E0) =   0.3%   omega_err = 0.0e+00
+    omega mild g=2     strip/(T*E0) =  16.7%   omega_err = 5.8e-16
+    classical          strip/(T*E0) =   1.0%   omega_err = 0.0e+00

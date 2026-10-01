@@ -1,0 +1,28 @@
+/tmp/ipykernel_1547/950437232.py:331: RuntimeWarning: overflow encountered in multiply
+  f0 = np.sqrt(np.sum(fc*fc, axis=(-3, -2, -1)))
+/tmp/ipykernel_1547/950437232.py:343: RuntimeWarning: overflow encountered in multiply
+  rn = np.sqrt(np.sum(r*r, axis=(-3, -2, -1)))
+/tmp/ipykernel_1547/950437232.py:344: RuntimeWarning: invalid value encountered in divide
+  return float(np.max((rn/np.maximum(f0, 1e-300))[live]))
+/tmp/ipykernel_1547/950437232.py:163: RuntimeWarning: overflow encountered in multiply
+  C1 = np.sqrt(np.sum(S_*S_, axis=(-2, -1)))
+/tmp/ipykernel_1547/950437232.py:164: RuntimeWarning: overflow encountered in multiply
+  C2 = np.sqrt(np.sum(A_*A_, axis=(-2, -1)))
+/tmp/ipykernel_1547/950437232.py:168: RuntimeWarning: overflow encountered in multiply
+  R = a*(e*i - f*h) - b*(d*i - f*g) + c*(d*h - e*g)
+/tmp/ipykernel_1547/950437232.py:168: RuntimeWarning: invalid value encountered in subtract
+  R = a*(e*i - f*h) - b*(d*i - f*g) + c*(d*h - e*g)
+/tmp/ipykernel_1547/950437232.py:169: RuntimeWarning: overflow encountered in multiply
+  U = np.sqrt(np.sum(G*G, axis=(-2, -1))) - np.abs(R)
+/tmp/ipykernel_1547/950437232.py:529: RuntimeWarning: overflow encountered in multiply
+  w2 = np.sum(w*w, axis=-1)
+/tmp/ipykernel_1547/950437232.py:534: RuntimeWarning: overflow encountered in multiply
+  hist['E_m'].append(0.5*float(np.sum(m*m))*vol)
+/tmp/ipykernel_1547/950437232.py:535: RuntimeWarning: overflow encountered in multiply
+  hist['E_d'].append(0.5*float(np.sum(d*d))*vol)
+/tmp/ipykernel_1547/950437232.py:150: RuntimeWarning: overflow encountered in multiply
+  acc += 0.5*(dd(vj*fi, j, dx) + vj*dd(fi, j, dx))
+/tmp/ipykernel_1547/950437232.py:116: RuntimeWarning: invalid value encountered in subtract
+  return (np.roll(f, -1, axis=axis) - np.roll(f, 1, axis=axis))*(0.5/dx)
+/tmp/ipykernel_1547/950437232.py:150: RuntimeWarning: invalid value encountered in add
+  acc += 0.5*(dd(vj*fi, j, dx) + vj*dd(fi, j, dx))

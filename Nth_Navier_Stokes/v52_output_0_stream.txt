@@ -1,0 +1,27 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror, unit-circle fusion,
+             trans-finite compactifier, four-arm ledger, BKM-Nth
+             (M/Σ/B/D), the composite anchor 2π(p/n)
+  licensed : floats = magnitude arms; quotient collapse; norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection, RK2,
+             unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+V22.2 — THE COMPLETE ν-SWEEP, self-contained
+###############################################################################
+  recovered 0 runs from persistence.
+  runs to execute: 23
+  [nu=0.01,tubes,n=32] complete, routes 45364, wall 268s   M: 179.03->457.91   Σ: 604.83   D_final: 17.188
+  [nu=0.01,tubes,n=64] complete, routes 140299, wall 1729s   M: 648.94->1317.51   Σ: 5496.43   D_final: 37.701
+  [nu=0.01,wound,n=32] complete, routes 101196, wall 158s   M: 44.42->27.00   Σ: 123.07   D_final: 0.983

@@ -1,0 +1,93 @@
+===============================================================================
+[R] RECOVERY — corrected analysis from saved series (no reruns)
+===============================================================================
+
+[A1'] CORRECTED EXACT LEDGER  (Ed0 = E_m(0) exactly, since p(0)=0;
+       the V26.3 bug read E_d AFTER step 1 instead)
+
+  [tubes]
+    E_m:    261.4 ->    120.9 ( 46.2%)   E_d:    261.4 ->     18.1 (  6.9%)
+    ledger audit: m = 5.65e-15   d = 2.61e-15   (expect <= ~1e-12; omega adds ~1e-13 FP drift)
+    m drain: Heun    -48.1  toll_m    -92.5   |   d drain: Heun     -8.8  toll_d   -234.5
+    toll split (|shares|): m 28.3%   d 71.7%
+    classical-channel loss through shared closure: 65.8% of the m-drain
+
+  [wound]
+    E_m:    440.4 ->    267.1 ( 60.7%)   E_d:    440.4 ->      0.0 (  0.0%)
+    ledger audit: m = 4.52e-15   d = 1.03e-15   (expect <= ~1e-12; omega adds ~1e-13 FP drift)
+    m drain: Heun    -56.0  toll_m   -117.3   |   d drain: Heun     -2.7  toll_d   -437.7
+    toll split (|shares|): m 21.1%   d 78.9%
+    classical-channel loss through shared closure: 67.7% of the m-drain
+
+[A1b] IS THE m-TOLL OMEGA-INDUCED OR INTRINSIC?
+  same-horizon (800-step) comparison: dual-run toll_m vs the pure
+  classical-arm projection toll (p = 0, omega = identity):
+
+  [tubes] over t in [0, 3.2]:
+    dual-run toll_m rate  =   0.0472 /t
+    classical toll_m rate =   0.0472 /t   (ratio 1.00x)
+    classical Heun rate   =   0.0083 /t (visc + temporal residue)
+    -> toll_m is INTRINSIC to the discrete classical
+       projection (Heun-step residual divergence). The floor
+       carries its own closure cost; at nu=0 this is the ONLY
+       classical drain — its rate (0.0472/t) sets the
+       V27 floor lifetime.
+
+  [wound] over t in [0, 3.2]:
+    dual-run toll_m rate  =   0.0131 /t
+    classical toll_m rate =   0.0131 /t   (ratio 1.00x)
+    classical Heun rate   =   0.0014 /t (visc + temporal residue)
+    -> toll_m is INTRINSIC to the discrete classical
+       projection (Heun-step residual divergence). The floor
+       carries its own closure cost; at nu=0 this is the ONLY
+       classical drain — its rate (0.0131/t) sets the
+       V27 floor lifetime.
+
+[A2'] EMBEDDED-CLASSICAL EQUIVALENCE (tolerance gates)
+  [tubes] 300 steps: M dev 1.94e-14  Sigma dev 4.58e-15
+        800 steps: M dev 4.92e-12  (chaos horizon of embedding)
+        classical-arm p-leak (L2, E_d/E_m): 1.00e+00  (CHECK)
+        (the crashed assert compared FP noise 2.2e-15 against
+         EXACT zero — my bug; exact arithmetic gives p = 0.)
+  [wound] 300 steps: M dev 1.20e-14  Sigma dev 2.90e-15
+        800 steps: M dev 1.09e-13  (chaos horizon of embedding)
+        classical-arm p-leak (L2, E_d/E_m): 1.00e+00  (CHECK)
+        (the crashed assert compared FP noise 2.2e-15 against
+         EXACT zero — my bug; exact arithmetic gives p = 0.)
+
+[A3'] CORRECTED VERDICT + SLIDING rr (3000-step dual run)
+  [tubes] m-floor: rr(500)=0.425 -> DECELERATING   rr(1000)=0.500 -> STEADY/GROWING
+         instrument: rr(500)=0.450 -> DECELERATING   M_m(final)/peak = 0.102
+  [wound] m-floor: rr(500)=0.804 -> STEADY/GROWING   rr(1000)=0.949 -> STEADY/GROWING
+         instrument: rr(500)=0.765 -> STEADY/GROWING   M_m(final)/peak = 0.346
+
+[A4'] MODEL FITS (3000-step dual run, t <= 12):
+  [tubes] Sigma_u: best = S
+  [tubes] Sigma_m: best = S
+  [wound] Sigma_u: best = S
+  [wound] Sigma_m: best = S
+
+[A5'] THE HONEST READ (32^3, t=12)
+
+  [tubes] floor retains 46.2% of E_m(0); rr(500) = 0.425
+    -> NOT full energy death at this resolution/horizon
+       (contrast: 64^3/t=20 retained <= 7.2%). The 32^3
+       regime carries more content but is further from the
+       continuum. Report both; trust neither alone.
+
+  [wound] floor retains 60.7% of E_m(0); rr(500) = 0.804
+    -> NOT full energy death at this resolution/horizon
+       (contrast: 64^3/t=20 retained <= 7.2%). The 32^3
+       regime carries more content but is further from the
+       continuum. Report both; trust neither alone.
+
+[P1'] V26.4 SPEEDUP SUMMARY (from your logged timings):
+  warm-8: 3.16x vs cold-20  (worst residual 7.0e-06; ledger exact in all three)
+  warm-4: 4.31x vs cold-20  (worst residual 8.3e-04; ledger exact in all three)
+  RECOMMENDATION: warm-8 for CPU runs — ~2x wall-time saving at
+  residual 1e-6; the toll/energy instruments are unaffected (they
+  measure whatever projection is actually applied).
+
+[P2'] EINSUM BENCHMARK (numpy half; the jax half fuses both forms
+  to one XLA reduction, ~1.0x by construction):
+  sum(S*S) = 127.02 ms   einsum = 33.02 ms   (3.85x)   equal: True

@@ -1,0 +1,90 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V28.1d GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  [G3] symmetric m-projection d-invariance: 1.66e-16 (the closure never touches the split)
+  [G4] floor closed under d-perturbation: 3.45e-16
+  [G4b] floor sigma-invariance: 2.30e-16
+  GATES PASS.
+
+###############################################################################
+V28.1d — BUNDLE-READING TRANSFER (32^3, dt=0.004, T=3.0, nu=0.0001)
+###############################################################################
+  [REF per-channel] n=32^3  dt=0.004  steps=750  T=3.00
+    t= 0.60  (   105s)  tubes:Em%=96,Ed%=34,fsd=0.38  wound:Em%=99,Ed%=12,fsd=0.50
+    t= 1.20  (   182s)  tubes:Em%=93,Ed%=28,fsd=0.49  wound:Em%=99,Ed%=10,fsd=0.53
+    t= 1.80  (   233s)  tubes:Em%=90,Ed%=24,fsd=0.58  wound:Em%=98,Ed%=9,fsd=0.54
+    t= 2.40  (   286s)  tubes:Em%=87,Ed%=20,fsd=0.65  wound:Em%=97,Ed%=7,fsd=0.59
+    t= 3.00  (   338s)  tubes:Em%=83,Ed%=18,fsd=0.71  wound:Em%=96,Ed%=4,fsd=0.67
+    ledger [tubes]: m 3.15e-15  d 1.85e-15
+    ledger [wound]: m 1.08e-15  d 5.16e-16
+  [PERSIST sigma=+1] n=32^3  dt=0.004  steps=750  T=3.00  sigma=+1
+    t= 0.60  (    48s)  tubes:Em%=96,Ed%=99,fsd=0.77  wound:Em%=99,Ed%=99,fsd=0.84
+    t= 1.20  (    82s)  tubes:Em%=93,Ed%=97,fsd=0.83  wound:Em%=99,Ed%=97,fsd=0.86
+    t= 1.80  (   118s)  tubes:Em%=90,Ed%=96,fsd=0.85  wound:Em%=98,Ed%=96,fsd=0.87
+    t= 2.40  (   154s)  tubes:Em%=87,Ed%=94,fsd=0.86  wound:Em%=97,Ed%=94,fsd=0.87
+    t= 3.00  (   189s)  tubes:Em%=83,Ed%=92,fsd=0.86  wound:Em%=96,Ed%=92,fsd=0.87
+    ledger [tubes]: m 2.04e-15  d 7.07e-16  [iso sum -4.6e-13  pd sum 1.4e-13]
+    ledger [wound]: m 3.71e-16  d 2.73e-15  [iso sum -2.8e-13  pd sum 1.7e-12]
+  [PERSIST sigma=-1] n=32^3  dt=0.004  steps=750  T=3.00  sigma=-1
+    t= 0.60  (    35s)  tubes:Em%=96,Ed%=99,fsd=0.78  wound:Em%=99,Ed%=99,fsd=0.85
+    t= 1.20  (    71s)  tubes:Em%=93,Ed%=97,fsd=0.84  wound:Em%=99,Ed%=97,fsd=0.86
+    t= 1.80  (   107s)  tubes:Em%=90,Ed%=96,fsd=0.85  wound:Em%=98,Ed%=96,fsd=0.86
+    t= 2.40  (   142s)  tubes:Em%=87,Ed%=94,fsd=0.86  wound:Em%=97,Ed%=94,fsd=0.87
+    t= 3.00  (   178s)  tubes:Em%=83,Ed%=92,fsd=0.87  wound:Em%=96,Ed%=92,fsd=0.87
+    ledger [tubes]: m 1.82e-15  d 6.51e-15  [iso sum 8.0e-13  pd sum -1.3e-12]
+    ledger [wound]: m 4.92e-16  d 4.24e-15  [iso sum 5.9e-13  pd sum 1.1e-12]
+
+===============================================================================
+[P1] PERSISTENCE HEADLINE (E_d retained at T)
+===============================================================================
+  [tubes ] REF   17.6%   PERSIST(+)   92.2%   PERSIST(-)   92.1%   persistence factor 5.3x
+          mean routed rotation arm s: 0.996 (nonzero = the orbit is advancing)
+          final max|div m|: 4.28e-08 (the bundle IS whole-term; d is not, by the reading)
+  [wound ] REF    4.4%   PERSIST(+)   92.4%   PERSIST(-)   92.4%   persistence factor 20.9x
+          mean routed rotation arm s: 0.994 (nonzero = the orbit is advancing)
+          final max|div m|: 5.50e-08 (the bundle IS whole-term; d is not, by the reading)
+
+===============================================================================
+[P2] FLOOR INDEPENDENCE (m-path closed: independent of the phase
+     construction and of sigma; deviations = solver-path seed +
+     chaos (REF column), FP cancellation (sigma column))
+===============================================================================
+  [tubes ] Sigma_m dev REF vs PERSIST: 1.28e-13
+          Sigma_m dev sigma+ vs sigma-: 1.59e-13
+          Mk_m final: REF 3780.9  PSP 3780.9  PSM 3780.9
+  [wound ] Sigma_m dev REF vs PERSIST: 2.18e-14
+          Sigma_m dev sigma+ vs sigma-: 2.63e-14
+          Mk_m final: REF 2097.4  PSP 2097.4  PSM 2097.4
+
+===============================================================================
+[P3] CONCENTRATION ON THE CONSERVATIVE CHANNEL (no prediction —
+     no dissipation available to do the work; the clean test)
+===============================================================================
+  [PERSIST sigma=+1 tubes ] max|d| growth  1.60x   fs_d 0.772 -> 0.865 (peak 0.865)   max|div d| final 3.28e+01
+  [PERSIST sigma=+1 wound ] max|d| growth  2.14x   fs_d 0.842 -> 0.872 (peak 0.872)   max|div d| final 4.59e+01
+  [PERSIST sigma=-1 tubes ] max|d| growth  1.55x   fs_d 0.777 -> 0.865 (peak 0.865)   max|div d| final 3.03e+01
+  [PERSIST sigma=-1 wound ] max|d| growth  2.28x   fs_d 0.852 -> 0.868 (peak 0.868)   max|div d| final 4.12e+01
+  (max|div d| = O(1) BY DESIGN under the bundle reading: the
+   unreal arm carries the divergence; only u+p is whole-term.)
+
+===============================================================================
+[P4] CHIRALITY (sigma = C1/C2 channel order = orbit handedness;
+     tubes ~achiral -> match expected; wound phi-handed -> open)
+===============================================================================
+  [tubes ] E_d(T): +92.2% vs -92.1%  (rel diff 0.0%)   max|d| growth: 1.60x vs 1.55x
+  [wound ] E_d(T): +92.4% vs -92.4%  (rel diff 0.0%)   max|d| growth: 2.14x vs 2.28x
+          wound embeds W_GOLD = 12/phi helical winding: a difference here is the handedness signal.
+
+===============================================================================
+[P5] VERDICT
+===============================================================================
+  PHASE CHANNEL PERSISTS (E_d 92% at T=3.0): the bundle reading of Axiom 3.3 admits a persistent Appendix-J orbit, constructively, with the floor untouched ([P2]).
+  BUT CONCENTRATION GROWS (fs_d peak 0.87, max|d| 2.14x): the old O(1) drain was MASKING concentration.
+    The counterexample-direction signature, honestly
+    measured on the phase channel. Next: growth law.

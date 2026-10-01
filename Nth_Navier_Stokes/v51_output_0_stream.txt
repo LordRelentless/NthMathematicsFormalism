@@ -1,0 +1,44 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g), four-arm phase
+             ledger, the BKM-Nth instrument (M/Σ/B/D — located maximum,
+             fusion accumulation, Res-estimate bound, Nth-divergence)
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection, RK2 time
+             update, unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+V22 — THE ν-SWEEP WITH NTH-NATIVE BKM (Phase 2, Run 1)
+The Prize's regime (ν>0); the criterion in Nth operators.
+###############################################################################
+  matrix: ν x [0.01, 0.001, 0.0001] | ICs x ['tubes', 'wound', 'random'] | resolutions x [32, 64] | 300 steps, RK2
+  instrument: M_k (located max), Σ_K (accumulation), B_K (Res-estimate, window 60), D_K (divergence)
+  [nu=0.01,tubes,n=32] complete, routes 45364, wall 264s   M: 179.03->457.91   Σ: 604.83   D_final: 17.188   Z: 2599.8->2903.9
+  [nu=0.01,tubes,n=64] complete, routes 140299, wall 1981s   M: 648.94->1317.51   Σ: 5496.43   D_final: 37.701   Z: 3341.6->3411.0
+  [nu=0.01,wound,n=32] complete, routes 101196, wall 182s   M: 44.42->27.00   Σ: 123.07   D_final: 0.983   Z: 1331.1->1549.8
+  [nu=0.01,wound,n=64] complete, routes 897746, wall 1340s   M: 47.11->26.54   Σ: 562.21   D_final: 1.008   Z: 1360.7->1690.0
+  [nu=0.01,random,n=32] complete, routes 3207, wall 150s   M: 1054.71->265.25   Σ: 1105.64   D_final: 2.559   Z: 12235.8->3803.3
+  [nu=0.01,random,n=64] complete, routes 1927, wall 1154s   M: 9606.09->79.55   Σ: 2580.97   D_final: 1.415   Z: 49832.4->1485.4
+  [nu=0.001,tubes,n=32] complete, routes 104802, wall 161s   M: 179.03->1048.68   Σ: 895.65   D_final: 37.087   Z: 2599.8->5183.2
+  [nu=0.001,tubes,n=64] complete, routes 576062, wall 1342s   M: 648.94->5870.09   Σ: 9416.03   D_final: 167.353   Z: 3341.6->10202.8
+  [nu=0.001,wound,n=32] complete, routes 200066, wall 160s   M: 44.42->63.39   Σ: 179.03   D_final: 2.351   Z: 1331.1->1857.2
+  [nu=0.001,wound,n=64] complete, routes 1772861, wall 1341s   M: 47.11->56.55   Σ: 791.10   D_final: 1.987   Z: 1360.7->2235.2
+  [nu=0.001,random,n=32] complete, routes 40960, wall 162s   M: 1054.71->1950.34   Σ: 2073.33   D_final: 77.886   Z: 12235.8->14102.9
+  [nu=0.001,random,n=64] complete, routes 49429, wall 1305s   M: 9606.09->4816.54   Σ: 13005.10   D_final: 123.854   Z: 49832.4->23945.2
+  [nu=0.0001,tubes,n=32] complete, routes 114820, wall 159s   M: 179.03->1133.47   Σ: 1008.23   D_final: 52.584   Z: 2599.8->5645.1
+  [nu=0.0001,tubes,n=64] complete, routes 846528, wall 1333s   M: 648.94->7070.08   Σ: 10195.17   D_final: 194.301   Z: 3341.6->14001.0
+  [nu=0.0001,wound,n=32] complete, routes 228874, wall 159s   M: 44.42->64.00   Σ: 167.70   D_final: 2.097   Z: 1331.1->1900.9
+  [nu=0.0001,wound,n=64] complete, routes 2392808, wall 1332s   M: 47.11->88.40   Σ: 805.31   D_final: 2.513   Z: 1360.7->2342.9
+  [nu=0.0001,random,n=32] complete, routes 64193, wall 160s   M: 1054.71->2278.20   Σ: 2187.11   D_final: 83.051   Z: 12235.8->16945.3

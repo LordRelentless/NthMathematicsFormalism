@@ -1,0 +1,2 @@
+/tmp/ipykernel_1025/2474289331.py:519: UserWarning: marker is redundantly defined by the 'marker' keyword argument and the fmt string "o" (-> marker='o'). The keyword argument will take precedence.
+  axs[1].plot([0.002, 0.001], rr, 'o', color=col,

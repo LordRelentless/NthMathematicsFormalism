@@ -1,0 +1,73 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g)
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection of fields,
+             Real-channel tracers, seed-asserted, gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+v18 — DUAL-ARM FRACTAL TEST: wound-core IC, signed offsets, three-view render
+###############################################################################
+
+--- tracking runs (3D, nu=0, CH, wound-core golden IC) ---
+    seeds: near-core 70/400 (expected 70); core r0 in [0.065, 1.997] on the wound core
+    routes total = 0   (Omega INACTIVE)
+  classical: 134s
+    seeds: near-core 70/400 (expected 70); core r0 in [0.065, 1.997] on the wound core
+    routes total = 367718   (Omega ACTIVE)
+  omega:     171s
+
+===============================================================================
+v18 AUDIT
+===============================================================================
+
+[B0] m-INVARIANCE on the wound-core IC:
+  max|m_classical - m_omega| = 1.065e-09   relative = 1.011e-10
+  -> CONFIRMED on the z-perturbed IC (fourth family): the
+     containment theorem holds with the coupling channel on.
+
+[Z1] CHANNEL OCCUPANCY (core cohort) — all four families live?
+  [C] U:   0.0%  R:  57.2%  C1:  33.2%  C2:   9.6%
+  [O] U:   0.0%  R:  48.6%  C1:  30.7%  C2:  20.8%
+
+[S1] CLEAN STRATIFICATION (wrap-filtered):
+  [C] U:  0.00 |   n/a   R:  0.26 | 0.378   C1:  0.10 | 0.281   C2:  0.21 | 0.368
+  [O] U:  0.00 |   n/a   R:  0.11 | 0.363   C1:  0.10 | 0.318   C2:  0.17 | 0.359
+
+[O1] THE DUAL-ARM SIGNED OFFSET TEST (the decisive instrument):
+     matching: angular phase agreement (mod 2pi, win 0.15 rad);
+     statistic: mean signed radial offset per same-channel pair;
+     prediction: antisymmetry — Z(C2) offsets opposite Z(C1);
+     null: channel-label permutation (200 draws).
+  [C] matched pairs: 25086   Z(C2) mean offset -0.0486 (n=1266)   Z(C1) mean offset -0.0451 (n=11200)
+          antisymmetry sum A = -0.0937   separation S = 0.0034   permutation p = 0.095
+          -> consistent with the permutation null: no
+             signed channel-anticorrelated offsets.
+  [O] matched pairs: 47016   Z(C2) mean offset -0.0654 (n=2744)   Z(C1) mean offset -0.0533 (n=7118)
+          antisymmetry sum A = -0.1187   separation S = 0.0121   permutation p = 0.000
+          -> consistent with the permutation null: no
+             signed channel-anticorrelated offsets.
+
+[R1] RECURRENCE (contiguous-only, occupancy-matched, no interpolation):
+  [C-U] no contiguous stretch >= 20 with occupancy >= 6
+  [C-R] stretch [0:301] det 0.118 (surrogate 0.097) -> featureless
+  [C-C1] stretch [0:301] det 0.129 (surrogate 0.109) -> featureless
+  [C-C2] stretch [12:46] det 0.283 (surrogate 0.276) -> featureless
+  [O-U] no contiguous stretch >= 20 with occupancy >= 6
+  [O-R] stretch [0:301] det 0.112 (surrogate 0.109) -> featureless
+  [O-C1] stretch [0:301] det 0.111 (surrogate 0.115) -> featureless
+  [O-C2] stretch [5:301] det 0.115 (surrogate 0.110) -> featureless
+
+Generating the three-view render...

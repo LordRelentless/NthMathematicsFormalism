@@ -1,0 +1,91 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend: CPU (free mode)
+
+===============================================================================
+V23.7 VALIDATION — three gates; [G3] calibrated; FAITHFUL cascade
+===============================================================================
+  [G1] native Nth Jacobian equivalence (C1/C2/R/tension): rel err = 1.79e-16
+  [G2] port projection non-expansiveness: E ratio = 0.67012618  (PASS)
+  [G3] divergence reduction on the IDENTICAL test field:
+       NumPy reference cascade: 8.71e-01 -> 4.84e-10  (1.8e+09x)
+       JAX port (faithful):     8.71e-01 -> 1.51e-11  (5.8e+10x)
+       port achieves 3208.7% of the reference reduction (criterion: >= 30%)  -> PASS
+       (with the faithful cascade, expect ~100%: same algorithm,
+        same cycle count, float64 both sides.)
+  ALL GATES PASS — proceeding to the sweep.
+
+###############################################################################
+V23.7 — THE COMPILED BATCHED ν-SWEEP (faithful cascade)
+###############################################################################
+  batch n=32 C=9 steps=300: compiled+executed in 29s on cuda:0
+  batch n=64 C=9 steps=300: compiled+executed in 87s on cuda:0
+
+  controls (ν=0):
+  batch n=32 C=2 steps=300: compiled+executed in 16s on cuda:0
+  batch n=64 C=2 steps=300: compiled+executed in 28s on cuda:0
+
+===============================================================================
+V23.7 ANALYSIS — the BKM-Nth verdict table
+===============================================================================
+
+         ν IC        res        M0      Σ_fin    D_fin    D/M0      D class
+         0 tubes      32    179.03     977.92   17.047  0.0952 GROWING-ACCEL
+         0 tubes      64    648.94   10794.51   48.672  0.0750 GROWING-ACCEL
+         0 wound      32     44.42     173.80    0.315  0.0071 GROWING-ACCEL
+         0 wound      64     47.11     802.41    0.109  0.0023 GROWING-ACCEL
+    0.0001 random     32   1054.71    2187.11   17.404  0.0165  CONTRACTING
+    0.0001 random     64   9606.09   20044.74   89.743  0.0093 GROWING-ACCEL
+    0.0001 tubes      32    179.03     972.09   14.376  0.0803 GROWING-ACCEL
+    0.0001 tubes      64    648.94   10441.16   73.787  0.1137 GROWING-ACCEL
+    0.0001 wound      32     44.42     167.79    0.652  0.0147 GROWING-ACCEL
+    0.0001 wound      64     47.11     803.27    0.355  0.0075 GROWING-ACCEL
+     0.001 random     32   1054.71    2073.33   14.009  0.0133  CONTRACTING
+     0.001 random     64   9606.09   13005.10   17.758  0.0018 GROWING-ACCEL
+     0.001 tubes      32    179.03     863.79    7.007  0.0391 GROWING-ACCEL
+     0.001 tubes      64    648.94    8720.81    9.699  0.0149 GROWING-ACCEL
+     0.001 wound      32     44.42     167.22    0.297  0.0067 GROWING-ACCEL
+     0.001 wound      64     47.11     817.76    0.392  0.0083 GROWING-ACCEL
+      0.01 random     32   1054.71    1105.64    4.715  0.0045  CONTRACTING
+      0.01 random     64   9606.09    2580.97    1.678  0.0002 GROWING-ACCEL
+      0.01 tubes      32    179.03     597.78    1.412  0.0079 GROWING-ACCEL
+      0.01 tubes      64    648.94    5488.49    7.078  0.0109 GROWING-ACCEL
+      0.01 wound      32     44.42     120.88    0.124  0.0028 GROWING-ACCEL
+      0.01 wound      64     47.11     563.25    0.082  0.0018 GROWING-ACCEL
+
+  RESOLUTION COMPARISON at fixed ν:
+  ν=0.01 tubes   : n=32: D=1.4 (0.008)  n=64: D=7.1 (0.011)
+  ν=0.01 wound   : n=32: D=0.1 (0.003)  n=64: D=0.1 (0.002)
+  ν=0.01 random  : n=32: D=4.7 (0.004)  n=64: D=1.7 (0.000)
+  ν=0.001 tubes   : n=32: D=7.0 (0.039)  n=64: D=9.7 (0.015)
+  ν=0.001 wound   : n=32: D=0.3 (0.007)  n=64: D=0.4 (0.008)
+  ν=0.001 random  : n=32: D=14.0 (0.013)  n=64: D=17.8 (0.002)
+  ν=0.0001 tubes   : n=32: D=14.4 (0.080)  n=64: D=73.8 (0.114)
+  ν=0.0001 wound   : n=32: D=0.7 (0.015)  n=64: D=0.4 (0.008)
+  ν=0.0001 random  : n=32: D=17.4 (0.017)  n=64: D=89.7 (0.009)
+
+  [H4] Σ DECOMPOSITION (early share, ν=1e-4):
+  ν=1e-4 tubes    n=32: Σ(early) =     231.25   Σ(total) =     972.09   early share = 24%
+  ν=1e-4 tubes    n=64: Σ(early) =    3651.90   Σ(total) =   10441.16   early share = 35%
+  ν=1e-4 wound    n=32: Σ(early) =      87.76   Σ(total) =     167.79   early share = 52%
+  ν=1e-4 wound    n=64: Σ(early) =     669.78   Σ(total) =     803.27   early share = 83%
+  ν=1e-4 random   n=32: Σ(early) =     337.89   Σ(total) =    2187.11   early share = 15%
+  ν=1e-4 random   n=64: Σ(early) =    3060.89   Σ(total) =   20044.74   early share = 15%
+
+  CONTROLS (ν=0):
+  ν=0 tubes    n=32: Σ=977.9  D=17.0
+  ν=0 wound    n=32: Σ=173.8  D=0.3
+  ν=0 tubes    n=64: Σ=10794.5  D=48.7
+  ν=0 wound    n=64: Σ=802.4  D=0.1
+
+===============================================================================
+[V] V23.7 VERDICT
+===============================================================================
+  -> THE SPLIT VERDICT: wound D resolution-flat (affirmative)
+     + tubes D steepening (counterexample direction). The
+     Prize's structure, measured in Nth operators, on ν>0,
+     with the faithful cascade, independently compiled, and
+     every gate green.
+===============================================================================
+
+Generating figures...

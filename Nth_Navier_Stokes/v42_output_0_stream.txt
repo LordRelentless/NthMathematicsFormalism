@@ -1,0 +1,39 @@
+===============================================================================
+v19.1 — CALIBRATED RECURRENCE (the repair; stopping-rule test)
+===============================================================================
+
+[G] SATURATION GATE: mean RR classical 0.0500  omega 0.0500   (operating range 0.01-0.20)
+    PASS — calibrated test operates in range; verdict valid.
+
+[R1'] COMPOSITE (tuple+partition, detrended, Theiler 25, RR 5%):
+  classical: det 0.8111 (surrogate 0.0212)   det > 2x surrogate in 100% of tracers
+  omega:     det 0.5327 (surrogate 0.0102)   det > 2x surrogate in 100% of tracers
+
+[R2'] PER-FACTOR (calibrated):
+  [tuple] classical det 0.7663 (surr 0.0183)   omega det 0.4288 (surr 0.0074)
+  [part] classical det 0.5430 (surr 0.0083)   omega det 0.5966 (surr 0.0110)
+
+[R5'] PHASE-GATED (omega; both-active vs both-inactive pairs, calibrated eps; null = label permutation):
+  both-active:   det 0.1246  (642 recurrent points)
+  both-inactive: det 0.5346  (111756 recurrent points)
+  label-permutation null: mean 0.0026   p(both-active >= observed) = 0.000
+
+[R3']/[R4'] WITHIN-EPISODE vs MATCHED CLASSICAL WINDOWS:
+  episodes (>=15 steps): 33
+  omega episodes (pooled): det 0.1839  (772 points)
+  classical matched (pooled): det 0.5450  (778 points)
+  per-window mean difference (omega - classical): -0.3317   permutation p = 0.000
+
+===============================================================================
+[V] CALIBRATED VERDICT (stopping rule applied)
+===============================================================================
+  NULL AT THE CALIBRATED LEVEL. Per the pre-registered
+  stopping rule, the recurrence question CLOSES: scalar,
+  per-channel, signed, pairwise, composite, activation-
+  gated, and CALIBRATED composite — null at every level
+  at which the test had power.
+  Confirmed direction: within-episode structure BELOW
+  matched classical (p < 0.05) — activation DISORGANIZES
+  the composite state: the churn characterization,
+  measured at operating range.
+===============================================================================

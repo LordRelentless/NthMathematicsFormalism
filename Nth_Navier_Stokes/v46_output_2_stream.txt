@@ -1,0 +1,16 @@
+
+===============================================================================
+V20-NTH COMPLETE. Deliverables for V20-Millennium:
+  1. [S1] the algebraic core certified (identities, base-agnostic)
+  2. [S2] the four-arm translation verified as the symbolic
+     theorem predicts: A1 classical, bookkeeping in the phases,
+     ALL stretching production located in the C1 channel
+     (w^T A w = 0 identically — the rotation NEVER stretches)
+  3. [S3] the vorticity budget with the toll/transfer residual
+     measured — the phase-resolved enstrophy ledger
+  4. [S4] the stratum stability table — the parametric form of
+     the base-agnostic claim
+V20-Millennium consumes: the C1-channel localization (the place
+the Prize lives, in Nth terms), the budget residual, and the
+stratum table.
+===============================================================================

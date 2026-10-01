@@ -1,0 +1,2 @@
+
+v19 complete: the definitive recurrence test, per the pre-registered stopping rule. Whatever the verdict, the recurrence program closes here.

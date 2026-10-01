@@ -1,0 +1,4 @@
+
+V26.2 complete: dual-instrument attribution, collapse check,
+long-horizon confirmation, divergence/energy instruments,
+all persisted in /content/v26_results

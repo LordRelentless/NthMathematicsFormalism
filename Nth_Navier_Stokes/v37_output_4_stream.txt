@@ -1,0 +1,2 @@
+
+v17 complete: channel families rendered in both views, cell correlations, pitch law stratified, recurrence/determinism with surrogate null. Predictions were stated in advance; report what lands.

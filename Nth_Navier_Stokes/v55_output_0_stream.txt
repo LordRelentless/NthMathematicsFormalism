@@ -1,0 +1,97 @@
+===============================================================================
+V25 STAGE 0: SYNTHETIC MODEL RECOVERY TEST
+===============================================================================
+  true = SATURATING       -> best fit = S  (ΔAIC: S=0.0, L=3714.0, P=25428.0)
+       recovered bound B = 4996.0 (true = 5000.0)
+  true = LINEAR           -> best fit = L  (ΔAIC: S=2.0, L=0.0, P=9.0)
+  true = POWER-LAW p=1.5  -> best fit = P  (ΔAIC: S=518.2, L=516.1, P=0.0)
+
+  (the model selection must recover known patterns before
+   it is trusted on the fluid data.)
+
+###############################################################################
+V25 — PATTERN-PREDICT + RES-PROJECTION + VERIFICATION
+###############################################################################
+backend: [CudaDevice(id=0)]
+
+--- fitting data: 64³ × 1000 steps ---
+  batch n=64 C=2 steps=1000: 82s on cuda:0
+
+--- verification data: 32³ × 5000 steps (t = 20) ---
+  batch n=32 C=2 steps=5000: 153s on cuda:0
+
+===============================================================================
+[P1] PATTERN EXTRACTION — 64³ sustained tails (t > 0.4)
+===============================================================================
+
+  [tubes] M0 = 648.94
+    Model S: AIC = 9275.0  (Δ = +0.0)
+    Model L: AIC = 12051.8  (Δ = +2776.8)
+    Model P: AIC = 17383.0  (Δ = +8108.0)
+  -> BEST MODEL: S
+  [P2] Res-projection to t = 4000 (= 10^6 steps):
+       projected Σ = 3.2531e+04
+       bound identity B = 3.2531e+04
+       interpretation: SATURATING: the accumulation resolves to the bound identity B = 32531.10. BKM integral BOUNDED (affirmative).
+
+  [wound] M0 = 47.11
+    Model S: AIC = 11503.6  (Δ = +3490.6)
+    Model L: AIC = 11501.6  (Δ = +3488.6)
+    Model P: AIC = 8013.0  (Δ = +0.0)
+  -> BEST MODEL: P
+  [P2] Res-projection to t = 4000 (= 10^6 steps):
+       projected Σ = 8.0836e+14
+       interpretation: POWER-LAW (p=3.742 > 1): accelerating. BKM integral diverges super-linearly (counterexample direction).
+
+===============================================================================
+[P3] VERIFICATION — 32³ × 5000 steps (t = 20) vs the projection
+===============================================================================
+
+  [tubes] verification snapshots:
+    t =   4.0  Σ =      2853.34
+    t =   8.0  Σ =      4195.21
+    t =  12.0  Σ =      5064.64
+    t =  16.0  Σ =      5586.62
+    verification best model: S
+      Model S: AIC = 38224.9  (Δ = +0.0)
+      Model L: AIC = 56955.9  (Δ = +18730.9)
+      Model P: AIC = 114234.7  (Δ = +76009.7)
+    -> MODEL AGREEMENT: S at both 64³(t≤4) and 32³(t≤20)
+    64³-model projected Σ(t=20) = 32469.91
+    32³ actual Σ(t=20) = 6011.13
+    ratio (actual/projected) = 0.185
+    -> PROJECTION OFF by factor 5.4 — the model class may not extrapolate
+
+  [wound] verification snapshots:
+    t =   4.0  Σ =       756.20
+    t =   8.0  Σ =      2268.85
+    t =  12.0  Σ =      3240.86
+    t =  16.0  Σ =      3902.51
+    verification best model: S
+      Model S: AIC = 44051.9  (Δ = +0.0)
+      Model L: AIC = 53086.8  (Δ = +9034.9)
+      Model P: AIC = 89591.2  (Δ = +45539.3)
+    -> MODEL DISAGREEMENT: P at 64³ vs S at 32³/t=20
+    64³-model projected Σ(t=20) = 1981179.40
+    32³ actual Σ(t=20) = 4336.34
+    ratio (actual/projected) = 0.002
+    -> PROJECTION OFF by factor 456.9 — the model class may not extrapolate
+
+===============================================================================
+[V] V25 VERDICT — the million-step projection
+===============================================================================
+  [tubes]: best model = S  ->  SATURATING: the accumulation resolves to the bound identity B = 32531.10. BKM integral BOUNDED (affirmative).
+         Res bound B = 3.2531e+04
+         projected Σ(10^6 steps) = 3.2531e+04
+  [wound]: best model = P  ->  POWER-LAW (p=3.742 > 1): accelerating. BKM integral diverges super-linearly (counterexample direction).
+         projected Σ(10^6 steps) = 8.0836e+14
+
+  SCOPE: the models are fitted from 1000-step 64³ data and
+  verified against 5000-step 32³ data. The 10^6-step projection
+  is the analytical evaluation of the fitted model — computational
+  evidence for the growth pattern, NOT a proof of the continuum
+  behavior. Model disagreement between resolutions or breakdown
+  at the verification horizon would invalidate the projection.
+===============================================================================
+
+Generating figures...

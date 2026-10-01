@@ -1,0 +1,2 @@
+
+v18 complete: wound-core IC (four families + coupling channel), dual-arm signed offsets with permutation null, occupancy-safe recurrence, wrap-filtered stratification, and the three-view ensemble render. Predictions were registered in advance; report what lands.

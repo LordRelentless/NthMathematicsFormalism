@@ -1,0 +1,25 @@
+===============================================================================
+v17.1 — CONTROLS FOR THE O-R RECURRENCE SIGNAL
+===============================================================================
+
+[A1] O-R baseline: 54/301 steps occupied, mean occupancy 2.4/step (threshold 4)
+     determinism 0.760 (surrogate 0.080)
+
+[A2] MATCHED-OCCUPANCY CONTROLS (the decisive test: same sparse pipeline, high-occupancy source — if THESE read recurrent, the O-R signal is pipeline):
+     classical Z(C2) -> R-occupancy: det 0.774  (0.78, 0.79, 0.76, 0.74, 0.79)
+     omega     Z(C2) -> R-occupancy: det 0.752  (0.73, 0.76, 0.74, 0.72, 0.81)
+
+[A3] NO-INTERPOLATION RECURRENCE (contiguous stretches >= 15):
+     stretch [17:43]: det 0.329 (surrogate 0.329)
+
+[A4] OCCUPANCY SENSITIVITY (O-R):
+     min_count=2: 146 steps, det 0.193 (surrogate 0.076)
+     min_count=4: 54 steps, det 0.760 (surrogate 0.080)
+     min_count=8: insufficient
+
+[A5] CLEAN STRATIFICATION (wraps excluded — the honest statistic):
+     wraps/100 steps | wrap-filtered |dr/ds| median, per channel
+  [C] U:  0.00 |   n/a   R:  0.00 |   n/a   C1:  0.16 | 0.317   C2:  0.37 | 0.437
+  [O] U:  0.00 |   n/a   R:  0.00 | 0.328   C1:  0.09 | 0.324   C2:  0.15 | 0.411
+
+[A6] R-dominant volume fraction: classical 0.0000 -> omega 0.0034  (the selector writing its own channel)

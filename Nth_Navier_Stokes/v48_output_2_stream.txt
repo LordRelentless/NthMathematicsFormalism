@@ -1,0 +1,66 @@
+  [wound-FE-classical] HALT at step 616: non-finite.
+  [wound-FE-classical] scheme=euler steps 700 HALTED@616, routes 0, wall 689s
+    E_m 880.87 -> inf   Z 1331.15 -> inf   conc 124.4659 -> inf
+  -> CONFIRMED: the classical control halts in the same
+     window as omega (616). The blow-up is the shared
+     forward-Euler integrator — the BRIDGE, not the Nth
+     layer. The selector is exonerated: it could not
+     have prevented a failure of m's own time step,
+     exactly as the containment theorem demands.
+
+###############################################################################
+[M1] THE ANTI-PARALLEL TUBES under RK2 (the stable scheme)
+###############################################################################
+  [tubes-omega-RK2] scheme=rk2 steps 400, routes 188577, wall 541s
+    E_m 522.83 -> 479.52   Z 2599.79 -> 7554.97   conc 247.2202 -> 528.1907
+  [tubes-classical-RK2] scheme=rk2 steps 400, routes 0, wall 365s
+    E_m 522.83 -> 479.52   Z 2599.79 -> 7554.97   conc 247.2202 -> 528.1907
+
+  CONTAINMENT UNDER RK2: max|Z_omega - Z_classical|/Z_max = 2.886e-11   (algebraic — must survive any scheme)
+  E_m drift under RK2: -8.28%   (FE gave +76% — that was the injection; RK2 should be ~flat,
+   possibly slightly negative from mild high-mode damping)
+
+###############################################################################
+[M2] RANDOM DIVERGENCE-FREE ICs at matched energy ([F8] fixed)
+###############################################################################
+  [rand,101] scheme=rk2 steps 250, routes 49741, wall 224s
+    E_m 500.00 -> 474.94   Z 12235.84 -> 16975.06   conc 230.2533 -> 257.6318
+  [rand,202] scheme=rk2 steps 250, routes 77220, wall 225s
+    E_m 500.00 -> 474.45   Z 12593.39 -> 17192.18   conc 210.8779 -> 258.9519
+  [rand,303] scheme=rk2 steps 250, routes 33405, wall 227s
+    E_m 500.00 -> 474.08   Z 12585.76 -> 17208.86   conc 292.9868 -> 239.8166
+
+###############################################################################
+[M3b] THE FIX: wound core under RK2, 1000 steps — persistence
+testable for the first time beyond the Euler wall (616)
+###############################################################################
+  [wound-RK2-omega] scheme=rk2 steps 1000, routes 2236608, wall 732s
+    E_m 880.87 -> 824.20   Z 1331.15 -> 15209.46   conc 124.4659 -> 347.2727
+
+  -> PASSED 1000 steps (the FE wall was 616). Z ratio x11.43. Quasi-periodicity persistence is now
+     honestly testable on this horizon.
+
+===============================================================================
+[M4] ANTICIPATION TEST (finite-guarded)
+===============================================================================
+  [tubes-omega-RK2] best lag 9 (diag steps), corr -0.3551   shuffle-null p = 0.020
+  [rand,101] best lag 4 (diag steps), corr -0.5629   shuffle-null p = 0.000
+  [rand,202] best lag 0 (diag steps), corr -0.2345   shuffle-null p = 0.565
+  [rand,303] best lag 14 (diag steps), corr -0.6102   shuffle-null p = 0.000
+  [wound-RK2-omega] best lag 2 (diag steps), corr +0.0324   shuffle-null p = 1.000
+
+===============================================================================
+[M5] VERDICT
+===============================================================================
+  ROUTING ANTICIPATES CONCENTRATION in the candidate (RK2):
+  lag 9, corr -0.355, p 0.020 — the new observable, section-worthy.
+
+===============================================================================
+SCOPE: finite grid, finite horizons, conditional results.
+Finite-grid boundedness is NOT Prize evidence. What IS measured:
+containment through the blow-up candidate (7 figures, FE run);
+the blow-up's cause isolated to the time integrator (M3a);
+the first stable-scheme long-horizon tracking (M3b).
+===============================================================================
+
+Generating figures...

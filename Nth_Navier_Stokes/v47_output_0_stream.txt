@@ -1,0 +1,42 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g), four-arm
+             phase ledger n_|m,mi|
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection of fields,
+             unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+V20-MILLENNIUM — [M1] THE ANTI-PARALLEL TUBE PAIR (the classical
+blow-up candidate, inside the four-arm bundle)
+###############################################################################
+  [tubes-omega] steps 600, routes 1104281, wall 507s
+    E_m 522.83 -> 920.39   Z 2599.79 -> 31317.47   conc 247.2202 -> 1883.4542
+  [tubes-classical] steps 600, routes 0, wall 423s
+    E_m 522.83 -> 920.39   Z 2599.79 -> 31317.47   conc 247.2202 -> 1883.4546
+
+###############################################################################
+[M2] RANDOM DIVERGENCE-FREE ICs (genericity baseline, 3 seeds)
+###############################################################################
+  [rand,101] steps 300, routes 1334877, wall 230s
+    E_m 0.01 -> 0.01   Z 0.21 -> 0.21   conc 0.0039 -> 0.0039
+  [rand,202] steps 300, routes 1619202, wall 230s
+    E_m 0.01 -> 0.01   Z 0.21 -> 0.21   conc 0.0036 -> 0.0036
+  [rand,303] steps 300, routes 1860074, wall 230s
+    E_m 0.01 -> 0.01   Z 0.21 -> 0.21   conc 0.0050 -> 0.0050
+
+###############################################################################
+[M3] LONG-HORIZON WOUND CORE (quasi-periodicity persistence)
+###############################################################################

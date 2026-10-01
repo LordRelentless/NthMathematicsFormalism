@@ -1,0 +1,79 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g), the 4-channel
+             tuple (R,U,C1,C2) as ONE structured selector output
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection of fields,
+             Real-channel tracers, seed-asserted, gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+TUPLE ALGEBRA — the discrete structure the field test seeks
+===============================================================================
+  n_|2,2i| + n_|3,3i|  ->  R:+6  U:+6  C1:-6  C2:-6
+  arm-inverted n_|2i,2| + n_|3i,3|  -> R/U swap roles, C1/C2 swap roles: same multiset, permuted ordering
+  FIELD PREDICTION: at antithetical positions, the channel RANK ORDER should be a specific permutation — not random.
+===============================================================================
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+v18.7 — TUPLE-PERMUTATION TEST (render fixed): the algebra's output-ordering structure in the field
+###############################################################################
+
+--- tracking runs (3D, nu=0, CH, wound-core golden IC) ---
+    seeds: near-core 70/400 (expected 70)
+    routes total = 0   (Omega INACTIVE)
+  classical: 211s
+    seeds: near-core 70/400 (expected 70)
+    routes total = 367718   (Omega ACTIVE)
+  omega:     261s
+
+===============================================================================
+v18.7 AUDIT — the tuple-permutation test
+===============================================================================
+
+[B0] m-INVARIANCE:
+  relative m-deviation = 1.011e-10   CONFIRMED
+
+[T1] 24-ORDERING CENSUS (core cohort):
+  top orderings (classical):
+    R > C1 > C2 > U           C:  31.9%   O:  34.1%
+    R > C2 > C1 > U           C:  30.4%   O:  36.4%
+    C1 > U > C2 > R           C:   9.8%   O:   4.2%
+    C1 > R > C2 > U           C:   8.5%   O:   6.3%
+    U > C1 > C2 > R           C:   5.9%   O:   2.2%
+  Jensen-Shannon distance C vs O: 0.130   DISTINCT — the selector re-orders the tuple
+
+[T2] PAIRED-POSITION PERMUTATION MATRIX (the decisive test):
+
+  pairing = angular   (pairs used: C 255, O 483)
+    [classical] chi2 vs independence = 5689   most-common cross-ordering: R>C1>C2>U -> R>C2>C1>U (54.4% of pairs, uniform-null ~4%)
+    [omega] chi2 vs independence = 10827   most-common cross-ordering: R>C1>C2>U -> R>C2>C1>U (22.3% of pairs, uniform-null ~4%)
+    max cross-ordering mass: classical 0.365 vs omega 0.126
+    -> preferred permutation in BOTH — kinematic/geometric pairing; the selector decorrelates it (omega mass < classical mass).
+
+  pairing = zmirror   (pairs used: C 691, O 546)
+    [classical] chi2 vs independence = 15554   most-common cross-ordering: R>C1>C2>U -> R>C2>C1>U (21.4% of pairs, uniform-null ~4%)
+    [omega] chi2 vs independence = 12244   most-common cross-ordering: R>C2>C1>U -> R>C1>C2>U (24.9% of pairs, uniform-null ~4%)
+    max cross-ordering mass: classical 0.107 vs omega 0.130
+    -> preferred permutation in BOTH — kinematic/geometric pairing; the selector decorrelates it (omega mass < classical mass).
+
+[T3] MULTISET-INVARIANCE UNDER THE TRANSFER (local):
+  routed points: 1375   multiset relative error: 0.0584   ordering permuted at: 2.4% of routed points
+  -> ordering mostly unchanged at routed points.
+
+[T4] [O1] UNIFICATION CHECK:
+  omega preferred cross-ordering: R > C1 > C2 > U -> R > C2 > C1 > U
+  -> it SWAPS C1 and C2 dominance: consistent with the [O1] C2/C1 offset separation — one mechanism.
+
+Generating figures...

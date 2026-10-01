@@ -1,0 +1,60 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g)
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection of fields,
+             Real-channel tracers, seed-asserted, gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+v17 — CHANNEL-STRATIFIED COLLAPSE FRAME: Z(U)/Z(R)/Z(C1)/Z(C2)
+###############################################################################
+
+--- tracking runs (3D, nu=0, CH, golden-tuned helical IC) ---
+    seeds: near-core 70/400 (expected 70); core r0 in [0.065, 1.997]
+    routes total = 0   (Omega INACTIVE)
+  classical: 200s
+    seeds: near-core 70/400 (expected 70); core r0 in [0.065, 1.997]
+    routes total = 1313740   (Omega ACTIVE)
+  omega:     290s
+
+===============================================================================
+v17 AUDIT — channel stratification, cells, recurrence
+===============================================================================
+
+[Z1] CHANNEL OCCUPANCY (fraction of core-cohort tracer-steps in each channel):
+  [C] U:   0.0%  R:   0.0%  C1:  73.3%  C2:  26.7%
+  [O] U:   0.0%  R:   1.6%  C1:  62.1%  C2:  36.3%
+
+[Z2] CHANNEL-STRATIFIED RETREAT (the decisive question):
+  [C] mean |dr/ds| per channel:  U:    nan  R:    nan  C1:  0.660  C2:  0.870
+  [O] mean |dr/ds| per channel:  U:    nan  R:  0.339  C1:  0.728  C2:  0.741
+  channel spread classical = 0.2103   omega = 0.4024
+  -> partial/unexpected separation — report the numbers.
+
+[C1] 12-CELL OPPOSITIONAL/ROTATIONAL CORRELATIONS (core cohort, density signature):
+  [C] oppositional(rho=2): +0.009   rotational(rho=1): -0.291   ring1-ring3: -0.702
+  [O] oppositional(rho=2): -0.114   rotational(rho=1): -0.404   ring1-ring3: +0.467
+
+[R1] RECURRENCE / DETERMINISM (per-channel mean retreat depth time series; surrogate = shuffled):
+  [C-U] insufficient occupancy (0 steps)
+  [C-R] insufficient occupancy (0 steps)
+  [C-C1] recurrence 0.092  determinism 0.128  (surrogate det 0.078)  -> featureless
+  [C-C2] recurrence 0.097  determinism 0.114  (surrogate det 0.075)  -> featureless
+  [O-U] insufficient occupancy (0 steps)
+  [O-R] recurrence 0.202  determinism 0.760  (surrogate det 0.080)  -> RECURRENT
+  [O-C1] recurrence 0.088  determinism 0.085  (surrogate det 0.077)  -> featureless
+  [O-C2] recurrence 0.090  determinism 0.102  (surrogate det 0.074)  -> featureless
+
+Generating figures...

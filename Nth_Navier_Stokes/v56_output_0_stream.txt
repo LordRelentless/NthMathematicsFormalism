@@ -1,0 +1,299 @@
+NumPy version: 2.1.3
+[P1] unit selector circle (n=32): cyclic closure error (Axiom 0 audit): 1.77e-15
+     bridge vs np.cos/np.sin (audit print only): 1.83e-15 / 2.16e-15
+
+===============================================================================
+[P2] DR. MARTIN SELECTOR-SPECTRUM TRANSLATION — OPERATIONAL AUDIT
+===============================================================================
+  t : n_|g,gi| / n_|1+g, 1+gi, i+g, i+gi|         8 quotient channels
+  c : (1 - t^2 spectrum) / (1 + t^2 spectrum)    8 / 8 channels
+  s : (2*t spectrum) / (1 + t^2 spectrum)        4 / 8 channels
+  sample g=8.0: t channels = 8 (4 real, 4 unreal), magnitude 0.888889
+               c = 0.117241, s = 0.993103 (angle 83.27 deg — below a quarter phase for EVERY routed g >= 0)
+  worst channel-magnitude spread (quotient collapse, Prop. 8 cor.): 0.00e+00
+  worst bridge deviation vs transcendental angle: 1.11e-16
+  the evolution consumes exactly these collapsed magnitudes
+  (circle_pair_from_gain below): floats unchanged, provenance
+  selector-native.
+
+===============================================================================
+[D1] SELECTOR BUNDLE DECOMPOSITION (Axiom 2.6.1) — contract-validated
+     pair; entry-time validation, two-direction roundtrips, and a
+     negative test on the exact shape that crashed the previous cell
+===============================================================================
+  self-test (16, 16, 16)      : roundtrip both directions exact (0.0)
+  self-test (2, 16, 16, 16)   : roundtrip both directions exact (0.0)
+  self-test (8, 8, 8)         : roundtrip both directions exact (0.0)
+  negative test (16,16,16,3): rejected at entry -> "split_classes contract: last three axes must be equal-sized spatial axes; got shape (16, 16, 16, 3)"
+  16^3 tubes : per-component roundtrip exact (0.0), class shape (8, 8, 8, 8)
+  16^3 wound : per-component roundtrip exact (0.0), class shape (8, 8, 8, 8)
+  32^3 tubes : per-component roundtrip exact (0.0), class shape (16, 16, 16, 8)
+  32^3 wound : per-component roundtrip exact (0.0), class shape (16, 16, 16, 8)
+
+[D1b] CROSS-LEVEL CLASS IDENTITY — the native ladder mechanism
+     proven on known data BEFORE any evolution: the even-even-even
+     parity class of the 32^3 initial field sits exactly on the 16^3
+     grid (same physical period L=16, harmonic m=2 at both levels):
+  tubes : ||even-class(u_32) - u_16||_inf = 2.55e-15  (circle-walk drift only)
+  wound : ||even-class(u_32) - u_16||_inf = 5.55e-15  (circle-walk drift only)
+
+###############################################################################
+NTH 3D SELECTOR EVOLUTION — CORRECTED LADDER SUITE
+###############################################################################
+
+--- 16^3 x 200 (ladder: dx=1.0, T=3.0) ---
+
+-------------------------------------------------------------------------------
+RUN 16^3 | tubes | omega
+  grid=16^3  dx=1.0  steps=200  dt=0.015  T=3.0  nu=0.001  Omega=ON  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step    50  t=  0.750  E= 2380.4308  Zu= 1807.8814  Zp= 688.2934  max|u|=  1.822  max|w|=   1.311  fs_w=0.361  routes=2432
+  step   100  t=  1.500  E= 2364.0433  Zu= 1780.1443  Zp= 769.1188  max|u|=  1.778  max|w|=   1.445  fs_w=0.403  routes=2176
+  step   150  t=  2.250  E= 2281.0541  Zu= 1665.7863  Zp= 883.1955  max|u|=  1.724  max|w|=   1.671  fs_w=0.459  routes=2032
+  step   200  t=  3.000  E= 2230.2429  Zu= 1588.4683  Zp= 977.5260  max|u|=  1.863  max|w|=   1.661  fs_w=0.528  routes=1936
+  finished: finite=True  omega_err=6.16e-16  leak=4.88e-18  ledger=4.79e-05  wall=39.4s
+
+-------------------------------------------------------------------------------
+RUN 16^3 | tubes | classical
+  grid=16^3  dx=1.0  steps=200  dt=0.015  T=3.0  nu=0.001  Omega=OFF  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step    50  t=  0.750  E= 3457.0336  Zu= 3666.8488  Zp=   0.0000  max|u|=  1.928  max|w|=   2.805  fs_w=0.355  routes=0
+  step   100  t=  1.500  E= 3456.9984  Zu= 4054.7167  Zp=   0.0000  max|u|=  2.318  max|w|=   3.097  fs_w=0.503  routes=0
+  step   150  t=  2.250  E= 3454.2422  Zu= 4261.5941  Zp=   0.0000  max|u|=  2.694  max|w|=   3.407  fs_w=0.628  routes=0
+  step   200  t=  3.000  E= 3450.0272  Zu= 4156.5845  Zp=   0.0000  max|u|=  2.769  max|w|=   2.926  fs_w=0.695  routes=0
+  finished: finite=True  omega_err=0.00e+00  leak=1.64e-17  ledger=9.51e-05  wall=34.0s
+
+-------------------------------------------------------------------------------
+RUN 16^3 | wound | omega
+  grid=16^3  dx=1.0  steps=200  dt=0.015  T=3.0  nu=0.001  Omega=ON  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step    50  t=  0.750  E=13109.7677  Zu= 3053.9560  Zp=4121.5649  max|u|=  2.627  max|w|=   2.129  fs_w=0.252  routes=2224
+  step   100  t=  1.500  E=12955.9754  Zu= 3125.5007  Zp=4310.7061  max|u|=  2.830  max|w|=   2.481  fs_w=0.258  routes=2032
+  step   150  t=  2.250  E=12891.6713  Zu= 3438.7131  Zp=4617.9100  max|u|=  2.729  max|w|=   3.039  fs_w=0.321  routes=2128
+  step   200  t=  3.000  E=12756.0548  Zu= 3867.8459  Zp=4944.4067  max|u|=  2.763  max|w|=   4.266  fs_w=0.401  routes=2368
+  finished: finite=True  omega_err=6.58e-16  leak=1.21e-17  ledger=3.73e-05  wall=39.5s
+
+-------------------------------------------------------------------------------
+RUN 16^3 | wound | classical
+  grid=16^3  dx=1.0  steps=200  dt=0.015  T=3.0  nu=0.001  Omega=OFF  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step    50  t=  0.750  E=24577.7008  Zu=12827.9046  Zp=   0.0000  max|u|=  5.046  max|w|=   4.378  fs_w=0.166  routes=0
+  step   100  t=  1.500  E=24606.4009  Zu=14892.5375  Zp=   0.0000  max|u|=  5.926  max|w|=   5.743  fs_w=0.282  routes=0
+  step   150  t=  2.250  E=24733.0908  Zu=19223.6789  Zp=   0.0000  max|u|=  8.908  max|w|=   7.360  fs_w=0.499  routes=0
+  step   200  t=  3.000  E=25060.4933  Zu=23639.9766  Zp=   0.0000  max|u|=  7.195  max|w|=   7.382  fs_w=0.654  routes=0
+  finished: finite=True  omega_err=0.00e+00  leak=2.78e-17  ledger=8.45e-05  wall=25.4s
+
+--- 32^3 x 400 (ladder: dx=0.5, T=3.0) ---
+
+-------------------------------------------------------------------------------
+RUN 32^3 | tubes | omega
+  grid=32^3  dx=0.5  steps=400  dt=0.0075  T=3.0  nu=0.001  Omega=ON  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step   100  t=  0.750  E= 1929.6600  Zu= 1665.7626  Zp=1372.4789  max|u|=  1.242  max|w|=   1.783  fs_w=0.275  routes=9360
+  step   200  t=  1.500  E= 1890.4272  Zu= 1694.2811  Zp=1573.4721  max|u|=  1.208  max|w|=   2.200  fs_w=0.276  routes=10336
+  step   300  t=  2.250  E= 1842.9530  Zu= 1856.3864  Zp=1784.7431  max|u|=  1.299  max|w|=   2.386  fs_w=0.298  routes=12360
+  step   400  t=  3.000  E= 1811.2122  Zu= 2036.5261  Zp=2057.6769  max|u|=  1.488  max|w|=   2.679  fs_w=0.344  routes=14368
+  finished: finite=True  omega_err=5.96e-16  leak=1.54e-18  ledger=3.48e-05  wall=109.0s
+
+-------------------------------------------------------------------------------
+RUN 32^3 | tubes | classical
+  grid=32^3  dx=0.5  steps=400  dt=0.0075  T=3.0  nu=0.001  Omega=OFF  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step   100  t=  0.750  E= 3453.5133  Zu= 4836.0670  Zp=   0.0000  max|u|=  1.935  max|w|=   3.650  fs_w=0.118  routes=0
+  step   200  t=  1.500  E= 3448.4269  Zu= 6958.2894  Zp=   0.0000  max|u|=  2.565  max|w|=   5.309  fs_w=0.247  routes=0
+  step   300  t=  2.250  E= 3436.5926  Zu= 9164.7990  Zp=   0.0000  max|u|=  2.909  max|w|=   6.152  fs_w=0.421  routes=0
+  step   400  t=  3.000  E= 3415.8055  Zu=10488.3420  Zp=   0.0000  max|u|=  3.476  max|w|=   5.601  fs_w=0.524  routes=0
+  finished: finite=True  omega_err=0.00e+00  leak=1.03e-17  ledger=1.06e-04  wall=92.3s
+
+-------------------------------------------------------------------------------
+RUN 32^3 | wound | omega
+  grid=32^3  dx=0.5  steps=400  dt=0.0075  T=3.0  nu=0.001  Omega=ON  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step   100  t=  0.750  E=12365.2540  Zu= 3817.4633  Zp=3847.0937  max|u|=  2.671  max|w|=   2.413  fs_w=0.079  routes=21432
+  step   200  t=  1.500  E=12326.8501  Zu= 3869.6700  Zp=3938.0734  max|u|=  2.804  max|w|=   2.927  fs_w=0.081  routes=20624
+  step   300  t=  2.250  E=12305.5995  Zu= 4247.7879  Zp=4301.6566  max|u|=  3.247  max|w|=   2.835  fs_w=0.132  routes=19856
+  step   400  t=  3.000  E=12284.1751  Zu= 5089.7807  Zp=5114.6937  max|u|=  3.622  max|w|=   4.665  fs_w=0.233  routes=21496
+  finished: finite=True  omega_err=7.38e-16  leak=8.38e-18  ledger=5.39e-05  wall=107.9s
+
+-------------------------------------------------------------------------------
+RUN 32^3 | wound | classical
+  grid=32^3  dx=0.5  steps=400  dt=0.0075  T=3.0  nu=0.001  Omega=OFF  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step   100  t=  0.750  E=24556.8918  Zu=14668.4425  Zp=   0.0000  max|u|=  5.047  max|w|=   4.381  fs_w=0.041  routes=0
+  step   200  t=  1.500  E=24540.7007  Zu=17035.7115  Zp=   0.0000  max|u|=  6.008  max|w|=   7.413  fs_w=0.103  routes=0
+  step   300  t=  2.250  E=24532.6423  Zu=27947.1117  Zp=   0.0000  max|u|=  7.884  max|w|=  12.221  fs_w=0.346  routes=0
+  step   400  t=  3.000  E=24683.6923  Zu=58579.8021  Zp=   0.0000  max|u|=  8.894  max|w|=  15.263  fs_w=0.639  routes=0
+  finished: finite=True  omega_err=0.00e+00  leak=1.50e-17  ledger=1.04e-04  wall=93.8s
+
+--- 32^3 x 200 (zero-viscosity pair) ---
+
+-------------------------------------------------------------------------------
+RUN 32^3/nu0 | wound | omega
+  grid=32^3  dx=0.5  steps=200  dt=0.0075  T=1.5  nu=0.0  Omega=ON  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step    50  t=  0.375  E=12408.9600  Zu= 3892.4609  Zp=3870.8054  max|u|=  2.694  max|w|=   2.450  fs_w=0.093  routes=22120
+  step   100  t=  0.750  E=12374.7007  Zu= 3831.4349  Zp=3828.8813  max|u|=  2.849  max|w|=   2.280  fs_w=0.079  routes=21856
+  step   150  t=  1.125  E=12363.3270  Zu= 3847.3062  Zp=3866.1932  max|u|=  2.667  max|w|=   2.339  fs_w=0.078  routes=21664
+  step   200  t=  1.500  E=12353.9370  Zu= 3901.8328  Zp=3938.9580  max|u|=  2.834  max|w|=   2.425  fs_w=0.085  routes=20904
+  finished: finite=True  omega_err=7.35e-16  leak=6.94e-18  ledger=5.14e-12  wall=56.0s
+
+-------------------------------------------------------------------------------
+RUN 32^3/nu0 | wound | classical
+  grid=32^3  dx=0.5  steps=200  dt=0.0075  T=1.5  nu=0.0  Omega=OFF  tau0=0.5*peak  gain=8.0
+-------------------------------------------------------------------------------
+  step    50  t=  0.375  E=24577.5783  Zu=14446.3368  Zp=   0.0000  max|u|=  4.893  max|w|=   4.050  fs_w=0.038  routes=0
+  step   100  t=  0.750  E=24579.4722  Zu=14682.4288  Zp=   0.0000  max|u|=  5.050  max|w|=   4.383  fs_w=0.041  routes=0
+  step   150  t=  1.125  E=24582.5236  Zu=15384.2628  Zp=   0.0000  max|u|=  5.406  max|w|=   5.185  fs_w=0.056  routes=0
+  step   200  t=  1.500  E=24588.7346  Zu=17090.3269  Zp=   0.0000  max|u|=  6.020  max|w|=   7.444  fs_w=0.104  routes=0
+  finished: finite=True  omega_err=0.00e+00  leak=8.67e-18  ledger=2.56e-15  wall=48.4s
+
+===============================================================================
+MILLENNIUM-CLAIM AUDIT — finite-grid verification (this implementation,
+these grids, these horizons)
+===============================================================================
+
+[J1] Omega pointwise invariants (u+p and |u|^2+|p|^2), exact on
+     every raw transfer:
+  [('16^3', 'tubes', 'classical')  ] Omega disabled
+  [('16^3', 'tubes', 'omega')      ] worst error = 6.16e-16  -> PASS
+  [('16^3', 'wound', 'classical')  ] Omega disabled
+  [('16^3', 'wound', 'omega')      ] worst error = 6.58e-16  -> PASS
+  [('32^3', 'tubes', 'classical')  ] Omega disabled
+  [('32^3', 'tubes', 'omega')      ] worst error = 5.96e-16  -> PASS
+  [('32^3', 'wound', 'classical')  ] Omega disabled
+  [('32^3', 'wound', 'omega')      ] worst error = 7.38e-16  -> PASS
+  [('32^3/nu0', 'wound', 'classical')] Omega disabled
+  [('32^3/nu0', 'wound', 'omega')  ] worst error = 7.35e-16  -> PASS
+
+[J2] Zero structural leakage of the fused structural product
+     (sum w . adv = 0 exactly on this stencil, Prop. 7):
+  [('16^3', 'tubes', 'classical')  ] worst relative residual = 1.64e-17  -> PASS
+  [('16^3', 'tubes', 'omega')      ] worst relative residual = 4.88e-18  -> PASS
+  [('16^3', 'wound', 'classical')  ] worst relative residual = 2.78e-17  -> PASS
+  [('16^3', 'wound', 'omega')      ] worst relative residual = 1.21e-17  -> PASS
+  [('32^3', 'tubes', 'classical')  ] worst relative residual = 1.03e-17  -> PASS
+  [('32^3', 'tubes', 'omega')      ] worst relative residual = 1.54e-18  -> PASS
+  [('32^3', 'wound', 'classical')  ] worst relative residual = 1.50e-17  -> PASS
+  [('32^3', 'wound', 'omega')      ] worst relative residual = 8.38e-18  -> PASS
+  [('32^3/nu0', 'wound', 'classical')] worst relative residual = 8.67e-18  -> PASS
+  [('32^3/nu0', 'wound', 'omega')  ] worst relative residual = 6.94e-18  -> PASS
+
+[J3] Resolution-solve termination (Axiom 5.2 pattern) and
+     whole-term balance:
+  [('16^3', 'tubes', 'classical')  ] solves=201  converged=201  worst rel resid=9.9e-11  max cycles=15  final max|div|=6.2e-12
+  [('16^3', 'tubes', 'omega')      ] solves=201  converged=201  worst rel resid=9.9e-11  max cycles=16  final max|div|=2.4e-11
+  [('16^3', 'wound', 'classical')  ] solves=201  converged=201  worst rel resid=1.0e-10  max cycles=16  final max|div|=1.6e-11
+  [('16^3', 'wound', 'omega')      ] solves=201  converged=201  worst rel resid=1.0e-10  max cycles=17  final max|div|=2.4e-11
+  [('32^3', 'tubes', 'classical')  ] solves=401  converged=401  worst rel resid=1.0e-10  max cycles=16  final max|div|=9.1e-12
+  [('32^3', 'tubes', 'omega')      ] solves=401  converged=401  worst rel resid=1.0e-10  max cycles=18  final max|div|=1.8e-11
+  [('32^3', 'wound', 'classical')  ] solves=401  converged=401  worst rel resid=1.0e-10  max cycles=18  final max|div|=5.0e-11
+  [('32^3', 'wound', 'omega')      ] solves=401  converged=401  worst rel resid=1.0e-10  max cycles=18  final max|div|=3.4e-11
+  [('32^3/nu0', 'wound', 'classical')] solves=201  converged=201  worst rel resid=1.0e-10  max cycles=18  final max|div|=9.3e-12
+  [('32^3/nu0', 'wound', 'omega')  ] solves=201  converged=201  worst rel resid=9.9e-11  max cycles=18  final max|div|=1.5e-11
+
+[J4] Exact discrete energy ledger:
+     E(t) = E0 - viscous - projection strip + R (R = temporal fusion
+     residue, >= 0, vanishes as dt -> 0):
+  [('16^3', 'tubes', 'classical')  ] ledger residual = 9.51e-05
+      E0=3456.0000 -> E_final=3450.0272 = E0 - visc 8.5460 - strip 40.4595 + R 82.9082
+  [('16^3', 'tubes', 'omega')      ] ledger residual = 4.79e-05
+      E0=3456.0000 -> E_final=2230.2429 = E0 - visc 5.2610 - strip 1212.8079 + R 20.6830
+  [('16^3', 'wound', 'classical')  ] ledger residual = 8.45e-05
+      E0=24576.0000 -> E_final=25060.4933 = E0 - visc 43.0463 - strip 999.5833 + R 1712.1401
+  [('16^3', 'wound', 'omega')      ] ledger residual = 3.73e-05
+      E0=24576.0000 -> E_final=12756.0548 = E0 - visc 13.7210 - strip 12060.6751 + R 332.2870
+  [('32^3', 'tubes', 'classical')  ] ledger residual = 1.06e-04
+      E0=3456.0000 -> E_final=3415.8055 = E0 - visc 16.2123 - strip 53.6964 + R 92.0664
+  [('32^3', 'tubes', 'omega')      ] ledger residual = 3.48e-05
+      E0=3456.0000 -> E_final=1811.2122 = E0 - visc 8.0100 - strip 1617.0793 + R 11.8486
+  [('32^3', 'wound', 'classical')  ] ledger residual = 1.04e-04
+      E0=24576.0000 -> E_final=24683.6923 = E0 - visc 60.6666 - strip 753.5029 + R 1171.0426
+  [('32^3', 'wound', 'omega')      ] ledger residual = 5.39e-05
+      E0=24576.0000 -> E_final=12284.1751 = E0 - visc 9.4206 - strip 12375.8928 + R 163.9745
+  [('32^3/nu0', 'wound', 'classical')] ledger residual = 2.56e-15
+      E0=24576.0000 -> E_final=24588.7346 = E0 - visc 0.0000 - strip 314.5346 + R 327.2691
+  [('32^3/nu0', 'wound', 'omega')  ] ledger residual = 5.14e-12
+      E0=24576.0000 -> E_final=12353.9370 = E0 - visc 0.0000 - strip 12325.0423 + R 102.9793
+
+[J5] Selector boundedness (no clipping, no NaN repair, no artificial
+     viscosity anywhere in the evolution):
+  [('16^3', 'tubes', 'classical')  ] max|u| growth =  1.85x  max|w| growth =  1.85x  -> finite
+  [('16^3', 'tubes', 'omega')      ] max|u| growth =  1.24x  max|w| growth =  1.00x  -> finite
+  [('16^3', 'wound', 'classical')  ] max|u| growth =  1.82x  max|w| growth =  2.23x  -> finite
+  [('16^3', 'wound', 'omega')      ] max|u| growth =  1.03x  max|w| growth =  1.39x  -> finite
+  [('32^3', 'tubes', 'classical')  ] max|u| growth =  2.57x  max|w| growth =  3.16x  -> finite
+  [('32^3', 'tubes', 'omega')      ] max|u| growth =  1.05x  max|w| growth =  1.35x  -> finite
+  [('32^3', 'wound', 'classical')  ] max|u| growth =  1.92x  max|w| growth =  4.07x  -> finite
+  [('32^3', 'wound', 'omega')      ] max|u| growth =  1.00x  max|w| growth =  1.30x  -> finite
+  [('32^3/nu0', 'wound', 'classical')] max|u| growth =  1.23x  max|w| growth =  1.99x  -> finite
+  [('32^3/nu0', 'wound', 'omega')  ] max|u| growth =  1.00x  max|w| growth =  1.30x  -> finite
+
+[L1] LADDER CONVERGENCE (native, transform-free): the even-even-even
+     parity class of the 32^3 final state sits EXACTLY on the 16^3
+     grid (same physical period L=16, dx halved) — cross-level
+     discrepancy is a direct class extraction, no interpolation:
+  tubes  omega    : real-channel discrepancy 5.268e-01   full bundle 6.106e-01
+  tubes  classical: real-channel discrepancy 8.815e-01   full bundle 8.815e-01
+  wound  omega    : real-channel discrepancy 4.579e-01   full bundle 4.544e-01
+  wound  classical: real-channel discrepancy 9.443e-01   full bundle 9.443e-01
+  (evidence toward the discrete-to-continuum step, NOT the theorem:
+   this measures total scheme discrepancy at T=3.0 across dx/2)
+
+[L2] FINEST-OCTAVE CONCENTRATION — fs_w = share of real-channel
+     enstrophy living at the 2-cell scale, from the Axiom 2.6.1 bundle
+     decomposition (exact high-pass, no transform). This is the
+     discretized signature of the concentration obstruction:
+  [16^3 tubes ] fs_w peak: Omega 0.528  classical 0.695   final: 0.528 vs 0.695
+  [16^3 wound ] fs_w peak: Omega 0.449  classical 0.654   final: 0.401 vs 0.654
+  [32^3 tubes ] fs_w peak: Omega 0.344  classical 0.524   final: 0.344 vs 0.524
+  [32^3 wound ] fs_w peak: Omega 0.403  classical 0.639   final: 0.233 vs 0.639
+
+[L3] ZERO-VISCOSITY PAIR (wound, 32^3, identical discretization):
+  Omega ON : finite=True  Zu 14396.3 -> 3901.8 (0.27x)  max|w| growth 0.65x  fs_w final 0.085
+  Omega OFF: finite=True  Zu 14396.3 -> 17090.3 (1.19x)  max|w| growth 1.99x  fs_w final 0.104
+  phase-channel share of total enstrophy (Omega, final): 50.2%
+  NOTE: finiteness of BOTH runs is guaranteed by the exact energy
+  ledger (E <= E0 + R) — a property of the bridge, not evidence
+  about the continuum problem. Claim-relevant readouts: max|w| and
+  Zu growth ratios and fs_w, ON vs OFF.
+
+FINAL PHASE-LABEL DISTRIBUTION (routed points, dominant Jacobian
+channel at final state):
+  [('16^3', 'tubes', 'omega')      ] {'Real': 0, 'Unreal': 1488, 'C1': 144, 'C2': 256}
+  [('16^3', 'wound', 'omega')      ] {'Real': 0, 'Unreal': 1152, 'C1': 640, 'C2': 576}
+  [('32^3', 'tubes', 'omega')      ] {'Real': 0, 'Unreal': 9752, 'C1': 2512, 'C2': 2152}
+  [('32^3', 'wound', 'omega')      ] {'Real': 232, 'Unreal': 8856, 'C1': 6576, 'C2': 5832}
+  [('32^3/nu0', 'wound', 'omega')  ] {'Real': 0, 'Unreal': 8616, 'C1': 5776, 'C2': 6568}
+
+===============================================================================
+COMPUTATIONAL COST
+===============================================================================
+  [('16^3', 'tubes', 'classical')  ] wall =   34.0 s  (1621 ms/step)
+  [('16^3', 'tubes', 'omega')      ] wall =   39.4 s  (1878 ms/step)
+  [('16^3', 'wound', 'classical')  ] wall =   25.4 s  (1211 ms/step)
+  [('16^3', 'wound', 'omega')      ] wall =   39.5 s  (1882 ms/step)
+  [('32^3', 'tubes', 'classical')  ] wall =   92.3 s  (2250 ms/step)
+  [('32^3', 'tubes', 'omega')      ] wall =  109.0 s  (2660 ms/step)
+  [('32^3', 'wound', 'classical')  ] wall =   93.8 s  (2287 ms/step)
+  [('32^3', 'wound', 'omega')      ] wall =  107.9 s  (2631 ms/step)
+  [('32^3/nu0', 'wound', 'classical')] wall =   48.4 s  (2306 ms/step)
+  [('32^3/nu0', 'wound', 'omega')  ] wall =   56.0 s  (2665 ms/step)
+  No global spectral solves; whole-term balance enforced by the
+  fusion cascade (O(N) per cycle, warm-started, 2-6 cycles/step).
+
+===============================================================================
+SCOPE (the honest boundary of this experiment)
+  * every item above is a statement about FINITE periodic grids and
+    THIS discrete implementation of the selector construction;
+  * the Clay statement concerns smooth solutions of the CLASSICAL 3D
+    equations for ALL time; no finite simulation settles it;
+  * remaining analytical steps: (1) continuum selector space + Omega
+    as a well-defined operator; (2) discrete-to-continuum convergence
+    of the audited invariants — [L1]/[D1b] are evidence toward this,
+    not the theorem; (3) recovery theorem: classical N-S as the
+    Real-channel projection with error bounds; (4) a priori
+    enstrophy bound in the continuum; (5) phase-closure lemma: Omega
+    RELOCATES tension into p, it does not annihilate it, so
+    boundedness of p must be proven in its own right — [L2] fs_w is
+    the discrete monitor of exactly this question.
+===============================================================================

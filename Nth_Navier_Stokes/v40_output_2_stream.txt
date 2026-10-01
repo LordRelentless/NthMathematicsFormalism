@@ -1,0 +1,2 @@
+
+v18.7 complete: the full tuple-permutation suite with the corrected per-segment render. The v18.6 audit verdicts stand (JS=0.130 DISTINCT; preferred C1<->C2 permutation in both runs — kinematic, selector decorrelates; multiset 5.8% / order 2.4%; C1/C2 swap unifies [O1]); this run reproduces them and renders.

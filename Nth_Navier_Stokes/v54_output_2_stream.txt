@@ -1,0 +1,3 @@
+
+V24 complete: R1 ladder + R2 horizon, all gates green,
+results persisted in /content/v24_results

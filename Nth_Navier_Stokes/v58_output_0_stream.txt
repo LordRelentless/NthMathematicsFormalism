@@ -1,0 +1,107 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V26.2 VALIDATION GATES
+===============================================================================
+  [G1] Jacobian equivalence: rel err = 1.77e-16
+  [G2] non-expansiveness: E ratio = 0.67012618  (PASS)
+  [G3] whole-term projection on ic_wound (32³): max|div| 3.401e+00 -> 1.432e-10  (reduction 23754644844.7x)
+  [G4] [B0] mechanics: projection linearity = 2.99e-16  omega m-preservation = 1.36e-16  omega energy = 5.38e-16
+  ALL GATES PASS.
+
+###############################################################################
+V26.2 — ATTRIBUTION SUITE: dual-instrument runs
+###############################################################################
+  all runs at nu=0.0001 (>0 by design: the attribution
+  separates the classical floor from the selector machinery in
+  the physically-regular regime), thresh_frac=0.5, gain=10
+
+--- 32³ × 300 (ladder point) ---
+  batch n=32 C=2 steps=300: 28s on cuda:0
+
+--- 64³ × 5000 (V26a long horizon + V26c attribution) ---
+  batch n=64 C=2 steps=5000: 364s on cuda:0
+
+--- 128³ × 300 (ladder point) ---
+  batch n=128 C=1 steps=300: 82s on cuda:0
+
+===============================================================================
+V26.2 ANALYSIS
+===============================================================================
+
+[V26a] LONG-HORIZON MODEL FIT (64³, t=0 to 20):
+
+  [tubes]
+    Sigma_u: best = S  (dAIC: S=0, L=23135, P=154007)
+      bound B = 31894.68
+    Sigma_m: best = S  (dAIC: S=0, L=25666, P=158601)
+      bound B = 212705.29
+
+  [wound]
+    Sigma_u: best = S  (dAIC: S=0, L=11674, P=130464)
+      bound B = 18887.80
+    Sigma_m: best = S  (dAIC: S=0, L=11603, P=132480)
+      bound B = 142003.56
+
+[V26b] CROSS-RESOLUTION COLLAPSE CHECK (tubes, t=0 to 1.2):
+  32³ vs 64³: correlation = 0.223, peak alignment = 4.8 steps
+  32³ vs 128³: correlation = -0.111, peak alignment = 2.9 steps
+  pairwise: 32-64 = 0.223, 32-128 = -0.111, 64-128 = 0.389
+  -> COLLAPSE NOT CONFIRMED at this threshold.
+
+[V26c] THREE-TERM ATTRIBUTION (64³ × 5000, ν=1e-4):
+  Σ_u: measured instrument (Real channel u)
+  Σ_m: classical floor (bundle m, exact by [B0]/[G4])
+  toll: Whole-Term projection cumulative removal (signed ΔE)
+  THE HINGE: does Σ_m saturate independently?
+
+  [tubes] (M0 = 648.94, 5000 steps)
+    Σ_u(final) =     32174.83   end-rate =   85.544/t
+    Σ_m(final) =    214434.68   end-rate =  421.438/t
+    toll(final) =      -364.91 (signed ΔE; negative = removed by closure)
+    E: 521.7 -> 18.8
+    final max|div_u| = 1.26e-10   final max|div_m| = 1.98e-10
+    D_u(final)/M0 = 0.0001
+    D_m(final)/M0 = 0.0010
+    Σ_u/Σ_m ratio = 0.150
+    m-floor end-rate/avg-rate = 0.039
+    -> m-floor SATURATING (rate < 10% of average)
+  [wound] (M0 = 47.11, 5000 steps)
+    Σ_u(final) =     17801.75   end-rate =  113.434/t
+    Σ_m(final) =    133518.07   end-rate =  833.319/t
+    toll(final) =      -609.84 (signed ΔE; negative = removed by closure)
+    E: 880.0 -> 113.4
+    final max|div_u| = 1.71e-10   final max|div_m| = 3.41e-10
+    D_u(final)/M0 = 0.0199
+    D_m(final)/M0 = 0.1536
+    Σ_u/Σ_m ratio = 0.133
+    m-floor end-rate/avg-rate = 0.125
+    -> m-floor DECELERATING (rate 10-50% of average)
+
+===============================================================================
+[V] V26.2 COMBINED VERDICT
+===============================================================================
+  -> NEITHER FLOOR SATURATES at this horizon. Both m-
+     accumulations grow. Extend the horizon or report
+     the growth rates as found.
+
+  INSTRUMENT HEALTH (v26.2 additions):
+  [('tubes', 32)           ] max|div_u| in [3.8e-12, 3.1e-11]   max|div_m| in [5.8e-12, 8.5e-12]
+  [('tubes', 64)           ] max|div_u| in [9.5e-11, 4.8e-08]   max|div_m| in [1.6e-10, 2.3e-08]
+  [('tubes', 128)          ] max|div_u| in [2.8e-07, 1.5e-06]   max|div_m| in [5.0e-07, 1.2e-06]
+  [('wound', 32)           ] max|div_u| in [3.6e-12, 6.6e-11]   max|div_m| in [6.3e-12, 6.9e-12]
+  [('wound', 64)           ] max|div_u| in [1.4e-10, 1.5e-07]   max|div_m| in [2.7e-10, 2.3e-08]
+
+  SCOPE: finite grids, finite horizon, single IC per class,
+  single ν. The m-instrument reads the classical field exactly
+  ([B0], machine-checked by [G4]) — but the reading is still the
+  DISCRETE classical field, not the continuum. The attribution is
+  the framework's contribution: it separates what the selector
+  dissipation removes from what the classical dynamics itself
+  does. Model extrapolation beyond the fitted horizon carries
+  the v25 caveat (projections missed by factors 5-457 at t=20).
+===============================================================================
+
+Generating figures...

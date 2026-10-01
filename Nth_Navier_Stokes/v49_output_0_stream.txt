@@ -1,0 +1,62 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g), four-arm
+             phase ledger n_|m,mi|, the 4D selector n_{x,xi,y,yi,z,zi,t,ti}
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection, RK2 time
+             update, unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+V21.1 — THE TEMPORAL ARCHITECTURE TEST: clock field, shear, Mercury loops, anchor persistence
+###############################################################################
+
+--- temporal-architecture runs (RK2, wound-core golden IC) ---
+    seeds: near-core 70/400 (expected 70)
+    routes total = 0   (Omega INACTIVE)
+  classical: 647s
+    seeds: near-core 70/400 (expected 70)
+    routes total = 427716   (Omega ACTIVE)
+  omega:     785s
+
+===============================================================================
+[C1] CLOCK FIELD = TENSION FIELD (one field, two readings)
+===============================================================================
+  [classical] rate-tension correlation: -0.6221   accumulated local time at t=2.4: min 0.745  max 1.800  core-mean 1.225
+          clock SPREAD (fastest - slowest): 1.0553 time units  (44.0% of global)
+  [omega] rate-tension correlation: -0.5314   accumulated local time at t=2.4: min 0.954  max 1.656  core-mean 1.277
+          clock SPREAD (fastest - slowest): 0.7020 time units  (29.3% of global)
+
+===============================================================================
+[C2] CLOCK SHEAR: core-vs-field clock divergence over time
+===============================================================================
+  [classical] shear(final) = 0.9897 time units   slope 1st half 1.71e-03, 2nd half 1.58e-03  -> LINEAR (constant rate difference)
+  [omega] shear(final) = 0.8295 time units   slope 1st half 1.53e-03, 2nd half 1.23e-03  -> LINEAR (constant rate difference)
+
+===============================================================================
+[C3] MERCURY LOOPS: relative-phase cycling between desynchronized clocks
+===============================================================================
+  [classical] tracers with >=1 phase loop vs the mean: 23%   median |loops|: 0   max 2
+          loop intervals: median 358 steps  IQR 135
+  [omega] tracers with >=1 phase loop vs the mean: 19%   median |loops|: 0   max 1
+
+===============================================================================
+[C4] ANCHOR PERSISTENCE vs OMEGA (the open question — no prior)
+===============================================================================
+  core cohort:   classical mean anchor-score 43.94 (median 0), omega 68.98 (median 0)
+  uniform cohort: classical 631.22, omega 709.52
+  anchor difference (omega - classical): core +25.03 (+57%), uniform +78.30
+  -> ANCHORS STABILIZED by the selector: routing preserves/enhances the reoccupation structure — selector-anchored coherence, a new result class.
+
+Generating figures...

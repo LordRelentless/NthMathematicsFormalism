@@ -1,0 +1,96 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V27.2 GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  GATES PASS.
+
+===============================================================================
+[E0] CORRECTED V27.1 VERDICT (ratio method, your pasted rates,
+     window [0.2, 0.8], 32^3)
+===============================================================================
+  [tubes] doubling ratios: 1.948 1.913 1.840  (FALLING with dt)
+        rate/dt: 15.40 15.00 14.35 13.20
+        two-point c0 bound at finest pair: 0.00040/t (0.8% of the dt=0.004 rate)
+        -> intercept model REJECTED (its local ratios rise; data falls).
+        -> c1 ~ 15.4, c0 ~ 0: dt-CONSISTENT, with mild saturation at dt=0.004 (rate/dt drops ~14%).
+  [wound] doubling ratios: 2.000 2.000 1.906  (FALLING with dt)
+        rate/dt: 3.20 3.20 3.20 3.05
+        two-point c0 bound at finest pair: 0.00000/t (0.0% of the dt=0.004 rate)
+        -> intercept model REJECTED (its local ratios rise; data falls).
+        -> c1 ~ 3.2, c0 ~ 0: dt-CONSISTENT, with mild saturation at dt=0.004 (rate/dt drops ~5%).
+
+###############################################################################
+V27.2 — CROSSING LADDER (dt-pairs at 32^3 and 64^3, t=0.4,
+         window [0.1, 0.4], warm-8, nu=1e-4)
+###############################################################################
+  [32^3 dt=0.002] n=32^3  dt=0.002  steps=200  t=0.4
+    t= 0.20  (    48s)
+    t= 0.40  (    79s)
+    done: wall=79s  ledger < 1e-10  worst resid=1.1e-05
+  [32^3 dt=0.001] n=32^3  dt=0.001  steps=400  t=0.4
+    t= 0.10  (    45s)
+    t= 0.20  (    77s)
+    t= 0.30  (   111s)
+    t= 0.40  (   144s)
+    done: wall=144s  ledger < 1e-10  worst resid=1.1e-05
+  [64^3 dt=0.002] n=64^3  dt=0.002  steps=200  t=0.4
+    t= 0.20  (   160s)
+    t= 0.40  (   311s)
+    done: wall=311s  ledger < 1e-10  worst resid=1.7e-04
+  [64^3 dt=0.001] n=64^3  dt=0.001  steps=400  t=0.4
+    t= 0.10  (   163s)
+    t= 0.20  (   314s)
+    t= 0.30  (   464s)
+    t= 0.40  (   629s)
+    done: wall=629s  ledger < 1e-10  worst resid=1.7e-04
+
+===============================================================================
+[E1] DT-PAIRS, WINDOW [0.1, 0.4] (rho = rate(0.001)/rate(0.002);
+     0.500 = pure O(dt); c0b = two-point intercept upper bound)
+===============================================================================
+  [32^3 tubes ] rate(0.001) = 0.0169  rate(0.002) = 0.0330  rho = 0.512  c1 =   16.89  c0 bound = 0.00078  (2.4% of rate(0.002))
+  [32^3 wound ] rate(0.001) = 0.0034  rate(0.002) = 0.0067  rho = 0.506  c1 =    3.39  c0 bound = 0.00007  (1.1% of rate(0.002))
+  [64^3 tubes ] rate(0.001) = 0.0201  rate(0.002) = 0.0388  rho = 0.517  c1 =   20.05  c0 bound = 0.00135  (3.5% of rate(0.002))
+  [64^3 wound ] rate(0.001) = 0.0035  rate(0.002) = 0.0069  rho = 0.506  c1 =    3.49  c0 bound = 0.00008  (1.2% of rate(0.002))
+
+===============================================================================
+[E2] REFINEMENT EXPONENT beta = log2(c1(64^3)/c1(32^3))
+     Under CFL refinement (dt ~ dx): toll rate ~ dx^(1-beta).
+===============================================================================
+  [tubes ] c1:   16.89 ->   20.05 (x1.19)  beta = +0.247
+        toll under CFL refinement ~ dx^0.75 (VANISHES)
+  [wound ] c1:    3.39 ->    3.49 (x1.03)  beta = +0.039
+        toll under CFL refinement ~ dx^0.96 (VANISHES)
+
+  VERDICT:
+  -> beta < 1 on both ICs: the toll VANISHES in the continuum
+     direction (dt ~ dx -> 0). The discrete closure is a
+     consistent (converging) discretization; the prior
+     energy-death / saturation verdicts at dt=0.004 are
+     scheme-dominated artifacts. The floor claims survive
+     refinement with quantified, vanishing closure cost.
+
+===============================================================================
+[E3] V26.2-64^3 RECLASSIFICATION (measured loss ~70% of E0 to the
+     toll at dt=0.004, t=20; scaling by the measured rho^2)
+===============================================================================
+  [tubes ] rho(64^3) = 0.517  ->  predicted toll loss at
+         dt=0.001, t=20: ~19% of E0  (vs 70% at
+         dt=0.004);  at dt->0: -> 0%.
+         -> the "both floors saturating" S-verdict of V26.2
+            flips to growth already at dt=0.001.
+  [wound ] rho(64^3) = 0.506  ->  predicted toll loss at
+         dt=0.001, t=20: ~18% of E0  (vs 70% at
+         dt=0.004);  at dt->0: -> 0%.
+         -> the "both floors saturating" S-verdict of V26.2
+            flips to growth already at dt=0.001.
+
+  CAVEAT: the 70% anchor is a t=20 integrated figure with
+  time-decaying activity; the rho^2 scaling assumes the dt-shape
+  is time-independent (early-window measured). Order-of-magnitude
+  calibration, not a point prediction.

@@ -1,0 +1,29 @@
+NumPy version: 2.1.3
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g), four-arm
+             phase ledger n_|m,mi|
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection, RK2 time
+             update (Cayley-family: stable for the skew advection),
+             unit-tested + gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+[M3a] THE FALSIFICATION TEST: forward-Euler CLASSICAL control of
+the wound core. The omega FE run halted at step 616. PREDICTION
+([B0]): the classical control halts at the SAME step with the
+same values — the blow-up is the shared time integrator, not
+the selector. If classical runs past ~620: first [B0] violation
+in twenty versions — a major finding, report immediately.
+###############################################################################

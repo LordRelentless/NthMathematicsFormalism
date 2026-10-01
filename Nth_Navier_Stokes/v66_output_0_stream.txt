@@ -1,0 +1,91 @@
+JAX version: jax 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V28 GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  [G3] correction div-freeness: max|div| 3.426e-01 -> 2.53e-16  (reduction 1352724063581377x)
+  [G4] m-preservation: 1.20e-16   correction purity: grad-part 44.8% of |c|   (this fraction was the toll in V27.3)
+  GATES PASS.
+
+###############################################################################
+V28 PROTOTYPE — divergence-closed transfer (32^3, T=2.0)
+###############################################################################
+  [REF current] n=32^3  dt=0.004  steps=500  T=2.0  transfer=current  nu=0.0001
+    t= 1.00  (   171s)  tubes:Ed%=94  wound:Ed%=99
+    t= 2.00  (   257s)  tubes:Ed%=89  wound:Ed%=98
+    done: wall=257s  ledger < 1e-10 (m; d incl. drift)  worst resid=7.0e-06
+  [V28 coarse ] n=32^3  dt=0.004  steps=500  T=2.0  transfer=V28 (div-closed)  nu=0.0001
+    t= 1.00  (   129s)  tubes:Ed%=94  wound:Ed%=99
+    t= 2.00  (   245s)  tubes:Ed%=89  wound:Ed%=98
+    done: wall=245s  ledger < 1e-10 (m; d incl. drift)  worst resid=1.5e-04
+  [V28 fine   ] n=32^3  dt=0.001  steps=2000  T=2.0  transfer=V28 (div-closed)  nu=0.0001
+    t= 0.25  (   128s)  tubes:Ed%=100  wound:Ed%=100
+    t= 0.50  (   250s)  tubes:Ed%=99  wound:Ed%=100
+    t= 0.75  (   365s)  tubes:Ed%=99  wound:Ed%=100
+    t= 1.00  (   480s)  tubes:Ed%=98  wound:Ed%=100
+    t= 1.25  (   595s)  tubes:Ed%=98  wound:Ed%=100
+    t= 1.50  (   710s)  tubes:Ed%=97  wound:Ed%=99
+    t= 1.75  (   825s)  tubes:Ed%=97  wound:Ed%=99
+    t= 2.00  (   942s)  tubes:Ed%=96  wound:Ed%=99
+    done: wall=942s  ledger < 1e-10 (m; d incl. drift)  worst resid=5.7e-04
+
+===============================================================================
+[H1] PHASE-CHANNEL PERSISTENCE (the headline)
+===============================================================================
+  [tubes ] E_d retained at t=2.0:
+    REF current    dt=0.0040:   22.3%
+    V28 coarse     dt=0.0040:   22.3%
+    V28 fine       dt=0.0010:   21.0%
+    -> persistence factor (V28/REF): 1.0x
+  [wound ] E_d retained at t=2.0:
+    REF current    dt=0.0040:    8.3%
+    V28 coarse     dt=0.0040:    8.2%
+    V28 fine       dt=0.0010:    7.9%
+    -> persistence factor (V28/REF): 1.0x
+
+===============================================================================
+[H2] toll_d SCALING (V28 dt-pair; V27.3 measured 0.73-0.82)
+===============================================================================
+  [tubes ] toll_d rate: 0.0081 -> 0.0018  ratio_d = 0.219  (O(dt) expects ~0.25)
+         toll_m rate: 0.0528 -> 0.0150  ratio_m = 0.284
+  [wound ] toll_d rate: 0.0005 -> 0.0001  ratio_d = 0.227  (O(dt) expects ~0.25)
+         toll_m rate: 0.0122 -> 0.0032  ratio_m = 0.265
+
+===============================================================================
+[H3] TRANSFER DRIFT (the isometry's price — exact audit)
+===============================================================================
+  [tubes  V28 coarse  ] signed cum drift =  -196.89  |cum| =   196.89  ( 37.7% of E0)  purity: grad-part 57% of |c|
+  [tubes  V28 fine    ] signed cum drift =  -203.76  |cum| =   203.76  ( 39.0% of E0)  purity: grad-part 57% of |c|
+  [wound  V28 coarse  ] signed cum drift =  -402.13  |cum| =   402.13  ( 45.7% of E0)  purity: grad-part 56% of |c|
+  [wound  V28 fine    ] signed cum drift =  -403.87  |cum| =   403.87  ( 45.8% of E0)  purity: grad-part 57% of |c|
+
+===============================================================================
+[H4] FLOOR INVARIANCE (theorem: the correction cancels in m;
+     computed agreement = solver residual + chaos)
+===============================================================================
+  [tubes ] Sigma_m deviation by step   50: 3.13e-16
+  [tubes ] Sigma_m deviation by step  250: 2.05e-15
+  [tubes ] Sigma_m deviation by step  500: 1.49e-14
+         E_m retained: REF 89.1%  vs V28 89.1%
+  [wound ] Sigma_m deviation by step   50: 2.00e-15
+  [wound ] Sigma_m deviation by step  250: 1.68e-15
+  [wound ] Sigma_m deviation by step  500: 7.18e-16
+         E_m retained: REF 97.6%  vs V28 97.6%
+
+===============================================================================
+[H5] wound Mk_m GROWTH (the concentration signature) + verdict
+===============================================================================
+  [tubes  REF current ] Mk_m: 179.0 -> 8166.9 (45.62x)
+  [tubes  V28 coarse  ] Mk_m: 179.0 -> 8166.9 (45.62x)
+  [wound  REF current ] Mk_m: 44.4 -> 494.2 (11.12x)
+  [wound  V28 coarse  ] Mk_m: 44.4 -> 494.2 (11.12x)
+
+  VERDICT:
+  -> E_d still drains (8%): the correction is not
+     sufficient — the mechanism is deeper than the grad-part.
+     Big finding: back to structural analysis before any
+     persistence claim.

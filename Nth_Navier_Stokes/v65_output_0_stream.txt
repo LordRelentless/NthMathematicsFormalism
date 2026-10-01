@@ -1,0 +1,92 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V27.3 GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  GATES PASS.
+
+###############################################################################
+V27.3 — DUAL dt-PAIR (32^3, both ICs, omega ON, T=4.0)
+###############################################################################
+  [coarse] n=32^3  dt=0.004  steps=1000  T=4.0  omega=ON  gain=10.0  nu=0.0001
+    t= 1.00  (   171s)  tubes:Sm=3104,Ed%=30  wound:Sm=76,Ed%=11
+    t= 2.00  (   281s)  tubes:Sm=9542,Ed%=22  wound:Sm=396,Ed%=8
+    t= 3.00  (   370s)  tubes:Sm=14721,Ed%=18  wound:Sm=1547,Ed%=4
+    t= 4.00  (   462s)  tubes:Sm=18182,Ed%=14  wound:Sm=4321,Ed%=2
+    done: wall=462s  ledger < 1e-10 (m and d)  worst resid=7.0e-06
+  [fine] n=32^3  dt=0.001  steps=4000  T=4.0  omega=ON  gain=10.0  nu=0.0001
+    t= 0.25  (    98s)  tubes:Sm=144,Ed%=36  wound:Sm=13,Ed%=14
+    t= 0.50  (   186s)  tubes:Sm=874,Ed%=34  wound:Sm=33,Ed%=12
+    t= 0.75  (   273s)  tubes:Sm=1711,Ed%=32  wound:Sm=55,Ed%=11
+    t= 1.00  (   361s)  tubes:Sm=3544,Ed%=29  wound:Sm=85,Ed%=10
+    t= 1.25  (   448s)  tubes:Sm=5752,Ed%=27  wound:Sm=132,Ed%=10
+    t= 1.50  (   535s)  tubes:Sm=8065,Ed%=25  wound:Sm=228,Ed%=9
+    t= 1.75  (   621s)  tubes:Sm=10453,Ed%=23  wound:Sm=341,Ed%=9
+    t= 2.00  (   719s)  tubes:Sm=12687,Ed%=21  wound:Sm=509,Ed%=8
+    t= 2.25  (   806s)  tubes:Sm=14383,Ed%=20  wound:Sm=797,Ed%=7
+    t= 2.50  (   895s)  tubes:Sm=16301,Ed%=18  wound:Sm=1169,Ed%=6
+    t= 2.75  (   982s)  tubes:Sm=17754,Ed%=17  wound:Sm=1607,Ed%=5
+    t= 3.00  (  1070s)  tubes:Sm=19366,Ed%=16  wound:Sm=2555,Ed%=4
+    t= 3.25  (  1156s)  tubes:Sm=20544,Ed%=15  wound:Sm=3396,Ed%=3
+    t= 3.50  (  1249s)  tubes:Sm=21718,Ed%=14  wound:Sm=4322,Ed%=2
+    t= 3.75  (  1342s)  tubes:Sm=22998,Ed%=13  wound:Sm=5256,Ed%=2
+    t= 4.00  (  1431s)  tubes:Sm=24352,Ed%=13  wound:Sm=6222,Ed%=1
+    done: wall=1431s  ledger < 1e-10 (m and d)  worst resid=7.1e-06
+
+===============================================================================
+[F1] THE OPEN NUMBER — toll_d dt-SCALING (window [0.2, 0.8],
+     4x dt ratio: O(dt) -> 0.25 | O(1) -> 1 | O(1/dt) -> 4)
+===============================================================================
+  [tubes ] toll_m rate: 0.0528 -> 0.0150  ratio_m = 0.284  (anchor; O(dt) expects ~0.25)
+          toll_d rate: 0.1316 -> 0.0959  ratio_d = 0.729  <- THE NUMBER
+  [wound ] toll_m rate: 0.0122 -> 0.0032  ratio_m = 0.265  (anchor; O(dt) expects ~0.25)
+          toll_d rate: 0.0719 -> 0.0589  ratio_d = 0.820  <- THE NUMBER
+  [tubes ] E_d half-life: coarse 0.10  fine 0.03  lifetime ratio 0.26( <1 => amplified/O(1/dt))
+  [wound ] E_d half-life: coarse 0.03  fine 0.01  lifetime ratio 0.25( <1 => amplified/O(1/dt))
+
+  [F1] VERDICT (windowed ratios):
+  -> toll_d ~ O(1): BOUNDED ONE-TIME RELOCATION. The phase
+     channel drains E/2 on a fixed clock independent of dt;
+     the classical floor is untouched in the continuum limit
+     (toll_m -> 0). Coherent continuum picture: floor +
+     bounded relocation cost.
+
+===============================================================================
+[F2] THE FLIP, DIRECTLY (T = 4.0)
+===============================================================================
+  [tubes]
+    dt=0.0040: E_m  77.7%  E_d  13.9%  Sigma_u     2833  Sigma_m    18182  rr_m 0.761 -> STEADY/GROWING
+    dt=0.0010: E_m  89.1%  E_d  12.6%  Sigma_u     3426  Sigma_m    24352  rr_m 0.819 -> STEADY/GROWING
+    Sigma_m ratio fine/coarse: 1.34  (>1 = flip confirmed: more accumulation retained at fine dt)
+  [wound]
+    dt=0.0040: E_m  92.6%  E_d   1.5%  Sigma_u      769  Sigma_m     4321  rr_m 2.565 -> STEADY/GROWING
+    dt=0.0010: E_m  96.7%  E_d   1.2%  Sigma_u      923  Sigma_m     6222  rr_m 2.357 -> STEADY/GROWING
+    Sigma_m ratio fine/coarse: 1.44  (>1 = flip confirmed: more accumulation retained at fine dt)
+
+===============================================================================
+[F3] MODEL FITS (the V26.2 S-verdicts under direct test)
+===============================================================================
+  [tubes]
+    dt=0.0040 Sigma_u: best = S
+    dt=0.0040 Sigma_m: best = S
+    dt=0.0010 Sigma_u: best = S
+    dt=0.0010 Sigma_m: best = S
+  [wound]
+    dt=0.0040 Sigma_u: best = P
+    dt=0.0040 Sigma_m: best = P
+    dt=0.0010 Sigma_u: best = P
+    dt=0.0010 Sigma_m: best = P
+
+===============================================================================
+[F4] THE [E3]-TEST — time-shape assumption checked directly
+===============================================================================
+  [tubes ] toll_m loss: coarse  18.2%  fine   5.9%  (O(dt) predicts   4.5%)  agreement factor 1.30
+  [wound ] toll_m loss: coarse   6.4%  fine   2.0%  (O(dt) predicts   1.6%)  agreement factor 1.23
+  agreement ~1 => the O(dt) law holds over the full horizon (the
+  [E3] calibration is sound); >>1 => rates decay faster at fine dt
+  (floor retains MORE than predicted — flip stronger); <<1 =>
+  slower (flip weaker).

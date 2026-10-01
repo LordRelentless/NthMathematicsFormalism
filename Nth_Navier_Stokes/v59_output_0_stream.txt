@@ -1,0 +1,52 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU (budget mode)
+
+===============================================================================
+V26.3 GATES (self-contained; CPU budget)
+===============================================================================
+  [G1] Jacobian equivalence: rel err = 1.77e-16
+  [G2] projection non-expansiveness: E ratio = 0.67012618  (PASS)
+  [G3] whole-term projection on ic_wound (32³): max|div| 3.401e+00 -> 1.432e-10  (reduction 23754838238.4x)
+  [G4] [B0] mechanics: linearity = 2.99e-16  m-preservation = 1.36e-16  energy = 6.14e-16
+  ALL GATES PASS.
+
+###############################################################################
+V26.3 — m/d DECOMPOSITION (32^3, nu=0.0001, dual 3000 steps + classical arm 800 steps)
+###############################################################################
+  compiling + running 6 chunk(s) of ≤500 steps (first chunk includes compile pause)...
+    chunk 1/6  t=2.00  (455s elapsed)  tubes:Σm=9542 wound:Σm=396
+    chunk 2/6  t=4.00  (826s elapsed)  tubes:Σm=18183 wound:Σm=4321
+    chunk 3/6  t=6.00  (1196s elapsed)  tubes:Σm=23276 wound:Σm=10519
+    chunk 4/6  t=8.00  (1577s elapsed)  tubes:Σm=26987 wound:Σm=15977
+    chunk 5/6  t=10.00  (1948s elapsed)  tubes:Σm=30090 wound:Σm=20236
+    chunk 6/6  t=12.00  (2319s elapsed)  tubes:Σm=32386 wound:Σm=23367
+  compiling + running 2 chunk(s) of ≤500 steps (first chunk includes compile pause)...
+    chunk 1/2  t=2.00  (375s elapsed)  tubes:Σm=9542 wound:Σm=396
+    chunk 2/2  t=3.20  (605s elapsed)  tubes:Σm=15508 wound:Σm=2023
+
+===============================================================================
+[A1] EXACT ENERGY LEDGER, m/d DECOMPOSED (32^3 x 3000)
+===============================================================================
+
+  [tubes]
+    E_m (classical field, x1/2):     261.4 ->     120.9 ( 46.2% retained)
+    E_d (selector split, x1/2):      260.9 ->      18.1 (  6.9% retained)
+    ledger audit: m = 5.65e-15   d = 2.05e-03 (expect ~1e-12; larger = code bug)
+    m drain: Heun(visc+R)     -48.1   toll_m     -92.5
+    d drain: Heun(visc+R)      -8.8   toll_d    -234.5
+    toll split: toll_m share = -9245864864863965483620914901811200.0%   toll_d share = -23452136857750796471022359232380928.0%
+
+  [wound]
+    E_m (classical field, x1/2):     440.4 ->     267.1 ( 60.7% retained)
+    E_d (selector split, x1/2):      439.5 ->       0.0 (  0.0% retained)
+    ledger audit: m = 4.52e-15   d = 2.23e-03 (expect ~1e-12; larger = code bug)
+    m drain: Heun(visc+R)     -56.0   toll_m    -117.3
+    d drain: Heun(visc+R)      -2.7   toll_d    -437.7
+    toll split: toll_m share = -11727577217320234496658286768553984.0%   toll_d share = -43773852674628298413774957841481728.0%
+
+===============================================================================
+[A2] EMBEDDED-CLASSICAL EQUIVALENCE GATE
+===============================================================================
+  [tubes] 300 steps: M dev 1.84e-14  Sigma dev 5.90e-16  | 800 steps: M dev 4.92e-12 (chaos-amplification horizon)
+        classical-arm max|p| (exact-zero check): 2.17e-15

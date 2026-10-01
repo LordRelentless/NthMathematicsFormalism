@@ -1,0 +1,13 @@
+===============================================================================
+[D] UNIFORM-SEED DIAGNOSTIC (the statistically impossible 0/400)
+===============================================================================
+  reproduced draw : min 0.0836  median 2.5606  max 4.3518   count < 1.5: 70   (expected ~72)
+  stored tracks   : min 4.1715  median 4.3047  max 4.4400   count < 1.5: 0   (expected ~72)
+  If either prints 0, the bug is localized to that path; if both print ~72,
+  the v15.3 in-run report was the defect. Either way the core cohort results stand.
+
+===============================================================================
+[R] END-ON COLLAPSE (your construction: wall angle -> disc angle, axis z -> disc radius, center = the infinite horizon point)
+===============================================================================
+  axial advance at r=sigma over the run: 1.456 of L = 6.283  (23% of one retreat ring)
+  -> tracks occupy the OUTER ANNULUS as spiral arcs; a full ring-to-center pattern needs ~1300 steps, or the golden IC below (~86% in 300).

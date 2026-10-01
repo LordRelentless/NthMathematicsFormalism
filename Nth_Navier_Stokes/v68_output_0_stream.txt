@@ -1,0 +1,78 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V29 GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  [G5] decomposition orthogonality (E_d = E_sol + E_div): 0.00e+00
+  [G6] d_sol div-freeness: 3.597e-01 -> 3.23e-16
+  GATES PASS.
+
+###############################################################################
+V29 — SOLENOIDAL DISCRIMINATOR + FLOOR VORTICITY (32^3, dt=0.004, T=3.0, nu=0.0001)
+###############################################################################
+  [REF per-channel] n=32^3  dt=0.004  steps=750  T=3.00
+    t= 0.60  (   119s)  tubes:Ed%=34,Ediv%=0,fs_sol=0.38  wound:Ed%=12,Ediv%=0,fs_sol=0.50
+    t= 1.20  (   214s)  tubes:Ed%=28,Ediv%=0,fs_sol=0.49  wound:Ed%=10,Ediv%=0,fs_sol=0.53
+    t= 1.80  (   273s)  tubes:Ed%=24,Ediv%=0,fs_sol=0.58  wound:Ed%=9,Ediv%=0,fs_sol=0.54
+    t= 2.40  (   331s)  tubes:Ed%=20,Ediv%=0,fs_sol=0.65  wound:Ed%=7,Ediv%=0,fs_sol=0.59
+    t= 3.00  (   388s)  tubes:Ed%=18,Ediv%=0,fs_sol=0.71  wound:Ed%=4,Ediv%=0,fs_sol=0.67
+    ledger [tubes]: m 3.15e-15  d 1.85e-15
+    ledger [wound]: m 1.08e-15  d 5.16e-16
+  [PERSIST sigma=+1] n=32^3  dt=0.004  steps=750  T=3.00  sigma=+1
+    t= 0.60  (    53s)  tubes:Ed%=99,Ediv%=9,fs_sol=0.79  wound:Ed%=99,Ediv%=8,fs_sol=0.83
+    t= 1.20  (    93s)  tubes:Ed%=97,Ediv%=9,fs_sol=0.84  wound:Ed%=97,Ediv%=8,fs_sol=0.86
+    t= 1.80  (   132s)  tubes:Ed%=96,Ediv%=9,fs_sol=0.86  wound:Ed%=96,Ediv%=8,fs_sol=0.87
+    t= 2.40  (   171s)  tubes:Ed%=94,Ediv%=8,fs_sol=0.86  wound:Ed%=94,Ediv%=8,fs_sol=0.87
+    t= 3.00  (   211s)  tubes:Ed%=92,Ediv%=8,fs_sol=0.86  wound:Ed%=92,Ediv%=8,fs_sol=0.87
+    ledger [tubes]: m 2.04e-15  d 7.07e-16
+    ledger [wound]: m 3.71e-16  d 2.73e-15
+
+===============================================================================
+[S1] DECOMPOSITION SHARES (E_div / E_d; prediction: ~40-60%,
+     tracking the rotation grad-part purity measured in V28)
+===============================================================================
+  [REF per-channel  tubes ] E_div share: 0.0% (t=first chunk) -> 0.0% (T)
+  [REF per-channel  wound ] E_div share: 0.0% (t=first chunk) -> 0.0% (T)
+  [PERSIST sigma=+1 tubes ] E_div share: 8.7% (t=first chunk) -> 8.3% (T)
+  [PERSIST sigma=+1 wound ] E_div share: 8.1% (t=first chunk) -> 8.4% (T)
+
+===============================================================================
+[S2] SOLENOIDAL CONCENTRATION (the genuine-cascade monitor)
+===============================================================================
+  [REF per-channel  tubes ] fs_sol 0.379 -> 0.714 (fs_d total 0.714; inflation 1.00x)   max|w_sol| 8.86 -> 7.54 (0.85x, peak 9.13)
+  [REF per-channel  wound ] fs_sol 0.499 -> 0.666 (fs_d total 0.666; inflation 1.00x)   max|w_sol| 8.05 -> 5.08 (0.63x, peak 8.05)
+  [PERSIST sigma=+1 tubes ] fs_sol 0.791 -> 0.865 (fs_d total 0.865; inflation 1.00x)   max|w_sol| 23.56 -> 23.57 (1.00x, peak 25.68)
+  [PERSIST sigma=+1 wound ] fs_sol 0.833 -> 0.873 (fs_d total 0.872; inflation 1.00x)   max|w_sol| 29.85 -> 28.82 (0.97x, peak 32.64)
+
+===============================================================================
+[S3] FLOOR VORTICITY (construction-independent, Clay-adjacent
+     monitor — measured properly at last)
+===============================================================================
+  [REF per-channel  tubes ] max|w_m|: 26.71 -> 33.81 (1.27x, peak 40.99)
+  [REF per-channel  wound ] max|w_m|: 10.10 -> 29.14 (2.88x, peak 35.47)
+  [PERSIST sigma=+1 tubes ] max|w_m|: 26.71 -> 33.81 (1.27x, peak 40.99)
+  [PERSIST sigma=+1 wound ] max|w_m|: 10.10 -> 29.14 (2.88x, peak 35.47)
+
+===============================================================================
+[S4] CORRECTED VERDICT (no conflation — four separate statements)
+===============================================================================
+  [tubes]
+    1. PERSISTENCE: E_d 92% at T (leak ~2.6%/T, physical viscosity on rough content).
+    2. DEBRIS SHARE: E_div = 8% of E_d (small: the roughness is mostly solenoidal — genuine cascade)
+    3. SOLENOIDAL CHANNEL: fs_sol = 0.86, max|w_sol| growth 1.00x — bounded at this horizon.
+    4. FLOOR: identical across arms (theorem); its own vorticity growth reported in [S3] — the only Clay-adjacent object, untouched by all of this.
+  [wound]
+    1. PERSISTENCE: E_d 92% at T (leak ~2.5%/T, physical viscosity on rough content).
+    2. DEBRIS SHARE: E_div = 8% of E_d (small: the roughness is mostly solenoidal — genuine cascade)
+    3. SOLENOIDAL CHANNEL: fs_sol = 0.87, max|w_sol| growth 0.97x — bounded at this horizon.
+    4. FLOOR: identical across arms (theorem); its own vorticity growth reported in [S3] — the only Clay-adjacent object, untouched by all of this.
+
+  SCOPE: 32^3, T=3.0, single IC per class, sigma=+1 (chirality
+  settled mirror-only in V28.1d). No finite run speaks to the
+  Clay statement; the floor monitor is the honest forward thread.
+
+series + diagnostics persisted in /content/v29_results

@@ -1,0 +1,62 @@
+JAX version: 0.11.1
+backend devices: [CudaDevice(id=0)]
+backend: CPU (free mode)
+
+===============================================================================
+V24 VALIDATION GATES — must pass before R1/R2
+===============================================================================
+  [G1] native Nth Jacobian equivalence: rel err = 1.79e-16
+  [G2] non-expansiveness: E ratio = 0.67012618  (PASS)
+  [G3] divergence reduction: ref 1.8e+09x, port 5.8e+10x  (PASS)
+  ALL GATES PASS.
+
+###############################################################################
+V24 — R1 (128³ LADDER) + R2 (1000-STEP HORIZON)
+###############################################################################
+  PRE-REGISTERED PREDICTIONS:
+  R1: tubes D/M₀ continues rising at n=128 (counterexample
+      direction is a converged refinement trend)
+  R2: wound D/M₀ contracts or flat at t=4.0; tubes continues
+      growing (the split strengthens at long horizon)
+
+--- 32³ batch (R1 point) ---
+  batch n=32 C=2 steps=300: compiled+executed in 26s on cuda:0
+
+--- 64³ batch, 1000 steps (R1 point + R2 horizon) ---
+  batch n=64 C=2 steps=1000: compiled+executed in 81s on cuda:0
+
+--- 128³ batch (R1 new point — the expensive one) ---
+  batch n=128 C=1 steps=300: compiled+executed in 74s on cuda:0
+
+===============================================================================
+V24 ANALYSIS
+===============================================================================
+
+[R1] THE THREE-POINT LADDER (tubes, ν=1e-4, t=1.2):
+       n         M0      D@299     D/M₀
+      32     179.03     14.376   0.0803
+      64     648.94     73.787   0.1137
+     128    2483.25    420.117   0.1692
+
+  -> R1 VERDICT: MONOTONE RISING: the counterexample-direction steepening is a converged refinement trend across 32→64→128. The strongest finite-scale evidence this direction can produce.
+
+[R2] THE HORIZON EXTENSION (ν=1e-4, n=64, t=1.2 vs t=4.0):
+  IC         D/M₀@299   D/M₀@999   change      Σ@299      Σ@999
+  tubes        0.1137     0.0121   -89.4%   10441.16   23184.11
+  wound        0.0075     0.0494  +555.8%     803.27    5169.19
+
+  [H4] Σ DECOMPOSITION at 1000 steps (ν=1e-4, n=64):
+  tubes   : Σ(early t≤0.2) =    3651.90   Σ(total t=4.0) =   23184.11   early share = 16%
+  wound   : Σ(early t≤0.2) =     669.78   Σ(total t=4.0) =    5169.19   early share = 13%
+
+  GROWTH CLASS at 1000 steps:
+  tubes   : GROWING-ACCEL
+  wound   : GROWING-ACCEL
+
+===============================================================================
+[V] V24 COMBINED VERDICT
+===============================================================================
+  -> both grow: the split weakens at long horizon.
+===============================================================================
+
+Generating figures...

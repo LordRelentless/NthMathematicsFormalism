@@ -1,0 +1,79 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V27 GATES (minimal, tolerance-based)
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  GATES PASS.
+
+###############################################################################
+V27 — REFINEMENT LADDER (classical arms, nu=1e-4, both ICs)
+###############################################################################
+  [A] n=32^3  dt=0.004  steps=400  t=1.6  cycles=8  dx=0.1963
+    t= 0.40  (    43s)  toll-rate so far: tubes=0.0666  wound=0.0134
+    t= 0.80  (    74s)  toll-rate so far: tubes=0.0580  wound=0.0126
+    t= 1.20  (   106s)  toll-rate so far: tubes=0.0541  wound=0.0118
+    t= 1.60  (   138s)  toll-rate so far: tubes=0.0517  wound=0.0113
+    done: wall=138s  ledger audit < 1e-10  worst solver resid=1.1e-05
+  [A*] n=32^3  dt=0.004  steps=400  t=1.6  cycles=20  dx=0.1963
+    t= 0.40  (    82s)  toll-rate so far: tubes=0.0666  wound=0.0134
+    t= 0.80  (   120s)  toll-rate so far: tubes=0.0580  wound=0.0126
+    t= 1.20  (   156s)  toll-rate so far: tubes=0.0541  wound=0.0118
+    t= 1.60  (   193s)  toll-rate so far: tubes=0.0517  wound=0.0113
+    done: wall=193s  ledger audit < 1e-10  worst solver resid=1.1e-11
+  [B] n=32^3  dt=0.002  steps=800  t=1.6  cycles=8  dx=0.1963
+    t= 0.20  (    24s)  toll-rate so far: tubes=0.0375  wound=0.0070
+    t= 0.40  (    41s)  toll-rate so far: tubes=0.0345  wound=0.0068
+    t= 0.60  (    59s)  toll-rate so far: tubes=0.0324  wound=0.0067
+    t= 0.80  (    76s)  toll-rate so far: tubes=0.0309  wound=0.0065
+    t= 1.00  (    93s)  toll-rate so far: tubes=0.0300  wound=0.0063
+    t= 1.20  (   111s)  toll-rate so far: tubes=0.0296  wound=0.0061
+    t= 1.40  (   128s)  toll-rate so far: tubes=0.0292  wound=0.0060
+    t= 1.60  (   145s)  toll-rate so far: tubes=0.0288  wound=0.0060
+    done: wall=145s  ledger audit < 1e-10  worst solver resid=1.1e-05
+  [C] n=64^3  dt=0.002  steps=800  t=1.6  cycles=8  dx=0.0982
+    t= 0.20  (   163s)  toll-rate so far: tubes=0.0400  wound=0.0072
+    t= 0.40  (   313s)  toll-rate so far: tubes=0.0393  wound=0.0070
+    t= 0.60  (   464s)  toll-rate so far: tubes=0.0392  wound=0.0069
+    t= 0.80  (   624s)  toll-rate so far: tubes=0.0393  wound=0.0067
+    t= 1.00  (   773s)  toll-rate so far: tubes=0.0399  wound=0.0065
+    t= 1.20  (   925s)  toll-rate so far: tubes=0.0409  wound=0.0064
+    t= 1.40  (  1077s)  toll-rate so far: tubes=0.0420  wound=0.0063
+    t= 1.60  (  1227s)  toll-rate so far: tubes=0.0430  wound=0.0063
+    done: wall=1227s  ledger audit < 1e-10  worst solver resid=1.7e-04
+
+===============================================================================
+[L] LADDER TABLE — toll/heun rates per unit time (fractions of E0)
+===============================================================================
+  [A ] tubes : toll 0.0517/t  heun 0.0034/t  (toll/heun  15.2x)  div_before 2.23e+00  Sigma 7096  M_k(final)/peak 0.666
+  [A ] wound : toll 0.0113/t  heun 0.0004/t  (toll/heun  26.3x)  div_before 4.83e-01  Sigma 229  M_k(final)/peak 0.922
+  [A*] tubes : toll 0.0517/t  heun 0.0034/t  (toll/heun  15.2x)  div_before 2.23e+00  Sigma 7096  M_k(final)/peak 0.666
+  [A*] wound : toll 0.0113/t  heun 0.0004/t  (toll/heun  26.3x)  div_before 4.83e-01  Sigma 229  M_k(final)/peak 0.922
+  [B ] tubes : toll 0.0288/t  heun 0.0038/t  (toll/heun   7.6x)  div_before 1.25e+00  Sigma 8247  M_k(final)/peak 0.805
+  [B ] wound : toll 0.0060/t  heun 0.0005/t  (toll/heun  13.1x)  div_before 2.67e-01  Sigma 255  M_k(final)/peak 0.907
+  [C ] tubes : toll 0.0430/t  heun 0.0104/t  (toll/heun   4.2x)  div_before 6.25e+00  Sigma 96794  M_k(final)/peak 0.499
+  [C ] wound : toll 0.0063/t  heun 0.0005/t  (toll/heun  12.5x)  div_before 4.53e-01  Sigma 540  M_k(final)/peak 0.974
+
+[C1] WARM-SHORTCUT AGREEMENT (A vs A*, toll rates):
+  tubes : warm 0.0517 vs cold 0.0517  (rel diff 0.000%)
+  wound : warm 0.0113 vs cold 0.0113  (rel diff 0.000%)
+
+[C2] TIME-ERROR SHARE (A -> B, fixed dx):
+  tubes : toll rate 0.0517 -> 0.0288  (time-error share 44% of A; the remainder is the
+          semi-discrete grid floor at 32^3)
+  wound : toll rate 0.0113 -> 0.0060  (time-error share 47% of A; the remainder is the
+          semi-discrete grid floor at 32^3)
+
+[C3] GRID SHARE (B -> C, dx and dt halved, CFL matched):
+  tubes : toll rate 0.0288 -> 0.0430  (grid share -49%)
+  wound : toll rate 0.0060 -> 0.0063  (grid share -5%)
+
+  VERDICT:
+  -> TOLL IS RESOLUTION-STABLE: a structural regularizer.
+     Honest label for the construction: dissipatively-
+     regularized selector/classical pair. Clay-relevance
+     unchanged (null). Prior energy-death verdicts stand
+     as statements about THIS discretization only.

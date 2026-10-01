@@ -1,0 +1,94 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+V27.1 GATES
+===============================================================================
+  [G1] projection non-expansiveness: 0.61363672 (PASS)
+  [G2] fused advection zero-work: 0.00e+00
+  GATES PASS.
+
+###############################################################################
+V27.1 — dt-LADDER (classical arms, nu=1e-4, both ICs, 32^3,
+         window t in [0.2, 0.8])
+###############################################################################
+  [dt=0.004 ] n=32^3  dt=0.004  steps=200  t=0.8  cycles=8
+    t= 0.40  (    43s)
+    t= 0.80  (    74s)
+    done: wall=74s  ledger < 1e-10  worst resid=1.1e-05
+    window rate tubes : 0.0528/t   heun 0.0018/t   divb 1.89e+00
+    window rate wound : 0.0122/t   heun 0.0003/t   divb 3.33e-01
+  [dt=0.002 ] n=32^3  dt=0.002  steps=400  t=0.8  cycles=8
+    t= 0.20  (    43s)
+    t= 0.40  (    75s)
+    t= 0.60  (   106s)
+    t= 0.80  (   139s)
+    done: wall=139s  ledger < 1e-10  worst resid=1.1e-05
+    window rate tubes : 0.0287/t   heun 0.0020/t   divb 9.94e-01
+    window rate wound : 0.0064/t   heun 0.0003/t   divb 1.79e-01
+  [dt=0.001 ] n=32^3  dt=0.001  steps=800  t=0.8  cycles=8
+    t= 0.10  (    24s)
+    t= 0.20  (    41s)
+    t= 0.30  (    59s)
+    t= 0.40  (    77s)
+    t= 0.50  (    94s)
+    t= 0.60  (   111s)
+    t= 0.70  (   130s)
+    t= 0.80  (   147s)
+    done: wall=147s  ledger < 1e-10  worst resid=1.1e-05
+    window rate tubes : 0.0150/t   heun 0.0020/t   divb 5.14e-01
+    window rate wound : 0.0032/t   heun 0.0003/t   divb 9.33e-02
+  [dt=0.0005] n=32^3  dt=0.0005  steps=1600  t=0.8  cycles=8
+    t= 0.05  (    25s)
+    t= 0.10  (    43s)
+    t= 0.15  (    62s)
+    t= 0.20  (    80s)
+    t= 0.25  (   100s)
+    t= 0.30  (   117s)
+    t= 0.35  (   135s)
+    t= 0.40  (   154s)
+    t= 0.45  (   171s)
+    t= 0.50  (   189s)
+    t= 0.55  (   207s)
+    t= 0.60  (   224s)
+    t= 0.65  (   242s)
+    t= 0.70  (   259s)
+    t= 0.75  (   276s)
+    t= 0.80  (   295s)
+    done: wall=295s  ledger < 1e-10  worst resid=1.1e-05
+    window rate tubes : 0.0077/t   heun 0.0020/t   divb 2.62e-01
+    window rate wound : 0.0016/t   heun 0.0003/t   divb 4.76e-02
+
+===============================================================================
+[D1] FIT rate(dt) = c1*dt + c0  (window [0.2, 0.8], 4 points)
+===============================================================================
+
+  [tubes] rates: 0.0077  0.0150  0.0287  0.0528
+    c1 =    12.82   c0 =  0.00203   R^2 = 0.9984
+    dt-independent share of the dt=0.004 rate: 24.1%
+
+  [wound] rates: 0.0016  0.0032  0.0064  0.0122
+    c1 =     3.02   c0 =  0.00021   R^2 = 0.9997
+    dt-independent share of the dt=0.004 rate: 12.2%
+
+  [D2] O(dt) LAW CHECK (measured ratios vs pure-halving 0.5):
+  [tubes] r(.001)/r(.002) = 0.523   r(.0005)/r(.001) = 0.512
+  [wound] r(.001)/r(.002) = 0.510   r(.0005)/r(.001) = 0.505
+
+  [D3] THE V26 RECLASSIFICATION, from the fit:
+  [tubes] rate(dt=0.004) = 0.0533 -> rate(dt=0.001) = 0.0149  (0.28x)
+    V26.2 64^3/dt=0.004/t=20 lost ~70% of E0 to the toll;
+    at dt=0.001 the O(dt) law predicts ~20% loss
+    -> the floor SURVIVES and Sigma_m keeps growing: the
+       "both floors saturating" S-verdict flips to growth.
+  [wound] rate(dt=0.004) = 0.0123 -> rate(dt=0.001) = 0.0032  (0.26x)
+    V26.2 64^3/dt=0.004/t=20 lost ~70% of E0 to the toll;
+    at dt=0.001 the O(dt) law predicts ~18% loss
+    -> the floor SURVIVES and Sigma_m keeps growing: the
+       "both floors saturating" S-verdict flips to growth.
+
+  VERDICT:
+  -> MIXED: small but real dt-independent floor at this dx.
+     Report both coefficients; the potential form (V28)
+     removes it identically.

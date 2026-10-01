@@ -1,0 +1,4 @@
+/usr/local/lib/python3.13/dist-packages/numpy/_core/_methods.py:194: RuntimeWarning: invalid value encountered in subtract
+  x = asanyarray(arr - arrmean)
+/tmp/ipykernel_1547/269419875.py:610: RuntimeWarning: invalid value encountered in subtract
+  c_z = (c_ - c_.mean())/c_.std()

@@ -1,0 +1,2 @@
+
+V19.3 complete. Run V19.2 (the activation-role test) next, on this same session — it consumes stC/stO/actO and adjudicates the partition-enhancement anomaly under its own pre-registration.

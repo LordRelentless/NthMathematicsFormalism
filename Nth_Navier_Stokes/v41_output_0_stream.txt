@@ -1,0 +1,86 @@
+NumPy version: 2.1.3
+
+=======================================================================
+PRE-REGISTERED STOPPING RULE (binding, stated before any data):
+This is the FINAL recurrence formulation. Null composite => the
+recurrence question closes permanently. Omega-only phase-gated
+recurrence => discovery, own section. No further variants.
+=======================================================================
+
+
+PURITY MANIFEST (condensed)
+  native   : fusion, structural product (DUAL-arm), division spectrum,
+             deviation collapse, unreal mirror (lifted 3D), unit-circle
+             fusion, trans-finite compactifier g/(1+g)
+  licensed : floats = magnitude arms of selectors; quotient collapse;
+             norm magnitudes
+  bridge   : Whole-Term cascade (channels), bundle advection of fields,
+             Real-channel tracers, seed-asserted, gated before any run
+
+spectra collapse: t 0.0e+00  c 0.0e+00  s 0.0e+00  circle 2.2e-16
+
+===============================================================================
+BRIDGE GATES
+===============================================================================
+  3D exact recovery: 1.11e-12  -> PASS
+  3D channels (19 cy): resid 6.1e-11 PASS  div 4.8e-11 PASS  energy 0.681297 PASS
+
+###############################################################################
+v19 — THE DEFINITIVE RECURRENCE TEST: composite state + activation gating
+###############################################################################
+
+--- composite-state tracking runs (wound-core golden IC) ---
+    seeds: near-core 70/400 (expected 70)
+    routes total = 0   (Omega INACTIVE)
+  classical: 321s   (activation undefined: threshold exists but never crossed)
+    seeds: near-core 70/400 (expected 70)
+    routes total = 367718   (Omega ACTIVE)
+  omega:     390s
+
+===============================================================================
+v19 AUDIT — the definitive recurrence test
+===============================================================================
+
+[F4] ACTIVATION STRUCTURE (omega, core cohort):
+  mean activation fraction over time: 0.069
+  episodes (>=15 steps) per tracer: mean 0.22, max 3
+  -> few sustained episodes; the within-episode test will use shorter windows (reported with the caveat).
+
+[R1] COMPOSITE RECURRENCE, FULL RUN (all factors, no gating):
+  classical: recurrence 0.7295  determinism 0.9842
+  omega:     recurrence 0.8190  determinism 0.9683
+  omega surrogate determinism (shuffled): 0.6542
+  -> null at composite level (both near surrogate)
+
+[R2] PER-FACTOR RECURRENCE (which factor carries structure?):
+  [pos  ] classical det 0.9956   omega det 0.9987
+  [tuple] classical det 0.9797   omega det 0.9406
+  [part ] classical det 0.9994   omega det 0.9891
+
+[R3] WITHIN-EPISODE RECURRENCE (omega, activation episodes, detrended):
+  usable episodes (>=15 steps): 33
+  within-episode determinism: mean 0.4049 over 20 episodes
+  -> within-episode null or kinematic — compare against classical segments (R4).
+
+[R4] CLASSICAL CONTROL SEGMENTS (matched windows, no activation exists):
+  classical matched-window determinism: mean 0.6918
+  (if R3 omega >> this, episode structure is selector-specific; if comparable, kinematic.)
+
+[R5] PHASE-GATED RECURRENCE (the gating benefit):
+  omega: gated determinism 0.9553 vs ungated 0.9695   (gating benefit = -0.0142)
+  -> no gating benefit — activation state does not structure the recurrence. Null.
+
+===============================================================================
+[V] FINAL VERDICT (stopping rule applied)
+===============================================================================
+  NULL AT THE DEFINITIVE LEVEL. Per the pre-registered 
+  stopping rule, the recurrence question CLOSES:
+  tested in scalar projection, per-channel, signed, 
+  pairwise, full composite, and activation-gated composite;
+  null at every level. The selector's content is bounded,
+  deterministic, non-recurrent churn — the definitive 
+  characterization, and the strongest possible form of the
+  honest claim.
+===============================================================================
+
+Generating figures...

@@ -1,0 +1,31 @@
+===============================================================================
+V19.2 — THE ACTIVATION-ROLE TEST (pre-registered)
+===============================================================================
+Hypothesis: activation STRUCTURES the partition state.
+Decision rule: [A1]+ or [A2]+ => user hypothesis supported;
+otherwise decoherence stands, [A3] refines the anomaly.
+===============================================================================
+
+[A1] PARTITION-GATING (both-active vs both-inactive, omega, label-permutation null):
+  both-active:   det 0.0833  (288 points)
+  both-inactive: det 0.5510  (106086 points)
+  observed difference (active - inactive): -0.4676
+  null difference: mean -0.4460   p(diff >= observed) = 1.000
+
+[A2] EPISODE-ALIGNMENT (cross-episode partition recurrence, time-shuffled null):
+  episodes (>=15 steps): 27
+  matched-phase recurrence rate: 0.3468   shifted-phase: 0.1790   z = 4.87   p = 0.0000
+  -> POSITIVE: partition states recur across episodes at MATCHED phase — activation-aligned structure
+
+[A3] PARTITION SIGNATURE (within-episode: partition vs tuple, omega vs matched classical):
+  PARTITION: omega episodes 0.2189 (594 pts)  classical matched 0.4367 (600 pts)
+  TUPLE:     omega episodes 0.1644 (596 pts)  classical matched 0.5567 (600 pts)
+  retention under activation: partition 50%   tuple 30%
+
+===============================================================================
+[D] DECISION (pre-registered rule)
+===============================================================================
+  USER HYPOTHESIS SUPPORTED: activation plays a structuring
+  role in the partition state — beyond decoherence of the
+  inherited pattern. Part 2 gets the enhancement section.
+===============================================================================

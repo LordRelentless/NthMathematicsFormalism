@@ -1,0 +1,49 @@
+===============================================================================
+[C4-CONTROL v3] PART 1: THE DISCRIMINATOR — parked or window-limited?
+===============================================================================
+  [classical core     ] net displacement: median 1.253   path length: median 6.264   frac path > 0.5: 100%   frac path < 0.05: 0%
+  [classical far-field] net displacement: median 0.123   path length: median 0.147   frac path > 0.5: 16%   frac path < 0.05: 9%
+  [omega     core     ] net displacement: median 1.062   path length: median 4.472   frac path > 0.5: 98%   frac path < 0.05: 0%
+  [omega     far-field] net displacement: median 0.108   path length: median 0.113   frac path > 0.5: 12%   frac path < 0.05: 26%
+
+  -> MIXED: short paths with small net drift — the median far-field particle is slow-drifting; a minority (12-16%) has real orbital paths.
+  far-field path ratio (omega/classical): 0.7723   (differential-u effect present at the routing margin (far-field deceleration))
+
+===============================================================================
+[C4-CONTROL v3] PART 2: TIERED ANCHOR VALIDATION
+===============================================================================
+
+  Scanning (core cohort, both runs)...
+  Scanning (uniform cohort, both runs)...
+
+  TIERED ANCHOR TABLE:
+                    tierA mean  med  max    tierB mean  med  max
+  classical core          1.03    0   79         13.16    0  257
+  omega core              0.30    0   91         32.71    0  310
+  classical unif          1.38    0  418         77.38    0  487
+  omega unif              0.11    0   35         95.03    0  484
+
+  PERMUTATION TESTS (omega vs classical, per tier, per cohort):
+  [core A  ] mean diff -0.736   p = 0.0188   n_nonzero C/O: 24/3
+  [core B  ] mean diff +19.544   p = 0.0000   n_nonzero C/O: 117/139
+  [unif A  ] mean diff -1.275   p = 0.0024   n_nonzero C/O: 19/3
+  [unif B  ] mean diff +17.644   p = 0.0272   n_nonzero C/O: 250/252
+
+===============================================================================
+[C4-CONTROL v3] VERDICT
+===============================================================================
+  -> NOT STABILIZED — the opposite, MEASURED: the selector
+     ERODES genuine anchors (Tier A: -0.736, p 0.0188;
+     anchor-bearing particles 24 -> 3) while
+     INFLATING pseudo-anchor stasis (Tier B: +19.544, p 0.0000).
+  THE SEDIMENTATION FINDING: routing converts fast, transiting,
+     genuinely-anchored particles into slow, small-amplitude,
+     quasi-stationary ones — the churn settles rather than
+     organizes. The v21.1 "+57% stabilized" was this effect
+     seen through an instrument that could not distinguish
+     anchoring from stasis. With the distinction enforced:
+     the selector's temporal actions are decoherent,
+     homogenizing (clock spread 44->29%), and erosive —
+     never generative, never stabilizing. The characterization
+     is complete, [B0]-consistent to the end.
+===============================================================================

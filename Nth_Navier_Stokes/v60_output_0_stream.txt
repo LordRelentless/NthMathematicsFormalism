@@ -1,0 +1,82 @@
+JAX version: 0.11.1
+backend devices: [CpuDevice(id=0)]
+backend: CPU
+
+===============================================================================
+[O1] FUSION ORDER AUDIT — operand order in the Nth tuple
+===============================================================================
+  n_|7| ⊕ n_|3| -> R=10  U=-10  C1=4  C2=-4
+  n_|3| ⊕ n_|7| -> R=10  U=-10  C1=-4  C2=4
+    R,U invariant (commutative channels); C1 <-> C2 SWAP (order-carrying channels)
+
+  n_|5| ⊕ n_|5| -> R=10  U=-10  C1=0  C2=0
+  n_|5| ⊕ n_|5| -> R=10  U=-10  C1=0  C2=0
+    R,U invariant (commutative channels); C1 <-> C2 SWAP (order-carrying channels)
+
+  Axiom 9.3 product phase rule (second operand determines phase):
+    n_|a,1| ⊗ n_|b,1| -> phase 1
+    n_|a,1| ⊗ n_|b,i| -> phase i   <- ASYMMETRIC: (1,i)->i but (i,1)->1
+    n_|a,i| ⊗ n_|b,1| -> phase 1   <- ASYMMETRIC: (1,i)->i but (i,1)->1
+    n_|a,i| ⊗ n_|b,i| -> phase i
+  magnitude channel commutative; phase labels order-carrying.
+  CODE CONVENTION: jadvect(f, v) fixes the carrier v as SECOND
+  operand — aligned with the 9.3 rule. Magnitude-blind (labels only).
+
+===============================================================================
+[O2] DUAL-OUTPUT-FORM WORK ANTISYMMETRY (C1/C2 at the work level)
+===============================================================================
+  The two ordered outputs of the structural product:
+    form1 (divergence):  w_i <- 0.5*D_j(v_j w_i)
+    form2 (advective):   w_i <- 0.5*v_j D_j(w_i)
+  Skew-adjointness of D under periodic summation (Sum f*Dg =
+  -Sum (Df)*g) gives:  work(form1) = -work(form2) EXACTLY, for ANY
+  advecting velocity v. Their average — the fused R-channel — is
+  exactly zero-work. This is the mechanism behind [J2].
+
+  fields: w = tubes IC, v = wound IC (32^3, arbitrary pair)
+    work(divergence form) =    2461.2071
+    work(advective  form) =   -2461.2071
+    sum (expect ~0)       =   9.0949e-13   relative = 3.70e-16
+  -> PASS: the ordered pair of output forms carries equal-and-opposite work.
+     Operand order is structurally present and measurable in the live operator;
+     the fused (averaged) operator is its licensed magnitude projection.
+
+===============================================================================
+[O3] ORDER/PHASE ACCOUNTING FOR THE NS LINEAGE (v4..v26)
+===============================================================================
+
+  Nth structure              where in the code              status
+  -------------------------  -----------------------------  ------------
+  fusion 4-tuple (9.2)       advection dual forms           [O2]: works
+                             (divergence/advective)         antisymmetric
+  C1/C2 Jacobian channels    sym/antisym(grad u)            implemented
+  9.3 second-operand rule    jadvect(f, v): carrier second  convention
+  cross orientation          omega: axis x d (fixed)        implemented
+  pipeline order             Heun -> omega -> closure       fixed
+  RB-GS sweep order          red before black               sequential
+  m/d ledger                 m=R-channel, d=C1, C2=-d       implemented
+  discrete {1,i} algebra     NOWHERE                        NOT IMPL.
+  per-op 4-tuple tracking    NOWHERE                        NOT IMPL.
+  CONSEQUENCE: every result in the lineage is a magnitude-channel
+  (Real-channel) statement. The runs neither support nor contradict
+  the formal phase-algebra claims (Omega phase-locking, (−5)^i=5 class,
+  epsilon constants). The proof document must cite computational
+  verification for the magnitude channel only; phase-algebra verification
+  requires a different construction (full-tuple prototype, ~100x cost).
+  The only order effect present in the numbers is FP non-associativity
+  at ~1e-16 (why the gates read 1e-16, not 0).
+
+===============================================================================
+[P1] PERFORMANCE A/B (32^3, C=2, 120 steps, nu=0.0001)
+===============================================================================
+  [cold-20  ]  172.9s total   1441.2 ms/step  proj-resid worst 2.3e-12  median 1.0e-12  ledger 8.4e-16
+      tubes  final max|div_u| = 5.4e-12  E_m retained  96.8%
+      wound  final max|div_u| = 4.6e-12  E_m retained  99.4%
+  [warm-8   ]   54.8s total    456.6 ms/step  proj-resid worst 7.0e-06  median 4.6e-07  ledger 1.6e-16
+      tubes  final max|div_u| = 2.0e-06  E_m retained  96.8%
+      wound  final max|div_u| = 1.0e-06  E_m retained  99.4%
+  [warm-4   ]   40.1s total    334.6 ms/step  proj-resid worst 8.3e-04  median 5.7e-05  ledger 1.0e-15
+      tubes  final max|div_u| = 1.8e-04  E_m retained  96.8%
+      wound  final max|div_u| = 2.1e-04  E_m retained  99.4%
+
+  SPEEDUP (vs cold-20, same discretization, both batched):
